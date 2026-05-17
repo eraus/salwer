@@ -1,0 +1,22 @@
+# Ignore everything
+*
+
+# Unignore top-level essentials
+!/.gitignore
+!/.python-version
+!/pyproject.toml
+!/pytest.ini
+!/README.md
+!/uv.lock
+
+# Unignore src/salwer
+!/src/
+!/src/salwer/
+!/src/salwer/*.py
+!/src/salalp/recipes/
+!/src/salalp/recipes/*.py
+
+# Unignore tests
+!/tests/
+!/tests/*.py
+!/tests/*.md

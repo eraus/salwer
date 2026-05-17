@@ -1,0 +1,24 @@
+[project]
+name = "salwer"
+version = "0.1.0"
+description = "SaLAI Lab's Granular WER Evaluation Tool"
+readme = "README.md"
+authors = [
+    { name = "eraus", email = "liu620@erau.edu" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "typer>=0.25.1",
+]
+
+[project.scripts]
+salwer = "salwer:main"
+
+[build-system]
+requires = ["uv_build>=0.11.14,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]
