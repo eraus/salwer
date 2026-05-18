@@ -1,0 +1,349 @@
+{
+  "cues": [
+    {
+      "bgn_time": 0,
+      "end_time": 10,
+      "stm": "4>NO>NO",
+      "cmt": "position was using multiple frequencies and there were numerous aircraft transmissions that are not heard; during the first part of this period f2 is more of a feeder controller to the f1 position; controller changes",
+      "txt": "{'file_level_comment': 'see the cmt field'}"
+    },
+    {
+      "bgn_time": 8120,
+      "end_time": 10710,
+      "stm": "1>F2-1>UNK1546",
+      "cmt": "",
+      "txt": "U S Air Fifteen Forty Six, descend and maintain five thousand."
+    },
+    {
+      "bgn_time": 13870,
+      "end_time": 16830,
+      "stm": "1>F2-1>USA1528",
+      "cmt": "",
+      "txt": "U S Air Fifteen Twenty Eight, descend and maintain one one thousand."
+    },
+    {
+      "bgn_time": 20770,
+      "end_time": 23250,
+      "stm": "1>F2-1>TWA500",
+      "cmt": "neither of these aircraft are on this frequency",
+      "txt": "T W A Five Hundred, descend and maintain one six thousand."
+    },
+    {
+      "bgn_time": 29100,
+      "end_time": 31520,
+      "stm": "2>F2-1>MID2721",
+      "cmt": "",
+      "txt": "Midex Twenty Seven Twenty One, turn left heading one niner zero."
+    },
+    {
+      "bgn_time": 31970,
+      "end_time": 34160,
+      "stm": "1>MID2721>F2-1",
+      "cmt": "",
+      "txt": "Left turn to one ninety, Twenty Seven Twenty One, airport in sight."
+    },
+    {
+      "bgn_time": 37180,
+      "end_time": 38820,
+      "stm": "2>F2-1>MID2721",
+      "cmt": "",
+      "txt": "Midex Twenty Seven Twenty One, roger."
+    },
+    {
+      "bgn_time": 43750,
+      "end_time": 47310,
+      "stm": "1>F2-1>DAL728",
+      "cmt": "aircraft not on frequency",
+      "txt": "Delta Seven Twenty Eight, Washington Approach, roger, Washington altimeter three zero one eight."
+    },
+    {
+      "bgn_time": 49760,
+      "end_time": 52230,
+      "stm": "1>F2-1>USA1528",
+      "cmt": "",
+      "txt": "U S Air Fifteen Twenty Eight, turn right heading zero five zero."
+    },
+    {
+      "bgn_time": 57490,
+      "end_time": 59940,
+      "stm": "1>F2-1>NWA987",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty Seven, descend and maintain seven thousand."
+    },
+    {
+      "bgn_time": 60400,
+      "end_time": 62960,
+      "stm": "1>NWA987>F2-1",
+      "cmt": "",
+      "txt": "Down to seven thousand, Northwest Nine Eighty Seven."
+    },
+    {
+      "bgn_time": 64510,
+      "end_time": 70530,
+      "stm": "1>F2-1>DAL728",
+      "cmt": "",
+      "txt": "Delta Seven Twenty Eight, turn right heading zero, correction, fly heading zero one zero, at one five thousand, reduce speed to two five zero knots."
+    },
+    {
+      "bgn_time": 74580,
+      "end_time": 78610,
+      "stm": "1>F2-1>MID2721",
+      "cmt": "",
+      "txt": "Midex Twenty Seven Twenty One, contact Washington Approach one one niner point eight five."
+    },
+    {
+      "bgn_time": 79140,
+      "end_time": 81300,
+      "stm": "1>MID2721>F2-1",
+      "cmt": "",
+      "txt": "Nineteen eighty five, Twenty Seven Twenty One, so long."
+    },
+    {
+      "bgn_time": 82630,
+      "end_time": 84450,
+      "stm": "2>F2-1>NWA987",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty, er disregard."
+    },
+    {
+      "bgn_time": 87840,
+      "end_time": 91010,
+      "stm": "1>F2-1>HNA4334",
+      "cmt": "aircraft not on frequency",
+      "txt": "Henson Forty Three Thirty Four, turn left heading two four zero."
+    },
+    {
+      "bgn_time": 100730,
+      "end_time": 104330,
+      "stm": "1>F2-1>HNA4334",
+      "cmt": "",
+      "txt": "Henson Forty Three Thirty Four, contact Washington Approach one one niner point eight five."
+    },
+    {
+      "bgn_time": 114430,
+      "end_time": 118160,
+      "stm": "1>USA155>F2-1",
+      "cmt": "",
+      "txt": "Washington Approach, U S Air One Fifty Five, with er Papa, ten thousand."
+    },
+    {
+      "bgn_time": 121780,
+      "end_time": 124300,
+      "stm": "1>F2-1>NWA987",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty Seven, turn left heading two seven zero."
+    },
+    {
+      "bgn_time": 124650,
+      "end_time": 127080,
+      "stm": "1>NWA987>F2-1",
+      "cmt": "",
+      "txt": "Two seven zero heading, Northwest Nine Eighty Seven."
+    },
+    {
+      "bgn_time": 127080,
+      "end_time": 132040,
+      "stm": "1>F2-1>USA1546",
+      "cmt": "",
+      "txt": "U S Air Fifteen Forty Six, turn right heading zero seven zero, contact Baltimore Approach one one niner point seven."
+    },
+    {
+      "bgn_time": 136580,
+      "end_time": 139300,
+      "stm": "1>F2-1>USA1528",
+      "cmt": "",
+      "txt": "U S Air Fifteen Twenty Eight, descend and maintain seven thousand."
+    },
+    {
+      "bgn_time": 142890,
+      "end_time": 145640,
+      "stm": "1>F2-1>DAL728",
+      "cmt": "",
+      "txt": "Delta Seven Twenty Eight, descend and maintain one two thousand."
+    },
+    {
+      "bgn_time": 148760,
+      "end_time": 150800,
+      "stm": "1>F2-1>USA1806",
+      "cmt": "",
+      "txt": "U S Air Eighteen Zero Six, Washington Approach."
+    },
+    {
+      "bgn_time": 153010,
+      "end_time": 156590,
+      "stm": "1>F2-1>USA1806",
+      "cmt": "aircraft not on frequency",
+      "txt": "U S Air Eighteen Zero Six, reduce speed to two five zero knots, fly heading zero one zero."
+    },
+    {
+      "bgn_time": 161140,
+      "end_time": 165170,
+      "stm": "3>F2-1>DAL1749",
+      "cmt": "",
+      "txt": "Delta Seventeen Forty Nine, reduce speed to two five zero knots, expect descent in five miles."
+    },
+    {
+      "bgn_time": 165580,
+      "end_time": 167950,
+      "stm": "1>DAL1749>F2-1",
+      "cmt": "",
+      "txt": "Reducing to two fifty, Delta Seventeen Forty Nine."
+    },
+    {
+      "bgn_time": 170250,
+      "end_time": 172340,
+      "stm": "1>USA155>F2-1",
+      "cmt": "",
+      "txt": "U S Air One Fifty Five, ten thousand, Papa."
+    },
+    {
+      "bgn_time": 172750,
+      "end_time": 177780,
+      "stm": "1>F2-1>USA155",
+      "cmt": "",
+      "txt": "U S Air One Fifty Five, Washington Approach, Washington altimeter three zero one eight, proceed direct Washington."
+    },
+    {
+      "bgn_time": 178080,
+      "end_time": 178410,
+      "stm": "1>USA155>F2-1",
+      "cmt": "",
+      "txt": "Roger."
+    },
+    {
+      "bgn_time": 183780,
+      "end_time": 187520,
+      "stm": "2>NWA987>F2-1",
+      "cmt": "",
+      "txt": "And Northwest Nine Eighty Seven, couldn't ask you for a thousand lower or so, could we?"
+    },
+    {
+      "bgn_time": 187520,
+      "end_time": 193210,
+      "stm": "1>F2-1>NWA987",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty Seven, traffic is two o'clock and seven miles, southbound, * southwestbound, at six thousand, turn left heading two zero zero."
+    },
+    {
+      "bgn_time": 193210,
+      "end_time": 196400,
+      "stm": "1>NWA987>F2-1",
+      "cmt": "",
+      "txt": "Okay, left two zero zero er, Northwest Nine Eighty Seven."
+    },
+    {
+      "bgn_time": 196400,
+      "end_time": 198980,
+      "stm": "1>F2-1>DAL1749",
+      "cmt": "",
+      "txt": "Delta Seventeen Forty Nine, descend and maintain seven thousand."
+    },
+    {
+      "bgn_time": 198980,
+      "end_time": 201610,
+      "stm": "2>DAL1749>F2-1",
+      "cmt": "",
+      "txt": "Down to seven thousand, Delta Seventeen Forty Nine."
+    },
+    {
+      "bgn_time": 202390,
+      "end_time": 206640,
+      "stm": "1>F2-1>N310RD",
+      "cmt": "",
+      "txt": "Cessna Three One Zero Romeo Delta, contact Washington Approach one one niner point eight five."
+    },
+    {
+      "bgn_time": 206640,
+      "end_time": 209080,
+      "stm": "2>N310RD>F2-1",
+      "cmt": "",
+      "txt": "One one nine eight five, Three Ten Romeo Delta."
+    },
+    {
+      "bgn_time": 209080,
+      "end_time": 211980,
+      "stm": "1>F2-1>USA1164",
+      "cmt": "",
+      "txt": "U S Air Eleven Sixty Four, descend and maintain five thousand."
+    },
+    {
+      "bgn_time": 214730,
+      "end_time": 215520,
+      "stm": "4>UNK>F2-1",
+      "cmt": "",
+      "txt": "And who was that for."
+    },
+    {
+      "bgn_time": 215520,
+      "end_time": 218260,
+      "stm": "1>F2-1>UNK28",
+      "cmt": "the controller and a pilot were transmitting at the same time during the above two transmissions",
+      "txt": "Twenty Eight, turn right heading zero six zero."
+    },
+    {
+      "bgn_time": 221160,
+      "end_time": 224010,
+      "stm": "1>F2-1>TWA500",
+      "cmt": "",
+      "txt": "T W A Five Hundred, descend and maintain one four thousand."
+    },
+    {
+      "bgn_time": 232750,
+      "end_time": 235600,
+      "stm": "1>F2-1>NWA987",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty Seven, descend and maintain four thousand."
+    },
+    {
+      "bgn_time": 235600,
+      "end_time": 238080,
+      "stm": "1>NWA987>F2-1",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty Seven out of seven for four."
+    },
+    {
+      "bgn_time": 242000,
+      "end_time": 243670,
+      "stm": "1>F2-1>V843",
+      "cmt": "",
+      "txt": "Navy Eight Four Three, Washington Approach."
+    },
+    {
+      "bgn_time": 265320,
+      "end_time": 268650,
+      "stm": "1>F2-1>V843",
+      "cmt": "",
+      "txt": "Navy Eight Four Three, Washington Approach, roger, Washington altimeter three zero one eight."
+    },
+    {
+      "bgn_time": 270350,
+      "end_time": 274240,
+      "stm": "1>F2-1>USA1164",
+      "cmt": "",
+      "txt": "U S Air Eleven Sixty Four, turn right heading zero seven zero, maintain five thousand."
+    },
+    {
+      "bgn_time": 276880,
+      "end_time": 280710,
+      "stm": "1>F2-1>NWA987",
+      "cmt": "",
+      "txt": "Northwest Nine Eighty Seven, turn right heading two seven zero, descend and maintain two thousand."
+    },
+    {
+      "bgn_time": 280710,
+      "end_time": 284430,
+      "stm": "1>NWA987>F2-1",
+      "cmt": "",
+      "txt": "Two seventy heading down to two thousand, Northwest Nine Eighty Seven."
+    },
+    {
+      "bgn_time": 3548790,
+      "end_time": 3548810,
+      "stm": "4>NO>NO",
+      "cmt": "",
+      "txt": "{'End of TextGrid': 'N/A'}"
+    }
+  ],
+  "has_silence": false,
+  "filename": "dca_f2_2.atc0"
+}

@@ -1,0 +1,245 @@
+stm: 4>NO>NO
+tim: 0
+txt: {'file_level_comment': 'see the cmt field'}
+cns: 
+
+stm: 1>F2-1>UNK1546
+tim: 8120
+txt: U S Air Fifteen Forty Six, descend and maintain five thousand.
+cns: (1) [(A) U S Air Fifteen Forty Six] [(B2) descend] [(B2) maintain] [(C2) five thousand]
+
+stm: 1>F2-1>USA1528
+tim: 13870
+txt: U S Air Fifteen Twenty Eight, descend and maintain one one thousand.
+cns: (1) [(A) U S Air Fifteen Twenty Eight] [(B2) descend] [(C2) one one thousand]
+
+stm: 1>F2-1>TWA500
+tim: 20770
+txt: T W A Five Hundred, descend and maintain one six thousand.
+cns: (1) [(A) T W A Five Hundred] [(B2) descend and maintain] [(C2) one six thousand]
+
+stm: 2>F2-1>MID2721
+tim: 29100
+txt: Midex Twenty Seven Twenty One, turn left heading one niner zero.
+cns: (1) [(A) Midex Twenty Seven Twenty One] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>MID2721>F2-1
+tim: 31970
+txt: Left turn to one ninety, Twenty Seven Twenty One, airport in sight.
+cns: (4) [(B4) Left turn] [(C4) one ninety] [(A) Twenty Seven Twenty One] [(E) airport in sight]
+
+stm: 2>F2-1>MID2721
+tim: 37180
+txt: Midex Twenty Seven Twenty One, roger.
+cns: (3) [(A) Midex Twenty Seven Twenty One] [(D) roger]
+
+stm: 1>F2-1>DAL728
+tim: 43750
+txt: Delta Seven Twenty Eight, Washington Approach, roger, Washington altimeter three zero one eight.
+cns: (3) [(A) Delta Seven Twenty Eight] [(G) Washington Approach] [(D) roger] [(G) Washington] [(B1) altimeter] [(C1) three zero one eight]
+
+stm: 1>F2-1>USA1528
+tim: 49760
+txt: U S Air Fifteen Twenty Eight, turn right heading zero five zero.
+cns: (1) [(A) U S Air Fifteen Twenty Eight] [(B4) turn right heading] [(C4) zero five zero]
+
+stm: 1>F2-1>NWA987
+tim: 57490
+txt: Northwest Nine Eighty Seven, descend and maintain seven thousand.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B2) descend] [(B2) maintain] [(C2) seven thousand]
+
+stm: 1>NWA987>F2-1
+tim: 60400
+txt: Down to seven thousand, Northwest Nine Eighty Seven.
+cns: (2) [(B2) Down to] [(C2) seven thousand] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>DAL728
+tim: 64510
+txt: Delta Seven Twenty Eight, turn right heading zero, correction, fly heading zero one zero, at one five thousand, reduce speed to two five zero knots.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B4) turn right heading] [(C4) zero] [(J) correction] [(B4) fly heading] [(C4) zero one zero] [(F) at one five thousand] [(B5) reduce speed to] [(C5) two five zero knots]
+
+stm: 1>F2-1>MID2721
+tim: 74580
+txt: Midex Twenty Seven Twenty One, contact Washington Approach one one niner point eight five.
+cns: (3) [(A) Midex Twenty Seven Twenty One] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 1>MID2721>F2-1
+tim: 79140
+txt: Nineteen eighty five, Twenty Seven Twenty One, so long.
+cns: (4) [(C4) Nineteen eighty five] [(A) Twenty Seven Twenty One] [(I) so long]
+
+stm: 2>F2-1>NWA987
+tim: 82630
+txt: Northwest Nine Eighty, er disregard.
+cns: (3) [(A) Northwest Nine Eighty] [(J) er disregard]
+
+stm: 1>F2-1>HNA4334
+tim: 87840
+txt: Henson Forty Three Thirty Four, turn left heading two four zero.
+cns: (1) [(A) Henson Forty Three Thirty Four] [(B4) turn left heading] [(C4) two four zero]
+
+stm: 1>F2-1>HNA4334
+tim: 100730
+txt: Henson Forty Three Thirty Four, contact Washington Approach one one niner point eight five.
+cns: (3) [(A) Henson Forty Three Thirty Four] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 1>USA155>F2-1
+tim: 114430
+txt: Washington Approach, U S Air One Fifty Five, with er Papa, ten thousand.
+cns: (4) [(A) U S Air One Fifty Five] [(G) Washington Approach] [(E) with er Papa, ten thousand]
+
+stm: 1>F2-1>NWA987
+tim: 121780
+txt: Northwest Nine Eighty Seven, turn left heading two seven zero.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B4) turn left heading] [(C4) two seven zero]
+
+stm: 1>NWA987>F2-1
+tim: 124650
+txt: Two seven zero heading, Northwest Nine Eighty Seven.
+cns: (2) [(B4) Two seven zero heading] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>USA1546
+tim: 127080
+txt: U S Air Fifteen Forty Six, turn right heading zero seven zero, contact Baltimore Approach one one niner point seven.
+cns: (1) [(A) U S Air Fifteen Forty Six] [(B4) turn right heading] [(C4) zero seven zero] [(B3) contact] [(G) Baltimore Approach] [(C3) one one niner point seven]
+
+stm: 1>F2-1>USA1528
+tim: 136580
+txt: U S Air Fifteen Twenty Eight, descend and maintain seven thousand.
+cns: (1) [(A) U S Air Fifteen Twenty Eight] [(B2) descend and maintain] [(C2) seven thousand]
+
+stm: 1>F2-1>DAL728
+tim: 142890
+txt: Delta Seven Twenty Eight, descend and maintain one two thousand.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B2) descend] [(B2) maintain] [(C2) one two thousand]
+
+stm: 1>F2-1>USA1806
+tim: 148760
+txt: U S Air Eighteen Zero Six, Washington Approach.
+cns: (3) [(A) U S Air Eighteen Zero Six] [(G) Washington Approach]
+
+stm: 1>F2-1>USA1806
+tim: 153010
+txt: U S Air Eighteen Zero Six, reduce speed to two five zero knots, fly heading zero one zero.
+cns: (1) [(A) U S Air Eighteen Zero Six] [(B5) reduce speed] [(C5) two five zero knots] [(B4) fly heading] [(C4) zero one zero]
+
+stm: 3>F2-1>DAL1749
+tim: 161140
+txt: Delta Seventeen Forty Nine, reduce speed to two five zero knots, expect descent in five miles.
+cns: (3) [(A) Delta Seventeen Forty Nine] [(B5) reduce speed] [(C5) two five zero knots] [(E) expect descent in five miles]
+
+stm: 1>DAL1749>F2-1
+tim: 165580
+txt: Reducing to two fifty, Delta Seventeen Forty Nine.
+cns: (2) [(B5) Reducing] [(C5) two fifty] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>USA155>F2-1
+tim: 170250
+txt: U S Air One Fifty Five, ten thousand, Papa.
+cns: (4) [(A) U S Air One Fifty Five] [(E) ten thousand, Papa]
+
+stm: 1>F2-1>USA155
+tim: 172750
+txt: U S Air One Fifty Five, Washington Approach, Washington altimeter three zero one eight, proceed direct Washington.
+cns: (3) [(A) U S Air One Fifty Five] [(G) Washington Approach] [(E) Washington altimeter three zero one eight] [(H) Washington] [(J) proceed direct]
+
+stm: 1>USA155>F2-1
+tim: 178080
+txt: Roger.
+cns: (4) [(D) Roger]
+
+stm: 2>NWA987>F2-1
+tim: 183780
+txt: And Northwest Nine Eighty Seven, couldn't ask you for a thousand lower or so, could we?
+cns: (4) [(A) Northwest Nine Eighty Seven] [(J) couldn't ask you for a thousand lower or so, could we?]
+
+stm: 1>F2-1>NWA987
+tim: 187520
+txt: Northwest Nine Eighty Seven, traffic is two o'clock and seven miles, southbound, * southwestbound, at six thousand, turn left heading two zero zero.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(E) traffic is two o'clock and seven miles, southbound, southwestbound, at six thousand] [(B4) turn left heading] [(C4) two zero zero]
+
+stm: 1>NWA987>F2-1
+tim: 193210
+txt: Okay, left two zero zero er, Northwest Nine Eighty Seven.
+cns: (2) [(D) Okay] [(B4) left heading] [(C4) two zero zero] [(J) er] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>DAL1749
+tim: 196400
+txt: Delta Seventeen Forty Nine, descend and maintain seven thousand.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B2) descend] [(C2) seven thousand]
+
+stm: 2>DAL1749>F2-1
+tim: 198980
+txt: Down to seven thousand, Delta Seventeen Forty Nine.
+cns: (2) [(B2) Down to] [(C2) seven thousand] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>F2-1>N310RD
+tim: 202390
+txt: Cessna Three One Zero Romeo Delta, contact Washington Approach one one niner point eight five.
+cns: (1) [(A) Cessna Three One Zero Romeo Delta] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 2>N310RD>F2-1
+tim: 206640
+txt: One one nine eight five, Three Ten Romeo Delta.
+cns: (2) [(C3) One one nine eight five] [(A) Three Ten Romeo Delta]
+
+stm: 1>F2-1>USA1164
+tim: 209080
+txt: U S Air Eleven Sixty Four, descend and maintain five thousand.
+cns: (1) [(A) U S Air Eleven Sixty Four] [(B2) descend and maintain] [(C2) five thousand]
+
+stm: 4>UNK>F2-1
+tim: 214730
+txt: And who was that for.
+cns: (4) [(J) And who was that for.]
+
+stm: 1>F2-1>UNK28
+tim: 215520
+txt: Twenty Eight, turn right heading zero six zero.
+cns: (1) [(A) Twenty Eight] [(B4) turn right heading] [(C4) zero six zero]
+
+stm: 1>F2-1>TWA500
+tim: 221160
+txt: T W A Five Hundred, descend and maintain one four thousand.
+cns: (2) [(A) T W A Five Hundred] [(B2) descend and maintain] [(C2) one four thousand]
+
+stm: 1>F2-1>NWA987
+tim: 232750
+txt: Northwest Nine Eighty Seven, descend and maintain four thousand.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B2) descend] [(B2) maintain] [(C2) four thousand]
+
+stm: 1>NWA987>F2-1
+tim: 235600
+txt: Northwest Nine Eighty Seven out of seven for four.
+cns: (4) [(A) Northwest Nine Eighty Seven] [(E) out of seven for four]
+
+stm: 1>F2-1>V843
+tim: 242000
+txt: Navy Eight Four Three, Washington Approach.
+cns: (3) [(A) Navy Eight Four Three] [(G) Washington Approach]
+
+stm: 1>F2-1>V843
+tim: 265320
+txt: Navy Eight Four Three, Washington Approach, roger, Washington altimeter three zero one eight.
+cns: (3) [(A) Navy Eight Four Three] [(G) Washington Approach] [(D) roger] [(G) Washington altimeter] [(C1) three zero one eight]
+
+stm: 1>F2-1>USA1164
+tim: 270350
+txt: U S Air Eleven Sixty Four, turn right heading zero seven zero, maintain five thousand.
+cns: (2) [(A) U S Air Eleven Sixty Four] [(B4) turn right heading] [(C4) zero seven zero] [(B2) maintain] [(C2) five thousand]
+
+stm: 1>F2-1>NWA987
+tim: 276880
+txt: Northwest Nine Eighty Seven, turn right heading two seven zero, descend and maintain two thousand.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B4) turn right heading] [(C4) two seven zero] [(B2) descend and maintain] [(C2) two thousand]
+
+stm: 1>NWA987>F2-1
+tim: 280710
+txt: Two seventy heading down to two thousand, Northwest Nine Eighty Seven.
+cns: (2) [(B4) Two seventy heading] [(E) down to] [(C2) two thousand] [(A) Northwest Nine Eighty Seven]
+
+stm: 4>NO>NO
+tim: 3548790
+txt: {'End of TextGrid': 'N/A'}
+cns: 
+

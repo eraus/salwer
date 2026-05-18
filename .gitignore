@@ -13,10 +13,18 @@
 !/src/
 !/src/salwer/
 !/src/salwer/*.py
-!/src/salalp/recipes/
-!/src/salalp/recipes/*.py
+!/src/salwer/recipes/
+!/src/salwer/recipes/*.py
 
 # Unignore tests
 !/tests/
 !/tests/*.py
 !/tests/*.md
+
+# Unignore examples
+!/examples/
+!/examples/*.*
+!/examples/atc0json/
+!/examples/atc0json/*.json
+!/examples/atc0cns/
+!/examples/atc0cns/*.cns

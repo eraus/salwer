@@ -4,8 +4,8 @@ import typer
 from typing import List
 
 from .recipes.calculate_seg_wer import calculate_seg_wer_
-from .recipes.check_class_seg import check_class_seg_
-
+from .recipes.check_llm_class_n_seg_results import check_class_seg_
+from .recipes.class_n_seg_cues_with_llm import class_n_seg_cues_
 
 __version__ = "0.1.0"
 app = typer.Typer()
@@ -17,6 +17,29 @@ app = typer.Typer()
 def version():
     """Print the version."""
     typer.echo(f"Version of salalp: {__version__}")
+
+@app.command("class-n-seg-cues")
+@app.command("csc")
+def class_n_seg_cues(
+    src: str = typer.Argument(..., help="Path to source file or directory"),
+    dst: str = typer.Argument(None, help="Path to output file (ignored in --dir mode)"),
+    dir_mode: bool = typer.Option(
+        False, "--dir", help="Process directories instead of single files"
+    ),
+):
+    """Create class and segmentation fields for cues.
+
+    Arguments:
+    -  src: str. Path to source file or directory
+    -  dst: str. Path to output file (for single file mode)
+    -  dir_mode: bool=False. Use "--dir" for directory mode
+
+    Examples:
+    -  single file: salalp csc input.json output.json
+    -  directory: salalp csc input_dir output_dir --dir
+    """
+
+    return class_n_seg_cues_(src, dst, dir_mode)
 
 
 @app.command("check-class-seg")

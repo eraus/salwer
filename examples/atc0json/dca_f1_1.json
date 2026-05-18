@@ -1,0 +1,349 @@
+{
+  "cues": [
+    {
+      "bgn_time": 0,
+      "end_time": 10,
+      "stm": "4>NO>NO",
+      "cmt": "the final controller also assumes the duties of a feeder controller at dca",
+      "txt": "{'file_level_comment': 'see the cmt field'}"
+    },
+    {
+      "bgn_time": 23600,
+      "end_time": 27260,
+      "stm": "1>F1>AAL1578",
+      "cmt": "",
+      "txt": "American Fifteen Seventy Eight, turn left heading zero four zero, join the localizer."
+    },
+    {
+      "bgn_time": 27650,
+      "end_time": 30380,
+      "stm": "2>AAL1578>F1",
+      "cmt": "",
+      "txt": "Forty degrees, join the localizer, American Fifteen Seventy Eight."
+    },
+    {
+      "bgn_time": 48290,
+      "end_time": 54370,
+      "stm": "1>F1>AAL1578",
+      "cmt": "",
+      "txt": "American Fifteen Seventy Eight is one five miles from OXONN, cleared I L S Runway Three Six approach, maintain one seven zero knots till OXONN."
+    },
+    {
+      "bgn_time": 54820,
+      "end_time": 58050,
+      "stm": "2>AAL1578>F1",
+      "cmt": "",
+      "txt": "Cleared approach, one seventy till OXONN, American Fifteen Seventy Eight."
+    },
+    {
+      "bgn_time": 62230,
+      "end_time": 66020,
+      "stm": "2>SWIFT91>F1",
+      "cmt": "",
+      "txt": "Washington Approach, Swift Niner One, passing one zero thousand for eight thousand, information Victor."
+    },
+    {
+      "bgn_time": 66020,
+      "end_time": 69080,
+      "stm": "1>F1>SWIFT91",
+      "cmt": "",
+      "txt": "Swift Ninety One, Washington Approach, depart ARMEL direct to Andrews."
+    },
+    {
+      "bgn_time": 70150,
+      "end_time": 71860,
+      "stm": "3>SWIFT91>F1",
+      "cmt": "",
+      "txt": "Depart ARMEL direct to Andrews, Swift Ninety One."
+    },
+    {
+      "bgn_time": 71860,
+      "end_time": 76910,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "Redbird Seven Forty Six, fly heading zero four zero, join the localizer, descend and maintain four thousand."
+    },
+    {
+      "bgn_time": 77380,
+      "end_time": 80810,
+      "stm": "1>RBD746>F1",
+      "cmt": "",
+      "txt": "Zero four zero and down to four, join the localizer, Seven Forty Six."
+    },
+    {
+      "bgn_time": 161720,
+      "end_time": 164600,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "Redbird Seven Forty Six, reduce to one seven zero knots."
+    },
+    {
+      "bgn_time": 165300,
+      "end_time": 167390,
+      "stm": "1>RBD746>F1",
+      "cmt": "",
+      "txt": "Back to one seventy, Seven Forty Six."
+    },
+    {
+      "bgn_time": 169770,
+      "end_time": 173280,
+      "stm": "1>F1>JEX2722",
+      "cmt": "",
+      "txt": "Jetex Twenty Seven Twenty Two, contact the Tower one one niner point one."
+    },
+    {
+      "bgn_time": 186630,
+      "end_time": 189870,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "I need the speed as soon as you can give it to me now, Redbird Seven Forty Six."
+    },
+    {
+      "bgn_time": 196250,
+      "end_time": 197800,
+      "stm": "4>F1>RBD746",
+      "cmt": "",
+      "txt": "Redbird Seven Forty Six, you copy."
+    },
+    {
+      "bgn_time": 199540,
+      "end_time": 200520,
+      "stm": "2>RBD746>F1",
+      "cmt": "",
+      "txt": "Er say again on descent."
+    },
+    {
+      "bgn_time": 201860,
+      "end_time": 203830,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "Okay, stop your descent, give me the speed please."
+    },
+    {
+      "bgn_time": 204670,
+      "end_time": 207480,
+      "stm": "2>RBD746>F1",
+      "cmt": "",
+      "txt": "Okay, we'll er stop our descent, slow right down."
+    },
+    {
+      "bgn_time": 229270,
+      "end_time": 233250,
+      "stm": "1>RBD746>F1",
+      "cmt": "",
+      "txt": "Er Redbird Seven Forty Six, er we're back to one sixty, you want us to continue descent?"
+    },
+    {
+      "bgn_time": 233250,
+      "end_time": 238410,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "Maintain one seven zero knots, Redbird Seven Forty Six, and you can continue descent and maintain two thousand five hundred."
+    },
+    {
+      "bgn_time": 238870,
+      "end_time": 240990,
+      "stm": "1>RBD746>F1",
+      "cmt": "",
+      "txt": "Okay, er one seventy, two point five."
+    },
+    {
+      "bgn_time": 244170,
+      "end_time": 247350,
+      "stm": "1>F1>N9TD",
+      "cmt": "",
+      "txt": "King Air Niner Tango Delta, contact the Tower one one niner point one."
+    },
+    {
+      "bgn_time": 247780,
+      "end_time": 248970,
+      "stm": "1>N9TD>F1",
+      "cmt": "",
+      "txt": "Nineteen one, Tango Delta."
+    },
+    {
+      "bgn_time": 267770,
+      "end_time": 271450,
+      "stm": "1>AAL236>F1",
+      "cmt": "",
+      "txt": "Washington Approach, good morning, American Two Thirty Six, one one thousand."
+    },
+    {
+      "bgn_time": 272410,
+      "end_time": 275580,
+      "stm": "1>F1>AAL236",
+      "cmt": "",
+      "txt": "American Two Thirty Six, Washington Approach, verify assigned altitude."
+    },
+    {
+      "bgn_time": 276340,
+      "end_time": 281600,
+      "stm": "1>AAL236>F1",
+      "cmt": "",
+      "txt": "Yeah, we're er descending out of ten point eight for eight thousand."
+    },
+    {
+      "bgn_time": 281910,
+      "end_time": 286230,
+      "stm": "1>F1>AAL236",
+      "cmt": "",
+      "txt": "American er Two Thirty Six, roger, information Victor is current, depart ARMEL direct Washington."
+    },
+    {
+      "bgn_time": 288360,
+      "end_time": 293080,
+      "stm": "1>AAL236>F1",
+      "cmt": "",
+      "txt": "Er, we have Victor, er direct, * er out of ARMEL, direct Washington, American Two Thirty Six."
+    },
+    {
+      "bgn_time": 294710,
+      "end_time": 299210,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "Redbird Seven Forty Six is one six miles from OXONN, cleared I L S Runway Three Six approach."
+    },
+    {
+      "bgn_time": 299730,
+      "end_time": 302560,
+      "stm": "1>RBD746>F1",
+      "cmt": "",
+      "txt": "Cleared I L S, er Thirty Six, Seven Forty Six."
+    },
+    {
+      "bgn_time": 302560,
+      "end_time": 304460,
+      "stm": "1>F1>RBD746",
+      "cmt": "",
+      "txt": "You are intercepting the localizer, is that correct?"
+    },
+    {
+      "bgn_time": 304790,
+      "end_time": 305810,
+      "stm": "1>RBD746>F1",
+      "cmt": "",
+      "txt": "Yeah we're right on it now."
+    },
+    {
+      "bgn_time": 373860,
+      "end_time": 377590,
+      "stm": "1>F1>SWIFT91",
+      "cmt": "",
+      "txt": "Swift Ninety One, descend and maintain five thousand, turn right heading one niner zero."
+    },
+    {
+      "bgn_time": 378780,
+      "end_time": 383230,
+      "stm": "2>SWIFT91>F1",
+      "cmt": "",
+      "txt": "Down to five thousand, heading one nine zero, Swift er one, * one nine zero, Swift er Nine One."
+    },
+    {
+      "bgn_time": 421670,
+      "end_time": 424100,
+      "stm": "1>F1>AAL1578",
+      "cmt": "aircraft did not respond",
+      "txt": "American Fifteen Seventy Eight, Tower nineteen one."
+    },
+    {
+      "bgn_time": 463580,
+      "end_time": 468570,
+      "stm": "2>N93X>F1",
+      "cmt": "",
+      "txt": "Washington Approach, Cheyenne Two Three Nine Three X-ray, on one nine zero, twenty five hundred feet."
+    },
+    {
+      "bgn_time": 468900,
+      "end_time": 473000,
+      "stm": "1>F1>N93X",
+      "cmt": "",
+      "txt": "Nine Three X-ray, Washington Approach, roger, maintain one seven zero knots, please, if you can do that."
+    },
+    {
+      "bgn_time": 473440,
+      "end_time": 475480,
+      "stm": "1>N93X>F1",
+      "cmt": "",
+      "txt": "Okay, one seventy on the speed, Nine Three X."
+    },
+    {
+      "bgn_time": 516180,
+      "end_time": 520360,
+      "stm": "1>USA458>F1",
+      "cmt": "",
+      "txt": "Washington Approach, U S Air Four Five Eight's with you at twelve five for one zero thousand, Victor."
+    },
+    {
+      "bgn_time": 521250,
+      "end_time": 526040,
+      "stm": "1>F1>USA458",
+      "cmt": "",
+      "txt": "U S Air Four Fifty Eight, Washington Approach Control, depart OJAAY heading zero four zero, join the localizer."
+    },
+    {
+      "bgn_time": 526410,
+      "end_time": 529750,
+      "stm": "1>F1>USA458",
+      "cmt": "",
+      "txt": "Zero four zero out of OJAAY, join the localizer, U S Air Four Five Eight."
+    },
+    {
+      "bgn_time": 532330,
+      "end_time": 534750,
+      "stm": "1>F1>SWIFT91",
+      "cmt": "",
+      "txt": "Swift Ninety One, descend and maintain four thousand."
+    },
+    {
+      "bgn_time": 535660,
+      "end_time": 537360,
+      "stm": "2>SWIFT91>F1",
+      "cmt": "",
+      "txt": "Out of five for four thousand, Swift Nine One."
+    },
+    {
+      "bgn_time": 538990,
+      "end_time": 542380,
+      "stm": "1>NWA560>F1",
+      "cmt": "",
+      "txt": "Er Washington Approach, Northwest Five Sixty, ten for eight, with Victor."
+    },
+    {
+      "bgn_time": 542690,
+      "end_time": 546350,
+      "stm": "1>F1>NWA560",
+      "cmt": "",
+      "txt": "Northwest Five Sixty, Washington Approach, depart ARMEL direct Washington."
+    },
+    {
+      "bgn_time": 546940,
+      "end_time": 548110,
+      "stm": "1>NWA560>F1",
+      "cmt": "",
+      "txt": "Er Northwest Five Sixty."
+    },
+    {
+      "bgn_time": 554820,
+      "end_time": 557130,
+      "stm": "1>F1>N93X",
+      "cmt": "",
+      "txt": "Cheyenne Niner Three X-ray, fly heading one five zero."
+    },
+    {
+      "bgn_time": 557640,
+      "end_time": 559150,
+      "stm": "1>N93X>F1",
+      "cmt": "",
+      "txt": "One five zero, Nine Three X."
+    },
+    {
+      "bgn_time": 3128360,
+      "end_time": 3128370,
+      "stm": "4>NO>NO",
+      "cmt": "",
+      "txt": "{'End of TextGrid': 'N/A'}"
+    }
+  ],
+  "has_silence": false,
+  "filename": "d_atc0_txt_lst\\dca_f1_1.atc0"
+}

@@ -1,0 +1,245 @@
+stm: 4>NO>NO
+tim: 0
+txt: {'file_level_comment': 'see the cmt field'}
+cns: 
+
+stm: 1>F1>AAL1578
+tim: 23600
+txt: American Fifteen Seventy Eight, turn left heading zero four zero, join the localizer.
+cns: (1) [(A) American Fifteen Seventy Eight] [(B4) turn left heading] [(C4) zero four zero] [(E) join the localizer]
+
+stm: 2>AAL1578>F1
+tim: 27650
+txt: Forty degrees, join the localizer, American Fifteen Seventy Eight.
+cns: (2) [(C4) Forty degrees] [(E) join the localizer] [(A) American Fifteen Seventy Eight]
+
+stm: 1>F1>AAL1578
+tim: 48290
+txt: American Fifteen Seventy Eight is one five miles from OXONN, cleared I L S Runway Three Six approach, maintain one seven zero knots till OXONN.
+cns: (3) [(A) American Fifteen Seventy Eight] [(E) is one five miles from] [(H) OXONN] [(J) cleared I L S Runway Three Six approach] [(J) maintain] [(C5) one seven zero] [(B5) knots] [(F) till] [(H) OXONN]
+
+stm: 2>AAL1578>F1
+tim: 54820
+txt: Cleared approach, one seventy till OXONN, American Fifteen Seventy Eight.
+cns: (4) [(E) Cleared approach] [(C5) one seventy] [(E) till] [(H) OXONN] [(A) American Fifteen Seventy Eight]
+
+stm: 2>SWIFT91>F1
+tim: 62230
+txt: Washington Approach, Swift Niner One, passing one zero thousand for eight thousand, information Victor.
+cns: (1) [(A) Swift Niner One] [(G) Washington Approach] [(E) passing one zero thousand for eight thousand, information Victor]
+
+stm: 1>F1>SWIFT91
+tim: 66020
+txt: Swift Ninety One, Washington Approach, depart ARMEL direct to Andrews.
+cns: (3) [(A) Swift Ninety One] [(G) Washington Approach] [(E) depart] [(H) ARMEL] [(J) direct to] [(H) Andrews]
+
+stm: 3>SWIFT91>F1
+tim: 70150
+txt: Depart ARMEL direct to Andrews, Swift Ninety One.
+cns: (4) [(E) Depart ARMEL direct to Andrews] [(A) Swift Ninety One]
+
+stm: 1>F1>RBD746
+tim: 71860
+txt: Redbird Seven Forty Six, fly heading zero four zero, join the localizer, descend and maintain four thousand.
+cns: (1) [(A) Redbird Seven Forty Six] [(B4) fly heading] [(C4) zero four zero] [(J) join the localizer] [(B2) descend] [(J) and maintain] [(C2) four thousand]
+
+stm: 1>RBD746>F1
+tim: 77380
+txt: Zero four zero and down to four, join the localizer, Seven Forty Six.
+cns: (2) [(B4) Zero four zero] [(E) and down to] [(C2) four] [(J) join the localizer] [(A) Seven Forty Six]
+
+stm: 1>F1>RBD746
+tim: 161720
+txt: Redbird Seven Forty Six, reduce to one seven zero knots.
+cns: (1) [(A) Redbird Seven Forty Six] [(B5) reduce] [(C5) one seven zero knots]
+
+stm: 1>RBD746>F1
+tim: 165300
+txt: Back to one seventy, Seven Forty Six.
+cns: (2) [(B5) Back to] [(C5) one seventy] [(A) Seven Forty Six]
+
+stm: 1>F1>JEX2722
+tim: 169770
+txt: Jetex Twenty Seven Twenty Two, contact the Tower one one niner point one.
+cns: (3) [(A) Jetex Twenty Seven Twenty Two] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>F1>RBD746
+tim: 186630
+txt: I need the speed as soon as you can give it to me now, Redbird Seven Forty Six.
+cns: (1) [(A) Redbird Seven Forty Six] [(B5) speed] [(E) as soon as you can give it to me now]
+
+stm: 4>F1>RBD746
+tim: 196250
+txt: Redbird Seven Forty Six, you copy.
+cns: (3) [(A) Redbird Seven Forty Six] [(D) you copy]
+
+stm: 2>RBD746>F1
+tim: 199540
+txt: Er say again on descent.
+cns: (4) [(J) Er say again on descent]
+
+stm: 1>F1>RBD746
+tim: 201860
+txt: Okay, stop your descent, give me the speed please.
+cns: (1) [(D) Okay] [(B2) stop your descent] [(E) give me the speed please]
+
+stm: 2>RBD746>F1
+tim: 204670
+txt: Okay, we'll er stop our descent, slow right down.
+cns: (2) [(D) okay] [(J) we'll er] [(B2) stop] [(C2) our descent] [(B5) slow] [(E) right down]
+
+stm: 1>RBD746>F1
+tim: 229270
+txt: Er Redbird Seven Forty Six, er we're back to one sixty, you want us to continue descent?
+cns: (4) [(A) Redbird Seven Forty Six] [(E) we're back to one sixty, you want us to continue descent]
+
+stm: 1>F1>RBD746
+tim: 233250
+txt: Maintain one seven zero knots, Redbird Seven Forty Six, and you can continue descent and maintain two thousand five hundred.
+cns: (1) [(B5) Maintain] [(C5) one seven zero knots] [(A) Redbird Seven Forty Six] [(B2) continue descent] [(B2) maintain] [(C2) two thousand five hundred]
+
+stm: 1>RBD746>F1
+tim: 238870
+txt: Okay, er one seventy, two point five.
+cns: (2) [(D) Okay] [(D) er] [(C5) one seventy] [(C2) two point five]
+
+stm: 1>F1>N9TD
+tim: 244170
+txt: King Air Niner Tango Delta, contact the Tower one one niner point one.
+cns: (1) [(A) King Air Niner Tango Delta] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>N9TD>F1
+tim: 247780
+txt: Nineteen one, Tango Delta.
+cns: (2) [(C3) Nineteen one] [(A) Tango Delta]
+
+stm: 1>AAL236>F1
+tim: 267770
+txt: Washington Approach, good morning, American Two Thirty Six, one one thousand.
+cns: (4) [(G) Washington Approach] [(I) good morning] [(A) American Two Thirty Six] [(E) one one thousand]
+
+stm: 1>F1>AAL236
+tim: 272410
+txt: American Two Thirty Six, Washington Approach, verify assigned altitude.
+cns: (3) [(A) American Two Thirty Six] [(G) Washington Approach] [(E) verify assigned altitude]
+
+stm: 1>AAL236>F1
+tim: 276340
+txt: Yeah, we're er descending out of ten point eight for eight thousand.
+cns: (4) [(E) Yeah, we're er descending out of ten point eight for eight thousand.]
+
+stm: 1>F1>AAL236
+tim: 281910
+txt: American er Two Thirty Six, roger, information Victor is current, depart ARMEL direct Washington.
+cns: (3) [(A) American Two Thirty Six] [(D) roger] [(E) information Victor is current, depart] [(H) ARMEL] [(E) direct] [(H) Washington]
+
+stm: 1>AAL236>F1
+tim: 288360
+txt: Er, we have Victor, er direct, * er out of ARMEL, direct Washington, American Two Thirty Six.
+cns: (4) [(D) er] [(D) we have] [(E) Victor, er direct, * er out of ARMEL, direct Washington] [(A) American Two Thirty Six]
+
+stm: 1>F1>RBD746
+tim: 294710
+txt: Redbird Seven Forty Six is one six miles from OXONN, cleared I L S Runway Three Six approach.
+cns: (3) [(A) Redbird Seven Forty Six] [(G) I L S Runway Three Six] [(H) OXONN]
+
+stm: 1>RBD746>F1
+tim: 299730
+txt: Cleared I L S, er Thirty Six, Seven Forty Six.
+cns: (4) [(B1) Cleared I L S] [(E) er] [(C2) Thirty Six] [(A) Seven Forty Six]
+
+stm: 1>F1>RBD746
+tim: 302560
+txt: You are intercepting the localizer, is that correct?
+cns: (3) [(E) You are intercepting the localizer, is that correct?]
+
+stm: 1>RBD746>F1
+tim: 304790
+txt: Yeah we're right on it now.
+cns: (4) [(E) Yeah we're right on it now.]
+
+stm: 1>F1>SWIFT91
+tim: 373860
+txt: Swift Ninety One, descend and maintain five thousand, turn right heading one niner zero.
+cns: (1) [(A) Swift Ninety One] [(B2) descend] [(B4) turn right heading] [(C2) five thousand] [(C4) one niner zero]
+
+stm: 2>SWIFT91>F1
+tim: 378780
+txt: Down to five thousand, heading one nine zero, Swift er one, * one nine zero, Swift er Nine One.
+cns: (2) [(C2) Down to five thousand] [(B4) heading] [(C4) one nine zero] [(A) Swift er one] [(C4) one nine zero] [(A) Swift er Nine One]
+
+stm: 1>F1>AAL1578
+tim: 421670
+txt: American Fifteen Seventy Eight, Tower nineteen one.
+cns: (3) [(A) American Fifteen Seventy Eight] [(G) Tower] [(C3) nineteen one]
+
+stm: 2>N93X>F1
+tim: 463580
+txt: Washington Approach, Cheyenne Two Three Nine Three X-ray, on one nine zero, twenty five hundred feet.
+cns: (2) [(A) Cheyenne Two Three Nine Three X-ray] [(G) Washington Approach] [(C3) one nine zero] [(E) twenty five hundred feet]
+
+stm: 1>F1>N93X
+tim: 468900
+txt: Nine Three X-ray, Washington Approach, roger, maintain one seven zero knots, please, if you can do that.
+cns: (3) [(A) Nine Three X-ray] [(G) Washington Approach] [(D) roger] [(E) maintain one seven zero knots, please, if you can do that]
+
+stm: 1>N93X>F1
+tim: 473440
+txt: Okay, one seventy on the speed, Nine Three X.
+cns: (4) [(D) Okay] [(C5) one seventy] [(B5) on the speed] [(A) Nine Three X]
+
+stm: 1>USA458>F1
+tim: 516180
+txt: Washington Approach, U S Air Four Five Eight's with you at twelve five for one zero thousand, Victor.
+cns: (4) [(A) U S Air Four Five Eight] [(G) Washington Approach] [(E) with you at twelve five for one zero thousand, Victor]
+
+stm: 1>F1>USA458
+tim: 521250
+txt: U S Air Four Fifty Eight, Washington Approach Control, depart OJAAY heading zero four zero, join the localizer.
+cns: (1) [(A) U S Air Four Fifty Eight] [(G) Washington Approach Control] [(B4) depart heading] [(C4) zero four zero] [(H) OJAAY] [(J) join the localizer]
+
+stm: 1>F1>USA458
+tim: 526410
+txt: Zero four zero out of OJAAY, join the localizer, U S Air Four Five Eight.
+cns: (2) [(B4) Zero four zero] [(E) out of OJAAY] [(J) join the localizer] [(A) U S Air Four Five Eight]
+
+stm: 1>F1>SWIFT91
+tim: 532330
+txt: Swift Ninety One, descend and maintain four thousand.
+cns: (1) [(A) Swift Ninety One] [(B2) descend and maintain] [(C2) four thousand]
+
+stm: 2>SWIFT91>F1
+tim: 535660
+txt: Out of five for four thousand, Swift Nine One.
+cns: (4) [(E) Out of five for four thousand] [(A) Swift Nine One]
+
+stm: 1>NWA560>F1
+tim: 538990
+txt: Er Washington Approach, Northwest Five Sixty, ten for eight, with Victor.
+cns: (4) [(A) Northwest Five Sixty] [(G) Washington Approach] [(E) ten for eight, with Victor]
+
+stm: 1>F1>NWA560
+tim: 542690
+txt: Northwest Five Sixty, Washington Approach, depart ARMEL direct Washington.
+cns: (3) [(A) Northwest Five Sixty] [(G) Washington Approach] [(E) depart ARMEL direct Washington]
+
+stm: 1>NWA560>F1
+tim: 546940
+txt: Er Northwest Five Sixty.
+cns: (4) [(A) Northwest Five Sixty] [(J) Er]
+
+stm: 1>F1>N93X
+tim: 554820
+txt: Cheyenne Niner Three X-ray, fly heading one five zero.
+cns: (1) [(A) Cheyenne Niner Three X-ray] [(B4) fly heading] [(C4) one five zero]
+
+stm: 1>N93X>F1
+tim: 557640
+txt: One five zero, Nine Three X.
+cns: (2) [(C4) One five zero] [(A) Nine Three X]
+
+stm: 4>NO>NO
+tim: 3128360
+txt: {'End of TextGrid': 'N/A'}
+cns: 
+
