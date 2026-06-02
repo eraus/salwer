@@ -6,6 +6,8 @@ from typing import List
 from .recipes.calculate_seg_wer import calculate_seg_wer_
 from .recipes.check_llm_class_n_seg_results import check_class_seg_
 from .recipes.class_n_seg_cues_with_llm import class_n_seg_cues_
+from .recipes.print_levenshtein_table import print_levenshtein_table_
+
 
 __version__ = "0.1.0"
 app = typer.Typer()
@@ -100,3 +102,17 @@ def calculate_seg_wer(
 
     return calculate_seg_wer_(hyp_folder, ref_folder, class_sel, seg_sel, level)
 
+
+@app.command("print-levenshtein-table")
+@app.command("plt")
+def print_levenshtein_table():
+    """Print Levenshtein table using alphabet.
+
+    Arguments:
+    -   N/A
+
+    Example:
+    -  salalp plt
+    """
+
+    return print_levenshtein_table_()

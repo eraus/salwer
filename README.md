@@ -17,7 +17,7 @@ This is done using the following `salwer csc atc0json atc0cns --dir`.
 
 This is done by running `salwer ccs atc0cns`.
 
-These cues that have different total number of words and total WER words will be printed so that we can pay close attention to the result. Note that this does not guanrentee the correctness of the result. It just provide another layer of checking.
+These cues that have different total number of words and total WER words will be printed so that we can pay close attention to the result. Note that this does not guanrentee the correctness of the result. It just provides another layer of checking.
 
 ### Calculate the segmented WER
 
