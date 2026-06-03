@@ -3,10 +3,7 @@
 import pytest
 
 from salwer.levenshtein import (
-    # rmin,
-    levenshtein_n_seg_size_tail,
-    levenshtein_n_seg_size_head,
-    levenshtein_n_seg_size,
+    levenshtein_seg,
 )
 # from salwer.utils import (
 #     _clean_transcript,
@@ -92,7 +89,10 @@ from salwer.labels import Transcripts
 #     assert levenshtein_n_seg_size_head(s1, t1, segs_b) == [[2, 0], [3, 1], [3, 1]]
 #     assert levenshtein_n_seg_size(s1, t1, segs_b, head=True) == [[2, 0], [3, 1], [3, 1]]
 
-############################################
+
+# s = "A B A D E B G H I".split()
+# t = "A B C D E F G H I".split()
+#
 # s\t j   A   B   C   D   E   F   G   H   I
 # i   0+| 1   2   3 | 4   5   6 | 7   8   9
 #    ---|-----------|-----------|-----------
@@ -111,27 +111,27 @@ from salwer.labels import Transcripts
 s0 = "A B A D E B G H I".split()
 t0 = "A B C D E F G H I".split()
 
-def test_levenshtein_n_seg_size_0a():
+def test_levenshtein_seg_0a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s0, t0, segs) == [[3, 1], [3, 1], [3, 0]]
+    assert levenshtein_seg(s0, t0, segs) == [[3, 1], [3, 1], [3, 0]]
 
-def test_levenshtein_n_seg_size_0b():
+def test_levenshtein_seg_0b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s0, t0, segs) == \
+    assert levenshtein_seg(s0, t0, segs) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
 
-def test_levenshtein_n_seg_size_head_0a():
+def test_levenshtein_seg_head_0a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s0, t0, segs, head=True) == [[3, 1], [3, 1], [3, 0]]
+    assert levenshtein_seg(s0, t0, segs, head=True) == [[3, 1], [3, 1], [3, 0]]
 
-def test_levenshtein_n_seg_size_head_0b():
+def test_levenshtein_seg_head_0b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s0, t0, segs, head=True) == \
+    assert levenshtein_seg(s0, t0, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
 ############################################
@@ -153,27 +153,27 @@ def test_levenshtein_n_seg_size_head_0b():
 s1 = "A B C D E F G H I".split()
 t1 = "A B   D E   G H I".split()
 
-def test_levenshtein_n_seg_size_1a():
+def test_levenshtein_seg_1a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s1, t1, segs) == [[3, 1], [3, 1], [3, 0]]
+    assert levenshtein_seg(s1, t1, segs) == [[3, 1], [3, 1], [3, 0]]
 
-def test_levenshtein_n_seg_size_1b():
+def test_levenshtein_seg_1b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s1, t1, segs) == \
+    assert levenshtein_seg(s1, t1, segs) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
 
-def test_levenshtein_n_seg_size_head_1a():
+def test_levenshtein_seg_head_1a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s1, t1, segs, head=True) == [[3, 1], [3, 1], [3, 0]]
+    assert levenshtein_seg(s1, t1, segs, head=True) == [[3, 1], [3, 1], [3, 0]]
 
-def test_levenshtein_n_seg_size_head_1b():
+def test_levenshtein_seg_head_1b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_n_seg_size(s1, t1, segs, head=True) == \
+    assert levenshtein_seg(s1, t1, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
 ##############################################################################
@@ -195,27 +195,27 @@ s2 = "A B   D E   G H I".split()
 t2 = "A B C D E F G H I".split()
 #         ^     ^
 
-def test_levenshtein_n_seg_size_2a():
+def test_levenshtein_seg_2a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 2], [2, 4], [4, 7]]
-    assert levenshtein_n_seg_size(s2, t2, segs) == [[2, 0], [2, 0], [3, 0]]
+    assert levenshtein_seg(s2, t2, segs) == [[2, 0], [2, 0], [3, 0]]
 
-def test_levenshtein_n_seg_size_2b():
+def test_levenshtein_seg_2b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 7]]
-    assert levenshtein_n_seg_size(s2, t2, segs) == \
+    assert levenshtein_seg(s2, t2, segs) == \
         [[1, 0], [1, 0], [1, 0], [1, 0], [3, 0]]
 
 
-def test_levenshtein_n_seg_size_head_2a():
+def test_levenshtein_seg_head_2a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 2], [2, 4], [4, 7]]
-    assert levenshtein_n_seg_size(s2, t2, segs, head=True) == [[2, 0], [2, 1], [3, 1]]
+    assert levenshtein_seg(s2, t2, segs, head=True) == [[2, 0], [2, 1], [3, 1]]
 
-def test_levenshtein_n_seg_size_head_2b():
+def test_levenshtein_seg_head_2b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 7]]
-    assert levenshtein_n_seg_size(s2, t2, segs, head=True) == \
+    assert levenshtein_seg(s2, t2, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [3, 1]]
 
 
@@ -232,17 +232,17 @@ def test_levenshtein_n_seg_size_head_2b():
 s3 = "  B C D E   G H I".split()
 t3 = "A B C D E F G H I".split()
 
-def test_levenshtein_n_seg_size_3b():
+def test_levenshtein_seg_3b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 7]]
-    assert levenshtein_n_seg_size(s3, t3, segs) == \
+    assert levenshtein_seg(s3, t3, segs) == \
         [[1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [2, 0]]
 
 
-def test_levenshtein_n_seg_size_head_3b():
+def test_levenshtein_seg_head_3b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 7]]
-    assert levenshtein_n_seg_size(s3, t3, segs, head=True) == \
+    assert levenshtein_seg(s3, t3, segs, head=True) == \
         [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1], [2, 0]]
 
 
@@ -261,35 +261,35 @@ def test_levenshtein_n_seg_size_head_3b():
 s4 = "    C D E     H I".split()
 t4 = "A B C D E F G H I".split()
 
-def test_levenshtein_n_seg_size_4a():
+def test_levenshtein_seg_4a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 5]]
-    assert levenshtein_n_seg_size(s4, t4, segs) == \
+    assert levenshtein_seg(s4, t4, segs) == \
         [[3, 2], [2, 2]]   # tight WER fails due to shifted min d1
 
 
-def test_levenshtein_n_seg_size_4b():
+def test_levenshtein_seg_4b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
     # print(f"{levenshtein_n_seg_size(s4, t4, segs) = }")
     # tight WER fails due to shifted min d1
-    assert levenshtein_n_seg_size(s4, t4, segs) == \
+    assert levenshtein_seg(s4, t4, segs) == \
         [[1, 1], [1, 0], [1, 0], [1, 1], [1, 0]]
 
 
-def test_levenshtein_n_seg_size_head_4a():
+def test_levenshtein_seg_head_4a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 5]]
-    assert levenshtein_n_seg_size(s4, t4, segs, head=True) == \
+    assert levenshtein_seg(s4, t4, segs, head=True) == \
         [[3, 2], [2, 2]]
 
 
-def test_levenshtein_n_seg_size_head_4b():
+def test_levenshtein_seg_head_4b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
     # print(f"{levenshtein_n_seg_size(s4, t4, segs, head=True) = }")
     # WER propergates due to shifted min d1
-    assert levenshtein_n_seg_size(s4, t4, segs, head=True) == \
+    assert levenshtein_seg(s4, t4, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
 
 
@@ -309,31 +309,31 @@ def test_levenshtein_n_seg_size_head_4b():
 s5 = "A B C D E F G H I".split()
 t5 = "    C D E     H I".split()
 
-def test_levenshtein_n_seg_size_5a():
+def test_levenshtein_seg_5a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 5], [5, 9]]
-    assert levenshtein_n_seg_size(s5, t5, segs) == \
+    assert levenshtein_seg(s5, t5, segs) == \
         [[5, 2], [4, 2]]
 
 
-def test_levenshtein_n_seg_size_5b():
+def test_levenshtein_seg_5b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 9]]
-    assert levenshtein_n_seg_size(s5, t5, segs) == \
+    assert levenshtein_seg(s5, t5, segs) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [4, 2]]
 
 
-def test_levenshtein_n_seg_size_head_5a():
+def test_levenshtein_seg_head_5a():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 5], [5, 9]]
-    assert levenshtein_n_seg_size(s5, t5, segs, head=True) == \
+    assert levenshtein_seg(s5, t5, segs, head=True) == \
         [[5, 2], [4, 2]]
 
 
-def test_levenshtein_n_seg_size_head_5b():
+def test_levenshtein_seg_head_5b():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 9]]
-    assert levenshtein_n_seg_size(s5, t5, segs, head=True) == \
+    assert levenshtein_seg(s5, t5, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [4, 2]]
 
 
@@ -498,20 +498,18 @@ t7 = "a cat on the desk top hopped".split()
 # The approach to obtain (1) is to find the right most min of the current line. Find its index. Then find the value of
 
 
-def test_levenshtein_n_seg_size_tail_7x():
+def test_levenshtein_seg_7x():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
-    print(f"{levenshtein_n_seg_size_tail(s7, t7, segs) = }")
-    # assert levenshtein_n_seg_size_tail(s7, t7, segs) \
-    #     == [[1, 1], [1, 0], [1, 0], [1, 0]]
+    assert levenshtein_seg(s7, t7, segs) \
+        == [[1, 1], [1, 0], [1, 0], [1, 0]]
 
 
-def test_levenshtein_n_seg_size_head_7y():
+def test_levenshtein_seg_head_7y():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
-    print(f"{levenshtein_n_seg_size_head(s7, t7, segs) = }")
-    # assert levenshtein_n_seg_size_head(s7, t7, segs) \
-    #     == [[1, 1], [1, 0], [1, 0], [1, 0]]
+    assert levenshtein_seg(s7, t7, segs, head=True) \
+        == [[1, 1], [1, 1], [1, 0], [1, 0]]
 
 
 # s7 = "        on the desk top".split()
