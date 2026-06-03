@@ -50,7 +50,7 @@ def test_levenshtein_word_0():
     assert levenshtein_word(s0, t0) == \
         [["A", 0], ["B", 0], ["A", 1],
          ["D", 0], ["E", 0], ["B", 1],
-         ["G", 0], ["H", 0], ["I", 1]]
+         ["G", 0], ["H", 0], ["I", 0]]
 
 
 ############################################
@@ -172,7 +172,7 @@ def test_levenshtein_word_4():
     """Test seg_size_n_edit_distance with the above lists."""
     assert levenshtein_word(s4, t4) == \
         [["C", 1], ["D", 1], ["E", 0],
-         ["H", 0], ["I", 1]]
+         ["H", 1], ["I", 1]]
 
 
 # s\t j   C   D   E   H   I
@@ -200,7 +200,7 @@ def test_levenshtein_seg_head_5():
 
 def test_levenshtein_word_5():
     """Test seg_size_n_edit_distance with the above lists."""
-    assert levenshtein_word(s4, t4) == \
+    assert levenshtein_word(s5, t5) == \
         [["A", 1], ["B", 1], ["C", 0],
          ["D", 0], ["E", 0], ["F", 1],
          ["G", 1], ["H", 0], ["I", 0]]

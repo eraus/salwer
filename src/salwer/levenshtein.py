@@ -20,7 +20,7 @@ def _levenshtein_full_mem(
             d[i+1][j+1] = min(
                 d[i][j+1] + 1,  # del of s
                 d[i+1][j] + 1,  # ins to s
-                d[i][j] + c,    # subs
+                d[i][j] + c,    # sub s->t
             )
     if print_d:
         print("s\\t j   " + '   '.join(t))
@@ -43,7 +43,7 @@ def _levenshtein(s: List[str], t: List[str]) -> int:
             d1[j+1] = min(
                 d0[j+1] + 1,  # del of s
                 d1[j] + 1,    # ins to s
-                d0[j] + c,    # subs
+                d0[j] + c,    # sub s->t
             )
         d0, d1 = d1, d0
     return d0[n]
@@ -63,7 +63,7 @@ def _levenshtein_one_list(s: List[str], t: List[str]) -> int:
             d[j+1] = min(
                 d[j+1] + 1,  # del of s
                 d[j] + 1,    # ins to s
-                d0 + c,      # sub
+                d0 + c,      # sub s->t
             )
             d0 = d1
     return d[n]
@@ -233,9 +233,9 @@ def levenshtein_seg(
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
             d1[j+1] = min(
-                d0[j+1] + 1,  # deletion
-                d1[j] + 1,  # insertion
-                d0[j] + c,  # substitution
+                d0[j+1] + 1,  # del of s
+                d1[j] + 1,    # ins to s
+                d0[j] + c,    # sub s->t
             )
         if seg < len(segs):
             if segs[seg][0] == i:
@@ -252,7 +252,6 @@ def levenshtein_seg(
 def levenshtein_word(
     s: List[str],
     t: List[str],
-    segs: List[List],
 ) -> List[List]:
     """Levenshtein distance and size for semantic segments.
 
@@ -263,7 +262,6 @@ def levenshtein_word(
     Args:
         s: Reference sequence as list of strings.
         t: Hypothesis sequence as list of strings.
-        segs: List of segments, each segment is [start, end].
 
     Returns:
         List of [segment_length, edit_distance] for each segment, where
@@ -273,29 +271,22 @@ def levenshtein_word(
 
     m, n = len(s), len(t)
     d0 = list(range(n+1))   # prev dist
+    min_d0 = min(d0)
     d1 = [0] * (n+1)        # curr dist
-
-    dist = 0    # The start distance, corresponding to d1[0]
-    rslts = [[0] * 2 for _ in range(len(segs))]
-    seg = 0
+    rslts = [[0] * 2 for _ in range(m)]
 
     for i in range(m):
         d1[0] = i + 1
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
             d1[j+1] = min(
-                d0[j+1] + 1,  # deletion
-                d1[j] + 1,  # insertion
-                d0[j] + c,  # substitution
+                d0[j+1] + 1,  # del of s
+                d1[j] + 1,    # ins to s
+                d0[j] + c,    # sub s->t
             )
-        if seg < len(segs):
-            # if segs[seg][0] == i and i > 1:
-            if segs[seg][0] == i and i > 0:
-                dist = min(d0)
-            if segs[seg][1] == i + 1:
-                rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Size of seg
-                rslts[seg][1] = min(d1) - dist  # edit distance
-                seg += 1
-        d0, d1 = d1, d0
+        min_d1 = min(d1)
+        rslts[i][0] = s[i]              # word
+        rslts[i][1] = min_d1 - min_d0   # dist
+        d0, d1, min_d0 = d1, d0, min_d1
 
     return rslts
