@@ -248,3 +248,54 @@ def levenshtein_seg(
 
     return rslts
 
+
+def levenshtein_word(
+    s: List[str],
+    t: List[str],
+    segs: List[List],
+) -> List[List]:
+    """Levenshtein distance and size for semantic segments.
+
+    This function takes a list of segments, where each segment is defined by
+    [start, end] indices, and computes the Levenshtein distance between the
+    corresponding slices of ref and hyp for each segment.
+
+    Args:
+        s: Reference sequence as list of strings.
+        t: Hypothesis sequence as list of strings.
+        segs: List of segments, each segment is [start, end].
+
+    Returns:
+        List of [segment_length, edit_distance] for each segment, where
+        segment_length = end - start,
+        edit_distance = edit dist btwn ref[start:end] and hyp[start:end].
+    """
+
+    m, n = len(s), len(t)
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+
+    dist = 0    # The start distance, corresponding to d1[0]
+    rslts = [[0] * 2 for _ in range(len(segs))]
+    seg = 0
+
+    for i in range(m):
+        d1[0] = i + 1
+        for j in range(n):
+            c = 0 if s[i] == t[j] else 1
+            d1[j+1] = min(
+                d0[j+1] + 1,  # deletion
+                d1[j] + 1,  # insertion
+                d0[j] + c,  # substitution
+            )
+        if seg < len(segs):
+            # if segs[seg][0] == i and i > 1:
+            if segs[seg][0] == i and i > 0:
+                dist = min(d0)
+            if segs[seg][1] == i + 1:
+                rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Size of seg
+                rslts[seg][1] = min(d1) - dist  # edit distance
+                seg += 1
+        d0, d1 = d1, d0
+
+    return rslts
