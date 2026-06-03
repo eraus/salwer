@@ -1,4 +1,4 @@
-from salwer.levenshtein import _levenshtein_full_mem
+from salwer.levenshtein import levenshtein_2d
 
 
 def print_levenshtein_table_():
@@ -11,7 +11,7 @@ def print_levenshtein_table_():
     s = "A B C D E F G H I".split()
     t = "    C D E     H I".split()
 
-    _levenshtein_full_mem(s, t, print_d=True)
+    levenshtein_2d(s, t, print_d=True)
 
 """
     s = "    C D E     H I".split()

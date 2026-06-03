@@ -1,7 +1,8 @@
 from typing import List
 
 
-def _levenshtein_full_mem(
+# def _levenshtein_full_mem(
+def levenshtein_2d(
         s: List[str],
         t: List[str],
         print_d: bool = False,  # True to print
@@ -10,17 +11,17 @@ def _levenshtein_full_mem(
 
     m, n = len(s), len(t)
     d = [[0] * (n+1) for _ in range(m+1)]
-    for i in range(m+1):
+    for i in range(1, m+1):
         d[i][0] = i
-    for j in range(n+1):
+    for j in range(1, n+1):
         d[0][j] = j
     for i in range(m):      # row index
         for j in range(n):  # col index
             c = 0 if s[i] == t[j] else 1
             d[i+1][j+1] = min(
+                d[i][j] + c,    # sub s->t
                 d[i][j+1] + 1,  # del of s
                 d[i+1][j] + 1,  # ins to s
-                d[i][j] + c,    # sub s->t
             )
     if print_d:
         print("s\\t j   " + '   '.join(t))
@@ -30,7 +31,8 @@ def _levenshtein_full_mem(
     return d[m][n]
 
 
-def _levenshtein(s: List[str], t: List[str]) -> int:
+# def _levenshtein(s: List[str], t: List[str]) -> int:
+def levenshtein(s: List[str], t: List[str]) -> int:
     """Two-list implementation of the Levenshtein distance"""
 
     m, n = len(s), len(t)
@@ -41,31 +43,32 @@ def _levenshtein(s: List[str], t: List[str]) -> int:
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
             d1[j+1] = min(
+                d0[j] + c,    # sub s->t
                 d0[j+1] + 1,  # del of s
                 d1[j] + 1,    # ins to s
-                d0[j] + c,    # sub s->t
             )
         d0, d1 = d1, d0
     return d0[n]
 
 
-def _levenshtein_one_list(s: List[str], t: List[str]) -> int:
+# def _levenshtein_one_list(s: List[str], t: List[str]) -> int:
+def levenshtein_1d(s: List[str], t: List[str]) -> int:
     """Single-list implementation of the Levenshtein distance"""
 
     m, n = len(s), len(t)
-    d = list(range(n+1))
+    d = list(range(n+1))    # for both d0 and d1 above
     for i in range(m):
-        d0 = d[0]
-        d[0] = i + 1
+        d0j = d[0]          # d0[j] above
+        d[0] = i + 1        # d1[0] above
         for j in range(n):
-            d1 = d[j+1]
+            d0j1 = d[j+1]   # d0[j+1] above
             c = 0 if s[i] == t[j] else 1
             d[j+1] = min(
-                d[j+1] + 1,  # del of s
-                d[j] + 1,    # ins to s
-                d0 + c,      # sub s->t
+                d0j + c,    # sub s->t
+                d0j1 + 1,   # del of s
+                d[j] + 1,   # ins to s
             )
-            d0 = d1
+            d0j = d0j1
     return d[n]
 
 
