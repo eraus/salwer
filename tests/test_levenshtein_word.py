@@ -4,6 +4,7 @@ import pytest
 
 from salwer.levenshtein import (
     levenshtein_seg,
+    levenshtein_word_raw,
     levenshtein_word,
 )
 
@@ -42,13 +43,19 @@ def test_levenshtein_seg_head_0():
     assert levenshtein_seg(s0, t0, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
+def test_levenshtein_word_raw_0():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word_raw(s0, t0) == \
+        [["A", 0], ["B", 0], ["A", 1],
+         ["D", 0], ["E", 0], ["B", 1],
+         ["G", 0], ["H", 0], ["I", 0]]
+
 def test_levenshtein_word_0():
     """Test word-level Levenshtein distance using word-based approach."""
     assert levenshtein_word(s0, t0) == \
         [["A", 0], ["B", 0], ["A", 1],
          ["D", 0], ["E", 0], ["B", 1],
          ["G", 0], ["H", 0], ["I", 0]]
-
 
 # Single-deletion from source case:
 
@@ -79,13 +86,19 @@ def test_levenshtein_seg_head_1():
     assert levenshtein_seg(s1, t1, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
+def test_levenshtein_word_raw_1():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word_raw(s1, t1) == \
+        [["A", 0], ["B", 0], ["C", 1],
+         ["D", 0], ["E", 0], ["F", 1],
+         ["G", 0], ["H", 0], ["I", 0]]
+
 def test_levenshtein_word_1():
     """Test word-level Levenshtein distance using word-based approach."""
     assert levenshtein_word(s1, t1) == \
         [["A", 0], ["B", 0], ["C", 1],
          ["D", 0], ["E", 0], ["F", 1],
          ["G", 0], ["H", 0], ["I", 0]]
-
 
 # Single insertation to the source case (only one prefix drift):
 
@@ -113,6 +126,13 @@ def test_levenshtein_seg_head_2():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 7]]
     assert levenshtein_seg(s2, t2, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [3, 1]]
+
+def test_levenshtein_word_raw_2():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word_raw(s2, t2) == \
+        [["A", 0], ["B", 0], ["D", 1],
+         ["E", 0], ["G", 1], ["H", 0],
+         ["I", 0]]
 
 def test_levenshtein_word_2():
     """Test word-level Levenshtein distance using word-based approach."""
@@ -146,15 +166,21 @@ def test_levenshtein_seg_head_3b():
     assert levenshtein_seg(s3, t3, segs, head=True) == \
         [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1], [2, 0]]
 
-def test_levenshtein_word_3():
+def test_levenshtein_word_raw_3():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s3, t3) == \
+    assert levenshtein_word_raw(s3, t3) == \
         [["B", 1], ["C", 0], ["D", 0],
          ["E", 0], ["G", 1], ["H", 0],
          ["I", 0]]
 
 # NOTE: No issues with single-insertions.
 
+def test_levenshtein_word_3():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word(s3, t3) == \
+        [["B", 1], ["C", 0], ["D", 0],
+         ["E", 0], ["G", 1], ["H", 0],
+         ["I", 0]]
 
 # Multiple-insertation to the source case (2+ prefix drifts):
 
@@ -181,9 +207,9 @@ def test_levenshtein_seg_head_4():
     assert levenshtein_seg(s4, t4, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
 
-def test_levenshtein_word_4():
+def test_levenshtein_word_raw_4():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s4, t4) == \
+    assert levenshtein_word_raw(s4, t4) == \
         [["C", 1], ["D", 1], ["E", 0],
          ["H", 1], ["I", 1]]
 
@@ -191,6 +217,12 @@ def test_levenshtein_word_4():
 # the first two words in the reference will be affected. To address this issue,
 # we can remove a word in the target repeatedly until the situation is getting
 # worse.
+
+def test_levenshtein_word_4():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word(s4, t4) == \
+        [["C", 1], ["D", 1], ["E", 0],
+         ["H", 1], ["I", 1]]
 
 
 # 2+ deletion from the source case:
@@ -220,14 +252,21 @@ def test_levenshtein_seg_head_5():
     assert levenshtein_seg(s5, t5, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [4, 2]]
 
+def test_levenshtein_word_raw_5():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word_raw(s5, t5) == \
+        [["A", 1], ["B", 1], ["C", 0],
+         ["D", 0], ["E", 0], ["F", 1],
+         ["G", 1], ["H", 0], ["I", 0]]
+
+# NOTE: No issues with processing multiple deletion cases.
+
 def test_levenshtein_word_5():
     """Test word-level Levenshtein distance using word-based approach."""
     assert levenshtein_word(s5, t5) == \
         [["A", 1], ["B", 1], ["C", 0],
          ["D", 0], ["E", 0], ["F", 1],
          ["G", 1], ["H", 0], ["I", 0]]
-
-# NOTE: No issues with processing multiple deletion cases.
 
 
 # Need to have multiple substitution cases.
@@ -259,11 +298,18 @@ def test_levenshtein_seg_head_6():
     assert levenshtein_seg(s6, t6, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 2]]
 
+def test_levenshtein_word_raw_6():
+    """Test word-level Levenshtein distance using word-based approach."""
+    assert levenshtein_word_raw(s6, t6) == \
+        [["A", 0], ["B", 0], ["A", 1],
+         ["D", 0], ["E", 0], ["B", 1],
+         ["G", 0], ["J", 1], ["K", 1]]
+
+# NOTE: No issues with processing multiple substitution cases.
+
 def test_levenshtein_word_6():
     """Test word-level Levenshtein distance using word-based approach."""
     assert levenshtein_word(s6, t6) == \
         [["A", 0], ["B", 0], ["A", 1],
          ["D", 0], ["E", 0], ["B", 1],
          ["G", 0], ["J", 1], ["K", 1]]
-
-# NOTE: No issues with processing multiple substitution cases.

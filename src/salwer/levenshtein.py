@@ -236,9 +236,9 @@ def levenshtein_seg(
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
             d1[j+1] = min(
+                d0[j] + c,    # sub s->t
                 d0[j+1] + 1,  # del of s
                 d1[j] + 1,    # ins to s
-                d0[j] + c,    # sub s->t
             )
         if seg < len(segs):
             if segs[seg][0] == i:
@@ -252,24 +252,25 @@ def levenshtein_seg(
     return rslts
 
 
-def levenshtein_word(
+def levenshtein_word_raw(
     s: List[str],
     t: List[str],
 ) -> List[List]:
-    """Levenshtein distance and size for semantic segments.
+    """Levenshtein distance of each word without examining errors.
 
-    This function takes a list of segments, where each segment is defined by
-    [start, end] indices, and computes the Levenshtein distance between the
-    corresponding slices of ref and hyp for each segment.
+    This function calculates the word-level levenshtein distance. The meaning
+    of raw is two fold:
+
+    1. The errors (distance being one for a word) are not examined for reasons.
+    2. The error due to a hallucination is only considered as prefix drift.
 
     Args:
         s: Reference sequence as list of strings.
         t: Hypothesis sequence as list of strings.
 
     Returns:
-        List of [segment_length, edit_distance] for each segment, where
-        segment_length = end - start,
-        edit_distance = edit dist btwn ref[start:end] and hyp[start:end].
+        List of [word, levenshtein_dist] for each word, where
+        levenshtein_dist is 0 or 1.
     """
 
     m, n = len(s), len(t)
@@ -283,9 +284,76 @@ def levenshtein_word(
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
             d1[j+1] = min(
+                d0[j] + c,    # sub s->t
                 d0[j+1] + 1,  # del of s
                 d1[j] + 1,    # ins to s
+            )
+        min_d1 = min(d1)
+        rslts[i][0] = s[i]              # word
+        rslts[i][1] = min_d1 - min_d0   # dist
+        d0, d1, min_d0 = d1, d0, min_d1
+
+    return rslts
+
+
+# Multiple-insertation to the source case (2+ prefix drifts):
+
+# s = "    C D E     H I".split()
+# t = "A B C D E F G H I".split()
+#
+# s\t j   A   B   C   D   E   F   G   H   I
+# i   0+| 1   2*| 3   4   5 | 6   7 | 8   9
+#    ---------------------------------------
+# C   1 | 1-  2 | 2-  3   4 | 5   6 | 7   8
+# D   2 | 2   2 | 3   2   3 | 4   5 | 6   7
+# E   3 | 3   3 | 3   3   2+| 3   4*| 5   6
+#    ---------------------------------------
+# H   4 | 4   4 | 4   4   3 | 3-  4 | 4-  5
+# I   5 | 5   5 | 5   5   4 | 4   4 | 5   4+
+
+
+def levenshtein_word(
+    s: List[str],
+    t: List[str],
+) -> List[List]:
+    """Levenshtein distance of each word with errors examined.
+
+    This function calculates the word-level levenshtein distance in a refined
+    way as compared to levenshtein_word_raw. The meaning of refinement
+    is two fold:
+
+    1. Each error (Levenshtein dist being 1 for a word) is tested to see if
+       it is a prefix hallucination.
+    2. If tested as a prefix hallucination, it is split to by the two words
+       on the two sides of the hallucination.
+    3. If the word is at the beginning of the source, all prefix hallucinations
+       will be on this word.
+    4. If the word is at the end of the source, all the surfix hallucinations
+       will be on this word.
+
+    Args:
+        s: Reference sequence as list of strings.
+        t: Hypothesis sequence as list of strings.
+
+    Returns:
+        List of [word, levenshtein_dist] for each word, where
+        levenshtein_dist is can be a real number.
+    """
+
+    m, n = len(s), len(t)
+    d0 = list(range(n+1))   # prev dist
+    min_d0 = min(d0)
+    d1 = [0] * (n+1)        # curr dist
+    rslts = [[0] * 2 for _ in range(m)]
+
+    for i in range(m):
+        d1[0] = i + 1
+        for j in range(n):
+            c = 0 if s[i] == t[j] else 1
+            d1[j+1] = min(
                 d0[j] + c,    # sub s->t
+                d0[j+1] + 1,  # del of s
+                d1[j] + 1,    # ins to s
             )
         min_d1 = min(d1)
         rslts[i][0] = s[i]              # word
