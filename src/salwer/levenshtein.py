@@ -275,7 +275,7 @@ def levenshtein_word_raw(
 
     m, n = len(s), len(t)
     d0 = list(range(n+1))   # prev dist
-    min_d0 = min(d0)
+    min_d0 = 0
     d1 = [0] * (n+1)        # curr dist
     rslts = [[0] * 2 for _ in range(m)]
 
@@ -296,22 +296,6 @@ def levenshtein_word_raw(
     return rslts
 
 
-# Multiple-insertation to the source case (2+ prefix drifts):
-
-# s = "    C D E     H I".split()
-# t = "A B C D E F G H I".split()
-#
-# s\t j   A   B   C   D   E   F   G   H   I
-# i   0+| 1   2*| 3   4   5 | 6   7 | 8   9
-#    ---------------------------------------
-# C   1 | 1-  2 | 2-  3   4 | 5   6 | 7   8
-# D   2 | 2   2 | 3   2   3 | 4   5 | 6   7
-# E   3 | 3   3 | 3   3   2+| 3   4*| 5   6
-#    ---------------------------------------
-# H   4 | 4   4 | 4   4   3 | 3-  4 | 4-  5
-# I   5 | 5   5 | 5   5   4 | 4   4 | 5   4+
-
-
 def levenshtein_word(
     s: List[str],
     t: List[str],
@@ -320,7 +304,7 @@ def levenshtein_word(
 
     This function calculates the word-level levenshtein distance in a refined
     way as compared to levenshtein_word_raw. The meaning of refinement
-    is two fold:
+    is multi-fold:
 
     1. Each error (Levenshtein dist being 1 for a word) is tested to see if
        it is a prefix hallucination.
@@ -330,6 +314,9 @@ def levenshtein_word(
        will be on this word.
     4. If the word is at the end of the source, all the surfix hallucinations
        will be on this word.
+
+    Note that due to the splitting of error, we need to DOUBLE the value of
+    the levenshtein distance for easy processing and testing.
 
     Args:
         s: Reference sequence as list of strings.
@@ -341,23 +328,152 @@ def levenshtein_word(
     """
 
     m, n = len(s), len(t)
+    m0, s0 = m, s.copy()
     d0 = list(range(n+1))   # prev dist
-    min_d0 = min(d0)
     d1 = [0] * (n+1)        # curr dist
+    min_d0 = 0              # min value of d0
     rslts = [[0] * 2 for _ in range(m)]
+    b = 0   # the base for s
+    while True:
+        for i in range(m):
+            d1[0] = i + 1
+            for j in range(n):
+                c = 0 if s[i] == t[j] else 1
+                d1[j+1] = min(
+                    d0[j] + c,    # sub s->t
+                    d0[j+1] + 1,  # del of s
+                    d1[j] + 1,    # ins to s
+                )
+            min_d1 = min(d1)
+            rslts[b+i][0] = s0[b+i]     # word
+            dist = min_d1 - min_d0      # dist
+            rslts[b+i][1] += dist
+            index4t = max_ind_of_min(d0)
+            d0, d1, min_d0 = d1, d0, min_d1
 
-    for i in range(m):
-        d1[0] = i + 1
-        for j in range(n):
-            c = 0 if s[i] == t[j] else 1
-            d1[j+1] = min(
-                d0[j] + c,    # sub s->t
-                d0[j+1] + 1,  # del of s
-                d1[j] + 1,    # ins to s
-            )
-        min_d1 = min(d1)
-        rslts[i][0] = s[i]              # word
-        rslts[i][1] = min_d1 - min_d0   # dist
-        d0, d1, min_d0 = d1, d0, min_d1
+            if dist == 0: continue
+
+            r = s[i:]           # ref = source
+            h = t[index4t:]     # hyp = target
+            num_shift = num_prefix_drift(r, h)
+            if num_shift:
+                rslts[b+i][1] = num_shift
+                if b+i == 0:
+                    rslts[b+i][1] += num_shift
+                else:
+                    rslts[b+i-1][1] += num_shift
+
+                s = r
+                t = h[num_shift:]
+                m, n = len(s), len(t)
+                d0 = list(range(n+1))   # prev dist
+                d1 = [0] * (n+1)        # curr dist
+                min_d0 = 0              # min value of d0
+                b += i
+                i = 0
+                break
+            else:
+                rslts[b+i][1] += 1
+
+        if b + i >= m0 - 1:
+            num_tail = len(d0) - max_ind_of_min(d0) - 1
+            if num_tail:
+                rslts[m0-1][1] += 2 * num_tail
+            break
 
     return rslts
+
+
+# s = "A B A D E B G H I".split()
+# t = "A B C D E F G H I".split()
+#
+# s\t j   A   B   C   D   E   F   G   H   I
+# i   0   1   2   3   4   5   6   7   8   9
+# A   1   0   1   2   3   4   5   6   7   8
+# B   2   1   0:  1   2   3   4   5   6   7
+# A   3   2   1   1:  2   3   4   5   6   7
+# D   4   3   2   2   1   2   3   4   5   6
+# E   5   4   3   3   2   1:  2   3   4   5
+# B   6   5   4   4   3   2   2:  3   4   5
+# G   7   6   5   5   4   3   3   2-  3   4
+# H   8   7   6   6   5   4   4   3   2   3
+# I   9   8   7   7   6   5   5   4   3   2
+
+# Single-deletion from source case:
+
+# s = "A B C D E F G H I".split()
+# t = "A B   D E   G H I".split()
+#
+# s\t j   A   B   D   E   G   H   I
+# i   0   1   2   3   4   5   6   7
+# A   1   0   1   2   3   4   5   6
+# B   2   1   0:  1   2   3   4   5
+# C   3   2   1   1:  2   3   4   5
+# D   4   3   2   1   2   3   4   5
+# E   5   4   3   2   1:  2   3   4
+# F   6   5   4   3   2   2:  3   4
+# G   7   6   5   4   3   2   3   4
+# H   8   7   6   5   4   3   2   3
+# I   9   8   7   6   5   4   3   2
+
+
+# Single insertation to the source case (only one prefix drift):
+
+# s = "A B   D E   G H I".split()
+# t = "A B C D E F G H I".split()
+#                                           i = 0   1   2   3   4   5   6   7
+# s\t j   A   B   C   D   E   F   G   H   I
+# i   0   1   2   3   4   5   6   7   8   9     d0
+# A   1   0   1   2   3   4   5   6   7   8     d1->d0
+# B   2   1   0:  1   2   3   4   5   6   7         d1->d0
+# D   3   2   1   1   1:  2   3   4   5   6             d1->d0
+
+# s\t j   A   B   D   E   F   G   H   I
+# D   3   2   1   0   1:  2   3   4   5   6                 d0
+# E   4   3   2   2   2   1:  2   3   4   5
+# G   5   4   3   3   3   2   2   2:  3   4
+# H   6   5   4   4   4   3   3   3   2   3
+# I   7   6   5   5   5   4   4   4   3   2
+
+
+# s = "  B C D   F G H".split()
+# t = "A B C D E F G H I".split()
+#
+# s\t j   A   B   C   D   E   F   G   H   I
+# i   0:  1   2   3   4   5   6   7   8   9
+# B   1   1   1:  2   3   4   5   6   7   8
+# C   2   2   2   1   2   3   4   5   6   7
+# D   3   3   3   2   1:  2   3   4   5   6
+# F   4   4   4   3   2   2   2:  3   4   5
+# G   5   5   5   4   3   3   3   2   3   4
+# H   6   6   6   5   4   4   4   3   2   3
+
+
+# Multiple-insertation to the source case (2+ prefix drifts):
+
+# s = "    C D E     H I".split()
+# t = "A B C D E F G H I".split()
+#
+# s\t j   A   B   C   D   E   F   G   H   I
+# i   0:  1   2   3   4   5   6   7   8   9
+# C   1   1:  2   2   3   4   5   6   7   8
+# D   2   2   2   3   2   3   4   5   6   7
+# E   3   3   3   3   3   2:  3   4   5   6
+# H   4   4   4   4   4   3   3:  4   4   5
+# I   5   5   5   5   5   4   4   4   5   4
+
+def num_prefix_drift(s: List[str], t: List[str]) -> int:
+    shift = 0
+    dist0 = levenshtein(s, t)
+    dist1 = levenshtein(s, t[1:])
+    while dist0 > dist1:
+        shift += 1
+        dist0 = dist1
+        dist1 = levenshtein(s, t[shift+1:])
+    return shift
+
+
+def max_ind_of_min(d: List[int]) -> int:
+    min_val = min(d)
+    ind = [i for i, x in enumerate(d) if x == min_val]
+    return max(ind)

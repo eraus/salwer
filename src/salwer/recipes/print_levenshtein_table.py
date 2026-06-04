@@ -8,12 +8,14 @@ def print_levenshtein_table_():
     -  folder: str. Path to folder containing hypo transcript JSON files
     -  diff: bool=False. Show differences
     """
-    s = "A B C D E F G H I".split()
-    t = "    C D E     H I".split()
+    s = "  B C D   F G H".split()
+    t = "A B C D E F G H I".split()
 
     levenshtein_2d(s, t, print_d=True)
 
 """
+    s = "A B C D E F G H I".split()
+    t = "    C D E     H I".split()
     s = "    C D E     H I".split()
     t = "A B C D E F G H I".split()
     s = "  B C D E   G H I".split()
