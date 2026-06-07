@@ -1,5 +1,23 @@
 from typing import List
 
+# Helper functions
+
+def num_prefix_drift(s: List[str], t: List[str]) -> int:
+    shift = 0
+    dist0 = levenshtein(s, t)
+    dist1 = levenshtein(s, t[1:])
+    while dist0 > dist1:
+        shift += 1
+        dist0 = dist1
+        dist1 = levenshtein(s, t[shift+1:])
+    return shift
+
+
+def max_ind_of_min(d: List[int]) -> int:
+    min_val = min(d)
+    ind = [i for i, x in enumerate(d) if x == min_val]
+    return max(ind)
+
 
 # def _levenshtein_full_mem(
 def levenshtein_2d(
@@ -72,191 +90,11 @@ def levenshtein_1d(s: List[str], t: List[str]) -> int:
     return d[n]
 
 
-# def levenshtein_n_seg_size_tail(
-#     s: List[str],
-#     t: List[str],
-#     segs: List[List],
-# ) -> List[List]:
-#     """Levenshtein distance and size for semantic segments.
-
-#     This function takes a list of segments, where each segment is defined by
-#     [start, end] indices, and computes the Levenshtein distance between the
-#     corresponding slices of ref and hyp for each segment.
-
-#     Args:
-#         s: Reference sequence as list of strings.
-#         t: Hypothesis sequence as list of strings.
-#         segs: List of segments, each segment is [start, end].
-
-#     Returns:
-#         List of [segment_length, edit_distance] for each segment, where
-#         segment_length = end - start,
-#         edit_distance = edit dist btwn ref[start:end] and hyp[start:end].
-#     """
-
-#     m, n = len(s), len(t)
-#     d0 = list(range(n+1))   # prev dist
-#     d1 = [0] * (n+1)        # curr dist
-
-#     dist = 0    # The start distance, corresponding to d1[0]
-#     rslts = [[0] * 2 for _ in range(len(segs))]
-#     seg = 0
-
-#     for i in range(m):
-#         d1[0] = i + 1
-#         for j in range(n):
-#             c = 0 if s[i] == t[j] else 1
-#             d1[j+1] = min(
-#                 d0[j+1] + 1,  # deletion
-#                 d1[j] + 1,  # insertion
-#                 d0[j] + c,  # substitution
-#             )
-#         if seg < len(segs):
-#             # if segs[seg][0] == i and i > 1:
-#             if segs[seg][0] == i and i > 0:
-#                 dist_curr = min(d1)
-#                 ind = [i for i, x in enumerate(d1) if x == dist_curr]
-#                 dist_ind = max(ind)
-#                 dist = d0[dist_ind - 1]
-#             if segs[seg][1] == i + 1:
-#                 rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Size of seg
-#                 rslts[seg][1] = min(d1) - dist  # edit distance
-#                 seg += 1
-#         d0, d1 = d1, d0
-
-#     return rslts
-
-
-# def levenshtein_n_seg_size_head(
-#     s: List[str],
-#     t: List[str],
-#     segs: List[List],
-# ) -> List[List]:
-#     """Levenshtein distance and size for semantic segments.
-
-#     This function takes a list of segments, where each segment is defined by
-#     [start, end] indices, and computes the Levenshtein distance between the
-#     corresponding slices of ref and hyp for each segment.
-
-#     Args:
-#         s: Reference sequence as list of strings.
-#         t: Hypothesis sequence as list of strings.
-#         segs: List of segments, each segment is [start, end].
-
-#     Returns:
-#         List of [segment_length, edit_distance] for each segment, where
-#         segment_length = end - start,
-#         edit_distance = edit dist btwn ref[start:end] and hyp[start:end].
-#     """
-
-#     m, n = len(s), len(t)
-#     d0 = list(range(n+1))   # prev dist
-#     d1 = [0] * (n+1)        # curr dist
-
-#     dist = 0    # The start distance, corresponding to d1[0]
-#     rslts = [[0] * 2 for _ in range(len(segs))]
-#     seg = 0
-
-#     for i in range(m):
-#         d1[0] = i + 1
-#         for j in range(n):
-#             c = 0 if s[i] == t[j] else 1
-#             d1[j+1] = min(
-#                 d0[j+1] + 1,  # deletion
-#                 d1[j] + 1,  # insertion
-#                 d0[j] + c,  # substitution
-#             )
-#         if seg < len(segs):
-#             # if segs[seg][0] == i and i > 1:
-#             if segs[seg][0] == i and i > 0:
-#                 dist = min(d0)
-#             if segs[seg][1] == i + 1:
-#                 rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Size of seg
-#                 rslts[seg][1] = min(d1) - dist  # edit distance
-#                 seg += 1
-#         d0, d1 = d1, d0
-
-#     return rslts
-
-def seg_size_n_edit_distance(
-    segs: List[List],
-    ref: List[str],
-    hyp: List[str],
-) -> List[List]:
-    pass
-
-
-def levenshtein_seg(
-    s: List[str],
-    t: List[str],
-    segs: List[List],
-    head: bool = False,
-) -> List[List]:
-    """Levenshtein distance and size of semantic segments.
-
-    This function takes (1) the source list (s), (2) the target lyst (t),
-    (3) the semantic segment list (segs), and (4) a boolean variable for
-    including prefix drift or hallucination of each segment (head).
-
-    Args:
-      - s: Source (reference) sequence as list of strings.
-      - t: Target (hypothesis) sequence as list of strings.
-      - segs: List of semantic segments, each segment is [start, end].
-      - head: Boolean indicator for including prefix drift before each segment:
-        - False: do not include (default)
-        - True: include
-
-    Returns: List of [segment_length, edit_distance] for each segment, where
-      - segment_length (end - start),
-      - levenshtein_dist between s[start:end] and the correcponding t sequence.
-    """
-
-    def base_seg_dist(d0, d1):      # base seg dist w/o prefix drift
-        dist_curr = min(d1)
-        ind = [i for i, x in enumerate(d1) if x == dist_curr]
-        dist_ind = max(ind)
-        dist = d0[dist_ind - 1]
-        return dist
-
-    def base_seg_dist_head(d0, d1): # base seg dist with prefix drift
-        return min(d0)
-
-    base_seg_dist = base_seg_dist_head if head else base_seg_dist
-
-    m, n = len(s), len(t)
-    d0 = list(range(n+1))   # prev dist
-    d1 = [0] * (n+1)        # curr dist
-
-    base_dist = 0           # The base dist of a seg; d1[0]
-    rslts = [[0] * 2 for _ in range(len(segs))]
-    seg = 0
-
-    for i in range(m):
-        d1[0] = i + 1
-        for j in range(n):
-            c = 0 if s[i] == t[j] else 1
-            d1[j+1] = min(
-                d0[j] + c,    # sub s->t
-                d0[j+1] + 1,  # del of s
-                d1[j] + 1,    # ins to s
-            )
-        if seg < len(segs):
-            if segs[seg][0] == i:
-                base_dist = base_seg_dist(d0, d1)
-            if segs[seg][1] == i + 1:
-                rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Seg size
-                rslts[seg][1] = min(d1) - base_dist          # Seg dist
-                seg += 1
-        d0, d1 = d1, d0
-
-    return rslts
-
-
-def levenshtein_word_raw(
+def levenshtein_word_fast(
     s: List[str],
     t: List[str],
 ) -> List[List]:
-    """Levenshtein distance of each word without examining errors.
+    """Levenshtein distance of each word without examining errors (fast).
 
     This function calculates the word-level levenshtein distance. The meaning
     of raw is two fold:
@@ -303,7 +141,7 @@ def levenshtein_word(
     """Levenshtein distance of each word with errors examined.
 
     This function calculates the word-level levenshtein distance in a refined
-    way as compared to levenshtein_word_raw. The meaning of refinement
+    way as compared to levenshtein_word_fast. The meaning of refinement
     is multi-fold:
 
     1. Each error (Levenshtein dist being 1 for a word) is tested to see if
@@ -462,18 +300,248 @@ def levenshtein_word(
 # H   4   4   4   4   4   3   3:  4   4   5
 # I   5   5   5   5   5   4   4   4   5   4
 
-def num_prefix_drift(s: List[str], t: List[str]) -> int:
-    shift = 0
-    dist0 = levenshtein(s, t)
-    dist1 = levenshtein(s, t[1:])
-    while dist0 > dist1:
-        shift += 1
-        dist0 = dist1
-        dist1 = levenshtein(s, t[shift+1:])
-    return shift
+
+# def levenshtein_n_seg_size_tail(
+#     s: List[str],
+#     t: List[str],
+#     segs: List[List],
+# ) -> List[List]:
+#     """Levenshtein distance and size for semantic segments.
+
+#     This function takes a list of segments, where each segment is defined by
+#     [start, end] indices, and computes the Levenshtein distance between the
+#     corresponding slices of ref and hyp for each segment.
+
+#     Args:
+#         s: Reference sequence as list of strings.
+#         t: Hypothesis sequence as list of strings.
+#         segs: List of segments, each segment is [start, end].
+
+#     Returns:
+#         List of [segment_length, edit_distance] for each segment, where
+#         segment_length = end - start,
+#         edit_distance = edit dist btwn ref[start:end] and hyp[start:end].
+#     """
+
+#     m, n = len(s), len(t)
+#     d0 = list(range(n+1))   # prev dist
+#     d1 = [0] * (n+1)        # curr dist
+
+#     dist = 0    # The start distance, corresponding to d1[0]
+#     rslts = [[0] * 2 for _ in range(len(segs))]
+#     seg = 0
+
+#     for i in range(m):
+#         d1[0] = i + 1
+#         for j in range(n):
+#             c = 0 if s[i] == t[j] else 1
+#             d1[j+1] = min(
+#                 d0[j+1] + 1,  # deletion
+#                 d1[j] + 1,  # insertion
+#                 d0[j] + c,  # substitution
+#             )
+#         if seg < len(segs):
+#             # if segs[seg][0] == i and i > 1:
+#             if segs[seg][0] == i and i > 0:
+#                 dist_curr = min(d1)
+#                 ind = [i for i, x in enumerate(d1) if x == dist_curr]
+#                 dist_ind = max(ind)
+#                 dist = d0[dist_ind - 1]
+#             if segs[seg][1] == i + 1:
+#                 rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Size of seg
+#                 rslts[seg][1] = min(d1) - dist  # edit distance
+#                 seg += 1
+#         d0, d1 = d1, d0
+
+#     return rslts
 
 
-def max_ind_of_min(d: List[int]) -> int:
-    min_val = min(d)
-    ind = [i for i, x in enumerate(d) if x == min_val]
-    return max(ind)
+# def levenshtein_n_seg_size_head(
+#     s: List[str],
+#     t: List[str],
+#     segs: List[List],
+# ) -> List[List]:
+#     """Levenshtein distance and size for semantic segments.
+
+#     This function takes a list of segments, where each segment is defined by
+#     [start, end] indices, and computes the Levenshtein distance between the
+#     corresponding slices of ref and hyp for each segment.
+
+#     Args:
+#         s: Reference sequence as list of strings.
+#         t: Hypothesis sequence as list of strings.
+#         segs: List of segments, each segment is [start, end].
+
+#     Returns:
+#         List of [segment_length, edit_distance] for each segment, where
+#         segment_length = end - start,
+#         edit_distance = edit dist btwn ref[start:end] and hyp[start:end].
+#     """
+
+#     m, n = len(s), len(t)
+#     d0 = list(range(n+1))   # prev dist
+#     d1 = [0] * (n+1)        # curr dist
+
+#     dist = 0    # The start distance, corresponding to d1[0]
+#     rslts = [[0] * 2 for _ in range(len(segs))]
+#     seg = 0
+
+#     for i in range(m):
+#         d1[0] = i + 1
+#         for j in range(n):
+#             c = 0 if s[i] == t[j] else 1
+#             d1[j+1] = min(
+#                 d0[j+1] + 1,  # deletion
+#                 d1[j] + 1,  # insertion
+#                 d0[j] + c,  # substitution
+#             )
+#         if seg < len(segs):
+#             # if segs[seg][0] == i and i > 1:
+#             if segs[seg][0] == i and i > 0:
+#                 dist = min(d0)
+#             if segs[seg][1] == i + 1:
+#                 rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Size of seg
+#                 rslts[seg][1] = min(d1) - dist  # edit distance
+#                 seg += 1
+#         d0, d1 = d1, d0
+
+#     return rslts
+
+def seg_size_n_edit_distance(
+    segs: List[List],
+    ref: List[str],
+    hyp: List[str],
+) -> List[List]:
+    pass
+
+
+def levenshtein_seg_fast(
+    s: List[str],
+    t: List[str],
+    segs: List[List],
+    head: bool = False,
+) -> List[List]:
+    """Levenshtein distance and size of semantic segments--fast version.
+
+    This function takes (1) the source list (s), (2) the target lyst (t),
+    (3) the semantic segment list (segs), and (4) a boolean variable for
+    including prefix drift or hallucination of each segment (head).
+
+    Args:
+      - s: Source (reference) sequence as list of strings.
+      - t: Target (hypothesis) sequence as list of strings.
+      - segs: List of semantic segments, each segment is [start, end].
+      - head: Boolean indicator for including prefix drift before each segment:
+        - False: do not include (default)
+        - True: include
+
+    Returns: List of [segment_length, edit_distance] for each segment, where
+      - segment_length (end - start),
+      - levenshtein_dist between s[start:end] and the correcponding t sequence.
+    """
+
+    def base_seg_dist(d0, d1):      # base seg dist w/o prefix drift
+        dist_curr = min(d1)
+        ind = [i for i, x in enumerate(d1) if x == dist_curr]
+        dist_ind = max(ind)
+        dist = d0[dist_ind - 1]
+        return dist
+
+    def base_seg_dist_head(d0, d1): # base seg dist with prefix drift
+        return min(d0)
+
+    base_seg_dist = base_seg_dist_head if head else base_seg_dist
+
+    m, n = len(s), len(t)
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+
+    base_dist = 0           # The base dist of a seg; d1[0]
+    rslts = [[0] * 2 for _ in range(len(segs))]
+    seg = 0
+
+    for i in range(m):
+        d1[0] = i + 1
+        for j in range(n):
+            c = 0 if s[i] == t[j] else 1
+            d1[j+1] = min(
+                d0[j] + c,    # sub s->t
+                d0[j+1] + 1,  # del of s
+                d1[j] + 1,    # ins to s
+            )
+        if seg < len(segs):
+            if segs[seg][0] == i:
+                base_dist = base_seg_dist(d0, d1)
+            if segs[seg][1] == i + 1:
+                rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Seg size
+                rslts[seg][1] = min(d1) - base_dist          # Seg dist
+                seg += 1
+        d0, d1 = d1, d0
+
+    return rslts
+
+
+def levenshtein_seg(
+    s: List[str],
+    t: List[str],
+    segs: List[List],
+    head: bool = False,
+) -> List[List]:
+    """Levenshtein distance and size of semantic segments.
+
+    This function takes (1) the source list (s), (2) the target lyst (t),
+    (3) the semantic segment list (segs), and (4) a boolean variable for
+    including prefix drift or hallucination of each segment (head).
+
+    Args:
+      - s: Source (reference) sequence as list of strings.
+      - t: Target (hypothesis) sequence as list of strings.
+      - segs: List of semantic segments, each segment is [start, end].
+      - head: Boolean indicator for including prefix drift before each segment:
+        - False: do not include (default)
+        - True: include
+
+    Returns: List of [segment_length, edit_distance] for each segment, where
+      - segment_length (end - start),
+      - levenshtein_dist between s[start:end] and the correcponding t sequence.
+    """
+
+    def base_seg_dist(d0, d1):      # base seg dist w/o prefix drift
+        dist_curr = min(d1)
+        ind = [i for i, x in enumerate(d1) if x == dist_curr]
+        dist_ind = max(ind)
+        dist = d0[dist_ind - 1]
+        return dist
+
+    def base_seg_dist_head(d0, d1): # base seg dist with prefix drift
+        return min(d0)
+
+    base_seg_dist = base_seg_dist_head if head else base_seg_dist
+
+    m, n = len(s), len(t)
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+
+    base_dist = 0           # The base dist of a seg; d1[0]
+    rslts = [[0] * 2 for _ in range(len(segs))]
+    seg = 0
+
+    for i in range(m):
+        d1[0] = i + 1
+        for j in range(n):
+            c = 0 if s[i] == t[j] else 1
+            d1[j+1] = min(
+                d0[j] + c,    # sub s->t
+                d0[j+1] + 1,  # del of s
+                d1[j] + 1,    # ins to s
+            )
+        if seg < len(segs):
+            if segs[seg][0] == i:
+                base_dist = base_seg_dist(d0, d1)
+            if segs[seg][1] == i + 1:
+                rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Seg size
+                rslts[seg][1] = min(d1) - base_dist          # Seg dist
+                seg += 1
+        d0, d1 = d1, d0
+
+    return rslts

@@ -6,7 +6,7 @@ from salwer.levenshtein import (
     num_prefix_drift,
     max_ind_of_min,
     levenshtein_seg,
-    levenshtein_word_raw,
+    levenshtein_word_fast,
     levenshtein_word,
 )
 
@@ -68,9 +68,9 @@ def test_levenshtein_seg_head_0():
     assert levenshtein_seg(s0, t0, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
-def test_levenshtein_word_raw_0():
+def test_levenshtein_word_fast_0():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s0, t0) == \
+    assert levenshtein_word_fast(s0, t0) == \
         [["A", 0], ["B", 0], ["A", 1],
          ["D", 0], ["E", 0], ["B", 1],
          ["G", 0], ["H", 0], ["I", 0]]
@@ -112,9 +112,9 @@ def test_levenshtein_seg_head_1():
     assert levenshtein_seg(s1, t1, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
-def test_levenshtein_word_raw_1():
+def test_levenshtein_word_fast_1():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s1, t1) == \
+    assert levenshtein_word_fast(s1, t1) == \
         [["A", 0], ["B", 0], ["C", 1],
          ["D", 0], ["E", 0], ["F", 1],
          ["G", 0], ["H", 0], ["I", 0]]
@@ -154,9 +154,9 @@ def test_levenshtein_seg_head_2():
     assert levenshtein_seg(s2, t2, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [3, 1]]
 
-def test_levenshtein_word_raw_2():
+def test_levenshtein_word_fast_2():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s2, t2) == \
+    assert levenshtein_word_fast(s2, t2) == \
         [["A", 0], ["B", 0], ["D", 1],
          ["E", 0], ["G", 1], ["H", 0],
          ["I", 0]]
@@ -193,9 +193,9 @@ def test_levenshtein_seg_head_3b():
     assert levenshtein_seg(s3, t3, segs, head=True) == \
         [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1], [2, 0]]
 
-def test_levenshtein_word_raw_3():
+def test_levenshtein_word_fast_3():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s3, t3) == \
+    assert levenshtein_word_fast(s3, t3) == \
         [["B", 1], ["C", 0], ["D", 0],
          ["E", 0], ["G", 1], ["H", 0],
          ["I", 0]]
@@ -234,9 +234,9 @@ def test_levenshtein_seg_head_4():
     assert levenshtein_seg(s4, t4, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
 
-def test_levenshtein_word_raw_4():
+def test_levenshtein_word_fast_4():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s4, t4) == \
+    assert levenshtein_word_fast(s4, t4) == \
         [["C", 1], ["D", 1], ["E", 0],
          ["H", 1], ["I", 1]]
 
@@ -294,9 +294,9 @@ def test_levenshtein_seg_head_5():
     assert levenshtein_seg(s5, t5, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [3, 2]]
 
-def test_levenshtein_word_raw_5():
+def test_levenshtein_word_fast_5():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s5, t5) == \
+    assert levenshtein_word_fast(s5, t5) == \
         [["A", 1], ["B", 1], ["C", 0],
          ["D", 0], ["E", 0], ["F", 1],
          ["G", 1], ["H", 0]]
@@ -340,9 +340,9 @@ def test_levenshtein_seg_head_6():
     assert levenshtein_seg(s6, t6, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 2]]
 
-def test_levenshtein_word_raw_6():
+def test_levenshtein_word_fast_6():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s6, t6) == \
+    assert levenshtein_word_fast(s6, t6) == \
         [["A", 0], ["B", 0], ["A", 1],
          ["D", 0], ["E", 0], ["B", 1],
          ["G", 0], ["J", 1], ["K", 1]]
@@ -369,9 +369,9 @@ def test_levenshtein_seg_head_7():
     assert levenshtein_seg(s7, t7, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1], [1, 0]]
 
-def test_levenshtein_word_raw_7():
+def test_levenshtein_word_fast_7():
     """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_raw(s7, t7) == \
+    assert levenshtein_word_fast(s7, t7) == \
         [["C", 1], ["D", 1], ["E", 0],
          ["A", 1], ["H", 1], ["I", 0]]
 
