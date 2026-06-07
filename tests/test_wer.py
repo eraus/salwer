@@ -1,4 +1,6 @@
 """Test functions for edit distance calculations."""
+################################
+# Test functions for ATC seg WER. Need to be cleaned up.
 
 import copy
 import pytest
@@ -21,6 +23,98 @@ from salwer.recipes.check_llm_class_n_seg_results import (
 )
 from salwer.labels import Transcripts
 
+
+# def test_rmin_1():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     d = [
+#         [1, 1, 2, 2, 3, 4, 5, 6],
+#         [2, 2, 2, 3, 2, 3, 4, 5],
+#         [3, 3, 3, 3, 3, 2, 3, 4],
+#         [4, 3, 4, 4, 4, 3, 2, 3]
+#     ]
+#     assert rmin(d[0]) == 2
+#     assert rmin(d[1]) == 2
+#     assert rmin(d[2]) == 2
+#     assert rmin(d[3]) == 2
+
+
+# def test_rmin_2():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     d = [
+#         [1, 1, 2, 2, 3, 4, 5],
+#         [2, 1, 2, 3, 2, 3, 4],
+#         [3, 2, 2, 3, 3, 2, 3],
+#         [4, 3, 2, 3, 4, 3, 2]
+#     ]
+#     assert rmin(d[0]) == 2
+#     assert rmin(d[1]) == 2
+#     assert rmin(d[2]) == 2
+#     assert rmin(d[3]) == 2
+
+
+
+##################################################################
+#
+#         ""      cat     sat     on      mat  |  in      the     room
+# ""      0       1       2       3       4    |  5       6       7
+# cat     1       0       1       2       3    |  4       5       6
+# sat     2       1       0       1       2    |  3       4       5
+# on      3       2       1       0       1    |  2       3       4
+# the     4       3       2       1       1    |  2       2       3
+# mat     5       4       3       2      (1)   |  2       3       3
+# -----------------------------------------------------------------
+# in      6       5       4       3       2    |  1       2       3
+# a       7       6       5       4       3    |  2       2       3
+# room    8       7       6       5       4    |  3       3       2
+
+# s1 = "cat sat on the mat in a room".split()
+# t1 = "cat sat on mat in the room".split()
+
+# def test_levenshtein_n_seg_size_tail_1a():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_a = [[0, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_tail(s1, t1, segs_a) == [[5, 1], [3, 1]]
+#     assert levenshtein_n_seg_size(s1, t1, segs_a) == [[5, 1], [3, 1]]
+
+
+# def test_levenshtein_n_seg_size_tail_1b():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_b = [[0, 2], [2, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_tail(s1, t1, segs_b) == [[2, 0], [3, 1], [3, 1]]
+#     assert levenshtein_n_seg_size(s1, t1, segs_b) == [[2, 0], [3, 1], [3, 1]]
+
+
+# def test_levenshtein_n_seg_size_head_1a():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_a = [[0, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_head(s1, t1, segs_a) == [[5, 1], [3, 1]]
+#     assert levenshtein_n_seg_size(s1, t1, segs_a, head=True) == [[5, 1], [3, 1]]
+
+
+# def test_levenshtein_n_seg_size_head_1b():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_b = [[0, 2], [2, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_head(s1, t1, segs_b) == [[2, 0], [3, 1], [3, 1]]
+#     assert levenshtein_n_seg_size(s1, t1, segs_b, head=True) == [[2, 0], [3, 1], [3, 1]]
+
+
+# s = "A B A D E B G H I".split()
+# t = "A B C D E F G H I".split()
+#
+# s\t j   A   B   C   D   E   F   G   H   I
+# i   0+| 1   2   3 | 4   5   6 | 7   8   9
+#    ---|-----------|-----------|-----------
+# A   1 | 0-  1   2 | 3   4   5 | 6   7   8
+# B   2 | 1   0   1 | 2   3   4 | 5   6   7
+# A   3 | 2   1   1+| 2   3   4 | 5   6   7
+#    ---|-----------|-----------|-----------
+# D   4 | 3   2   2 | 1-  2   3 | 4   5   6
+# E   5 | 4   3   3 | 2   1   2 | 3   4   5
+# B   6 | 5   4   4 | 3   2   2+| 3   4   5
+#    ---|-----------|-----------|-----------
+# G   7 | 6   5   5 | 4   3   3 | 2-  3   4
+# H   8 | 7   6   6 | 5   4   4 | 3   2   3
+# I   9 | 8   7   7 | 6   5   5 | 4   3   2+
 
 # Test the standard edit_distance functions
 
@@ -423,3 +517,201 @@ def test_check_class_seg_ann():
     ann = Transcripts.from_ref_cns_text(cns_text)
     # _check_class_seg_ann(ann, prnt=True)
     _check_class_seg_ann(ann)
+
+
+##
+
+#####################################################
+#
+# s \ t ""    the   cat   laid  on    the   dry   mat
+# ""    0     1     2  |  3  |  4     5  |  6  |  7
+# the   1     0     1  |  2  |  3     4  |  5  |  6
+# fat   2     1     1  |  2  |  3     4  |  5  |  6
+# cat   3     2    (1) |  2  |  3     4  |  5  |  6
+#       ---------------------|-----------|-----|---
+# sat   4     3     2  | (2) |  3     4  |  5  |  6
+#       ---------------------------------|-----|---
+# on    5     4     3  |  3  |  2     3  |  4  |  5
+# the   6     5     4  |  4  |  3    (2) | [3] |  4
+#       ---------------------------------|-----|---
+# mat   7     6     5  |  5  |  4     3  |  3  | (3)
+
+
+
+##############################################
+#
+# s \ t ""    the    desk  top   popped
+# ""    0     1      2  |  3     4
+# on    1     1      2  |  3     4
+# the   2     1      2  |  3     4
+# desk  3     2      1  |  2     3
+#       --------------------------
+# top   4     3      2  |  1     2
+
+# s5 = "on the desk top".split()
+# t5 = "   the desk top popped".split()
+# print(f"{s5 = }, {t5 = }")
+
+# The approach to obtain (1) is to find the right most min of the current line. Find its index. Then find the value of
+
+# def test_levenshtein_n_seg_size_tail_5a():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs = [[0, 3], [3, 4]]
+#     assert levenshtein_n_seg_size_tail(s5, t5, segs) \
+#         == [[3, 1], [1, 0]]
+#     assert levenshtein_n_seg_size(s5, t5, segs) \
+#         == [[3, 1], [1, 0]]
+
+
+# def test_levenshtein_n_seg_size_head_5b():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs = [[0, 3], [3, 4]]
+#     assert levenshtein_n_seg_size_head(s5, t5, segs) \
+#         == [[3, 1], [1, 0]]
+#     assert levenshtein_n_seg_size(s5, t5, segs, head=True) \
+#         == [[3, 1], [1, 0]]
+
+
+# def test_levenshtein_n_seg_size_tail_5x():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
+#     assert levenshtein_n_seg_size_tail(s5, t5, segs) \
+#         == [[1, 1], [1, 0], [1, 0], [1, 0]]
+#     assert levenshtein_n_seg_size(s5, t5, segs) \
+#         == [[1, 1], [1, 0], [1, 0], [1, 0]]
+
+
+# def test_levenshtein_n_seg_size_head_5y():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
+#     assert levenshtein_n_seg_size_head(s5, t5, segs) \
+#         == [[1, 1], [1, 0], [1, 0], [1, 0]]
+#     assert levenshtein_n_seg_size(s5, t5, segs, head=True) \
+#         == [[1, 1], [1, 0], [1, 0], [1, 0]]
+
+
+s7 = "      on the desk top".split()
+t7 = "a cat on the desk top hopped".split()
+
+##############################################
+#
+# s \ t ""    a     cat   on    the   desk  top   hopped
+# ""    0     1    (2)    3     4     5     6     7
+# on    1     1     2    (2)    3     4     5     6
+# the   2     2     2     3    (2)    3     4     5
+# desk  3     3     3     3     3    (2)    3     4
+# top   4     3     4     4     4     3    (2)    3
+
+# The approach to obtain (1) is to find the right most min of the current line. Find its index. Then find the value of
+
+
+def test_levenshtein_seg_7x():
+    """Test seg_size_n_edit_distance with the above lists."""
+    segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
+    assert levenshtein_seg(s7, t7, segs) \
+        == [[1, 1], [1, 0], [1, 0], [1, 0]]
+
+
+def test_levenshtein_seg_head_7y():
+    """Test seg_size_n_edit_distance with the above lists."""
+    segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
+    assert levenshtein_seg(s7, t7, segs, head=True) \
+        == [[1, 1], [1, 1], [1, 0], [1, 0]]
+
+
+# s7 = "        on the desk top".split()
+# t7 = "the top on the desk top dropped".split()
+
+##############################################
+#
+# s \ t ""    the    top   on    the    desk  top   dropped
+# ""    0     1      2     3     4      5     6     7
+# on    1     1      2     2     3      4     5     6
+# the   2     1      2     3     2      3     4     5
+# desk  3     2      2     3     3      2     3     4
+# top   4     3      2     3     4      3     2     3
+
+# The approach to obtain (1) is to find the right most min of the current line. Find its index. Then find the value of
+
+
+# def test_levenshtein_n_seg_size_tail_7x():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
+#     print(f"{levenshtein_n_seg_size_tail(s7, t7, segs) = }")
+#     # assert levenshtein_n_seg_size_tail(s7, t7, segs) \
+#     #     == [[1, 1], [1, 0], [1, 0], [1, 0]]
+
+
+# def test_levenshtein_n_seg_size_head_7y():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs = [[0, 1], [1, 2], [2, 3], [3, 4]]
+#     print(f"{levenshtein_n_seg_size_head(s7, t7, segs) = }")
+#     # assert levenshtein_n_seg_size_head(s7, t7, segs) \
+#     #     == [[1, 1], [1, 0], [1, 0], [1, 0]]
+
+
+#####################################################
+#
+# s \ t ""    the   cat   laid  on    the   dry   mat
+# ""    0     1     2  |  3  |  4     5  |  6  |  7
+# the   1     0     1  |  2  |  3     4  |  5  |  6
+# fat   2     1     1  |  2  |  3     4  |  5  |  6
+# cat   3     2    (1) |  2  |  3     4  |  5  |  6
+#       ---------------------|-----------|-----|---
+# sat   4     3     2  | (2) |  3     4  |  5  |  6
+#       ---------------------------------|-----|---
+# on    5     4     3  |  3  |  2     3  |  4  |  5
+# the   6     5     4  |  4  |  3    (2) | [3] |  4
+#       ---------------------------------|-----|---
+# mat   7     6     5  |  5  |  4     3  |  3  | (3)
+
+# s3 = "the fat cat sat  on the     mat".split()
+# t3 = "the     cat laid on the dry mat".split()
+# #         del     sub         ins
+
+# def test_levenshtein_n_seg_size_tail_3a():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_a = [[0, 4], [4, 7]]
+#     assert levenshtein_n_seg_size_tail(s3, t3, segs_a) \
+#         == [[4, 2],[3, 1]]
+#     assert levenshtein_n_seg_size(s3, t3, segs_a) \
+#         == [[4, 2],[3, 1]]
+
+# def test_levenshtein_n_seg_size_tail_3b():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_a = [[0, 3], [3, 4], [4, 6], [6, 7]]
+#     assert levenshtein_n_seg_size_tail(s3, t3, segs_a) \
+#         == [[3, 1], [1, 1], [2, 0], [1, 0]]
+#     assert levenshtein_n_seg_size(s3, t3, segs_a) \
+#         == [[3, 1], [1, 1], [2, 0], [1, 0]]
+
+
+# def test_levenshtein_n_seg_size_head_3c():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_a = [[0, 3], [3, 4], [4, 6], [6, 7]]
+#     assert levenshtein_n_seg_size_head(s3, t3, segs_a) \
+#         == [[3, 1], [1, 1], [2, 0], [1, 1]]
+#     assert levenshtein_n_seg_size(s3, t3, segs_a, head=True) \
+#         == [[3, 1], [1, 1], [2, 0], [1, 1]]
+
+# def test_levenshtein_n_seg_size_tail_1b():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_b = [[0, 2], [2, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_tail(s1, t1, segs_b) == [[2, 0], [3, 1], [3, 1]]
+
+
+# def test_levenshtein_n_seg_size_head_1a():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_a = [[0, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_head(s1, t1, segs_a) == [[5, 1], [3, 1]]
+
+
+# def test_levenshtein_n_seg_size_head_1b():
+#     """Test seg_size_n_edit_distance with the above lists."""
+#     segs_b = [[0, 2], [2, 5], [5, 8]]
+#     assert levenshtein_n_seg_size_head(s1, t1, segs_b) == [[2, 0], [3, 1], [3, 1]]
+
+# s3 = "the fat cat sat  on the     mat".split()
+# t3 = "the     cat laid on the dry mat".split()
+#         del     sub         ins
+
