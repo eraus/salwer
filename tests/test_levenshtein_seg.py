@@ -4,6 +4,7 @@ import pytest
 
 from salwer.levenshtein import (
     levenshtein_seg_fast,
+    levenshtein_seg,
 )
 
 ###############################################################
@@ -49,11 +50,15 @@ def test_levenshtein_seg_fast_1s1():
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_seg_fast(s1s1, t1s1, segs) == \
         [[3, 1], [3, 1], [3, 1]]
+    assert levenshtein_seg(s1s1, t1s1, segs) == \
+        [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_head_1s1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_seg_fast(s1s1, t1s1, segs, head=True) == \
+        [[3, 1], [3, 1], [3, 1]]
+    assert levenshtein_seg(s1s1, t1s1, segs, head=True) == \
         [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_1s1w():
@@ -101,11 +106,15 @@ def test_levenshtein_seg_fast_1s2():
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_seg_fast(s1s2, t1s2, segs) == \
         [[3, 1], [3, 1], [3, 1]]
+    assert levenshtein_seg(s1s2, t1s2, segs) == \
+        [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_head_1s2():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_seg_fast(s1s2, t1s2, segs, head=True) == \
+        [[3, 1], [3, 1], [3, 1]]
+    assert levenshtein_seg(s1s2, t1s2, segs, head=True) == \
         [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_1s2w():
@@ -153,11 +162,15 @@ def test_levenshtein_seg_fast_1d1():
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_seg_fast(s1d1, t1d1, segs) == \
         [[3, 1], [3, 1], [3, 1]]
+    assert levenshtein_seg(s1d1, t1d1, segs) == \
+        [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_head_1d1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_seg_fast(s1d1, t1d1, segs, head=True) == \
+        [[3, 1], [3, 1], [3, 1]]
+    assert levenshtein_seg(s1d1, t1d1, segs, head=True) == \
         [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_1d1w():
@@ -205,11 +218,15 @@ def test_levenshtein_seg_fast_1i1():
     segs = [[0, 2], [2, 4], [4, 6]]
     assert levenshtein_seg_fast(s1i1, t1i1, segs) == \
         [[2, 0], [2, 1], [2, 0]]
+    assert levenshtein_seg(s1i1, t1i1, segs) == \
+        [[2, 0], [2, 1], [2, 0]]
 
 def test_levenshtein_seg_fast_head_1i1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 2], [2, 4], [4, 6]]
     assert levenshtein_seg_fast(s1i1, t1i1, segs, head=True) == \
+        [[2, 1], [2, 1], [2, 0]]
+    assert levenshtein_seg(s1i1, t1i1, segs, head=True) == \
         [[2, 1], [2, 1], [2, 0]]
 
 def test_levenshtein_seg_fast_1i1w():
@@ -250,11 +267,15 @@ def test_levenshtein_seg_fast_1i2():
     segs = [[0, 3], [3, 6]]
     assert levenshtein_seg_fast(s1i2, t1i2, segs) == \
         [[3, 0], [3, 0]]
+    assert levenshtein_seg(s1i2, t1i2, segs) == \
+        [[3, 0], [3, 0]]
 
 def test_levenshtein_seg_fast_head_1i2():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 6]]
     assert levenshtein_seg_fast(s1i2, t1i2, segs, head=True) == \
+        [[3, 1], [3, 1]]
+    assert levenshtein_seg(s1i2, t1i2, segs, head=True) == \
         [[3, 1], [3, 1]]
 
 
@@ -283,11 +304,15 @@ def test_levenshtein_seg_fast_1sdi1():
     segs = [[0, 3], [3, 7]]
     assert levenshtein_seg_fast(s1sdi1, t1sdi1, segs) == \
         [[3, 1], [4, 2]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, segs) == \
+        [[3, 1], [4, 2]]
 
 def test_levenshtein_seg_fast_head_1sdi1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 7]]
     assert levenshtein_seg_fast(s1sdi1, t1sdi1, segs, head=True) == \
+        [[3, 2], [4, 3]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, segs, head=True) == \
         [[3, 2], [4, 3]]
 
 def test_levenshtein_seg_fast_1sdi1w():
@@ -330,11 +355,15 @@ def test_levenshtein_seg_fast_1sdi2():
     segs = [[0, 2], [2, 5], [5, 7]]
     assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs) == \
         [[2, 1], [3, 1], [2, 0]]
+    assert levenshtein_seg(s1sdi2, t1sdi2, segs) == \
+        [[2, 1], [3, 1], [2, 0]]
 
 def test_levenshtein_seg_fast_head_1sdi2():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 2], [2, 5], [5, 7]]
     assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs, head=True) == \
+        [[2, 1], [3, 2], [2, 1]]
+    assert levenshtein_seg(s1sdi2, t1sdi2, segs, head=True) == \
         [[2, 1], [3, 2], [2, 1]]
 
 def test_levenshtein_seg_fast_1sdi2w():
@@ -375,12 +404,19 @@ def test_levenshtein_seg_fast_1sdi3():
     segs = [[0, 3], [3, 7]]
     assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs) == \
         [[3, 2], [4, 2]]
-# Note       ^  This is caused by the min of d1 in Line A
+# Note       ^
+#     This extra distance is caused by the min of d1 in Line A
+    assert levenshtein_seg(s1sdi3, t1sdi3, segs) == \
+        [[3, 1], [4, 2]]
+# Note       ^
+#     This is the correct distance.
 
 def test_levenshtein_seg_fast_head_1sdi3():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 7]]
     assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs, head=True) == \
+        [[3, 2], [4, 3]]
+    assert levenshtein_seg(s1sdi3, t1sdi3, segs, head=True) == \
         [[3, 2], [4, 3]]
 
 def test_levenshtein_seg_fast_1sdi3w():
@@ -423,13 +459,20 @@ def test_levenshtein_seg_fast_1sdi4():
     segs = [[1, 3], [3, 7]]
     assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs) == \
         [[2, 0], [4, 2]]
+    assert levenshtein_seg(s1sdi3, t1sdi3, segs) == \
+        [[2, 0], [4, 2]]
 
 def test_levenshtein_seg_fast_head_1sdi4():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[1, 3], [3, 7]]
     assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs, head=True) == \
         [[2, 1], [4, 3]]
-# Note       ^  There is ambiguity about how to determine this.
+# Note       ^
+#     There is ambiguity about how to determine this.
+    assert levenshtein_seg(s1sdi3, t1sdi3, segs, head=True) == \
+        [[2, 1], [4, 3]]
+# Note       ^
+#     This is determined by the shifting.
 
 
 ############################################
@@ -458,11 +501,15 @@ def test_levenshtein_seg_fast_2s1():
     segs = [[0, 4], [4, 8]]
     assert levenshtein_seg_fast(s2s1, t2s1, segs) == \
         [[4, 2], [4, 2]]
+    assert levenshtein_seg(s2s1, t2s1, segs) == \
+        [[4, 2], [4, 2]]
 
 def test_levenshtein_seg_fast_head_2s1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 4], [4, 8]]
     assert levenshtein_seg_fast(s2s1, t2s1, segs, head=True) == \
+        [[4, 2], [4, 2]]
+    assert levenshtein_seg(s2s1, t2s1, segs, head=True) == \
         [[4, 2], [4, 2]]
 
 def test_levenshtein_seg_fast_2s1w():
@@ -508,11 +555,15 @@ def test_levenshtein_seg_fast_2d1():
     segs = [[0, 3], [3, 7], [7, 9]]
     assert levenshtein_seg_fast(s2d1, t2d1, segs) == \
         [[3, 2], [4, 2], [2, 1]]
+    assert levenshtein_seg(s2d1, t2d1, segs) == \
+        [[3, 2], [4, 2], [2, 1]]
 
 def test_levenshtein_seg_fast_head_2d1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 7], [7, 9]]
     assert levenshtein_seg_fast(s2d1, t2d1, segs, head=True) == \
+        [[3, 2], [4, 2], [2, 1]]
+    assert levenshtein_seg(s2d1, t2d1, segs, head=True) == \
         [[3, 2], [4, 2], [2, 1]]
 
 def test_levenshtein_seg_fast_2d1w():
@@ -559,11 +610,15 @@ def test_levenshtein_seg_fast_2d2():
     segs = [[0, 3], [3, 7]]
     assert levenshtein_seg_fast(s2d2, t2d2, segs) == \
         [[3, 2], [4, 2]]
+    assert levenshtein_seg(s2d2, t2d2, segs) == \
+        [[3, 2], [4, 2]]
 
 def test_levenshtein_seg_fast_head_2d2():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 7]]
     assert levenshtein_seg_fast(s2d2, t2d2, segs, head=True) == \
+        [[3, 2], [4, 2]]
+    assert levenshtein_seg(s2d2, t2d2, segs, head=True) == \
         [[3, 2], [4, 2]]
 
 def test_levenshtein_seg_fast_2d2b():
@@ -581,6 +636,11 @@ def test_levenshtein_seg_fast_head_2d2b():
 # Note that Difference (2d2)                         ^       ^
 
 
+############################################
+# x2i1
+# s2i1 = "    C D E     H I".split()
+# t2i1 = "A B C D E F G H I".split()
+#         ^ ^ |    |^ ^|   |
 ##############################################################################
 #                                           i = 0   1   2   3   4   5   6   7
 # s\t j   A   B   C   D   E   F   G   H   I
@@ -593,103 +653,49 @@ def test_levenshtein_seg_fast_head_2d2b():
 # H   4 | 4   4 | 4   4   3 | 3-  4 | 4-  5
 # I   5 | 5   5 | 5   5   4 | 4   4 | 5   4+
 
-s4 = "    C D E     H I".split()
-t4 = "A B C D E F G H I".split()
+s2i1 = "    C D E     H I".split()
+t2i1 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_fast_4a():
+def test_levenshtein_seg_fast_2i1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 5]]
-    assert levenshtein_seg_fast(s4, t4, segs) == \
-        [[3, 2], [2, 2]]   # tight WER fails due to shifted min d1
+    assert levenshtein_seg_fast(s2i1, t2i1, segs) == \
+        [[3, 2], [2, 2]]
+# Note       ^       ^
+#     Tight WER fails due to shifted min d1
+    assert levenshtein_seg(s2i1, t2i1, segs) == \
+        [[3, 0], [2, 0]]
 
-
-def test_levenshtein_seg_fast_4b():
-    """Test seg_size_n_edit_distance with the above lists."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
-    # print(f"{levenshtein_n_seg_size(s4, t4, segs) = }")
-    # tight WER fails due to shifted min d1
-    assert levenshtein_seg_fast(s4, t4, segs) == \
-        [[1, 1], [1, 0], [1, 0], [1, 1], [1, 0]]
-
-
-def test_levenshtein_seg_fast_head_4a():
+def test_levenshtein_seg_fast_head_2i1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 3], [3, 5]]
-    assert levenshtein_seg_fast(s4, t4, segs, head=True) == \
+    assert levenshtein_seg_fast(s2i1, t2i1, segs, head=True) == \
+        [[3, 2], [2, 2]]
+    assert levenshtein_seg(s2i1, t2i1, segs, head=True) == \
         [[3, 2], [2, 2]]
 
-
-def test_levenshtein_seg_fast_head_4b():
+def test_levenshtein_seg_fast_2i1w():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
-    # print(f"{levenshtein_n_seg_size(s4, t4, segs, head=True) = }")
-    # WER propergates due to shifted min d1
-    assert levenshtein_seg_fast(s4, t4, segs, head=True) == \
+    assert levenshtein_seg_fast(s2i1, t2i1, segs) == \
+        [[1, 1], [1, 0], [1, 0], [1, 1], [1, 0]]
+# Note       ^                       ^
+#     Tight WER fails due to shifted min d1
+
+def test_levenshtein_seg_fast_head_2i1w():
+    """Test seg_size_n_edit_distance with the above lists."""
+    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
+    assert levenshtein_seg_fast(s2i1, t2i1, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
+# Note               ^                       ^
+#     Tight WER fails due to shifted min d1
 
 
-# s\t j   C   D   E   H   I
-# i   0   1   2   3   4   5
-# A   1   1   2   3   4   5
-# B   2   2   2   3   4   5
-# C   3   2   3   3   4   5
-# D   4   3   2   3   4   5
-# E   5   4   3   2   3   4
-#    -----------------------
-# F   6   5   4   3   3   4
-# G   7   6   5   4   4   4
-# H   8   7   6   5   4   5
-# I   9   8   7   6   5   4
-
-s5 = "A B C D E F G H I".split()
-t5 = "    C D E     H I".split()
-
-def test_levenshtein_seg_fast_5a():
-    """Test seg_size_n_edit_distance with the above lists."""
-    segs = [[0, 5], [5, 9]]
-    assert levenshtein_seg_fast(s5, t5, segs) == \
-        [[5, 2], [4, 2]]
-
-
-def test_levenshtein_seg_fast_5b():
-    """Test seg_size_n_edit_distance with the above lists."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 9]]
-    assert levenshtein_seg_fast(s5, t5, segs) == \
-        [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [4, 2]]
-
-
-def test_levenshtein_seg_fast_head_5a():
-    """Test seg_size_n_edit_distance with the above lists."""
-    segs = [[0, 5], [5, 9]]
-    assert levenshtein_seg_fast(s5, t5, segs, head=True) == \
-        [[5, 2], [4, 2]]
-
-
-def test_levenshtein_seg_fast_head_5b():
-    """Test seg_size_n_edit_distance with the above lists."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 9]]
-    assert levenshtein_seg_fast(s5, t5, segs, head=True) == \
-        [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [4, 2]]
-
-
-# s\t j   B   C   D   E   F   G   H   I
-# i   0   1   2   3   4   5   6   7   8
-# A   1   1   2   3   4   5   6   7   8
-# C   2   2   1   2   3   4   5   6   7
-# D   3   3   2   1   2   3   4   5   6
-# E   4   4   3   2   1   2   3   4   5
-# G   5   5   4   3   2   2   2   3   4
-# H   6   6   5   4   3   3   3   2   3
-# I   7   7   6   5   4   4   4   3   2
-
-# s = "A C D E   G H I".split()
-# t = "B C D E F G H I".split()
-
-
-
-# s3s1 = "A B C D E F G H I".split()
-# t3s1 = "B A C D E E B A I".split()
-#        |^ ^    |  ^ ^ ^  |
+############################################
+# x3s1
+# s3s1 = "  A B C D E F G H I".split()
+# t3s1 = "B A   C D E E B A I".split()
+#        |^   ^    |  ^ ^ ^  |
 # s\t j   B   A   C   D   E   E   B   A   I
 # i   0+  1*| 2   3   4 | 5   6   7   8   9
 #     --------------------------------------
@@ -704,19 +710,23 @@ def test_levenshtein_seg_fast_head_5b():
 # H   8   7 | 7   7   6 | 5   5   5   5   6
 # I   9   8 | 8   8   7 | 6   6   6   6   5+
 
-s3s1 = "A B C D E F G H I".split()
-t3s1 = "B A C D E E B A I".split()
+s3s1 = "  A B C D E F G H I".split()
+t3s1 = "B A   C D E E B A I".split()
 
 def test_levenshtein_seg_fast_3s1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 4], [4, 9]]
     assert levenshtein_seg_fast(s3s1, t3s1, segs) == \
         [[4, 1], [5, 3]]
+    assert levenshtein_seg(s3s1, t3s1, segs) == \
+        [[4, 1], [5, 3]]
 
 def test_levenshtein_seg_fast_head_3s1():
     """Test seg_size_n_edit_distance with the above lists."""
     segs = [[0, 4], [4, 9]]
     assert levenshtein_seg_fast(s3s1, t3s1, segs, head=True) == \
+        [[4, 2], [5, 3]]
+    assert levenshtein_seg(s3s1, t3s1, segs, head=True) == \
         [[4, 2], [5, 3]]
 
 def test_levenshtein_seg_fast_3s1w():
@@ -736,4 +746,3 @@ def test_levenshtein_seg_fast_head_3s1w():
     assert levenshtein_seg_fast(s3s1, t3s1, segs, head=True) == \
         [[1, 1], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [1, 1], [1, 1], [1, 0]]
 # Note               ^       ^
-
