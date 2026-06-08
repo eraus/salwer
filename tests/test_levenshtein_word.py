@@ -5,7 +5,7 @@ import pytest
 from salwer.levenshtein import (
     num_prefix_drift,
     max_ind_of_min,
-    levenshtein_seg,
+    levenshtein_seg_fast,
     levenshtein_word_fast,
     levenshtein_word,
 )
@@ -62,10 +62,10 @@ def test_max_ind_of_min():
 s0 = "A B A D E B G H I".split()
 t0 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_head_0():
+def test_levenshtein_seg_fast_head_0():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_seg(s0, t0, segs, head=True) == \
+    assert levenshtein_seg_fast(s0, t0, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
 def test_levenshtein_word_fast_0():
@@ -106,10 +106,10 @@ def test_levenshtein_word_0():
 s1 = "A B C D E F G H I".split()
 t1 = "A B   D E   G H I".split()
 
-def test_levenshtein_seg_head_1():
+def test_levenshtein_seg_fast_head_1():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_seg(s1, t1, segs, head=True) == \
+    assert levenshtein_seg_fast(s1, t1, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 0]]
 
 def test_levenshtein_word_fast_1():
@@ -148,10 +148,10 @@ def test_levenshtein_word_1():
 s2 = "A B   D E   G H I".split()
 t2 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_head_2():
+def test_levenshtein_seg_fast_head_2():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 7]]
-    assert levenshtein_seg(s2, t2, segs, head=True) == \
+    assert levenshtein_seg_fast(s2, t2, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [3, 1]]
 
 def test_levenshtein_word_fast_2():
@@ -187,10 +187,10 @@ def test_levenshtein_word_2():
 s3 = "  B C D E   G H I".split()
 t3 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_head_3b():
+def test_levenshtein_seg_fast_head_3b():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 7]]
-    assert levenshtein_seg(s3, t3, segs, head=True) == \
+    assert levenshtein_seg_fast(s3, t3, segs, head=True) == \
         [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1], [2, 0]]
 
 def test_levenshtein_word_fast_3():
@@ -227,11 +227,11 @@ def test_levenshtein_word_3():
 s4 = "    C D E     H I".split()
 t4 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_head_4():
+def test_levenshtein_seg_fast_head_4():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
     # print(f"{levenshtein_n_seg_size(s4, t4, segs, head=True) = }")
-    assert levenshtein_seg(s4, t4, segs, head=True) == \
+    assert levenshtein_seg_fast(s4, t4, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
 
 def test_levenshtein_word_fast_4():
@@ -288,10 +288,10 @@ def test_levenshtein_word_4a():
 s5 = "A B C D E F G H".split()
 t5 = "    C D E     H I".split()
 
-def test_levenshtein_seg_head_5():
+def test_levenshtein_seg_fast_head_5():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 8]]
-    assert levenshtein_seg(s5, t5, segs, head=True) == \
+    assert levenshtein_seg_fast(s5, t5, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [3, 2]]
 
 def test_levenshtein_word_fast_5():
@@ -334,10 +334,10 @@ def test_levenshtein_word_5():
 s6 = "A B A D E B G J K".split()
 t6 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_head_6():
+def test_levenshtein_seg_fast_head_6():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_seg(s6, t6, segs, head=True) == \
+    assert levenshtein_seg_fast(s6, t6, segs, head=True) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 2]]
 
 def test_levenshtein_word_fast_6():
@@ -362,11 +362,11 @@ def test_levenshtein_word_6():
 s7 = "    C D E   A H I".split()
 t7 = "A B C D E F G H I".split()
 
-def test_levenshtein_seg_head_7():
+def test_levenshtein_seg_fast_head_7():
     """Test word-level Levenshtein distance using seg-based approach."""
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]
     # print(f"{levenshtein_n_seg_size(s4, t4, segs, head=True) = }")
-    assert levenshtein_seg(s7, t7, segs, head=True) == \
+    assert levenshtein_seg_fast(s7, t7, segs, head=True) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1], [1, 0]]
 
 def test_levenshtein_word_fast_7():
