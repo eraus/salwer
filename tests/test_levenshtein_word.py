@@ -397,6 +397,24 @@ def test_levenshtein_seg_fast_head_1sdi3w():
 #     Values are spreaded.
 
 
+############################################
+# x2s1
+# s2s1 = "A B C D E F G H".split()
+# t2s1 = "X Y C D E F E B".split()
+#        |^ ^    |    ^ ^|
+# s\t j   X   Y   C   D   E   F   E   B
+# i   0+| 1   2   3   4 | 5   6   7   8
+#    -----------------------------------
+# A   1 | 1-  2   3   4 | 5   6   7   8
+# B   2 | 2   2   3   4 | 5   6   7   7
+# C   3 | 3   3   2   3 | 4   5   6   7
+# D   4 | 4   4   3   2+| 3   4   5   6
+#    -----------------------------------
+# E   5 | 5   5   4   3 | 2-  3   4   5
+# F   6 | 6   6   5   4 | 3   2   3   4
+# G   7 | 7   7   6   5 | 4   3   3   4
+# H   8 | 8   8   7   6 | 5   4   4   4+
+
 s2s1 = "A B C D E F G H".split()
 t2s1 = "X Y C D E F E B".split()
 
@@ -578,7 +596,10 @@ def test_levenshtein_seg_fast_head_2i1w():
 # Note               ^                       ^
 #     Tight WER fails due to shifted min d1
 
-
+# NOTE: If we have 2+ consecutive prefix hallucination words,
+# the first two words in the reference will be affected. To address this issue,
+# we can remove a word in the target repeatedly until the situation is getting
+# worse.
 
 
 ############################################
@@ -634,258 +655,3 @@ def test_levenshtein_seg_fast_head_3s1w():
         [[1, 1], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [1, 1], [1, 1], [1, 0]]
 # Note               ^       ^
 
-
-# Single insertation to the source case (only one prefix drift):
-
-# s = "A B   D E   G H I".split()
-# t = "A B C D E F G H I".split()
-#
-# s\t j   A   B   C   D   E   F   G   H   I
-# i   0+| 1   2 | 3 | 4   5 | 6 | 7   8   9
-#    ---|-------|---|-------|---|-----------
-# A   1 | 0-  1 | 2 | 3   4 | 5 | 6   7   8
-# B   2 | 1   0+| 1*| 2   3 | 4 | 5   6   7
-#    ---|-------|---|-------|---|-----------
-# D   3 | 2   1 | 1 | 1-  2 | 3 | 4   5   6
-# E   4 | 3   2 | 2 | 2   1+| 2*| 3   4   5
-#    ---|-------|---|-------|---|-----------
-# G   5 | 4   3 | 3 | 3   2 | 2 | 2-  3   4
-# H   6 | 5   4 | 4 | 4   3 | 3 | 3   2   3
-# I   7 | 6   5 | 5 | 5   4 | 4 | 4   3   2+
-
-s2 = "A B   D E   G H I".split()
-t2 = "A B C D E F G H I".split()
-
-def test_levenshtein_seg_fast_head_2():
-    """Test word-level Levenshtein distance using seg-based approach."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 7]]
-    assert levenshtein_seg_fast(s2, t2, segs, head=True) == \
-        [[1, 0], [1, 0], [1, 1], [1, 0], [3, 1]]
-
-def test_levenshtein_word_fast_2():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_fast(s2, t2) == \
-        [["A", 0], ["B", 0], ["D", 1],
-         ["E", 0], ["G", 1], ["H", 0],
-         ["I", 0]]
-
-def test_levenshtein_word_2():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s2, t2) == \
-        [["A", 0], ["B", 1], ["D", 1],
-         ["E", 1], ["G", 1], ["H", 0],
-         ["I", 0]]
-
-
-# Another single insertation to the source case (only one prefix drift):
-
-# s = "  B C D E   G H I".split()
-# t = "A B C D E F G H I J".split()
-#
-# s\t j   A   B   C   D   E   F   G   H   I   J
-# i   0   1   2   3   4   5   6   7   8   9  10
-# B   1   1   1   2   3   4   5   6   7   8   9
-# C   2   2   2   1   2   3   4   5   6   7   8
-# D   3   3   3   2   1   2   3   4   5   6   7
-# E   4   4   4   3   2   1   2   3   4   5   6
-# G   5   5   5   4   3   2   2   2   3   4   5
-# H   6   6   6   5   4   3   3   3   2   3   4
-# I   7   7   7   6   5   4   4   4   3   2   3
-
-s3 = "  B C D E   G H I".split()
-t3 = "A B C D E F G H I".split()
-
-def test_levenshtein_seg_fast_head_3b():
-    """Test word-level Levenshtein distance using seg-based approach."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 7]]
-    assert levenshtein_seg_fast(s3, t3, segs, head=True) == \
-        [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1], [2, 0]]
-
-def test_levenshtein_word_fast_3():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_fast(s3, t3) == \
-        [["B", 1], ["C", 0], ["D", 0],
-         ["E", 0], ["G", 1], ["H", 0],
-         ["I", 0]]
-
-# NOTE: No issues with single-insertions.
-
-def test_levenshtein_word_3():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s3, t3) == \
-        [["B", 2], ["C", 0], ["D", 0],
-         ["E", 1], ["G", 1], ["H", 0],
-         ["I", 0]]
-
-# Multiple-insertation to the source case (2+ prefix drifts):
-
-# s = "    C D E     H I".split()
-# t = "A B C D E F G H I".split()
-#
-# s\t j   A   B   C   D   E   F   G   H   I
-# i   0+| 1   2*| 3   4   5 | 6   7 | 8   9
-#    ---------------------------------------
-# C   1 | 1-  2 | 2-  3   4 | 5   6 | 7   8
-# D   2 | 2   2 | 3   2   3 | 4   5 | 6   7
-# E   3 | 3   3 | 3   3   2+| 3   4*| 5   6
-#    ---------------------------------------
-# H   4 | 4   4 | 4   4   3 | 3-  4 | 4-  5
-# I   5 | 5   5 | 5   5   4 | 4   4 | 5   4+
-
-s4 = "    C D E     H I".split()
-t4 = "A B C D E F G H I".split()
-
-def test_levenshtein_seg_fast_head_4():
-    """Test word-level Levenshtein distance using seg-based approach."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
-    # print(f"{levenshtein_n_seg_size(s4, t4, segs, head=True) = }")
-    assert levenshtein_seg_fast(s4, t4, segs, head=True) == \
-        [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
-
-def test_levenshtein_word_fast_4():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_fast(s4, t4) == \
-        [["C", 1], ["D", 1], ["E", 0],
-         ["H", 1], ["I", 1]]
-
-# NOTE: If we have 2+ consecutive prefix hallucination words,
-# the first two words in the reference will be affected. To address this issue,
-# we can remove a word in the target repeatedly until the situation is getting
-# worse.
-
-def test_levenshtein_word_4():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s4, t4) == \
-        [["C", 4], ["D", 0], ["E", 2],
-         ["H", 2], ["I", 0]]
-
-
-s4a = "  C D E       H I".split()
-t4a = "B C D E F G A H I".split()
-
-# NOTE: If we have 2+ consecutive prefix hallucination words,
-# the first two words in the reference will be affected. To address this issue,
-# we can remove a word in the target repeatedly until the situation is getting
-# worse.
-
-def test_levenshtein_word_4a():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s4a, t4a) == \
-        [["C", 2], ["D", 0], ["E", 3],
-         ["H", 3], ["I", 0]]
-
-
-
-# 2+ deletion from the source case:
-
-# s = "A B C D E F G H".split()
-# t = "    C D E     H I".split()
-#
-# s\t j   C   D   E   H   I
-# i   0   1   2   3   4   5
-# A   1   1   2   3   4   5
-# B   2   2   2   3   4   5
-# C   3   2   3   3   4   5
-# D   4   3   2   3   4   5
-# E   5   4   3   2   3   4
-#    -----------------------
-# F   6   5   4   3   3   4
-# G   7   6   5   4   4   4
-# H   8   7   6   5   4   5
-
-s5 = "A B C D E F G H".split()
-t5 = "    C D E     H I".split()
-
-def test_levenshtein_seg_fast_head_5():
-    """Test word-level Levenshtein distance using seg-based approach."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 8]]
-    assert levenshtein_seg_fast(s5, t5, segs, head=True) == \
-        [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [3, 2]]
-
-def test_levenshtein_word_fast_5():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_fast(s5, t5) == \
-        [["A", 1], ["B", 1], ["C", 0],
-         ["D", 0], ["E", 0], ["F", 1],
-         ["G", 1], ["H", 0]]
-
-# NOTE: No issues with processing multiple deletion cases.
-
-def test_levenshtein_word_5():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s5, t5) == \
-        [["A", 2], ["B", 2], ["C", 0],
-         ["D", 0], ["E", 0], ["F", 2],
-         ["G", 2], ["H", 2]]
-
-
-# Multiple substitution cases.
-
-# s = "A B A D E B G J K".split()
-# t = "A B C D E F G H I".split()
-#
-# s\t j   A   B   C   D   E   F   G   H   I
-# i   0+| 1   2   3 | 4   5   6 | 7   8   9
-#    ---|-----------|-----------|-----------
-# A   1 | 0-  1   2 | 3   4   5 | 6   7   8
-# B   2 | 1   0   1 | 2   3   4 | 5   6   7
-# A   3 | 2   1   1+| 2   3   4 | 5   6   7
-#    ---|-----------|-----------|-----------
-# D   4 | 3   2   2 | 1-  2   3 | 4   5   6
-# E   5 | 4   3   3 | 2   1   2 | 3   4   5
-# B   6 | 5   4   4 | 3   2   2+| 3   4   5
-#    ---|-----------|-----------|-----------
-# G   7 | 6   5   5 | 4   3   3 | 2-  3   4
-# J   8 | 7   6   6 | 5   4   4 | 3   3   4
-# K   9 | 8   7   7 | 6   5   5 | 4   4   4+
-
-s6 = "A B A D E B G J K".split()
-t6 = "A B C D E F G H I".split()
-
-def test_levenshtein_seg_fast_head_6():
-    """Test word-level Levenshtein distance using seg-based approach."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 9]]
-    assert levenshtein_seg_fast(s6, t6, segs, head=True) == \
-        [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [3, 2]]
-
-def test_levenshtein_word_fast_6():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_fast(s6, t6) == \
-        [["A", 0], ["B", 0], ["A", 1],
-         ["D", 0], ["E", 0], ["B", 1],
-         ["G", 0], ["J", 1], ["K", 1]]
-
-# NOTE: No issues with processing multiple substitution cases.
-
-def test_levenshtein_word_6():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word(s6, t6) == \
-        [["A", 0], ["B", 0], ["A", 2],
-         ["D", 0], ["E", 0], ["B", 2],
-         ["G", 0], ["J", 2], ["K", 2]]
-
-
-# Mixed substitution and hallucinationi cases.
-
-s7 = "    C D E   A H I".split()
-t7 = "A B C D E F G H I".split()
-
-def test_levenshtein_seg_fast_head_7():
-    """Test word-level Levenshtein distance using seg-based approach."""
-    segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]
-    # print(f"{levenshtein_n_seg_size(s4, t4, segs, head=True) = }")
-    assert levenshtein_seg_fast(s7, t7, segs, head=True) == \
-        [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1], [1, 0]]
-
-def test_levenshtein_word_fast_7():
-    """Test word-level Levenshtein distance using word-based approach."""
-    assert levenshtein_word_fast(s7, t7) == \
-        [["C", 1], ["D", 1], ["E", 0],
-         ["A", 1], ["H", 1], ["I", 0]]
-
-def test_levenshtein_word_7():
-    """Test word-level Levenshtein distance using word-based approach."""
-    print(f"{levenshtein_word(s7, t7) = }")
-    assert levenshtein_word(s7, t7) == \
-        [["C", 4], ["D", 0], ["E", 1],
-         ["A", 3], ["H", 0], ["I", 0]]

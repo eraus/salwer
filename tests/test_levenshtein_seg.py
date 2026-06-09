@@ -416,7 +416,6 @@ def test_levenshtein_seg_fast_head_2s1():
         [[4, 2], [4, 2]]
 
 
-
 ############################################
 # x2d1
 # s2d1 = "A B C D E F G H I".split()

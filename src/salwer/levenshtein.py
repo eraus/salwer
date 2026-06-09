@@ -3,6 +3,7 @@ from typing import List
 # Helper functions
 
 def num_prefix_drift(s: List[str], t: List[str]) -> int:
+    """Find the num of prefix drifts (insertion or hallucination) of s & t."""
     shift = 0
     dist0 = levenshtein(s, t)
     dist1 = levenshtein(s, t[1:])
@@ -14,6 +15,7 @@ def num_prefix_drift(s: List[str], t: List[str]) -> int:
 
 
 def max_ind_of_min(d: List[int]) -> int:
+    """Find the max index of the min value of a list."""
     min_val = min(d)
     ind = [i for i, x in enumerate(d) if x == min_val]
     return max(ind)
@@ -189,9 +191,7 @@ def levenshtein_word(
             rslts[b+i][1] += dist
             index4t = max_ind_of_min(d0)
             d0, d1, min_d0 = d1, d0, min_d1
-
             if dist == 0: continue
-
             # Otherwise, check the num of prefix drift
             r = s[i:]           # ref = source
             h = t[index4t:]     # hyp = target
@@ -202,7 +202,6 @@ def levenshtein_word(
                     rslts[b+i][1] += num_shift
                 else:
                     rslts[b+i-1][1] += num_shift
-
                 s = r
                 t = h[num_shift:]
                 m, n = len(s), len(t)
@@ -214,7 +213,6 @@ def levenshtein_word(
                 break
             else:
                 rslts[b+i][1] += 1
-
         if b + i >= m0 - 1:
             num_tail = len(d0) - max_ind_of_min(d0) - 1
             if num_tail:
@@ -442,10 +440,8 @@ def levenshtein_seg_fast(
       - levenshtein_dist between s[start:end] and the correcponding t sequence.
     """
 
-    def base_seg_dist(d0, d1):      # base seg dist w/o prefix drift
-        dist_curr = min(d1)
-        ind = [i for i, x in enumerate(d1) if x == dist_curr]
-        dist_ind = max(ind)
+    def base_seg_dist(d0, d1):      # base seg distance w/o prefix drift
+        dist_ind = max_ind_of_min(d1)
         dist = d0[dist_ind - 1]
         return dist
 
@@ -457,7 +453,6 @@ def levenshtein_seg_fast(
     m, n = len(s), len(t)
     d0 = list(range(n+1))   # prev dist
     d1 = [0] * (n+1)        # curr dist
-
     base_dist = 0           # The base dist of a seg; d1[0]
     rslts = [[0] * 2 for _ in range(len(segs))]
     seg = 0
@@ -471,13 +466,6 @@ def levenshtein_seg_fast(
                 d0[j+1] + 1,  # del of s
                 d1[j] + 1,    # ins to s
             )
-        # if seg < len(segs):
-        #     if segs[seg][0] == i:
-        #         base_dist = base_seg_dist(d0, d1)
-        #     if segs[seg][1] == i + 1:
-        #         rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Seg size
-        #         rslts[seg][1] = min(d1) - base_dist          # Seg dist
-        #         seg += 1
         if seg >= len(segs): break
         if segs[seg][0] == i:
             base_dist = base_seg_dist(d0, d1)
@@ -537,7 +525,6 @@ def levenshtein_seg(
                     d1[j] + 1,    # ins to s
                 )
             if seg >= l_segs: return rslts
-
             if segs[seg][0] == b + i:
                 # Check the num of prefix drift
                 index4t = max_ind_of_min(d0)
@@ -561,9 +548,7 @@ def levenshtein_seg(
                 if head: rslts[seg][1] += pre_drift          # Seg dist
                 pre_drift = 0
                 seg += 1
-
             d0, d1 = d1, d0
-
         if b + i >= m0 - 1: break
 
     return rslts
