@@ -99,7 +99,8 @@ def levenshtein_word_fast(
     This function calculates the word-level levenshtein distance. The meaning
     of raw is two fold:
 
-    1. The errors (distance being one for a word) are not examined for reasons.
+    1. The errors (distance being one for a word) are not examined for type,
+            which is substitution/delete/insertion.
     2. The error due to a hallucination is only considered as prefix drift.
 
     Args:
@@ -145,7 +146,7 @@ def levenshtein_word(
     is multi-fold:
 
     1. Each error (Levenshtein dist being 1 for a word) is tested to see if
-       it is a prefix hallucination.
+       it is an insertion (prefix drift or hallucination).
     2. If tested as a prefix hallucination, it is split to by the two words
        on the two sides of the hallucination.
     3. If the word is at the beginning of the source, all prefix hallucinations
@@ -154,7 +155,7 @@ def levenshtein_word(
        will be on this word.
 
     Note that due to the splitting of error, we need to DOUBLE the value of
-    the levenshtein distance for easy processing and testing.
+    the Levenshtein distance for easy processing and testing.
 
     Args:
         s: Reference sequence as list of strings.
