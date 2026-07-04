@@ -1,0 +1,975 @@
+stm: 4>NO>NO
+tim: 0
+txt: {'file_level_comment': 'see the cmt field'}
+cns: position was apparently combined with dr1 high; several aircraft transmitting on another frequency; position was later decombined; controller changes; position worked departures off andrews afb, and davison army airfield as well as national; due to proximity of dulles and baltimore, most departures were transferred to one of these facilities rather than being changed to the center as in previous facilities
+
+stm: 3>D1-2>NWA347
+tim: 3011130
+txt: Northwest Three Four Seven, give me a tops report.
+cns: (3) [(A) Northwest Three Four Seven] [(J) give me a tops report]
+
+stm: 1>NWA347>D1-2
+tim: 3015420
+txt: Okay, it is layered out here, we are just entering the second layer now, and it is sixty five. I'd imagine the tops right about eight thousand.
+cns: (4) [(D) Okay] [(E) it is layered out here] [(E) we are just entering the second layer now and it is sixty five] [(E) I'd imagine the tops right about eight thousand]
+
+stm: 1>D1-2>NWA347
+tim: 3023000
+txt: Okay, just let me know when you break out on top, if you do.
+cns: (3) [(D) Okay] [(F) just let me know when you break out on top, if you do]
+
+stm: 1>D1-2>NWA347
+tim: 3049560
+txt: Northwest Three Four Seven, turn left heading three zero five.
+cns: (1) [(A) Northwest Three Four Seven] [(B4) turn left heading] [(C4) three zero five]
+
+stm: 1>NWA347>D1-2
+tim: 3052260
+txt: Three zero five, Northwest Three Forty Seven.
+cns: (2) [(C4) Three zero five] [(A) Northwest Three Forty Seven]
+
+stm: 1>NWA347>D1-2
+tim: 3060120
+txt: The second layer tops out about seventy five, there is another layer we are entering now about ten thousand.
+cns: (4) [(E) The second layer tops out about seventy five] [(E) there is another layer we are entering now about ten thousand.]
+
+stm: 1>D1-2>NWA347
+tim: 3067310
+txt: Roger.
+cns: (3) [(D) Roger]
+
+stm: 2>UAL619>D1-2
+tim: 3068530
+txt: Departure, United Six Nineteen, we are out of one for five.
+cns: (4) [(G) Departure] [(A) United Six Nineteen] [(E) we are out of one for five]
+
+stm: 1>D1-2>UAL619
+tim: 3071580
+txt: United Six Nineteen, Washington Departure, radar contact, climb maintain one seven thousand.
+cns: (1) [(A) United Six Nineteen] [(G) Washington Departure] [(D) radar contact] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>UAL619>D1-2
+tim: 3076270
+txt: One seven thousand, United Six Nineteen.
+cns: (2) [(C2) One seven thousand] [(A) United Six Nineteen]
+
+stm: 1>D1-2>NWA347
+tim: 3141780
+txt: Northwest Three Forty Seven, contact Dulles Departure one one eight point four seven.
+cns: (1) [(A) Northwest Three Forty Seven] [(B3) contact] [(G) Dulles Departure] [(C3) one one eight point four seven]
+
+stm: 3>NWA347>D1-2
+tim: 3145830
+txt: Eighteen forty seven, and pretty much scattered layers up here, we just topped at out about thirteen.
+cns: (2) [(C3) Eighteen forty seven] [(E) and pretty much scattered layers up here] [(E) we just topped at out about thirteen]
+
+stm: 2>D1-2>NWA347
+tim: 3152690
+txt: Another layer above you?
+cns: (3) [(J) Another layer above you?]
+
+stm: 1>NWA347>D1-2
+tim: 3154180
+txt: Yes, they are very thin.
+cns: (4) [(D) Yes] [(E) they are very thin]
+
+stm: 3>D1-2>NWA347
+tim: 3155500
+txt: Okie doke, see you.
+cns: (3) [(D) Okie doke] [(I) see you]
+
+stm: 1>D1-2>UAL619
+tim: 3199400
+txt: United Six Nineteen, turn left heading two seven zero.
+cns: (1) [(A) United Six Nineteen] [(B4) turn left heading] [(C4) two seven zero]
+
+stm: 4>UAL619>D1-2
+tim: 3201990
+txt: Two seventy heading, Six Nineteen.
+cns: (2) [(C4) Two seventy] [(B4) heading] [(A) Six Nineteen]
+
+stm: 1>D1-2>UAL619
+tim: 3236410
+txt: United Six Nineteen, turn left heading two one zero, expect on course when you leave eleven thousand.
+cns: (1) [(A) United Six Nineteen] [(B4) turn left heading] [(C4) two one zero] [(E) expect on course [(F) when you leave eleven thousand]]
+
+stm: 3>UAL619>D1-2
+tim: 3240790
+txt: Okay two ten heading for United Six Nineteen.
+cns: (2) [(D) Okay] [(C4) two ten] [(B4) heading] [(A) United Six Nineteen]
+
+stm: 2>N5CF>D1-2
+tim: 3291490
+txt: Good afternoon, Departure, King Air Seven Five Charlie Fox is with you, we are passing niner hundred, vector heading three two zero.
+cns: (4) [(I) Good afternoon] [(G) Departure] [(A) King Air Seven Five Charlie Fox] [(E) is with you] [(E) we are passing niner hundred, vector heading three two zero]
+
+stm: 1>D1-2>N5CF
+tim: 3296730
+txt: King Air Seven Five Charlie Foxtrot, radar contact, maintain four thousand, proceed RNAV direct to HAFNER, direct to GORDONSVILLE, and resume your own navigation.
+cns: (1) [(A) King Air Seven Five Charlie Foxtrot] [(D) radar contact] [(B2) maintain] [(C2) four thousand] [(E) proceed RNAV direct to [(H) HAFNER]] [(E) direct to [(H) GORDONSVILLE]] [(E) and resume your own navigation]
+
+stm: 1>N5CF>D1-2
+tim: 3306340
+txt: Okay, what was that intersection again, sir?
+cns: (4) [(D) Okay] [(J) what was that intersection again, sir]
+
+stm: 1>D1-2>N5CF
+tim: 3308200
+txt: HAFNER, it will be the GORDON zero, GORDONSVILLE zero five six zero three six, direct GORDONSVILLE, and resume your own navigation.
+cns: (3) [(H) HAFNER] [(E) it will be the GORDON zero [(H) GORDONSVILLE] zero five six zero three six] [(E) direct [(H) GORDONSVILLE]] [(E) and resume your own navigation]
+
+stm: 2>N5CF>D1-2
+tim: 3313860
+txt: Charlie Fox, roger, thank you.
+cns: (4) [(A) Charlie Fox] [(D) roger] [(I) thank you]
+
+stm: 1>D1-2>UAL619
+tim: 3318800
+txt: United Six Nineteen, turn right heading two niner five, join J one forty nine, resume your own navigation.
+cns: (1) [(A) United Six Nineteen] [(B4) turn right heading] [(C4) two niner five] [(E) join [(H) J one forty nine]] [(E) resume your own navigation]
+
+stm: 2>UAL619>D1-2
+tim: 3324010
+txt: Two ninety five, join J one four nine as filed, United Six Nineteen.
+cns: (2) [(C4) Two ninety five] [(E) join [(H) J one four nine]] [(E) as filed] [(A) United Six Nineteen]
+
+stm: 1>D1-2>UAL619
+tim: 3327350
+txt: United Six Nineteen, contact Dulles Departure one three four point two.
+cns: (1) [(A) United Six Nineteen] [(B3) contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 2>UAL619>D1-2
+tim: 3331230
+txt: Thirty four two, good day, United Six Nineteen.
+cns: (2) [(C3) Thirty four two] [(I) good day] [(A) United Six Nineteen]
+
+stm: 3>D1-2>UAL619
+tim: 3333050
+txt: Good day.
+cns: (3) [(I) Good day]
+
+stm: 2>D1-2>N5CF
+tim: 3350190
+txt: King Air Five Charlie Foxtrot, expect climb in about seven miles.
+cns: (3) [(A) King Air Five Charlie Foxtrot] [(E) expect climb in about seven miles]
+
+stm: 1>N5CF>D1-2
+tim: 3353220
+txt: Charlie Fox, roger.
+cns: (4) [(A) Charlie Fox] [(D) roger]
+
+stm: 2>USA211>D1-2
+tim: 3393510
+txt: Departure, USAir Two Eleven, we are out of a thousand now for five thousand.
+cns: (4) [(G) Departure] [(A) USAir Two Eleven] [(E) we are out of a thousand now for five thousand]
+
+stm: 1>D1-2>USA211
+tim: 3396860
+txt: USAir Two Eleven, Washington Departure, radar contact, climb maintain one seven thousand.
+cns: (1) [(A) USAir Two Eleven] [(G) Washington Departure] [(D) radar contact] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>USA211>D1-2
+tim: 3402090
+txt: One seven thousand, USAir Two Eleven.
+cns: (2) [(C2) One seven thousand] [(A) USAir Two Eleven]
+
+stm: 2>D1-2>N5CF
+tim: 3439730
+txt: King Air Five Charlie Foxtrot, what is your heading?
+cns: (3) [(A) King Air Five Charlie Foxtrot] [(J) what is your heading]
+
+stm: 1>N5CF>D1-2
+tim: 3443140
+txt: Two forty.
+cns: (4) [(E) Two forty]
+
+stm: 2>D1-2>N5CF
+tim: 3448960
+txt: it looks like you might be tracking a little bit north of HAFNER, fly heading two two three, and let us look at that for a minute.
+cns: (1) [(E) it looks like you might be tracking a little bit north of [(H) HAFNER]] [(B4) fly heading] [(C4) two two three] [(E) and let us look at that for a minute]
+
+stm: 2>N5CF>D1-2
+tim: 3454010
+txt: Okay, two two three, and we are looking for that, sir, and I ca not. Is it on low altitude or is it only on departure?
+cns: (2) [(D) Okay] [(C4) two two three] [(E) and we are looking for that, sir, and I ca not] [(E) Is it on low altitude or is it only on departure]
+
+stm: 4>D1-2>N5CF
+tim: 3459100
+txt: It would be probably low altitude chart, but I do not know if you got it or not. It is that new thing when they put in the new ~ down here, the GORDONSVILLE zero five six zero three six called HAFNER.
+cns: (3) [(E) It would be probably low altitude chart, but I do not know if you got it or not.] [(J) It is that new thing when they put in the new ~ down here] [(E) the [(H) GORDONSVILLE] zero five six zero three six called [(H) HAFNER]]
+
+stm: 1>N5CF>D1-2
+tim: 3468420
+txt: All right sir, we have got that in, and that is where we are going.
+cns: (4) [(I) All right sir] [(E) we have got that in and that is where we are going]
+
+stm: 2>D1-2>USA211
+tim: 3471260
+txt: USAir Two Eleven, turn your transponder on, squawk six five one five, you are radar contact, six northwest of National.
+cns: (1) [(A) USAir Two Eleven] [(E) turn your transponder on] [(B6) squawk] [(C6) six five one five] [(D) you are radar contact] [(E) six northwest of [(G) National]]
+
+stm: 3>USA211>D1-2
+tim: 3478960
+txt: I got it on, you want us to try the other one.
+cns: (4) [(E) I got it on] [(E) you want us to try the other one]
+
+stm: 1>D1-2>USA211
+tim: 3481310
+txt: I guess so, it is not working.
+cns: (3) [(D) I guess so] [(E) it is not working.]
+
+stm: 2>USA211>D1-2
+tim: 3485980
+txt: How is that?
+cns: (4) [(J) How is that?]
+
+stm: 1>D1-2>USA211
+tim: 3487620
+txt: let me see, wait till the electrons start racing around inside it.
+cns: (3) [(J) let me see] [(E) wait till the electrons start racing around inside it]
+
+stm: 1>D1-2>USA211
+tim: 3492770
+txt: Leaving fifty five hundred?
+cns: (3) [(E) Leaving fifty five hundred]
+
+stm: 1>USA211>D1-2
+tim: 3494410
+txt: That is it.
+cns: (4) [(E) That is it]
+
+stm: 1>D1-2>USA211
+tim: 3495240
+txt: That works now, USAir Two Eleven.
+cns: (3) [(E) That works now] [(A) USAir Two Eleven]
+
+stm: 1>D1-2>N5CF
+tim: 3502290
+txt: King Air Five Charlie Foxtrot, climb maintain niner thousand, expedite your climb, contact Departure one two one point zero five.
+cns: (1) [(A) King Air Five Charlie Foxtrot] [(B2) climb maintain] [(C2) niner thousand] [(E) expedite your climb] [(B3) contact] [(G) Departure] [(C3) one two one point zero five]
+
+stm: 2>N5CF>D1-2
+tim: 3509240
+txt: Twenty one zero five, expediting to niner thousand, Seven Five Charlie Fox, good day now.
+cns: (2) [(C3) Twenty one zero five] [(B2) expediting to] [(C2) niner thousand] [(A) Seven Five Charlie Fox] [(I) good day now]
+
+stm: 1>D1-2>USA211
+tim: 3536270
+txt: USAir Two Eleven, turn left, heading two three zero, expect on course in twelve miles.
+cns: (1) [(A) USAir Two Eleven] [(B4) turn left heading] [(C4) two three zero] [(E) expect on course in twelve miles]
+
+stm: 1>USA211>D1-2
+tim: 3541460
+txt: Two thirty the heading, USAir Two Eleven.
+cns: (2) [(C4) Two thirty] [(J) the heading] [(A) USAir Two Eleven]
+
+stm: 1>D1-2>USA211
+tim: 3644900
+txt: USAir Two Eleven, turn right direct to LINDEN, resume your own navigation.
+cns: (3) [(A) USAir Two Eleven] [(E) turn right direct to [(H) LINDEN]] [(E) resume your own navigation]
+
+stm: 1>USA211>D1-2
+tim: 3648540
+txt: Direct to LINDEN now, USAir Two Eleven.
+cns: (4) [(E) Direct to [(H) LINDEN] now] [(A) USAir Two Eleven]
+
+stm: 1>D1-2>USA211
+tim: 3663170
+txt: USAir Two Eleven, contact Dulles Departure one three four point two.
+cns: (1) [(A) USAir Two Eleven] [(B3) contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 2>USA211>D1-2
+tim: 3666780
+txt: Talk to you another day.
+cns: (4) [(J) Talk to you another day]
+
+stm: 1>D1-2>USA211
+tim: 3668470
+txt: See you.
+cns: (3) [(I) See you]
+
+stm: 1>AAL393>D1-2
+tim: 3671530
+txt: Departure, American Three Ninety Three is about to leave a thousand for five.
+cns: (4) [(G) Departure] [(A) American Three Ninety Three] [(E) is about to leave a thousand for five]
+
+stm: 1>D1-2>AAL393
+tim: 3675890
+txt: American Three Nine Three, Washington Departure, radar contact, climb maintain one seven thousand.
+cns: (1) [(A) American Three Nine Three] [(G) Washington Departure] [(D) radar contact] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>AAL393>D1-2
+tim: 3680450
+txt: Maintain one seven thousand, American Three Ninety Three.
+cns: (2) [(B2) Maintain] [(C2) one seven thousand] [(A) American Three Ninety Three]
+
+stm: 1>D1-2>AAL393
+tim: 3808100
+txt: American Three Nine Three, turn left heading two seven zero, expect southbound in three miles.
+cns: (1) [(A) American Three Nine Three] [(B4) turn left heading] [(C4) two seven zero] [(E) expect southbound in three miles]
+
+stm: 1>AAL393>D1-2
+tim: 3812530
+txt: Heading two seven zero, American Three Ninety Three.
+cns: (2) [(B4) Heading] [(C4) two seven zero] [(A) American Three Ninety Three]
+
+stm: 1>D1-2>AAL393
+tim: 3861060
+txt: American Three Ninety Three, turn left heading one niner zero, expect on course in ten miles.
+cns: (1) [(A) American Three Ninety Three] [(B4) turn left heading] [(C4) one niner zero] [(E) expect on course in ten miles]
+
+stm: 1>AAL393>D1-2
+tim: 3865430
+txt: One ninety heading, American Three Ninety Three.
+cns: (2) [(C4) One ninety] [(B4) heading] [(A) American Three Ninety Three]
+
+stm: 1>D1-2>AAL393
+tim: 3946300
+txt: American Three Ninety Three, turn right heading two niner zero, join J one forty nine, resume your own navigation.
+cns: (1) [(A) American Three Ninety Three] [(B4) turn right heading] [(C4) two niner zero] [(E) join [(H) J one forty nine]] [(E) resume your own navigation]
+
+stm: 1>AAL393>D1-2
+tim: 3950890
+txt: Two nine zero, join J one forty nine, normal nav, American Three Ninety Three.
+cns: (2) [(C4) Two nine zero] [(E) join [(H) J one forty nine]] [(E) normal nav] [(A) American Three Ninety Three]
+
+stm: 1>D1-2>AAL393
+tim: 3955410
+txt: American Three Nine Three, contact Dulles Departure one three four point two.
+cns: (1) [(A) American Three Nine Three] [(B3) contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 2>AAL393>D1-2
+tim: 3960090
+txt: Thirty four two, American Three Ninety Three, good day.
+cns: (2) [(C3) Thirty four two] [(A) American Three Ninety Three] [(I) good day]
+
+stm: 1>AWE479>D1-2
+tim: 3993070
+txt: Departure, Cactus Four Seventy Nine is one thousand three hundred for five thousand.
+cns: (4) [(G) Departure] [(A) Cactus Four Seventy Nine] [(E) is one thousand three hundred for five thousand]
+
+stm: 1>D1-2>AWE479
+tim: 3998800
+txt: Cactus Four Seventy Nine, Washington Departure, radar contact, climb maintain one seven thousand.
+cns: (1) [(A) Cactus Four Seventy Nine] [(G) Washington Departure] [(D) radar contact] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>AWE479>D1-2
+tim: 4004330
+txt: Cactus Four Seventy Nine, one seven thousand.
+cns: (2) [(A) Cactus Four Seventy Nine] [(C2) one seven thousand]
+
+stm: 2>PACER81>D1-2
+tim: 4031200
+txt: Departure Control, Pacer Eight One is passing one thousand five hundred for three thousand.
+cns: (4) [(G) Departure Control] [(A) Pacer Eight One] [(E) is passing one thousand five hundred for three thousand]
+
+stm: 1>D1-2>PACER81
+tim: 4035100
+txt: Pacer Eight One, radar contact.
+cns: (3) [(A) Pacer Eight One] [(D) radar contact]
+
+stm: 2>VJB738>D1-2
+tim: 4060540
+txt: Washington, Juliet Bravo Seven Three Eight is with you, climbing to.
+cns: (4) [(G) Washington] [(A) Juliet Bravo Seven Three Eight] [(E) is with you] [(J) climbing to]
+
+stm: 1>VJB738>D1-2
+tim: 4066920
+txt: Climbing to one two thousand, and flying heading two niner zero.
+cns: (2) [(B2) Climbing to] [(C2) one two thousand] [(B4) flying heading] [(C4) two niner zero]
+
+stm: 2>D1-2>VJB738
+tim: 4071410
+txt: Navy Juliet Bravo Seven Three Eight, join J one forty nine. Let us see what you got here, ARMEL, J three twenty. I do not know if Baltimore will buy that. We will find out in a little bit. Dulles might take you. Climb maintain one seven thousand, Navy Seven Three Eight.
+cns: (1) [(A) Navy Juliet Bravo Seven Three Eight] [(E) join [(H) J one forty nine]] [(E) Let us see what you got here, [(H) ARMEL], [(H) J three twenty]] [(E) I do not know if [(G) Baltimore] will buy that] [(E) We will find out in a little bit] [(E) [(G) Dulles] might take you] [(B2) Climb maintain] [(C2) one seven thousand] [(A) Navy Seven Three Eight]
+
+stm: 1>VJB738>D1-2
+tim: 4084300
+txt: Okay, Seven Three Eight, will continue up to one seven thousand.
+cns: (2) [(D) Okay] [(A) Seven Three Eight] [(D) will continue] [(B2) up to] [(C2) one seven thousand]
+
+stm: 1>D1-2>R16851
+tim: 4126060
+txt: Army One Six Eight Five One, radar contact, maintain two thousand, fly heading three six zero.
+cns: (1) [(A) Army One Six Eight Five One] [(D) radar contact] [(B2) maintain] [(C2) two thousand] [(B4) fly heading] [(C4) three six zero]
+
+stm: 1>D1-2>PACER81
+tim: 4133920
+txt: Pacer Eight One, climb maintain four thousand.
+cns: (1) [(A) Pacer Eight One] [(B2) climb maintain] [(C2) four thousand]
+
+stm: 2>PACER81>D1-2
+tim: 4136620
+txt: Pacer Eight One out of three for four thousand.
+cns: (2) [(A) Pacer Eight One] [(E) out of three for] [(C2) four thousand]
+
+stm: 1>D1-2>AWE479
+tim: 4140480
+txt: Cactus Four Seven Nine, turn left heading one niner zero.
+cns: (1) [(A) Cactus Four Seven Nine] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 2>AWE479>D1-2
+tim: 4143630
+txt: Four Seventy Nine, left one niner zero.
+cns: (2) [(A) Four Seventy Nine] [(B4) left] [(C4) one niner zero]
+
+stm: 1>D1-2>VJB738
+tim: 4148170
+txt: Navy Seven Three Eight, fly heading three three zero.
+cns: (1) [(A) Navy Seven Three Eight] [(B4) fly heading] [(C4) three three zero]
+
+stm: 2>VJB738>D1-2
+tim: 4150840
+txt: Okay Seven Three Eight, three three zero for the heading.
+cns: (2) [(D) Okay] [(A) Seven Three Eight] [(C4) three three zero] [(B4) for the heading]
+
+stm: 1>D1-2>R16851
+tim: 4156730
+txt: Army Eight Five One, maintain two thousand. You are radar contact, two northwest of Davison, fly heading three six zero.
+cns: (1) [(A) Army Eight Five One] [(B2) maintain] [(C2) two thousand] [(D) radar contact] [(E) two northwest of Davison] [(B4) fly heading] [(C4) three six zero]
+
+stm: 1>D1-2>PACER81
+tim: 4187840
+txt: Pacer Eight One, turn left heading two five zero.
+cns: (1) [(A) Pacer Eight One] [(B4) turn left heading] [(C4) two five zero]
+
+stm: 1>PACER81>D1-2
+tim: 4190570
+txt: Two five zero, Pacer Eight One.
+cns: (2) [(C4) Two five zero] [(A) Pacer Eight One]
+
+stm: 1>D1-2>HNA4386
+tim: 4195850
+txt: Henson Forty Three Eighty Six, you up.
+cns: (3) [(A) Henson Forty Three Eighty Six] [(E) you up]
+
+stm: 1>HNA4386>D1-2
+tim: 4203640
+txt: Washington Departure, good afternoon, Henson Forty Three Eighty Six is with you, out of one thousand climbing to two, assigned heading two eight zero.
+cns: (4) [(G) Washington Departure] [(I) good afternoon] [(A) Henson Forty Three Eighty Six] [(E) is with you] [(E) out of one thousand climbing to two] [(E) assigned heading two eight zero]
+
+stm: 2>D1-2>HNA4386
+tim: 4209640
+txt: Henson Forty Three Eighty Six, radar contact, climb maintain four thousand, your best rate of climb to four thousand for traffic.
+cns: (1) [(A) Henson Forty Three Eighty Six] [(D) radar contact] [(B2) climb maintain] [(C2) four thousand] [(E) your best rate of climb to four thousand for traffic]
+
+stm: 1>HNA4386>D1-2
+tim: 4214810
+txt: Forty Three Eighty Six, best rate up to four thousand.
+cns: (2) [(A) Forty Three Eighty Six] [(E) best rate] [(B2) up to] [(C2) four thousand]
+
+stm: 1>D1-2>PACER81
+tim: 4239680
+txt: Pacer Eight One, turn left heading of one niner zero, contact Departure one two one point zero five.
+cns: (1) [(A) Pacer Eight One] [(B4) turn left heading of] [(C4) one niner zero] [(B3) contact] [(G) Departure] [(C3) one two one point zero five]
+
+stm: 2>PACER81>D1-2
+tim: 4245280
+txt: One two one zero five, and left turn one nine zero, Pacer Eight One.
+cns: (2) [(C3) One two one zero five] [(B4) left turn] [(C4) one nine zero] [(A) Pacer Eight One]
+
+stm: 1>D1-2>DAL349
+tim: 4250140
+txt: Delta Three Forty Nine, radar contact, climb maintain niner thousand.
+cns: (1) [(A) Delta Three Forty Nine] [(D) radar contact] [(B2) climb maintain] [(C2) niner thousand]
+
+stm: 1>DAL349>D1-2
+tim: 4254040
+txt: Delta Three Forty Nine, climbing up to niner thousand.
+cns: (2) [(A) Delta Three Forty Nine] [(B2) climbing up to] [(C2) niner thousand]
+
+stm: 1>D1-2>AWE479
+tim: 4257790
+txt: Cactus Four Seventy Nine, turn right heading two nine zero, join J one forty nine, resume your own navigation. Contact Dulles Departure one three four point two.
+cns: (1) [(A) Cactus Four Seventy Nine] [(B4) turn right heading] [(C4) two nine zero] [(E) join [(H) J one forty nine]] [(E) resume your own navigation] [(B3) Contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 1>AWE479>D1-2
+tim: 4265110
+txt: Cactus Four Seventy Nine, right turn heading two niner zero to join the Jetway, own navigation, one three four two.
+cns: (2) [(A) Cactus Four Seventy Nine] [(B4) right turn heading] [(C4) two niner zero] [(E) to join the [(H) Jetway]] [(E) own navigation] [(C3) one three four two]
+
+stm: 1>D1-2>R16851
+tim: 4277680
+txt: Army Eight Five One, turn right heading zero five zero.
+cns: (1) [(A) Army Eight Five One] [(B4) turn right heading] [(C4) zero five zero]
+
+stm: 2>D1-2>R16851
+tim: 4284270
+txt: Army Eight Five One, climb maintain three thousand. Traffic will be opposite direction four thousand, a Dash Eight.
+cns: (1) [(A) Army Eight Five One] [(B2) climb maintain] [(C2) three thousand] [(E) Traffic will be opposite direction four thousand, a Dash Eight]
+
+stm: 1>D1-2>HNA4386
+tim: 4291390
+txt: Henson Forty Three Eighty Six, turn left heading two four zero.
+cns: (1) [(A) Henson Forty Three Eighty Six] [(B4) turn left heading] [(C4) two four zero]
+
+stm: 1>HNA4386>D1-2
+tim: 4294230
+txt: Forty Three Eighty Six, left two four zero.
+cns: (2) [(A) Forty Three Eighty Six] [(B4) left] [(C4) two four zero]
+
+stm: 1>D1-2>VJB738
+tim: 4297390
+txt: Navy Seven Three Eight, fly heading three zero five.
+cns: (1) [(A) Navy Seven Three Eight] [(B4) fly heading] [(C4) three zero five]
+
+stm: 2>VJB738>D1-2
+tim: 4300240
+txt: Three zero five for Seven Three Eight.
+cns: (2) [(C4) Three zero five] [(J) for] [(A) Seven Three Eight]
+
+stm: 1>D1-2>DAL349
+tim: 4341900
+txt: Delta Three Forty Nine, turn left heading two seven zero, climb maintain one five thousand.
+cns: (1) [(A) Delta Three Forty Nine] [(B4) turn left heading] [(C4) two seven zero] [(B2) climb maintain] [(C2) one five thousand]
+
+stm: 1>DAL349>D1-2
+tim: 4346610
+txt: Delta Three Forty Nine, left to two seven zero, climbing up to one five thousand.
+cns: (2) [(A) Delta Three Forty Nine] [(B4) left to] [(C4) two seven zero] [(B2) climbing up to] [(C2) one five thousand]
+
+stm: 1>D1-2>HNA4386
+tim: 4352200
+txt: Henson Forty Three Eighty Six, turn left heading one niner zero, vector for your climb, climb maintain niner thousand.
+cns: (1) [(A) Henson Forty Three Eighty Six] [(B4) turn left heading] [(C4) one niner zero] [(E) vector for your climb] [(B2) climb maintain] [(C2) niner thousand]
+
+stm: 1>HNA4386>D1-2
+tim: 4356770
+txt: Forty Three Eighty Six, left one niner zero, and we are out of four up to niner thousand.
+cns: (2) [(A) Forty Three Eighty Six] [(B4) left] [(C4) one niner zero] [(E) and we are out of four] [(B2) up to] [(C2) niner thousand]
+
+stm: 1>D1-2>R16851
+tim: 4388250
+txt: Army Eight Five One, climb maintain four thousand.
+cns: (1) [(A) Army Eight Five One] [(B2) climb maintain] [(C2) four thousand]
+
+stm: 1>D1-2>DAL349
+tim: 4398410
+txt: Delta Three Forty Nine, turn left heading two three zero, expect on course ten miles.
+cns: (1) [(A) Delta Three Forty Nine] [(B4) turn left heading] [(C4) two three zero] [(E) expect on course ten miles]
+
+stm: 1>DAL349>D1-2
+tim: 4403620
+txt: Delta Three Forty Nine, left to two three zero.
+cns: (2) [(A) Delta Three Forty Nine] [(B4) left to] [(C4) two three zero]
+
+stm: 1>D1-2>HNA4386
+tim: 4409350
+txt: Henson Forty Three Eighty Six, turn right heading two two zero, and contact Departure on frequency one two one point zero five.
+cns: (1) [(A) Henson Forty Three Eighty Six] [(B4) turn right heading] [(C4) two two zero] [(B3) contact [(G) Departure] on frequency] [(C3) one two one point zero five]
+
+stm: 1>HNA4386>D1-2
+tim: 4417820
+txt: Frequency one two one zero five, and we are coming right heading two two zero, for Henson Forty Three Eighty Six. Good day sir.
+cns: (2) [(B3) Frequency] [(C3) one two one zero five] [(E) we are coming] [(B4) right heading] [(C4) two two zero] [(A) Henson Forty Three Eighty Six] [(I) Good day sir]
+
+stm: 3>D1-2>HNA4386
+tim: 4423520
+txt: Good day.
+cns: (3) [(I) Good day]
+
+stm: 2>D1-2>VJB738
+tim: 4432900
+txt: Navy Seven Thirty Eight, turn right, an immediate right turn heading one eight zero. Dulles not taking a handoff.
+cns: (1) [(A) Navy Seven Thirty Eight] [(B4) turn right] [(E) an immediate right turn heading] [(C4) one eight zero] [(E) Dulles not taking a handoff]
+
+stm: 1>VJB738>D1-2
+tim: 4437190
+txt: Okay, one eight zero right-hand turn, Seven Three Eight.
+cns: (2) [(D) Okay] [(C4) one eight zero] [(B4) right-hand turn] [(A) Seven Three Eight]
+
+stm: 2>D1-2>VJB738
+tim: 4451500
+txt: Navy Seven Three Eight, fly heading three four zero, they just took the handoff.
+cns: (1) [(A) Navy Seven Three Eight] [(B4) fly heading] [(C4) three four zero] [(E) they just took the handoff]
+
+stm: 1>VJB738>D1-2
+tim: 4454930
+txt: Okay, Seven Three Eight, three four zero.
+cns: (2) [(D) Okay] [(A) Seven Three Eight] [(C4) three four zero]
+
+stm: 1>D1-2>VJB738
+tim: 4457740
+txt: Navy Seven Three Eight, contact Dulles Departure one three four point two.
+cns: (1) [(A) Navy Seven Three Eight] [(B3) contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 1>D1-2>VJB738
+tim: 4464410
+txt: Navy Seven Three Eight, Dulles Departure one three four point two.
+cns: (1) [(A) Navy Seven Three Eight] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 1>VJB738>D1-2
+tim: 4467120
+txt: One three four two, Seven Three Eight.
+cns: (2) [(C3) One three four two] [(A) Seven Three Eight]
+
+stm: 1>D1-2>R16851
+tim: 4469030
+txt: Army Eight Five One, turn right heading one five zero, expect eastbound over National in about three miles.
+cns: (1) [(A) Army Eight Five One] [(B4) turn right heading] [(C4) one five zero] [(E) expect eastbound over [(H) National] in about three miles]
+
+stm: 1>D1-2>DAL349
+tim: 4476900
+txt: Delta Three Forty Nine, turn right direct LINDEN, resume your own navigation, climb maintain one seven thousand.
+cns: (1) [(A) Delta Three Forty Nine] [(E) turn right direct [(H) LINDEN]] [(E) resume your own navigation] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>DAL349>D1-2
+tim: 4481740
+txt: Delta Three Forty Nine, right turn direct LINDEN, climbing to seventeen.
+cns: (2) [(A) Delta Three Forty Nine] [(E) right turn direct [(H) LINDEN]] [(B2) climbing to] [(C2) seventeen]
+
+stm: 1>D1-2>DAL349
+tim: 4502810
+txt: Delta Three Forty Nine, contact Dulles Departure on frequency one three four point two.
+cns: (1) [(A) Delta Three Forty Nine] [(B3) contact] [(G) Dulles Departure] [(E) on frequency] [(C3) one three four point two]
+
+stm: 1>DAL349>D1-2
+tim: 4508770
+txt: Delta Three Forty Nine, Dulles Departure thirty four two, good day.
+cns: (2) [(A) Delta Three Forty Nine] [(G) Dulles Departure] [(C3) thirty four two] [(I) good day]
+
+stm: 1>D1-2>DAL349
+tim: 4512350
+txt: Good day.
+cns: (3) [(I) Good day.]
+
+stm: 1>D1-2>USA220
+tim: 4512910
+txt: USAir Two Twenty, radar contact, climb maintain three thousand, and a base report if you can get it.
+cns: (1) [(A) USAir Two Twenty] [(D) radar contact] [(B2) climb maintain] [(C2) three thousand] [(E) and a base report if you can get it]
+
+stm: 1>USA220>D1-2
+tim: 4523780
+txt: Hello Departure, USAir Two Twenty is with you, we are out of one thousand eight hundred, climbing to three thousand.
+cns: (4) [(I) Hello] [(G) Departure] [(A) USAir Two Twenty] [(E) is with you] [(E) we are out of one thousand eight hundred] [(E) climbing to three thousand]
+
+stm: 1>D1-2>R16851
+tim: 4528600
+txt: Army Eight Five One, turn left heading zero niner zero.
+cns: (1) [(A) Army Eight Five One] [(B4) turn left heading] [(C4) zero niner zero]
+
+stm: 1>D1-2>R16851
+tim: 4536010
+txt: Army Eight Five One, fly heading one zero zero. That is Departure East, request contact Departure one two six point five five.
+cns: (1) [(A) Army Eight Five One] [(B4) fly heading] [(C4) one zero zero] [(E) That is [(G) Departure East]] [(B3) request contact] [(G) Departure] [(C3) one two six point five five]
+
+stm: 1>D1-2>R16851
+tim: 4546700
+txt: See you later.
+cns: (3) [(I) See you later]
+
+stm: 1>D1-2>R16851
+tim: 4549650
+txt: Three ninety six one, Army Eight Five One, hundred heading, see you.
+cns: (2) [(E) Three ninety six one] [(A) Army Eight Five One] [(C4) hundred] [(B4) heading] [(I) see you]
+
+stm: 2>D1-2>USA220
+tim: 4553930
+txt: USAir Two Twenty Eight, radar contact, three northwest, at twenty six hundred, climb maintain one seven thousand.
+cns: (1) [(A) USAir Two Twenty Eight] [(D) radar contact] [(E) three northwest] [(E) at twenty six hundred] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>USA220>D1-2
+tim: 4560410
+txt: One seven thousand, USAir Two Twenty.
+cns: (2) [(C2) One seven thousand] [(A) USAir Two Twenty]
+
+stm: 2>D1-2>USA220
+tim: 4562250
+txt: USAir Two Twenty, did you get the bases as you went up?
+cns: (3) [(A) USAir Two Twenty] [(J) did you get the bases as you went up]
+
+stm: 1>USA220>D1-2
+tim: 4567420
+txt: no sir, as a matter of fact we did not, USAir Two Twenty, nobody asked us to do that for you.
+cns: (4) [(D) no sir] [(E) as a matter of fact we did not] [(A) USAir Two Twenty] [(J) nobody asked us to do that for you.]
+
+stm: 1>D1-2>USA220
+tim: 4572550
+txt: I know.
+cns: (3) [(J) I know]
+
+stm: 2>USA220>D1-2
+tim: 4574040
+txt: We'd have been glad to though.
+cns: (4) [(J) We'd have been glad to though]
+
+stm: 2>USA220>D1-2
+tim: 4594430
+txt: I do not know if it does you any good, but the tops are about twenty seven hundred.
+cns: (4) [(J) I do not know if it does you any good] [(E) but the tops are about twenty seven hundred]
+
+stm: 1>D1-2>USA220
+tim: 4601760
+txt: Roger.
+cns: (3) [(D) Roger]
+
+stm: 1>AAL609>D1-2
+tim: 4644140
+txt: Departure, American Six Zero Nine, climbing to five thousand, entering the bases at a thousand feet.
+cns: (4) [(G) Departure] [(A) American Six Zero Nine] [(E) climbing to five thousand] [(E) entering the bases at a thousand feet]
+
+stm: 1>D1-2>AAL609
+tim: 4648990
+txt: American Six Oh Nine, roger, climb maintain one seven thousand, expedite all the way to that altitude for traffic.
+cns: (1) [(A) American Six Oh Nine] [(D) roger] [(B2) climb maintain] [(C2) one seven thousand] [(E) expedite all the way to that altitude for traffic]
+
+stm: 1>AAL609>D1-2
+tim: 4654290
+txt: Expediting to one seven thousand, American Six Zero Nine.
+cns: (2) [(B2) Expediting to] [(C2) one seven thousand] [(A) American Six Zero Nine]
+
+stm: 1>D1-2>USA220
+tim: 4681820
+txt: USAir Two Twenty, fly heading three three five, Dulles request.
+cns: (1) [(A) USAir Two Twenty] [(B4) fly heading] [(C4) three three five] [(E) [(G) Dulles] request]
+
+stm: 1>USA220>D1-2
+tim: 4685400
+txt: Three three five, USAir Two Twenty.
+cns: (2) [(C4) Three three five] [(A) USAir Two Twenty]
+
+stm: 1>AAL609>D1-2
+tim: 4710030
+txt: American Six Zero Nine, come out of one, tops of clouds here, at about thirty five hundred.
+cns: (4) [(A) American Six Zero Nine] [(E) come out of one] [(E) tops of clouds here at about thirty five hundred]
+
+stm: 1>D1-2>AAL609
+tim: 4716520
+txt: American Six Oh Nine, roger.
+cns: (3) [(A) American Six Oh Nine] [(D) roger]
+
+stm: 1>AAL609>D1-2
+tim: 4719510
+txt: We got another layer above us, though.
+cns: (4) [(E) We got another layer above us though]
+
+stm: 2>D1-2>AAL609
+tim: 4721340
+txt: I think you are going to experience that for quite a ways.
+cns: (3) [(E) I think you are going to experience that for quite a ways]
+
+stm: 1>D1-2>AAL609
+tim: 4751950
+txt: American Six Oh Nine, turn left heading of one niner zero, expect on course in eleven miles.
+cns: (1) [(A) American Six Oh Nine] [(B4) turn left heading of] [(C4) one niner zero] [(E) expect on course in eleven miles]
+
+stm: 2>AAL609>D1-2
+tim: 4757200
+txt: Left turn to two nine zero, did you say?
+cns: (4) [(E) Left turn to two nine zero] [(J) did you say]
+
+stm: 1>D1-2>AAL609
+tim: 4762350
+txt: American Six Oh Nine, turn left heading one niner zero, expect on course in eleven miles.
+cns: (1) [(A) American Six Oh Nine] [(B4) turn left heading] [(C4) one niner zero] [(E) expect on course in eleven miles]
+
+stm: 1>AAL609>D1-2
+tim: 4766960
+txt: Okay, left turn to one nine zero for American Six Zero Nine.
+cns: (2) [(D) Okay] [(B4) left turn to] [(C4) one nine zero] [(A) American Six Zero Nine]
+
+stm: 1>D1-2>USA220
+tim: 4777280
+txt: USAir Two Twenty, contact Dulles Departure one three four point two.
+cns: (1) [(A) USAir Two Twenty] [(B3) contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 1>USA220>D1-2
+tim: 4780940
+txt: Thirty four point two, USAir Two Twenty, you have a good day.
+cns: (2) [(C3) Thirty four point two] [(A) USAir Two Twenty] [(I) you have a good day]
+
+stm: 3>D1-2>USA220
+tim: 4783540
+txt: Good day.
+cns: (3) [(I) Good day]
+
+stm: 1>AAL609>D1-2
+tim: 4798840
+txt: And Six Oh Nine went through top of another layer, about eighty five hundred feet, just scattered above.
+cns: (4) [(A) Six Oh Nine] [(E) went through top of another layer, about eighty five hundred feet, just scattered above]
+
+stm: 1>D1-2>AAL609
+tim: 4805950
+txt: American Six Oh Nine, roger.
+cns: (3) [(A) American Six Oh Nine] [(D) roger]
+
+stm: 1>D1-2>AAL609
+tim: 4843470
+txt: American Six Oh Nine, turn right direct LINDEN, resume your own navigation.
+cns: (3) [(A) American Six Oh Nine] [(E) turn right direct [(H) LINDEN]] [(E) resume your own navigation]
+
+stm: 2>AAL609>D1-2
+tim: 4847200
+txt: Right turn direct LINDEN flight planed route, American Six Zero Nine.
+cns: (4) [(E) Right turn direct [(H) LINDEN] flight planed route] [(A) American Six Zero Nine]
+
+stm: 1>D1-2>AAL609
+tim: 4913060
+txt: American Six Oh Nine, direct to LINDEN, resume your own navigation, contact Dulles Departure one three four point two.
+cns: (1) [(A) American Six Oh Nine] [(E) direct to [(H) LINDEN]] [(E) resume your own navigation] [(B3) contact] [(G) Dulles Departure] [(C3) one three four point two]
+
+stm: 1>AAL609>D1-2
+tim: 4919110
+txt: One three four point two LINDEN flight planed route, American Six Zero Nine. Thank you.
+cns: (2) [(C3) One three four point two] [(E) [(H) LINDEN] flight planed route] [(A) American Six Zero Nine] [(D) Thank you]
+
+stm: 1>D1-2>AAL609
+tim: 4923790
+txt: See you.
+cns: (3) [(I) See you]
+
+stm: 2>SWIFT71>D1-2
+tim: 4925320
+txt: Departure, Swift Seven One, passing two thousand five hundred for three thousand, heading two seven zero.
+cns: (4) [(G) Departure] [(A) Swift Seven One] [(E) passing two thousand five hundred for three thousand] [(E) heading two seven zero]
+
+stm: 1>D1-2>SWIFT71
+tim: 4929880
+txt: Swift Seven One, radar contact, maintain three thousand.
+cns: (1) [(A) Swift Seven One] [(D) radar contact] [(B2) maintain] [(C2) three thousand]
+
+stm: 1>SWIFT71>D1-2
+tim: 4933100
+txt: Seven One.
+cns: (2) [(A) Seven One]
+
+stm: 1>D1-2>SWIFT71
+tim: 5025860
+txt: Swift Seven One, climb maintain four thousand.
+cns: (1) [(A) Swift Seven One] [(B2) climb maintain] [(C2) four thousand]
+
+stm: 1>SWIFT71>D1-2
+tim: 5028900
+txt: Out of three for four thousand, Swift Seven One.
+cns: (4) [(E) Out of three for ] [(C2) four thousand] [(A) Swift Seven One]
+
+stm: 2>TRADOC3>D1-2
+tim: 5067080
+txt: Departure Control, Tradoc Three, four hundred for two thousand, runway heading.
+cns: (4) [(G) Departure Control] [(A) Tradoc Three] [(E) four hundred for two thousand] [(E) runway heading]
+
+stm: 1>D1-2>SWIFT71
+tim: 5071730
+txt: Swift Seven One, fly heading two four zero.
+cns: (1) [(A) Swift Seven One] [(B4) fly heading] [(C4) two four zero]
+
+stm: 1>SWIFT71>D1-2
+tim: 5074170
+txt: Heading two four zero, Swift Seven One.
+cns: (2) [(B4) Heading] [(C4) two four zero] [(A) Swift Seven One]
+
+stm: 1>D1-2>TRADOC3
+tim: 5076190
+txt: Tradoc Three, radar contact, maintain three thousand, proceed direct to BROOKE.
+cns: (1) [(A) Tradoc Three] [(D) radar contact] [(B2) maintain] [(C2) three thousand] [(E) proceed direct to [(H) BROOKE]]
+
+stm: 2>TRADOC3>D1-2
+tim: 5079750
+txt: Maintain three, direct to BROOKE, Tradoc Three.
+cns: (2) [(B2) Maintain three] [(E) direct to [(H) BROOKE]] [(A) Tradoc Three]
+
+stm: 1>D1-2>SWIFT71
+tim: 5094910
+txt: Swift Seven One, expect a fast climb in about four miles.
+cns: (3) [(A) Swift Seven One] [(E) expect a fast climb in about four miles]
+
+stm: 1>D1-2>SWIFT71
+tim: 5129480
+txt: Swift Seven One, climb maintain one one thousand, expedite your climb, traffic two o'clock, four miles, southbound, twelve thousand, expect a northwest heading momentarily for your climb.
+cns: (1) [(A) Swift Seven One] [(B2) climb maintain] [(C2) one one thousand] [(E) expedite your climb, traffic two o'clock, four miles, southbound, twelve thousand] [(E) expect a northwest heading momentarily for your climb]
+
+stm: 1>SWIFT71>D1-2
+tim: 5139220
+txt: Out of four for one one thousand, expediting, Swift Seven One.
+cns: (4) [(E) Out of four for] [(C2) one one thousand] [(E) expediting] [(A) Swift Seven One]
+
+stm: 1>D1-2>TRADOC3
+tim: 5142580
+txt: Tradoc Three, climb maintain four thousand.
+cns: (1) [(A) Tradoc Three] [(B2) climb maintain] [(C2) four thousand]
+
+stm: 2>TRADOC3>D1-2
+tim: 5145160
+txt: Tradoc Three, continuing to four thousand.
+cns: (4) [(A) Tradoc Three] [(E) continuing to] [(C2) four thousand]
+
+stm: 1>D1-2>SWIFT71
+tim: 5147990
+txt: Swift Seven One, turn right heading three three zero.
+cns: (1) [(A) Swift Seven One] [(B4) turn right heading] [(C4) three three zero]
+
+stm: 1>SWIFT71>D1-2
+tim: 5150600
+txt: Three three zero, Swift Seven One.
+cns: (2) [(C4) Three three zero] [(A) Swift Seven One]
+
+stm: 1>D1-2>SWIFT71
+tim: 5172300
+txt: Swift Seven One, turn right heading three four zero, expedite your turn to the right for Dulles traffic.
+cns: (1) [(A) Swift Seven One] [(B4) turn right heading] [(C4) three four zero] [(E) expedite your turn to the right for Dulles traffic]
+
+stm: 1>SWIFT71>D1-2
+tim: 5176240
+txt: Three four zero, Swift Seven One, expedite.
+cns: (2) [(C4) Three four zero] [(A) Swift Seven One] [(E) expedite]
+
+stm: 1>TRADOC3>D1-2
+tim: 5191080
+txt: And confirm Tradoc Three goes to four thousand.
+cns: (4) [(D) confirm] [(A) Tradoc Three] [(E) goes to four thousand]
+
+stm: 1>D1-2>TRADOC3
+tim: 5193800
+txt: Tradoc Three, maintain four thousand, direct to BROOKE.
+cns: (1) [(A) Tradoc Three] [(B2) maintain] [(C2) four thousand] [(E) direct to [(H) BROOKE]]
+
+stm: 2>TRADOC3>D1-2
+tim: 5196980
+txt: Cleared four to direct to BROOKE.
+cns: (2) [(E) Cleared] [(C2) four] [(E) direct to [(H) BROOKE]]
+
+stm: 1>D1-2>TRADOC3
+tim: 5199170
+txt: Tradoc Three, contact Dulles Departure on frequency one two four point six five.
+cns: (1) [(A) Tradoc Three] [(B3) contact [(G) Dulles Departure] on frequency] [(C3) one two four point six five]
+
+stm: 1>TRADOC3>D1-2
+tim: 5203600
+txt: One twenty four sixty five, so long.
+cns: (2) [(C3) One twenty four sixty five] [(I) so long]
+
+stm: 1>D1-2>TRADOC3
+tim: 5205250
+txt: So long.
+cns: (3) [(I) So long]
+
+stm: 1>D1-2>SWIFT71
+tim: 5206650
+txt: Swift Seven One, fly heading three one five, join J one forty nine, resume your own navigation, climb maintain one seven thousand.
+cns: (1) [(A) Swift Seven One] [(B4) fly heading] [(C4) three one five] [(E) join [(H) J one forty nine]] [(E) resume your own navigation] [(B2) climb maintain] [(C2) one seven thousand]
+
+stm: 1>SWIFT71>D1-2
+tim: 5216520
+txt: Climbing to one seven thousand, heading three one five for Jet One Forty Nine, Swift Seven One.
+cns: (2) [(B2) Climbing to] [(C2) one seven thousand] [(B4) heading] [(C4) three one five] [(E) for [(H) Jet One Forty Nine]] [(A) Swift Seven One]
+
+stm: 4>NO>NO
+tim: 5220640
+txt: {'file_level_comment': 'see the cmt field'}
+cns: new controller
+
+stm: 1>D1-3>SWIFT71
+tim: 5274780
+txt: Fifty One, contact Dulles on one three four point, correction, Swift Seven One, contact Dulles on one three four point two, good day.
+cns: (1) [(A) Swift Seven One] [(B3) contact] [(G) Dulles] [(C3) one three four point two] [(I) good day]
+
+stm: 2>SWIFT71>D1-3
+tim: 5281070
+txt: Thirty four two, Seven One, good day.
+cns: (2) [(C3) Thirty four two] [(A) Seven One] [(I) good day.]
+
+stm: 4>NO>NO
+tim: 5283670
+txt: {'End of TextGrid': 'N/A'}
+cns:
+

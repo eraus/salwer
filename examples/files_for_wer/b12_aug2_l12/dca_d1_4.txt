@@ -1,0 +1,1988 @@
+stm: 2>PAT060>D1-1
+tim: 13.550 19.460
+txt: Washington Departure, Pat Zero Six Zero, passing eight hundred, maintain two thousand, left turn two zero zero, good morning.
+
+stm: 1>D1-1>PAT060
+tim: 24.810 29.850
+txt: Pad Zero Six Zero, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 2>D1-1>DAL959
+tim: 36.680 40.510
+txt: Delta Nine Fifty Nine, turn left heading, turn left direct LINDEN, Delta Nine Fifty Nine.
+
+stm: 1>DAL959>D1-1
+tim: 41.160 42.820
+txt: Direct LINDEN, Delta Nine Fifty Nine.
+
+stm: 1>NWA579>D1-1
+tim: 55.100 59.090
+txt: Departure, Northwest Five Seventy Nine is with you, out of eighteen hundred for five thousand.
+
+stm: 1>D1-1>SAM203
+tim: 60.650 63.590
+txt: TAM Two Zero Three, turn right heading three five zero.
+
+stm: 1>SAM203>D1-1
+tim: 63.590 66.050
+txt: Right turn three five zero, Sam Two Zero Three.
+
+stm: 1>D1-1>NWA579
+tim: 66.050 68.950
+txt: Northwest Five Seventy Nine, Departure, radar contact.
+
+stm: 1>D1-1>DAL959
+tim: 78.880 83.420
+txt: Delta Nine Fifty Nine, contact Dulles Departure on one three four point two.
+
+stm: 1>DAL959>D1-1
+tim: 83.420 85.910
+txt: Thirty Four Two, Delta Nine Fifty Nine, good day sir.
+
+stm: 1>D1-1>PAT060
+tim: 94.190 96.900
+txt: At Zero Six Zero, turn right heading three six zero.
+
+stm: 1>PAT060>D1-1
+tim: 97.400 99.620
+txt: Right three six zero, Zero Six Zero.
+
+stm: 1>D1-1>USA809
+tim: 99.620 102.710
+txt: USAir Eight Oh Nine, Washington Center one three five point four.
+
+stm: 1>USA809>D1-1
+tim: 103.070 105.130
+txt: Okay, one thirty five four, Eight Oh Nine, good day.
+
+stm: 2>D1-1>N01SK
+tim: 111.250 114.290
+txt: Charmiger One One Zero Kilo, Washington Departure, without contact.
+
+stm: 2>D1-1>NWA579
+tim: 114.290 117.210
+txt: Northwest Five Seventy Nine, climb maintain niner thousand.
+
+stm: 1>NWA579>D1-1
+tim: 117.620 120.190
+txt: Northwest Five Seventy Nine, climb to nine thousand.
+
+stm: 1>N01SK>D1-1
+tim: 155.860 157.050
+txt: Niner thousand, Sierra Kilo.
+
+stm: 2>D1-1>SAM203
+tim: 165.920 171.180
+txt: Malm Six Zero Two Zero Three, turn left direct LINDEN, resume own navigation, contact Dulles one three four two.
+
+stm: 1>SAM203>D1-1
+tim: 171.530 174.810
+txt: One Thirty Four Two, left turn direct LINDEN, SAMSISO Two Zero Three.
+
+stm: 2>D1-1>NWA579
+tim: 178.990 184.590
+txt: Northwest Five Seventy Nine, turn left heading three zero zero, climb maintain one seven thousand.
+
+stm: 1>NWA579>D1-1
+tim: 184.590 189.820
+txt: Three zero zero and one seven thousand, Northwest Five Seventy Nine.
+
+stm: 2>N01SK>D1-1
+tim: 224.510 225.790
+txt: And direct LINDEN Sierra Kilo.
+
+stm: 1>N01SK>D1-1
+tim: 231.200 232.670
+txt: Up to one zero thousand, Say it good level.
+
+stm: 1>AAL1895>D1-1
+tim: 257.060 260.610
+txt: Departure, American Eighteen Ninety Five is out of eleven hundred for five.
+
+stm: 1>D1-1>NWA579
+tim: 261.060 265.440
+txt: Northwest Five Seventy Nine, maintain one seven thousand, contact Dulles one thirty four two.
+
+stm: 2>NWA579>D1-1
+tim: 265.820 267.070
+txt: Thirty four two, so long.
+
+stm: 1>D1-1>N01SK
+tim: 272.430 275.800
+txt: November One Sierra Kilo, maintain one seven thousand, direct LINDEN.
+
+stm: 1>N01SK>D1-1
+tim: 275.800 277.680
+txt: Direct one seven thousand, Sierra Kilo.
+
+stm: 1>D1-1>AAL875
+tim: 277.680 281.140
+txt: American Eight Seventy Five, Departure, radar contact, maintain niner thousand.
+
+stm: 1>AAL875>D1-1
+tim: 281.690 284.120
+txt: Maintain niner thousand, American Eight Seventy Five.
+
+stm: 2>D1-1>PAT060
+tim: 284.550 287.800
+txt: Fat Zero Six Zero, turn left direct LINDEN, resume own navigation.
+
+stm: 2>PAT060>D1-1
+tim: 288.260 290.800
+txt: Zero six zero, left direct LINDEN own navigation.
+
+stm: 2>D1-1>PAT060
+tim: 314.840 320.740
+txt: Pad Zero Six Zero, maintain one two thousand, and contact Dulles on one three four point two, proceed direct LINDEN.
+
+stm: 2>PAT060>D1-1
+tim: 321.130 324.690
+txt: One thirty four point two, up to one two thousand, zero six zero, good day.
+
+stm: 1>D1-1>N01SK
+tim: 383.860 386.740
+txt: November One Sierra Kilo, contact Dulles on one three four point two.
+
+stm: 2>N01SK>D1-1
+tim: 386.740 388.560
+txt: Thirty four two, Sierra Kilo, good day.
+
+stm: 2>D1-1>AAL875
+tim: 406.870 409.310
+txt: American Eight Seventy Five, turn left heading two one zero.
+
+stm: 1>AAL875>D1-2
+tim: 409.980 411.770
+txt: Two ten, American Eight Seventy Five.
+
+stm: 1>D1-2>AAL875
+tim: 412.500 415.790
+txt: American Eight Seventy Five, climb maintain one seven thousand.
+
+stm: 1>AAL875>D1-2
+tim: 416.120 419.500
+txt: On up to one seven thousand, American Eight Seventy Five.
+
+stm: 1>G001>D1-2
+tim: 420.640 427.390
+txt: And Departure, Guard Seven One Zero Zero One is turning left one nine zero and climbing to two thousand.
+
+stm: 1>D1-2>AAL841
+tim: 427.890 431.120
+txt: American Eight Forty One, Washington Departure, climb maintain flight level two three zero.
+
+stm: 2>D1-2>G001
+tim: 436.050 441.090
+txt: Start seven zero, correction, seven one zero zero one, Washington Departure, roger.
+
+stm: 1>D1-2>G001
+tim: 447.060 449.690
+txt: Five Zero Zero One, climb maintain three thousand.
+
+stm: 2>G001>D1-2
+tim: 450.150 452.770
+txt: And One Zero Zero One is passing two for three thousand.
+
+stm: 1>D1-2>G001
+tim: 476.980 479.430
+txt: Five Zero Zero One, fly heading one five zero.
+
+stm: 2>G001>D1-2
+tim: 479.730 482.500
+txt: One five zero for One Zero Zero One.
+
+stm: 1>NWA193>D1-2
+tim: 489.090 493.340
+txt: Departure, Northwest One Ninety Five, one ninety three, pass to one for five thousand.
+
+stm: 2>D1-2>NWA193
+tim: 493.650 498.200
+txt: Northwest One Ninety Three, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>NWA193>D1-2
+tim: 499.090 501.890
+txt: Up to one one thousand, Northwest One Ninety Three.
+
+stm: 1>D1-2>G001
+tim: 514.500 517.600
+txt: Fight Zero Zero One, turn left heading one one zero.
+
+stm: 2>G001>D1-2
+tim: 518.140 520.450
+txt: Left to one one zero for One Zero Zero One.
+
+stm: 2>D1-2>AAL875
+tim: 520.450 525.640
+txt: American Eight Seventy Five, send a right heading three zero zero, join J one forty nine, resume own navigation.
+
+stm: 1>AAL875>D1-2
+tim: 526.130 529.960
+txt: Three hundred, join J one forty nine, American Eight Seventy Five.
+
+stm: 1>D1-2>AAL841
+tim: 552.870 554.420
+txt: American Eight Forty One, did...
+
+stm: 2>D1-2>G001
+tim: 577.730 581.680
+txt: Fard Zero Zero One, contact Andrews Radar one one niner point three.
+
+stm: 1>G001>D1-2
+tim: 581.680 583.550
+txt: Nineteen three, car double one, good day.
+
+stm: 1>D1-2>AAL875
+tim: 583.550 587.280
+txt: American Eight Seventy Five, contact Dulles Approach one three four point two.
+
+stm: 1>AAL875>D1-2
+tim: 587.280 589.560
+txt: Thirty four two, American Eight Seventy Five, good day.
+
+stm: 2>D1-2>AAL875
+tim: 589.560 590.130
+txt: Okay.
+
+stm: 1>UAL601>D1-2
+tim: 592.120 594.630
+txt: Departure, United Six Zero One is out of one thousand.
+
+stm: 1>D1-2>UAL601
+tim: 594.970 598.850
+txt: Northwest Six Zero One, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 2>UAL601>D1-2
+tim: 599.230 601.180
+txt: One one thousand, United Six Zero One.
+
+stm: 2>D1-2>NWA193
+tim: 623.550 626.480
+txt: Northwest One Eighty Three, turn left heading three zero zero.
+
+stm: 1>NWA193>D1-2
+tim: 627.300 629.800
+txt: Left three zero zero, Northwest One Ninety Three.
+
+stm: 1>D1-2>AAL841
+tim: 643.280 648.240
+txt: American Eight Forty One, turn right heading three zero zero, join J one forty nine, resume own navigation.
+
+stm: 2>D1-2>TWA321
+tim: 653.810 656.980
+txt: TWA Three Twenty One, fly heading one nine zero, vector for spacing.
+
+stm: 2>RAT601>D1-2
+tim: 680.270 684.800
+txt: Departure, morning, Rat Six Zero One is off Andrews, climbing three thousand, two seven zero signed.
+
+stm: 2>RAT601>D1-2
+tim: 696.490 698.370
+txt: Good morning Departure, Rat Six Zero One.
+
+stm: 2>D1-2>NWA193
+tim: 698.370 701.580
+txt: Seven thousand, contact Dulles Approach one one eight point four seven.
+
+stm: 2>D1-2>NWA193
+tim: 705.940 712.840
+txt: Northwest One Ninety Three, climb maintain one seven thousand, contact Dulles Approach one one eight point four seven.
+
+stm: 2>NWA193>D1-2
+tim: 713.760 718.770
+txt: Up to one seven thousand and eighteen point four seven, Northwest One Ninety Three.
+
+stm: 1>D1-2>UAL601
+tim: 719.100 723.950
+txt: Nine, head of six zero one, do not exceed two five zero knots, turn left heading two one zero.
+
+stm: 1>D1-2>AAL841
+tim: 730.010 735.270
+txt: American Eight Forty One, contact Washington Center one three, correct, one two zero point six five.
+
+stm: 1>D1-2>UAL601
+tim: 737.730 740.140
+txt: Ninety Six Zero One, climb maintain one seven thousand.
+
+stm: 1>UAL601>D1-2
+tim: 740.530 742.670
+txt: One seven thousand, United Six Zero One.
+
+stm: 1>D1-2>TWA187
+tim: 742.670 746.850
+txt: T W Aighty Seven, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 2>D1-2>RAT601
+tim: 749.250 752.050
+txt: Valash Six Zero One, Washington Departure, radar contact.
+
+stm: 2>RAT601>D1-2
+tim: 752.920 753.900
+txt: Six Zero One, roger.
+
+stm: 1>FRW44>D1-2
+tim: 754.410 755.790
+txt: Airways Forty Four, three thousand.
+
+stm: 1>D1-2>FRW44
+tim: 758.260 761.780
+txt: Learway Forty Four, change your frequency one one nine point eight five.
+
+stm: 2>FRW44>D1-2
+tim: 761.780 762.520
+txt: Nineteen Eighty Five.
+
+stm: 1>D1-2>RAT601
+tim: 763.530 770.600
+txt: Five Six Zero One, climb maintain four thousand, traffic one o'clock, eight miles, southeastbound, descending to five thousand.
+
+stm: 2>RAT601>D1-2
+tim: 771.020 773.720
+txt: Up four thousand for Six Zero One, we are still two seven zero assigned.
+
+stm: 1>AWE54>D1-2
+tim: 794.750 798.730
+txt: Washington Departure, Cactus Fifty Four is one thousand five hundred for five thousand.
+
+stm: 1>D1-2>AWE54
+tim: 798.730 802.840
+txt: Cactus Fifty Four, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>AWE54>D1-2
+tim: 803.930 805.740
+txt: Cactus Fifty Four, one one thousand.
+
+stm: 1>D1-2>UAL601
+tim: 821.140 826.760
+txt: United Six Zero One, turn right heading two niner zero, join J one forty nine, resume own navigation.
+
+stm: 1>UAL601>D1-2
+tim: 827.490 830.260
+txt: Two ninety heading, join the airway, United Six Zero One.
+
+stm: 1>D1-2>UAL601
+tim: 839.450 843.260
+txt: United Six Zero One, contact Dulles Approach one three four point two.
+
+stm: 1>UAL601>D1-2
+tim: 843.610 845.440
+txt: Thirty four two, United Six Zero One.
+
+stm: 2>D1-2>AWE54
+tim: 856.950 860.720
+txt: Cactus Fifty Four, reset, transplant to squawk seven zero four zero.
+
+stm: 1>AWE54>D1-2
+tim: 861.710 863.210
+txt: Seven zero four zero.
+
+stm: 1>D1-2>RAT601
+tim: 864.220 868.680
+txt: Fat Six Zero One, climb maintain one one thousand, turn left heading two three zero.
+
+stm: 1>RAT601>D1-2
+tim: 868.680 870.820
+txt: One one thousand, two three zero, Six Zero One.
+
+stm: 1>D1-2>TWA187
+tim: 874.400 877.080
+txt: TWA One Eighty Seven, turn left heading two one zero.
+
+stm: 2>TWA187>D1-2
+tim: 877.080 878.900
+txt: Two ten heading, TWA One Eighty Seven.
+
+stm: 2>D1-2>TWA187
+tim: 899.310 904.030
+txt: Three One Eighty Seven, expedite climb through one one thousand, climb maintain one seven thousand.
+
+stm: 2>TWA187>D1-2
+tim: 904.030 908.470
+txt: One one, right through eleven, climb to seventeen, TWA One Eight Seven.
+
+stm: 2>USA485>D1-2
+tim: 914.250 918.000
+txt: Departure, USAir Forty Five with you, out of one thousand, we are climbing to five thousand.
+
+stm: 1>D1-2>AWE54
+tim: 920.360 924.690
+txt: Cactus Fifty Four, reduce speed to two hundred and thirty knots, overtaking traffic ahead.
+
+stm: 1>AWE54>D1-2
+tim: 925.420 927.890
+txt: Okay, we will slow two thirty, Cactus Fifty Four.
+
+stm: 2>USA485>D1-2
+tim: 931.090 934.620
+txt: USAir Forty Five, we are with you, out of one point seven, climbing to five thousand.
+
+stm: 2>D1-2>USA485
+tim: 934.620 936.490
+txt: USAir Forty Five, Washington Departure, roger.
+
+stm: 2>D1-2>AWE54
+tim: 938.650 941.350
+txt: Cactus Fifty Four, turn left heading two eight zero, vector straight.
+
+stm: 1>AWE54>D1-2
+tim: 942.060 943.340
+txt: Say again the heading please.
+
+stm: 1>D1-2>USA485
+tim: 943.930 947.090
+txt: USAir Forty Five, radar contact, climb maintain one one thousand.
+
+stm: 1>USA485>D1-2
+tim: 947.770 949.520
+txt: One one thousand, USAir Four Eighty Five.
+
+stm: 2>D1-2>AWE54
+tim: 949.840 952.270
+txt: Cactus Fifty Four, turn left heading two zero zero.
+
+stm: 1>AWE54>D1-2
+tim: 954.230 957.860
+txt: you are, you are being broken up, what is the heading for Cactus Fifty Four, please?
+
+stm: 1>D1-2>AWE54
+tim: 957.860 960.950
+txt: Cactus Fifty Four, turn left heading two zero zero.
+
+stm: 1>AWE54>D1-2
+tim: 961.250 963.970
+txt: Two zero zero, Cactus Fifty Four.
+
+stm: 1>D1-2>RAT601
+tim: 965.900 969.170
+txt: Rat Six Zero One, proceed direct GORDONSVILLE, reason one navigation.
+
+stm: 2>RAT601>D1-2
+tim: 969.680 971.160
+txt: Direct GORDONVILLE, Six Zero One.
+
+stm: 1>TWA187>D1-2
+tim: 974.600 976.420
+txt: Right turn LINDEN, TWA One Eighty Seven.
+
+stm: 1>D1-2>AWE54
+tim: 982.750 985.490
+txt: Cactus Fifty Four, climb maintain one seven thousand.
+
+stm: 1>AWE54>D1-2
+tim: 985.490 987.660
+txt: Cactus Fifty Four, up to one seven thousand.
+
+stm: 1>N00AC>D1-2
+tim: 994.110 997.750
+txt: Departure, Henson Seven Hundred Alpha Charlie is out of one for five thousand.
+
+stm: 1>D1-2>N00AC
+tim: 997.750 1002.670
+txt: Northwest Alpha Charlie, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>N00AC>D1-2
+tim: 1002.670 1004.500
+txt: One one thousand for Alpha Charlie.
+
+stm: 1>D1-2>TWA187
+tim: 1009.600 1012.440
+txt: TWA One Eighty Seven, contact Dulles Approach one three four point.
+
+stm: 1>TWA187>D1-2
+tim: 1013.510 1014.230
+txt: One eighty seven.
+
+stm: 1>D1-2>RAT601
+tim: 1024.700 1032.000
+txt: Varat Six Zero One, climb maintain flight level two one zero, contact Washington Center one three five point four.
+
+stm: 2>RAT601>D1-2
+tim: 1032.000 1034.060
+txt: Two one zero, One Three Five Four, so long.
+
+stm: 2>D1-2>USA485
+tim: 1056.420 1060.010
+txt: USAir Forty Five, turn left heading two eight zero, vectors for spacing.
+
+stm: 1>USA485>D1-2
+tim: 1060.010 1062.340
+txt: Two eight zero, USAir, Four Eighty Five.
+
+stm: 2>D1-2>USA485
+tim: 1075.480 1079.150
+txt: USAir Forty Five, in heading, turn left heading two zero zero.
+
+stm: 2>USA485>D1-2
+tim: 1079.620 1082.020
+txt: Okay two zero zero, USAir Four Eighty Five.
+
+stm: 1>D1-2>USA485
+tim: 1097.720 1099.110
+txt: USAir Four Eighty Five.
+
+stm: 1>D1-2>AWE54
+tim: 1106.320 1112.010
+txt: Cactus Fifty Four, resume normal speed, turn right heading three zero zero, join J one forty nine, resume own navigation.
+
+stm: 1>AWE54>D1-2
+tim: 1113.540 1117.910
+txt: Normal speed three zero zero, J one thirty four own navigation, Cactus Fifty Four.
+
+stm: 1>USA1230>D1-2
+tim: 1127.480 1130.070
+txt: USAir Twelve Thirty, leaving one for five thousand.
+
+stm: 1>D1-2>USA1230
+tim: 1132.620 1136.500
+txt: USAir Twelve Thirty, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>USA1230>D1-2
+tim: 1136.940 1138.710
+txt: One one thousand, USAir Twelve Thirty.
+
+stm: 1>D1-2>N00AC
+tim: 1150.370 1153.640
+txt: Morning Seven Hundred Alpha Charlie, turn left heading three zero zero.
+
+stm: 1>N00AC>D1-2
+tim: 1153.640 1155.820
+txt: Left turn three zero zero, Alpha Charlie.
+
+stm: 1>D1-2>USA485
+tim: 1155.820 1159.210
+txt: USAir Forty Five, climb maintain one seven thousand.
+
+stm: 1>USA485>D1-2
+tim: 1161.030 1163.440
+txt: One seven thousand, USAir Four Eighty Five, normal speed?
+
+stm: 2>D1-2>USA485
+tim: 1164.940 1166.720
+txt: USAir Forty Five, Proud.
+
+stm: 2>USA485>D1-2
+tim: 1167.920 1168.250
+txt: Thank you.
+
+stm: 1>D1-2>AWE54
+tim: 1175.800 1180.020
+txt: Cactus Fifty Four, do not ex, correction, reduce speed to two five zero knots.
+
+stm: 1>AWE54>D1-2
+tim: 1180.740 1183.350
+txt: Cactus Fifty Four, back to two fifty again.
+
+stm: 1>D1-2>AWE54
+tim: 1183.350 1190.880
+txt: Cactus Fifty Four, we did not mean to do it to you, but that was a request from Dulles, you are still overtaking traffic ahead. Contact Dulles now one three four point two.
+
+stm: 1>AWE54>D1-2
+tim: 1191.330 1193.370
+txt: One three four point two, Cactus Fifty Four.
+
+stm: 1>D1-2>USA485
+tim: 1199.220 1205.410
+txt: USAir Forty Five, proceed direct LINDEN, resume one navigation, contact Dulles Approach one three four point two.
+
+stm: 2>D1-2>N00AC
+tim: 1211.450 1214.510
+txt: Falcher Zero Alpha Charlie, turn left heading one eight zero.
+
+stm: 1>N00AC>D1-2
+tim: 1215.220 1217.290
+txt: It a left turn to one eight zero, Alpha Charlie.
+
+stm: 1>D1-2>N00AC
+tim: 1217.290 1219.840
+txt: November Hundred Alpha Charlie, expedite turn.
+
+stm: 1>N00AC>D1-2
+tim: 1220.200 1222.190
+txt: Okay, we are expediting, Alpha Charlie.
+
+stm: 1>NWA551>D1-2
+tim: 1230.300 1233.410
+txt: Departure, Northwest Five Fifty One, we are out of thirteen for five.
+
+stm: 1>D1-2>NWA551
+tim: 1235.940 1240.060
+txt: Northwest Five Fifty One, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>NWA551>D1-2
+tim: 1240.060 1242.310
+txt: Cleared up to one one thousand, Northwest Five Fifty One.
+
+stm: 1>D1-2>N00AC
+tim: 1256.020 1258.630
+txt: Falcher Zero Alpha Charlie, climb maintain one five thousand.
+
+stm: 1>N00AC>D1-2
+tim: 1259.520 1263.120
+txt: Okay, out of eleven for one five thousand, Alpha Charlie, heading one eight oh.
+
+stm: 1>D1-2>USA1230
+tim: 1264.350 1266.890
+txt: USAir Twelve Thirty, fly heading three zero zero.
+
+stm: 1>USA1230>D1-2
+tim: 1267.320 1269.060
+txt: Three zero zero, USAir Twelve Thirty.
+
+stm: 2>D1-2>COA603
+tim: 1269.060 1276.130
+txt: Continental Six Zero Three, Washington Departure, climb maintain flight level two three zero, intercept the Washington two four six radial, resume own navigation.
+
+stm: 1>D1-2>N00AC
+tim: 1306.470 1311.930
+txt: Malcar Zero Alpha Charlie, fly heading two one zero, intercept the Washington two four six radial, resume own navigation.
+
+stm: 2>N00AC>D1-2
+tim: 1311.930 1316.860
+txt: Heading two one zero, two one zero to intercept the Washington two forty six, own navigation Alpha Charlie.
+
+stm: 1>D1-2>USA1230
+tim: 1316.860 1322.530
+txt: USAir Twelve Thirty, climb maintain one seven thousand, contact Dulles Approach one one eight point four seven.
+
+stm: 1>USA1230>D1-2
+tim: 1323.100 1326.180
+txt: One seven thousand, eighteen forty seven, USAir Twelve Thirty.
+
+stm: 1>D1-2>NWA551
+tim: 1329.150 1332.390
+txt: Northwest Five Fifty One, turn left heading two one zero.
+
+stm: 1>NWA551>D1-2
+tim: 1332.800 1334.860
+txt: Left two one zero, Northwest Five Fifty One.
+
+stm: 1>D1-2>N00AC
+tim: 1379.370 1383.250
+txt: Malor Seven Hundred Alpha Charlie, climb maintain flight level two one zero.
+
+stm: 1>N00AC>D1-2
+tim: 1383.250 1385.540
+txt: We are out of fifteen for Two One Zero Alpha Charlie.
+
+stm: 1>USA135>D1-2
+tim: 1400.950 1404.260
+txt: And Departure, USAir One Thirty Five, out of one point five for five.
+
+stm: 1>D1-2>N00AC
+tim: 1405.710 1409.030
+txt: Malcer Seven Hundred Alpha Charlie, I'm in heading, fly heading.
+
+stm: 1>D1-2>N00AC
+tim: 1410.030 1410.540
+txt: Recorrect.
+
+stm: 2>D1-2>USA135
+tim: 1411.170 1415.320
+txt: USAir One Thirty Five, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 2>USA135>D1-2
+tim: 1415.800 1417.710
+txt: One one thousand, USAir One Thirty Five.
+
+stm: 1>D1-2>NWA551
+tim: 1418.450 1423.440
+txt: Northwest Five Fifty One, proceed direct LINDEN, resume one navigation, climb maintain one seven thousand.
+
+stm: 1>NWA551>D1-2
+tim: 1423.440 1426.270
+txt: Direct LINDEN up to one seven thousand, Northwest Five Fifty One.
+
+stm: 1>D1-2>NWA551
+tim: 1453.100 1458.380
+txt: Northwest Five Fifty One, contact Dulles Approach one one eight point four seven, correction, one three four point two.
+
+stm: 1>NWA551>D1-2
+tim: 1459.080 1463.010
+txt: Okay, one thirty four point two for Northwest Five Fifty One.
+
+stm: 2>D1-2>NWA551
+tim: 1464.650 1467.530
+txt: Northwest Five Eighty One, affirmative, one three four point two for Delta.
+
+stm: 2>NWA551>D1-2
+tim: 1467.890 1469.160
+txt: Northwest Five Two One, good day.
+
+stm: 2>D1-2>COA1173
+tim: 1487.970 1490.670
+txt: Continental Eleven Seventy Three, reduce speed to two five zero.
+
+stm: 1>D1-2>COA603
+tim: 1501.210 1502.940
+txt: Continental Six Zero Three, proceed.
+
+stm: 2>D1-2>COA603
+tim: 1505.080 1508.430
+txt: Continental Six Zero Three, verify intercept the Washington two four six radial.
+
+stm: 1>D1-2>COA603
+tim: 1511.110 1511.550
+txt: Roger.
+
+stm: 2>TRADOC3>D1-2
+tim: 1521.600 1527.000
+txt: Washington, Radar X Three is passing one thousand, climbing to two thousand, and the left turn direct to BROOKE.
+
+stm: 1>D1-2>USA135
+tim: 1527.710 1530.390
+txt: USAir One Thirty Five, turn left heading two one zero.
+
+stm: 2>USA135>D1-2
+tim: 1530.900 1533.160
+txt: Left two one zero, USAir One Thirty Five.
+
+stm: 2>D1-2>COA1173
+tim: 1533.160 1536.150
+txt: Continental Eleven Seventy Three, climb maintain flight level two one zero.
+
+stm: 1>D1-2>N00AC
+tim: 1540.030 1544.970
+txt: Morning Seven Hundred Alpha Charlie, contact Washington Center one three five point four.
+
+stm: 1>N00AC>D1-2
+tim: 1544.970 1547.080
+txt: Three five point four, good morning, Alpha Charlie.
+
+stm: 1>D1-2>TRADOC3
+tim: 1549.080 1553.920
+txt: Tradoc Three, Washington Departure, radar contact, climb maintain four thousand.
+
+stm: 1>TRADOC3>D1-2
+tim: 1554.620 1557.520
+txt: Great, action three, climbing to maintain four thousand.
+
+stm: 1>D1-2>COA1173
+tim: 1582.430 1585.890
+txt: Continental Eleven Seventy Three, climb maintain flight level two one zero.
+
+stm: 1>D1-2>COA1173
+tim: 1589.680 1590.110
+txt: Roger.
+
+stm: 2>D1-2>COA1173
+tim: 1594.150 1600.080
+txt: Continental Eleven Thirty Three, turn right heading two niner zero, intercept the Washington two four six radial, resume own navigation.
+
+stm: 1>D1-2>COA603
+tim: 1604.650 1608.450
+txt: Continental Six Zero Three, contact Washington Center one three five point four.
+
+stm: 1>D1-2>TRADOC3
+tim: 1611.620 1615.170
+txt: Tradar Three, contact Dulles Approach one two four point six five.
+
+stm: 1>TRADOC3>D1-2
+tim: 1615.860 1618.360
+txt: Radoc Three, one two four six five.
+
+stm: 1>D1-2>USA135
+tim: 1618.360 1623.700
+txt: USAir One Thirty Five, climb maintain one seven thousand, proceed direct LINDEN, resume own navigation.
+
+stm: 1>USA135>D1-2
+tim: 1623.700 1626.690
+txt: One seven thousand, direct to LINDEN, USAir One Thirty Five.
+
+stm: 1>D1-2>COA1173
+tim: 1682.960 1688.470
+txt: Continental Eleven Seventy Three, resume normal speed, contact Washington Center one three five point four.
+
+stm: 1>D1-2>USA133
+tim: 1701.870 1705.740
+txt: USAir One Thirty Three, Washington Departure, climb maintain flight level two three zero.
+
+stm: 1>USA135>D1-2
+tim: 1751.200 1753.430
+txt: One thirty five, level one seven thousand.
+
+stm: 2>D1-2>USA135
+tim: 1753.430 1757.880
+txt: USAir One Thirty Five, contact Washington Center one two zero point six five.
+
+stm: 1>DAL989>D1-2
+tim: 1847.410 1850.360
+txt: Departure, Delta Nine Eighty Nine, one point five for five.
+
+stm: 1>D1-2>DAL989
+tim: 1850.810 1855.330
+txt: Delta Nine Eighty Nine, Washington Departure, radar contact, climb maintain one five thousand.
+
+stm: 1>DAL989>D1-2
+tim: 1855.760 1858.400
+txt: Delta Nine Eighty Nine, up to one five thousand.
+
+stm: 1>PACER51>D1-2
+tim: 1880.830 1884.390
+txt: Morning Washington Pacer Five One, passing one thousand for three thousand.
+
+stm: 1>D1-2>PACER51
+tim: 1885.430 1888.780
+txt: Pase Five One, Washington Departure, radar contact, maintain three thousand.
+
+stm: 1>PACER51>D1-2
+tim: 1888.780 1889.820
+txt: Pacer Five One.
+
+stm: 1>D1-2>DAL989
+tim: 1910.840 1913.520
+txt: Delta Nine Eighty Now, verify follow the river northwestbound.
+
+stm: 1>DAL989>D1-2
+tim: 1914.320 1916.040
+txt: Delta Nine Eight, on afirmative.
+
+stm: 1>D1-2>DAL989
+tim: 1980.650 1983.430
+txt: Delta Nine Eighty Nine, expedite climb through one one thousand.
+
+stm: 2>DAL989>D1-2
+tim: 1984.220 1986.890
+txt: Delta Nine Eight Nine, hurry through one one thousand.
+
+stm: 1>D1-2>DAL989
+tim: 1987.210 1990.180
+txt: Delta Nine Eighty Nine, do not exceed two five zero knots.
+
+stm: 1>DAL989>D1-2
+tim: 1990.800 1992.690
+txt: Delta Nine Eighty Nine, two hundred and fifty nine.
+
+stm: 1>D1-2>DAL989
+tim: 1999.930 2002.590
+txt: Delta Nine Eighty Nine, turn left heading two one zero.
+
+stm: 1>DAL989>D1-2
+tim: 2003.010 2005.260
+txt: Delta Nine Eighty Nine, left to two ten.
+
+stm: 1>D1-2>PACER51
+tim: 2005.260 2007.970
+txt: Pacer Five One, climb maintain four thousand.
+
+stm: 1>PACER51>D1-2
+tim: 2007.970 2009.920
+txt: Navic three for four, Pacer Five One.
+
+stm: 2>D1-2>PACER51
+tim: 2026.630 2034.710
+txt: Pacer Five One, climb maintain niner thousand, traffic one o'clock, one five miles, southeastbound, descending at one zero thousand.
+
+stm: 2>PACER51>D1-2
+tim: 2035.240 2037.690
+txt: Climbing to niner thousand, and searching, Pacer Five One.
+
+stm: 1>DAL989>D1-2
+tim: 2095.060 2097.030
+txt: Four Four G, you all want us to expedite our climb?
+
+stm: 1>DAL989>D1-2
+tim: 2104.450 2108.260
+txt: how far did you all want Delta Nine Eighty Nine to expedite the climb?
+
+stm: 1>D1-2>DAL989
+tim: 2108.260 2111.290
+txt: November Nine Eighty Nine, just through one one thousand, resume normal climb.
+
+stm: 1>DAL989>D1-2
+tim: 2112.550 2114.920
+txt: All right sir, can we renew, resume normal speed?
+
+stm: 2>D1-2>DAL989
+tim: 2116.180 2119.470
+txt: Negative, that is request MAPA Washington, Center for spacing to Atlanta.
+
+stm: 1>DAL989>D1-2
+tim: 2119.840 2120.780
+txt: Okay, thank you.
+
+stm: 1>D1-2>PACER51
+tim: 2131.270 2135.830
+txt: Pacer Five One, climb maintain one seven thousand, expedite climb through one one thousand.
+
+stm: 1>PACER51>D1-2
+tim: 2136.220 2139.300
+txt: Up to one seven and whar, Eight Zero One One, Pacer Five One.
+
+stm: 1>D1-2>DAL989
+tim: 2142.450 2147.140
+txt: Delta Nine Eighty Nine, intercept the Washington two four six radial, resume own navigation.
+
+stm: 1>DAL989>D1-2
+tim: 2147.730 2152.450
+txt: Delta Nine Eighty Nine, intercept the two forty six radial, and resume own nav.
+
+stm: 2>NWA1229>D1-2
+tim: 2159.220 2161.690
+txt: Departure, Northwest Twelve Twenty Nine is with you, out of a thousand.
+
+stm: 1>D1-2>NWA1229
+tim: 2162.380 2166.880
+txt: Northwest Twelve Twenty Nine, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>NWA1229>D1-2
+tim: 2166.880 2168.120
+txt: One one thousand, Twelve Twenty Nine.
+
+stm: 1>D1-2>PACER51
+tim: 2173.280 2178.170
+txt: Pacer Five One, turn right heading three zero zero, join J one forty nine, resume own navigation.
+
+stm: 1>PACER51>D1-2
+tim: 2178.670 2180.950
+txt: Three zero zero for the airway, Pacer Five One.
+
+stm: 1>D1-2>PACER51
+tim: 2241.960 2246.120
+txt: Pacer Five One, contact Dulles Approach one three four point two.
+
+stm: 2>PACER51>D1-2
+tim: 2246.120 2248.580
+txt: One thirty four two, Pacer Five One, good day.
+
+stm: 1>D1-2>NWA1229
+tim: 2284.890 2288.720
+txt: Northwest Twelve Twenty Nine, turn left heading three zero zero.
+
+stm: 1>NWA1229>D1-2
+tim: 2289.090 2290.830
+txt: Three hundred heading, Twelve Twenty Nine.
+
+stm: 1>D1-2>NWA1229
+tim: 2290.830 2297.490
+txt: Northwest Twelve Twenty Nine, climb maintain one seven thousand, contact Dulles Approach one one eight point four seven, good day.
+
+stm: 1>NWA1229>D1-2
+tim: 2297.890 2301.110
+txt: Okay, one seven thousand, Eighteen Forty Seven.
+
+stm: 1>D1-2>DAL989
+tim: 2321.220 2327.530
+txt: Delta Nine Eighty Nine, climb maintain flight level two one zero, contact Washington Center one three five point four.
+
+stm: 1>DAL989>D1-2
+tim: 2328.090 2332.390
+txt: Delta Nine Eighty Nine, up to two one zero and thirty five four, good day.
+
+stm: 2>D1-2>DAL989
+tim: 2332.740 2333.120
+txt: Good day.
+
+stm: 1>COA1067>D1-2
+tim: 2644.000 2647.600
+txt: Departure, Continental Ten Sixty Seven, out of one point five for five thousand.
+
+stm: 2>D1-2>COA1067
+tim: 2648.300 2652.840
+txt: Continental Ten Sixty Seven, Washington Departure, radar contact, climb maintain one seven thousand.
+
+stm: 2>D1-3>COA1067
+tim: 2742.880 2746.080
+txt: Continental Ten Sixty Seven, turn left heading three zero zero.
+
+stm: 1>COA1067>D1-3
+tim: 2746.080 2747.540
+txt: Three hundred, Continental Ten Six Seven.
+
+stm: 1>D1-3>COA1067
+tim: 2795.460 2800.400
+txt: Continental Ten Sixty Seven, contact Dulles Departure one one eight point four seven.
+
+stm: 1>COA1067>D1-3
+tim: 2800.400 2801.800
+txt: Eighteen forty seven, so long.
+
+stm: 2>D1-3>AAL1279
+tim: 2825.270 2829.740
+txt: Trump Seventy Nine, Washington, fly heading two one zero, climb maintain flight level two three zero.
+
+stm: 1>AAL537>D1-3
+tim: 2896.160 2899.800
+txt: Washington, American Five Thirty Seven is with you, we are up the river.
+
+stm: 1>D1-3>AAL537
+tim: 2899.800 2904.220
+txt: Five Thirty Seven, Washington Departure, radar contact, climb maintain one seven thousand.
+
+stm: 1>AAL537>D1-3
+tim: 2904.220 2906.140
+txt: Seventeen, thank you, Five Thirty Seven.
+
+stm: 2>D1-3>AAL1279
+tim: 2964.310 2968.130
+txt: American Twelve Seventy Nine, proceed direct the LINDEN, resume your own navigation.
+
+stm: 1>D1-3>AAL537
+tim: 2998.390 3001.170
+txt: American Five Thirty Seven, turn left heading two one zero.
+
+stm: 1>AAL537>D1-3
+tim: 3001.170 3003.020
+txt: Two ten, Five Thirty Seven.
+
+stm: 1>D1-3>AAL1279
+tim: 3007.470 3012.030
+txt: American Twelve Seventy Nine, contact Washington Center one two zero point six five.
+
+stm: 1>D1-3>AAL1279
+tim: 3015.300 3015.900
+txt: Day.
+
+stm: 1>N10B>D1-3
+tim: 3040.580 3043.200
+txt: And Departure, Twelve Ten Bravo is with you, out of twenty six hundred.
+
+stm: 1>D1-3>N10B
+tim: 3043.600 3046.110
+txt: Twelve Ten Bravo, Departure, radar contact.
+
+stm: 1>D1-3>AAL537
+tim: 3074.700 3077.930
+txt: American Five Thirty Seven, proceed direct to LINDEN, resume own nav.
+
+stm: 1>AAL537>D1-3
+tim: 3077.930 3079.860
+txt: Direct to LINDEN, Five Thirty Seven.
+
+stm: 1>D1-3>AAL537
+tim: 3134.810 3139.700
+txt: MACA Five Thirty Seven, contact Dulles Departure, one thirty four two.
+
+stm: 1>AAL537>D1-3
+tim: 3139.700 3142.910
+txt: Thirty four two for Five Thirty Seven.
+
+stm: 1>D1-3>N10B
+tim: 3147.390 3151.600
+txt: Twelve Ten Bravo, fly heading three three zero, contact Dulles one two five point eight.
+
+stm: 1>N10B>D1-3
+tim: 3151.600 3152.530
+txt: Twenty five eight.
+
+stm: 2>TRADOC5>D1-3
+tim: 3205.270 3211.130
+txt: Washington Departure, Tradon Five, passing eight hundred feet, climbing to two thousand.
+
+stm: 1>D1-3>TRADOC5
+tim: 3211.130 3214.860
+txt: Tenoc Five, Washington Departure, radar contact, climb maintain eight thousand.
+
+stm: 1>TRADOC5>D1-3
+tim: 3215.730 3217.370
+txt: Cleared on five, cleared to eight thousand.
+
+stm: 2>D1-3>TRADOC5
+tim: 3240.390 3243.340
+txt: Tradoc Five, turn right heading three six zero, vector for the climb.
+
+stm: 1>TRADOC5>D1-3
+tim: 3243.690 3245.900
+txt: Right to three six zero, Tradoc Five.
+
+stm: 1>TRADOC5>UNK
+tim: 3268.260 3269.400
+txt: That is affirmative.
+
+stm: 1>D1-3>TRADOC5
+tim: 3270.240 3271.220
+txt: Say again?
+
+stm: 1>D1-3>TRADOC5
+tim: 3275.870 3277.360
+txt: Tary Five, you say something?
+
+stm: 2>TRADOC5>D1-3
+tim: 3277.360 3281.090
+txt: I'm sorry, Preston, but Two Four, I was talking to him on pilot.
+
+stm: 2>D1-3>TRADOC5
+tim: 3281.090 3281.880
+txt: All right.
+
+stm: 1>D1-3>TRADOC5
+tim: 3308.640 3310.680
+txt: Tradar Five, turn left direct Casanova.
+
+stm: 1>TRADOC5>D1-3
+tim: 3311.270 3313.620
+txt: Tribe five left, direct Tesson over, thank you.
+
+stm: 1>D1-3>TRADOC5
+tim: 3385.520 3388.580
+txt: Direct Five, contact Dulles one two six point six five.
+
+stm: 1>TRADOC5>D1-3
+tim: 3388.580 3391.040
+txt: One two six, six five, Tradoc FAF.
+
+stm: 1>D1-3>PAT129
+tim: 3468.360 3472.950
+txt: One Two Nine, Washington Departure, radar contact, climb maintain four thousand.
+
+stm: 1>PAT129>D1-3
+tim: 3473.770 3477.470
+txt: At One Two Nine, roger, we are passing one thousand and maintain four thousand.
+
+stm: 1>D1-3>USA1809
+tim: 3496.420 3503.310
+txt: USAir Eighteen Oh Nine, Washington Departure, roger, climb maintain flight level two three zero, fly heading two one zero.
+
+stm: 1>D1-3>PAT129
+tim: 3513.980 3516.660
+txt: MAC One Twenty Nine, turn right heading zero two zero.
+
+stm: 1>PAT129>D1-3
+tim: 3517.000 3519.210
+txt: That One Two Nine, right heading zero two zero.
+
+stm: 1>D1-3>UAL341
+tim: 3537.650 3541.930
+txt: United Three Forty One, fly heading two one zero, climb maintain flight level two three zero.
+
+stm: 2>D1-3>PAT129
+tim: 3552.610 3558.050
+txt: One Twenty Nine, turn right heading zero nine zero, intercept the Andrews sixty seven radial.
+
+stm: 2>PAT129>D1-3
+tim: 3559.320 3564.000
+txt: one two nine right heading zero nine zero, to intercept the Andrews zero six seven radial, thank you.
+
+stm: 1>D1-3>USA1809
+tim: 3613.940 3621.030
+txt: USAir Ten, correction, eighteen zero nine, intercept the Gordonsville zero five six radial, resume your own navigation.
+
+stm: 2>D1-3>PAT129
+tim: 3628.670 3633.010
+txt: Pat One Twenty Nine, contact Washington Departure one two six point five five one.
+
+stm: 1>PAT129>D1-3
+tim: 3633.910 3637.160
+txt: Penn One Two Nine to Washington, one two six point five five, good day.
+
+stm: 1>D1-3>UAL341
+tim: 3655.190 3659.830
+txt: United Three Forty One, proceed direct to LINDEN, reserve, correction, turn right direct ARMEL, resume own nav.
+
+stm: 1>D1-3>UAL341
+tim: 3688.220 3692.500
+txt: United Three Forty One, contact the Washington Center one three one two zero point six five.
+
+stm: 1>D1-3>USA1809
+tim: 3757.140 3762.890
+txt: USAir Eighteen Zero Nine, contact the Washington Center one three five point four.
+
+stm: 1>D1-3>UNK
+tim: 3814.310 3816.420
+txt: Test one two three four five.
+
+stm: 1>UAL603>D1-3
+tim: 3958.180 3962.880
+txt: Washington Departure, United Six Zero Three, climbing out of one thousand seven hundred for five thousand.
+
+stm: 1>UAL603>D1-3
+tim: 3977.120 3979.650
+txt: United Six Zero Three, climbing out of two thousand.
+
+stm: 2>D1-3>UAL603
+tim: 3979.650 3983.550
+txt: Baron Six Zero Three, Washington Departure, radar contact, climb maintain one seven thousand.
+
+stm: 1>UAL603>D1-3
+tim: 3984.410 3987.060
+txt: Climbing to one seven thousand, United Six Zero Three.
+
+stm: 2>D1-3>N62SB
+tim: 3987.060 3989.200
+txt: November Six Two Sierra Bravo, Washington.
+
+stm: 1>D1-3>N62SB
+tim: 3991.650 3993.560
+txt: you landing gate is great, correct?
+
+stm: 1>N62SB>D1-3
+tim: 3993.560 3995.040
+txt: Affirmative, Gaither sir.
+
+stm: 1>D1-3>N62SB
+tim: 3995.040 3997.040
+txt: All right, what is your present heading?
+
+stm: 2>N62SB>D1-3
+tim: 3997.810 4000.480
+txt: Climb highway zero one eight.
+
+stm: 1>D1-3>N62SB
+tim: 4001.270 4005.880
+txt: Roger, fly heading zero three zero is a vector to bring you into my airspace, then I will have more direct for you.
+
+stm: 1>N62SB>D1-3
+tim: 4006.320 4008.340
+txt: Zero three zero.
+
+stm: 1>D1-3>UAL603
+tim: 4074.690 4077.360
+txt: United Six Zero Three, turn left heading two niner zero.
+
+stm: 1>UAL603>D1-3
+tim: 4078.090 4080.220
+txt: Left two niner zero, United Six Zero Three.
+
+stm: 1>D1-3>UAL603
+tim: 4129.890 4132.860
+txt: Nine Six Zero Three, proceed direct to ARMEL, resume own nav.
+
+stm: 1>UAL603>D1-3
+tim: 4132.860 4135.350
+txt: Directly to ARMEL, United Six Zero Three.
+
+stm: 1>D1-3>UAL603
+tim: 4174.490 4176.910
+txt: And Six Zero Three, contact Dulles one thirty four two.
+
+stm: 1>UAL603>D1-3
+tim: 4177.330 4179.760
+txt: Three four decimal two, United Six Oh Three, good day.
+
+stm: 2>D1-3>N62SB
+tim: 4249.860 4252.310
+txt: November Two Sierra Bravo, turn left heading zero two zero.
+
+stm: 1>N62SB>D1-3
+tim: 4252.720 4254.320
+txt: Zero two zero, Sierra Bravo.
+
+stm: 1>D1-3>N00RV
+tim: 4353.580 4356.010
+txt: Four Hundred R B, Washington, roger, what is your destination?
+
+stm: 1>D1-3>N00RV
+tim: 4358.720 4359.620
+txt: Thank you.
+
+stm: 1>D1-3>N62SB
+tim: 4405.400 4408.180
+txt: November Six Two Sierra Bravo, descend maintain three thousand.
+
+stm: 2>USA1095>D1-3
+tim: 4572.630 4574.560
+txt: USAir Ten Ninety Five, out of one point five.
+
+stm: 1>D1-3>USA1095
+tim: 4575.320 4579.810
+txt: Ten Ninety Five, Washington Departure, radar contact, climb to one seven thousand, expedite climb through four.
+
+stm: 2>USA1095>D1-3
+tim: 4580.920 4582.990
+txt: Expedite through four, going to seventeen.
+
+stm: 1>D1-3>USA1499
+tim: 4591.610 4600.140
+txt: USAir Fourteen Nine Nine, Washington Departure, join the Gordon'sville zero five six radial, resume own navigation, climb maintain flight level two one zero.
+
+stm: 1>D1-3>USA1499
+tim: 4604.290 4605.620
+txt: Four zero zero five six.
+
+stm: 2>D1-3>USA1499
+tim: 4646.540 4649.500
+txt: USAir Fourteen Ninety Nine, expedite your climb up to one four thousand.
+
+stm: 2>D1-3>N00RV
+tim: 4660.660 4664.290
+txt: Borna Romeo Victor, are you familiar with the prohibited areas?
+
+stm: 2>D1-3>N00RV
+tim: 4665.670 4667.510
+txt: Okay, avoid deprived air use.
+
+stm: 2>D1-3>USA1095
+tim: 4674.600 4677.010
+txt: Ten Ninety Five, turn left heading two seven zero.
+
+stm: 2>USA1095>D1-3
+tim: 4677.350 4679.550
+txt: USAir Ten Ninety Five, left to two seven oh.
+
+stm: 1>D1-3>AWE5
+tim: 4683.640 4688.380
+txt: Ex Five, fly heading two one zero, climb maintain flight level two three zero, expedite through one eight oh.
+
+stm: 2>D1-3>AWE5
+tim: 4693.710 4694.470
+txt: Roger.
+
+stm: 1>D1-3>USA1499
+tim: 4708.500 4712.980
+txt: USAir Fourteen Ninety Nine, contact the Washington Center one three five point four.
+
+stm: 1>D1-3>USA1095
+tim: 4720.140 4727.430
+txt: USAir Ten Ninety Five, turn left heading one niner zero, climb maintain flight level two one zero.
+
+stm: 1>USA1095>D1-3
+tim: 4728.390 4732.800
+txt: And we will turn left to one nine zero, climb maintain five with two one zero, USAir Ten Ninety Five.
+
+stm: 1>D1-3>N62SB
+tim: 4763.240 4767.520
+txt: November Six Two Sierra Bravo, contact Baltimore one two eight point seven.
+
+stm: 1>N62SB>D1-3
+tim: 4768.740 4771.130
+txt: Eighteen seven, Zero Bravo, have a good day.
+
+stm: 1>D1-3>N62SB
+tim: 4771.130 4773.390
+txt: One two eight point seven, Twenty Eight Seven.
+
+stm: 2>N62SB>D1-3
+tim: 4773.390 4776.370
+txt: Okay, twenty eight seven, have a good day, sir.
+
+stm: 1>D1-3>N62SB
+tim: 4776.880 4777.430
+txt: Thank you.
+
+stm: 1>D1-3>USA1095
+tim: 4787.240 4791.590
+txt: USAir Ten Ninety Five, intercept the GORDONSVILLE zero five six radial, resume own navigation.
+
+stm: 1>USA1095>D1-3
+tim: 4791.920 4796.540
+txt: Intercept the GORDONSVEL zero five six, and resume normal USAir Ten Ninety Five.
+
+stm: 2>USA41>D1-3
+tim: 4815.610 4817.970
+txt: Approach, Departure, USAir Forty One, leaving a thousand.
+
+stm: 1>D1-3>USA41
+tim: 4818.350 4821.510
+txt: USAir Forty One, Departure, radar contact, climb maintain one seven thousand.
+
+stm: 1>USA41>D1-3
+tim: 4821.820 4822.750
+txt: One seven thousand.
+
+stm: 2>D1-3>NHK9
+tim: 4846.970 4850.150
+txt: Nine Doc Nine, are you on the heading or you on a radial for somewhere?
+
+stm: 2>NHK9>D1-3
+tim: 4852.630 4855.300
+txt: we are proceeding direct to Westminister, as per Dulles.
+
+stm: 1>D1-3>NHK9
+tim: 4855.650 4856.750
+txt: All right, thank you.
+
+stm: 1>AAL743>D1-3
+tim: 4885.230 4888.140
+txt: Departure, American Seven Forty Three, out of seventeen hundred.
+
+stm: 2>D1-3>AAL743
+tim: 4889.050 4893.610
+txt: American Seven Forty Three, Washington Departure, radar contact, climb maintain one seven thousand.
+
+stm: 1>AAL743>D1-3
+tim: 4893.610 4894.570
+txt: Seventeen thousand.
+
+stm: 1>D1-3>USA1095
+tim: 4901.110 4906.030
+txt: USAir Ten Ninety Five, turn right to heading two two zero to intercept the GORDONSZIL zero five six radial.
+
+stm: 1>D1-3>USA1095
+tim: 4911.550 4915.350
+txt: USAir Ten Ninety Five, contact the Washington Center one three five point four.
+
+stm: 1>USA1095>D1-3
+tim: 4915.350 4917.780
+txt: Thirty Five Four, have a nice day, sir.
+
+stm: 1>D1-3>USA1095
+tim: 4917.780 4918.510
+txt: Thank you.
+
+stm: 1>BOXER22>D1-3
+tim: 4919.790 4923.500
+txt: Departure, Boxer Two Two is out of two thousand five hundred for three thousand, heading two seven zero.
+
+stm: 1>D1-3>BOXER22
+tim: 4923.500 4926.760
+txt: Box Two Two, Departure, radar contact, maintain three thousand.
+
+stm: 1>BOXER22>D1-3
+tim: 4927.110 4928.620
+txt: Maintain three thousand, Boxer Two Two.
+
+stm: 1>D1-3>USA41
+tim: 4929.430 4931.910
+txt: USAir Forty One, turn left heading three zero zero.
+
+stm: 2>USA41>D1-3
+tim: 4931.910 4933.470
+txt: Three zero zero, USAir Forty One.
+
+stm: 1>D1-3>AWE5
+tim: 4964.890 4970.630
+txt: Cactus Five, contact Jolla, I'm sorry, Washington Center one thirty, correction, one two zero point six five.
+
+stm: 1>D1-3>AWE5
+tim: 4974.830 4975.610
+txt: Thank you.
+
+stm: 1>D1-3>BOXER22
+tim: 4985.210 4988.090
+txt: Rexor Two Two, climb maintain one seven thousand.
+
+stm: 1>BOXER22>D1-3
+tim: 4988.420 4990.820
+txt: Out of three thousand for one seven thousand, Boxer Two Two.
+
+stm: 1>D1-3>USA41
+tim: 5000.580 5004.880
+txt: USAir Forty One, contact Dulles on one one eight point four seven.
+
+stm: 1>USA41>D1-3
+tim: 5005.210 5006.350
+txt: Eighteen forty seven, so long.
+
+stm: 1>D1-3>AAL743
+tim: 5007.210 5010.220
+txt: MAC Seven Forty Three, turn left heading one two seven zero.
+
+stm: 1>AAL743>D1-3
+tim: 5010.610 5012.260
+txt: Two seven zero, MAC Seven Forty Three.
+
+stm: 2>D1-3>BOXER22
+tim: 5019.190 5022.120
+txt: Morning Two Two Two, turn left heading two five zero, vector for the climb.
+
+stm: 1>BOXER22>D1-3
+tim: 5022.510 5024.270
+txt: Two five zero for Boxer, Two Two.
+
+stm: 2>USA1697>D1-3
+tim: 5030.460 5034.140
+txt: Aparture, USAir Sixteen Ninety Seven, climbing to five thousand, good morning.
+
+stm: 2>D1-3>USA1697
+tim: 5034.140 5038.940
+txt: Sixteen Ninety Seven, Departure, good morning, radar contact, climb maintain one seven thousand.
+
+stm: 1>USA1697>D1-3
+tim: 5038.940 5042.120
+txt: Out of two for one, seven thousand, USAir Sixteen Ninety Seven.
+
+stm: 1>D1-3>AAL743
+tim: 5057.280 5063.700
+txt: Abbac Seven Forty Three, turn left heading two five zero, join the LINDEN zero nine zero radial, resume own nav.
+
+stm: 1>AAL743>D1-3
+tim: 5064.180 5066.630
+txt: Two five zero in the seven, LINDEN zero nine zero.
+
+stm: 1>D1-3>BOXER22
+tim: 5068.460 5071.200
+txt: Boxer Two Two, do not exceed two hundred and fifty knots.
+
+stm: 1>BOXER22>D1-3
+tim: 5072.810 5075.220
+txt: Okay, Boxer Two Two, we are not exceeding it.
+
+stm: 1>D1-3>BOXER22
+tim: 5075.220 5076.130
+txt: All right.
+
+stm: 1>D1-3>BOXER22
+tim: 5100.210 5104.500
+txt: Boxer Two Two, turn right heading three zero zero, join J one forty nine.
+
+stm: 1>BOXER22>D1-3
+tim: 5104.820 5107.640
+txt: Right to three zero zero, to join J one forty nine, Boxer Two Two.
+
+stm: 2>D1-3>AAL743
+tim: 5108.450 5111.810
+txt: American Seven Forty Three, contact Dulles one thirty four two.
+
+stm: 1>AAL743>D1-3
+tim: 5113.390 5114.490
+txt: Thirty four point two.
+
+stm: 1>D1-3>BOXER22
+tim: 5131.010 5133.440
+txt: Boxer Two Two, you can resume normal speed.
+
+stm: 1>BOXER22>D1-3
+tim: 5133.440 5135.080
+txt: Normal speed now for Boxing Two Two.
+
+stm: 1>D1-3>USA1697
+tim: 5148.320 5152.080
+txt: USAir Sixteen Ninety Seven, turn left heading two nine zero, vector for the climb.
+
+stm: 1>USA1697>D1-3
+tim: 5152.880 5155.170
+txt: Two nine zero, USAir Sixteen Ninety Seven.
+
+stm: 1>D1-3>BOXER22
+tim: 5196.180 5200.210
+txt: Boxer Two Two, contact Dulles Departure one three four point two.
+
+stm: 1>BOXER22>D1-3
+tim: 5200.540 5202.190
+txt: One thirty four two, Boxer Two Two, good day.
+
+stm: 1>D1-3>USA1697
+tim: 5204.940 5207.700
+txt: USAir Sixteen Ninety Seven, turn left heading one niner zero.
+
+stm: 1>USA1697>D1-3
+tim: 5208.120 5210.670
+txt: One ninety, USAir Sixteen Ninety Seven.
+
+stm: 2>D1-3>USA1697
+tim: 5266.260 5269.680
+txt: Sixteen Ninety Seven, amend your altitude, maintain one five thousand.
+
+stm: 1>USA1697>D1-3
+tim: 5270.270 5272.790
+txt: On five thousand, USAir Sixteen Ninety Seven.
+
+stm: 1>D1-3>USA1697
+tim: 5276.890 5281.210
+txt: Six Two Ninety Seven, direct LINDEN now, contact Dulles one thirty four two.
+
+stm: 1>USA1697>D1-3
+tim: 5282.640 5285.710
+txt: Head LINDEN and twenty four two, Sixty Ninety Seven, good day.
+
+stm: 1>D1-3>USA1697
+tim: 5286.030 5288.510
+txt: Thirty four two one, three four point two.
+
+stm: 1>USA1697>D1-3
+tim: 5288.510 5290.120
+txt: Thirty four two, got you now.
+
+stm: 1>D1-3>N00RV
+tim: 5293.270 5299.060
+txt: November Four Hundred Romeo Victor, contact the Washington Center one three five point four.
+
+stm: 1>D1-3>N00RV
+tim: 5301.220 5302.440
+txt: Thirty Five Four.
+
+stm: 1>D1-3>AAL1283
+tim: 5496.850 5500.440
+txt: Twelve Eighty Three, fly heading two one zero, climb maintain flight level two three zero.
+
+stm: 1>D1-3>AAL1283
+tim: 5620.390 5624.190
+txt: American Twelve Eighty Three, proceed direct to W Aventon, resume own navigation.
+
+stm: 2>D1-3>NHK9
+tim: 5639.940 5644.690
+txt: MAC Nine, traffic three o'clock, seven miles, northwestbound, climbing off of Washington.
+
+stm: 1>NHK9>D1-3
+tim: 5646.300 5647.750
+txt: And North Carolina, he is searching.
+
+stm: 2>NHK9>D1-3
+tim: 5668.080 5670.040
+txt: And out of nine as the Washington traffic.
+
+stm: 1>D1-3>AAL1283
+tim: 5683.290 5687.270
+txt: American Twelve Eighty Three, contact the Washington Center one two zero point six five.
+
+stm: 1>USA1423>D1-3
+tim: 5706.790 5708.620
+txt: Out of a thousand, USAir Fourteen Twenty Three.
+
+stm: 1>D1-3>NHK9
+tim: 5711.860 5715.950
+txt: Nine Five Nine, contact Baltimore Departure one two eight point seven, good day.
+
+stm: 1>NHK9>D1-3
+tim: 5717.070 5719.270
+txt: One two eight point seven for Nine Oh Nine.
+
+stm: 2>USA1423>D1-3
+tim: 5721.380 5724.960
+txt: And Departure, USAir Fourteen Twenty Three is with you, at fifteen hundred up to four.
+
+stm: 1>D1-3>USA1423
+tim: 5724.960 5730.070
+txt: Henson Fourteen Twenty Three, Departure, radar contact, climb maintain one seven thousand, expedite through six.
+
+stm: 1>USA1423>D1-3
+tim: 5730.490 5735.150
+txt: Expeditiously through six, up to seventeen, one seven thousand, USAir Fourteen Twenty Three.
+
+stm: 1>HNA4534>D1-3
+tim: 5798.200 5802.290
+txt: Henson Departure, Henson Forty Five Thirty Four is with you, out of eight hundred.
+
+stm: 1>D1-3>HNA4534
+tim: 5802.290 5808.890
+txt: Henson Forty Five Thirty Four, Washington Departure, radar contact, climb maintain one seven thousand.
+
+stm: 2>HNA4534>D1-3
+tim: 5809.240 5811.900
+txt: Climb right to one seven thousand, Henson Forty Five Thirty Four.
+
+stm: 1>D1-3>USA1423
+tim: 5824.900 5827.960
+txt: USAir Fourteen Twenty Three, turn left heading two one zero.
+
+stm: 1>USA1423>D1-3
+tim: 5828.280 5830.900
+txt: Two one zero, USAir Fourteen Twenty Three, roger.
+
+stm: 1>D1-3>USA1423
+tim: 5933.120 5938.820
+txt: USAir Fourteen Twenty Three, turn right heading two nine zero, join J one forty nine, resume own navigation.
+
+stm: 1>USA1423>D1-3
+tim: 5938.820 5940.410
+txt: USAir Fourteen Twenty Three, welcome.
+
+stm: 1>D1-3>HNA4534
+tim: 5948.660 5951.700
+txt: Henson Forty Five Thirty Four, turn left heading three zero zero.
+
+stm: 2>HNA4534>D1-3
+tim: 5952.090 5954.420
+txt: Three zero zero, Henson Forty Five Thirty Four.
+
+stm: 1>D1-3>REGAL32
+tim: 5971.570 5976.500
+txt: Legal Three Two, Washington, roger, fly heading two one zero, effect higher in three miles.
+
+stm: 1>D1-3>USA1423
+tim: 5979.450 5984.580
+txt: USAir Fourteen Twenty Three, contact Washington, correction, Dulles on one three four point two.
+
+stm: 1>USA1423>D1-3
+tim: 5984.950 5986.850
+txt: Okay, what was that Dulles Three?
+
+stm: 1>D1-3>USA1423
+tim: 5986.850 5989.810
+txt: One three four point two for USAir Fourteen Twenty Three.
+
+stm: 2>USA1423>D1-3
+tim: 5989.810 5991.790
+txt: One thirty four point two, USAir Fourteen Twenty Three.
+
+stm: 1>D1-3>REGAL32
+tim: 6020.990 6023.690
+txt: Visual Three Two, climb maintain flight level two zero zero.
+
+stm: 1>AAL1549>D1-3
+tim: 6026.460 6030.650
+txt: Fouring Washington, American Fifteen Forty Nine, center two thousand five hundred for five thousand.
+
+stm: 1>D1-3>AAL1549
+tim: 6034.150 6036.890
+txt: American Fifteen Forty Nine, Washington Departure, radar contact.
+
+stm: 1>D1-3>HNA4534
+tim: 6044.050 6048.650
+txt: Henson Forty Five Thirty Four, contact Dulles one one eight point four seven, good day.
+
+stm: 2>HNA4534>D1-3
+tim: 6048.650 6052.710
+txt: Nineteen forty seven, Henson Forty Five Thirty Four, good day.
+
+stm: 1>D1-3>AAL1549
+tim: 6127.870 6130.830
+txt: American Fifteen Forty Nine, turn left heading two zero zero.
+
+stm: 1>AAL1549>D1-3
+tim: 6130.830 6133.290
+txt: Left two zero zero, American Fifteen Forty Nine.
+
+stm: 1>D1-3>AAL1549
+tim: 6141.970 6146.240
+txt: American Fifteen Forty Nine, climb maintain one seven thousand.
+
+stm: 1>AAL1549>D1-3
+tim: 6146.240 6149.510
+txt: Out of five for one seven thousand, now American Fifteen Forty Nine.
+
+stm: 1>USA453>D1-3
+tim: 6198.760 6201.660
+txt: Four Fifty Three is out of seven hundred feet for five thousand.
+
+stm: 1>D1-3>USA453
+tim: 6202.110 6206.330
+txt: TWA Four Fifty Three, Washington Departure, radar contact, climb maintain one seven thousand.
+
+stm: 1>USA453>D1-3
+tim: 6206.690 6209.350
+txt: Climb to one seven thousand, USAir Four Five Three.
+
+stm: 1>D1-3>AAL1549
+tim: 6233.870 6237.910
+txt: American Fifteen Forty Nine, turn right heading two nine zero, join J one forty nine.
+
+stm: 1>AAL1549>D1-3
+tim: 6237.910 6240.720
+txt: Right two nine zero to join the airway, American Fifteen Forty Nine.
+
+stm: 2>D1-3>USA453
+tim: 6251.340 6255.830
+txt: USAir Four Fifty Three, expedite the climb through niner thousand, maintain one seven thousand.
+
+stm: 1>USA453>D1-3
+tim: 6255.830 6259.860
+txt: Expedite through nine, to maintain one seven thousand, USAir Four Fifty Three.
+
+stm: 1>D1-3>AAL1549
+tim: 6262.780 6267.190
+txt: American Fifteen Forty Nine, contact Dulles Departure one three four point two.
+
+stm: 1>AAL1549>D1-3
+tim: 6267.190 6269.210
+txt: Thirty four two, good day, American Fifteen Forty Nine.
+
+stm: 2>D1-3>USA453
+tim: 6313.040 6318.070
+txt: Four Fifty Three, traffic at one o'clock, two miles, southwestbound, climb rate to aggregate, typing alt two hundred nine.
+
+stm: 1>USA453>D1-3
+tim: 6318.890 6320.010
+txt: TWA Four Fifty Two.
+
+stm: 2>ROSS70>D1-3
+tim: 6339.540 6343.340
+txt: Washington Approach, Ross Seven Zero is with you, three three for three point five.
+
+stm: 1>D1-3>ROSS70
+tim: 6343.340 6347.230
+txt: Ross Seven Zero, Washington Approach, roger, what is your destination?
+
+stm: 1>ROSS70>D1-3
+tim: 6347.820 6356.070
+txt: That will be working just north of P Fifty Six, kind of the northwest corner there of the capital area.
+
+stm: 1>ROSS70>D1-3
+tim: 6358.310 6359.590
+txt: That is appropriate, sir.
+
+stm: 1>D1-3>ROSS70
+tim: 6359.590 6360.410
+txt: Roger.
+
+stm: 1>D1-3>USA453
+tim: 6361.480 6364.080
+txt: USAir Four Fifty Three, turn left heading two seven zero.
+
+stm: 2>USA453>D1-3
+tim: 6364.610 6366.920
+txt: Two seven zero heading, USAir Four Fifty Three, right at nine.
+
+stm: 1>D1-3>USA453
+tim: 6367.230 6369.270
+txt: USAir Four Fifty Three, do you have another trans funder?
+
+stm: 1>USA453>D1-3
+tim: 6370.690 6371.830
+txt: Yeah, we will try it.
+
+stm: 1>D1-3>USA453
+tim: 6371.830 6373.770
+txt: All right, thank you. I have a problem with this one.
+
+stm: 2>D1-3>USA453
+tim: 6376.280 6378.560
+txt: USAir Four Fifty Three, say Guindy Al, two leaving.
+
+stm: 1>USA453>D1-3
+tim: 6378.980 6380.250
+txt: Ninety three hundred.
+
+stm: 1>D1-3>USA453
+tim: 6380.250 6382.690
+txt: Thank you, turn left heading two zero zero.
+
+stm: 2>USA453>D1-3
+tim: 6382.690 6384.950
+txt: Left to two zero zero, USAir Four Fifty Two.
+
+stm: 2>D1-3>ROSS70
+tim: 6393.140 6397.410
+txt: Ross Seven E, proceed direct Washington, and resume your own nav after that.
+
+stm: 1>ROSS70>D1-3
+tim: 6398.320 6399.340
+txt: Twenty seven zero.
+
+stm: 2>D1-3>USA453
+tim: 6399.340 6404.320
+txt: Lear Four Fifty Two That Three, transponder is much better, I was not getting a good reply out of the other one.
+
+stm: 1>USA453>D1-3
+tim: 6404.320 6404.880
+txt: Okay.
+
+stm: 1>D1-3>USA453
+tim: 6468.830 6472.670
+txt: USAir Four Fifty Three, turn right heading two niner zero, and join J one forty nine.
+
+stm: 2>USA453>D1-3
+tim: 6473.010 6476.810
+txt: Two ninety, join J one forty nine, USAir One Four Fifty Three.
+
+stm: 1>D1-3>USA453
+tim: 6496.490 6500.630
+txt: USAir Four Fifty Three, contact Dulles Departure one three four point two, good day.
+
+stm: 1>USA453>D1-3
+tim: 6500.630 6502.570
+txt: Thirty foot two, USAir Four Fifty Three, so long.
+
+stm: 1>D1-3>ROSS70
+tim: 6666.130 6669.670
+txt: Loss Seven Zero, contact Washington Departure one two six point five five.
+
+stm: 1>ROSS70>D1-3
+tim: 6673.810 6676.160
+txt: Trust seven zero, one two six point five five.
+
+stm: 1>V185>D1-3
+tim: 6678.270 6681.170
+txt: Good morning Washington, Navy Six One One Eight Five is with you, level four.
+
+stm: 2>D1-3>V185
+tim: 6681.170 6684.510
+txt: Navy Six One One Eighty Five, Washington, roger, proceed direct ARMEL.
+
+stm: 1>V185>D1-3
+tim: 6684.820 6686.280
+txt: Direct ARMEL for One Eight Five.
+
+stm: 1>D1-3>V185
+tim: 6840.040 6844.370
+txt: Navy Six One One Eight Five, contact Dulles Approach Control one two five point eight.
+
+stm: 1>V185>D1-3
+tim: 6844.370 6846.410
+txt: Twenty five point eight for One Eight Five, have a good day.
+
+stm: 1>PACER52>D1-3
+tim: 7040.590 7044.430
+txt: We are in Washington, Pacer Five Two is with you, passing one thousand five hundred for three thousand.
+
+stm: 2>D1-3>PACER52
+tim: 7045.360 7047.450
+txt: Pace Five Two, Departure, radar contact.
+
+stm: 1>D1-3>PACER52
+tim: 7084.260 7087.200
+txt: Pacer Five Two, squawk two four seven six.
+
+stm: 2>N14HC>D1-3
+tim: 7124.420 7128.310
+txt: Departure, Lear One One Four Hotel Charlie, we are at you, one thousand for five thousand.
+
+stm: 1>D1-3>N14HC
+tim: 7128.310 7133.360
+txt: Lear One One Four Hotel Charlie, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>N14HC>D1-3
+tim: 7133.890 7135.550
+txt: One one thousand, Hotel Charlie.
+
+stm: 1>D1-3>PACER52
+tim: 7135.850 7138.590
+txt: Pacer Five Two, climb maintain four thousand.
+
+stm: 1>PACER52>D1-3
+tim: 7138.930 7140.700
+txt: Three for four, Pacer Five Eight Two.
+
+stm: 1>D1-3>PACER52
+tim: 7202.420 7205.580
+txt: Eight Five Two, proceed direct LINDEN, expect higher in two miles.
+
+stm: 2>PACER52>D1-3
+tim: 7206.030 7207.470
+txt: Direct LINDEN PACE Five Two.
+
+stm: 1>USA291>D1-3
+tim: 7208.230 7210.580
+txt: USAir Two Ninety One, out of one for five.
+
+stm: 1>D1-3>USA291
+tim: 7210.580 7215.030
+txt: Lear Two Ninety One, Washington Departure, radar contact, climb maintain one one thousand.
+
+stm: 1>USA291>D1-3
+tim: 7215.030 7217.310
+txt: One one, eleven thousand, USAir Two Ninety One.
+
+stm: 1>D1-3>PACER52
+tim: 7233.180 7236.480
+txt: Hard Five Two, climb maintain one seven thousand.
+
+stm: 1>PACER52>D1-3
+tim: 7236.830 7239.010
+txt: Page Five Two, out of four for one seven thousand.
+
+stm: 1>D1-3>N14HC
+tim: 7247.800 7250.070
+txt: One Four Hotel Charlie, you still following the river?
+
+stm: 1>N14HC>D1-3
+tim: 7251.030 7252.130
+txt: That is affirmative.
+
+stm: 1>D1-3>USA291
+tim: 7258.070 7260.880
+txt: USAir Two Ninety One, amend your altitude, maintain three thousand.
+
+stm: 1>D1-3>USA291
+tim: 7265.610 7266.000
+txt: All right.
+
+stm: 2>D1-3>N14HC
+tim: 7266.000 7268.320
+txt: Four Hotel Charlie, turn left heading two seven zero.
+
+stm: 1>N14HC>D1-3
+tim: 7268.750 7270.640
+txt: Heading two seven zero, Hotel Charlie.
+
+stm: 2>USA291>D1-3
+tim: 7271.920 7274.650
+txt: We are out of thirty two, back down to three, US Sixty Ninety One.
+
+stm: 1>D1-3>USA291
+tim: 7274.650 7275.690
+txt: I, thank you.
+
+stm: 1>D1-3>USA291
+tim: 7278.160 7280.340
+txt: USAir Two Ninety One, turn right heading three six zero.
+
+stm: 1>D1-3>PACER52
+tim: 7289.850 7293.550
+txt: Pacer Five Two, contact Dulles one three four point two, good day.
+
+stm: 2>PACER52>D1-3
+tim: 7294.090 7296.180
+txt: One three four two, Passer Five Two, good day.
+
+stm: 1>D1-3>N14HC
+tim: 7306.700 7315.360
+txt: November Four Hotel Charlie, fly heading two one zero, climb maintain one one thousand, expedite to it please.
+

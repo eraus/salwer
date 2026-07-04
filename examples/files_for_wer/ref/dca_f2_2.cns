@@ -1,0 +1,2240 @@
+stm: 4>NO>NO
+tim: 0
+txt: {'file_level_comment': 'see the cmt field'}
+cns: position was using multiple frequencies and there were numerous aircraft transmissions that are not heard; during the first part of this period f2 is more of a feeder controller to the f1 position; controller changes
+
+stm: 1>F2-1>UNK1546
+tim: 8120
+txt: USAir Fifteen Forty Six, descend maintain five thousand.
+cns: (1) [(A) USAir Fifteen Forty Six] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 1>F2-1>USA1528
+tim: 13870
+txt: USAir Fifteen Twenty Eight, descend maintain one one thousand.
+cns: (1) [(A) USAir Fifteen Twenty Eight] [(B2) descend maintain] [(C2) one one thousand]
+
+stm: 1>F2-1>TWA500
+tim: 20770
+txt: TWA Five Hundred, descend maintain one six thousand.
+cns: (1) [(A) TWA Five Hundred] [(B2) descend maintain] [(C2) one six thousand]
+
+stm: 2>F2-1>MID2721
+tim: 29100
+txt: Midex Twenty Seven Twenty One, turn left heading one niner zero.
+cns: (1) [(A) Midex Twenty Seven Twenty One] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>MID2721>F2-1
+tim: 31970
+txt: Left turn to one ninety, Twenty Seven Twenty One, airport in sight.
+cns: (2) [(B4) Left turn to] [(C4) one ninety] [(A) Twenty Seven Twenty One] [(E) airport in sight]
+
+stm: 2>F2-1>MID2721
+tim: 37180
+txt: Midex Twenty Seven Twenty One, roger.
+cns: (3) [(A) Midex Twenty Seven Twenty One] [(D) roger]
+
+stm: 1>F2-1>DAL728
+tim: 43750
+txt: Delta Seven Twenty Eight, Washington Approach, roger, Washington altimeter three zero one eight.
+cns: (1) [(A) Delta Seven Twenty Eight] [(G) Washington Approach] [(D) roger] [(B1) Washington altimeter] [(C1) three zero one eight]
+
+stm: 1>F2-1>USA1528
+tim: 49760
+txt: USAir Fifteen Twenty Eight, turn right heading zero five zero.
+cns: (1) [(A) USAir Fifteen Twenty Eight] [(B4) turn right heading] [(C4) zero five zero]
+
+stm: 1>F2-1>NWA987
+tim: 57490
+txt: Northwest Nine Eighty Seven, descend maintain seven thousand.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B2) descend maintain] [(C2) seven thousand]
+
+stm: 1>NWA987>F2-1
+tim: 60400
+txt: Down to seven thousand, Northwest Nine Eighty Seven.
+cns: (2) [(B2) Down to] [(C2) seven thousand] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>DAL728
+tim: 64510
+txt: Delta Seven Twenty Eight, turn right heading zero, correction, fly heading zero one zero, at one five thousand, reduce speed to two five zero knots.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B4) turn right heading] [(C4) zero] [(E) correction] [(B4) fly heading] [(C4) zero one zero] [(E) at one five thousand] [(B5) reduce speed to] [(C5) two five zero knots]
+
+stm: 1>F2-1>MID2721
+tim: 74580
+txt: Midex Twenty Seven Twenty One, contact Washington Approach one one niner point eight five.
+cns: (1) [(A) Midex Twenty Seven Twenty One] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 1>MID2721>F2-1
+tim: 79140
+txt: Nineteen eighty five, Twenty Seven Twenty One, so long.
+cns: (2) [(C3) Nineteen eighty five] [(A) Twenty Seven Twenty One] [(I) so long]
+
+stm: 2>F2-1>NWA987
+tim: 82630
+txt: Northwest Nine Eighty, disregard.
+cns: (3) [(A) Northwest Nine Eighty] [(E) disregard]
+
+stm: 1>F2-1>HNA4334
+tim: 87840
+txt: Henson Forty Three Thirty Four, turn left heading two four zero.
+cns: (1) [(A) Henson Forty Three Thirty Four] [(B4) turn left heading] [(C4) two four zero]
+
+stm: 1>F2-1>HNA4334
+tim: 100730
+txt: Henson Forty Three Thirty Four, contact Washington Approach one one niner point eight five.
+cns: (1) [(A) Henson Forty Three Thirty Four] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 1>USA155>F2-1
+tim: 114430
+txt: Washington Approach, USAir One Fifty Five, with Papa, ten thousand.
+cns: (4) [(G) Washington Approach] [(A) USAir One Fifty Five] [(E) with [(H) Papa] ten thousand]
+
+stm: 1>F2-1>NWA987
+tim: 121780
+txt: Northwest Nine Eighty Seven, turn left heading two seven zero.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B4) turn left heading] [(C4) two seven zero]
+
+stm: 1>NWA987>F2-1
+tim: 124650
+txt: Two seven zero heading, Northwest Nine Eighty Seven.
+cns: (2) [(C4) Two seven zero] [(B4) heading] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>USA1546
+tim: 127080
+txt: USAir Fifteen Forty Six, turn right heading zero seven zero, contact Baltimore Approach one one niner point seven.
+cns: (1) [(A) USAir Fifteen Forty Six] [(B4) turn right heading] [(C4) zero seven zero] [(B3) contact] [(G) Baltimore Approach] [(C3) one one niner point seven]
+
+stm: 1>F2-1>USA1528
+tim: 136580
+txt: USAir Fifteen Twenty Eight, descend maintain seven thousand.
+cns: (1) [(A) USAir Fifteen Twenty Eight] [(B2) descend maintain] [(C2) seven thousand]
+
+stm: 1>F2-1>DAL728
+tim: 142890
+txt: Delta Seven Twenty Eight, descend maintain one two thousand.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B2) descend maintain] [(C2) one two thousand]
+
+stm: 1>F2-1>USA1806
+tim: 148760
+txt: USAir Eighteen Zero Six, Washington Approach.
+cns: (3) [(A) USAir Eighteen Zero Six] [(G) Washington Approach]
+
+stm: 1>F2-1>USA1806
+tim: 153010
+txt: USAir Eighteen Zero Six, reduce speed to two five zero knots, fly heading zero one zero.
+cns: (1) [(A) USAir Eighteen Zero Six] [(B5) reduce speed to] [(C5) two five zero knots] [(B4) fly heading] [(C4) zero one zero]
+
+stm: 3>F2-1>DAL1749
+tim: 161140
+txt: Delta Seventeen Forty Nine, reduce speed to two five zero knots, expect descent in five miles.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B5) reduce speed to] [(C5) two five zero knots] [(E) expect descent in five miles]
+
+stm: 1>DAL1749>F2-1
+tim: 165580
+txt: Reducing to two fifty, Delta Seventeen Forty Nine.
+cns: (2) [(B5) Reducing to] [(C5) two fifty] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>USA155>F2-1
+tim: 170250
+txt: USAir One Fifty Five, ten thousand, Papa.
+cns: (4) [(A) USAir One Fifty Five] [(E) ten thousand] [(H) Papa]
+
+stm: 1>F2-1>USA155
+tim: 172750
+txt: USAir One Fifty Five, Washington Approach, Washington altimeter three zero one eight, proceed direct Washington.
+cns: (1) [(A) USAir One Fifty Five] [(G) Washington Approach] [(B1) Washington altimeter] [(C1) three zero one eight] [(E) proceed direct [(G) Washington]]
+
+stm: 1>USA155>F2-1
+tim: 178080
+txt: Roger.
+cns: (4) [(D) Roger]
+
+stm: 2>NWA987>F2-1
+tim: 183780
+txt: And Northwest Nine Eighty Seven, could not ask you for a thousand lower or so, could we?
+cns: (4) [(A) Northwest Nine Eighty Seven] [(E) could not ask you for a thousand lower or so, could we]
+
+stm: 1>F2-1>NWA987
+tim: 187520
+txt: Northwest Nine Eighty Seven, traffic is two o'clock and seven miles, southbound, southwestbound, at six thousand, turn left heading two zero zero.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(E) traffic is two o'clock and seven miles, southbound, southwestbound, at six thousand] [(B4) turn left heading] [(C4) two zero zero]
+
+stm: 1>NWA987>F2-1
+tim: 193210
+txt: Okay, left two zero zero Northwest Nine Eighty Seven.
+cns: (2) [(D) Okay] [(B4) left] [(C4) two zero zero] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>DAL1749
+tim: 196400
+txt: Delta Seventeen Forty Nine, descend maintain seven thousand.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B2) descend maintain] [(C2) seven thousand]
+
+stm: 2>DAL1749>F2-1
+tim: 198980
+txt: Down to seven thousand, Delta Seventeen Forty Nine.
+cns: (2) [(B2) Down to] [(C2) seven thousand] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>F2-1>N310RD
+tim: 202390
+txt: Cessna Three One Zero Romeo Delta, contact Washington Approach one one niner point eight five.
+cns: (1) [(A) Cessna Three One Zero Romeo Delta] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 2>N310RD>F2-1
+tim: 206640
+txt: One one nine eight five, Three Ten Romeo Delta.
+cns: (2) [(C3) One one nine eight five] [(A) Three Ten Romeo Delta]
+
+stm: 1>F2-1>USA1164
+tim: 209080
+txt: USAir Eleven Sixty Four, descend maintain five thousand.
+cns: (1) [(A) USAir Eleven Sixty Four] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 4>UNK>F2-1
+tim: 214730
+txt: And who was that for.
+cns: (4) [(E) And who was that for]
+
+stm: 1>F2-1>UNK28
+tim: 215520
+txt: Twenty Eight, turn right heading zero six zero.
+cns: (1) [(A) Twenty Eight] [(B4) turn right heading] [(C4) zero six zero]
+
+stm: 1>F2-1>TWA500
+tim: 221160
+txt: TWA Five Hundred, descend maintain one four thousand.
+cns: (1) [(A) TWA Five Hundred] [(B2) descend maintain] [(C2) one four thousand]
+
+stm: 1>F2-1>NWA987
+tim: 232750
+txt: Northwest Nine Eighty Seven, descend maintain four thousand.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>NWA987>F2-1
+tim: 235600
+txt: Northwest Nine Eighty Seven out of seven for four.
+cns: (2) [(A) Northwest Nine Eighty Seven] [(E) out of seven for] [(C2) four]
+
+stm: 1>F2-1>V843
+tim: 242000
+txt: Navy Eight Four Three, Washington Approach.
+cns: (3) [(A) Navy Eight Four Three] [(G) Washington Approach]
+
+stm: 1>F2-1>V843
+tim: 265320
+txt: Navy Eight Four Three, Washington Approach, roger, Washington altimeter three zero one eight.
+cns: (1) [(A) Navy Eight Four Three] [(G) Washington Approach] [(D) roger] [(B1) Washington altimeter] [(C1) three zero one eight]
+
+stm: 1>F2-1>USA1164
+tim: 270350
+txt: USAir Eleven Sixty Four, turn right heading zero seven zero, maintain five thousand.
+cns: (1) [(A) USAir Eleven Sixty Four] [(B4) turn right heading] [(C4) zero seven zero] [(B2) maintain] [(C2) five thousand]
+
+stm: 1>F2-1>NWA987
+tim: 276880
+txt: Northwest Nine Eighty Seven, turn right heading two seven zero, descend maintain two thousand.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B4) turn right heading] [(C4) two seven zero] [(B2) descend maintain] [(C2) two thousand]
+
+stm: 1>NWA987>F2-1
+tim: 280710
+txt: Two seventy heading down to two thousand, Northwest Nine Eighty Seven.
+cns: (2) [(C4) Two seventy] [(B4) heading] [(B2) down to] [(C2) two thousand] [(A) Northwest Nine Eighty Seven]
+
+stm: 1>F2-1>DAL1749
+tim: 284430
+txt: Delta Seventeen Forty Nine, turn left heading one niner zero.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>DAL1749>F2-1
+tim: 286910
+txt: One nine zero, Delta Seventeen Forty Nine.
+cns: (2) [(C4) One nine zero] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>F2-1>NWA987
+tim: 289550
+txt: Northwest Nine Eighty Seven, contact Washington Approach one one niner point eight five.
+cns: (1) [(A) Northwest Nine Eighty Seven] [(B3) contact] [(G) Washington Approach] [(C3) one one niner point eight five]
+
+stm: 1>NWA987>F2-1
+tim: 293560
+txt: Nineteen eighty five, Northwest Nine Eighty Seven, take care.
+cns: (2) [(C3) Nineteen eighty five] [(A) Northwest Nine Eighty Seven] [(I) take care]
+
+stm: 1>F2-1>USA1164
+tim: 296760
+txt: USAir Eleven Sixty Four, contact Baltimore Approach one one niner point seven.
+cns: (1) [(A) USAir Eleven Sixty Four] [(B3) contact] [(G) Baltimore Approach] [(C3) one one niner point seven]
+
+stm: 1>F2-1>V843
+tim: 302830
+txt: Navy Eight Four Three, turn left heading two niner zero.
+cns: (1) [(A) Navy Eight Four Three] [(B4) turn left heading] [(C4) two niner zero]
+
+stm: 1>F2-1>DAL728
+tim: 307380
+txt: Delta Seven Twenty Eight, descend maintain niner thousand.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B2) descend maintain] [(C2) niner thousand]
+
+stm: 1>F2-1>USA1806
+tim: 311650
+txt: USAir Eighteen Zero Six, descend maintain one one thousand.
+cns: (1) [(A) USAir Eighteen Zero Six] [(B2) descend maintain] [(C2) one one thousand]
+
+stm: 1>F2-1>TWA500
+tim: 316680
+txt: TWA Five Hundred, descend maintain one two thousand.
+cns: (1) [(A) TWA Five Hundred] [(B2) descend maintain] [(C2) one two thousand]
+
+stm: 1>F2-1>USA155
+tim: 327040
+txt: USAir One Fifty Five, descend maintain seven thousand.
+cns: (1) [(A) USAir One Fifty Five] [(B2) descend maintain] [(C2) seven thousand]
+
+stm: 1>USA155>F2-1
+tim: 329760
+txt: Ten for seven thousand, USAir One Fifty Five.
+cns: (2) [(E) Ten for] [(C2) seven thousand] [(A) USAir One Fifty Five]
+
+stm: 1>F2-1>DAL1749
+tim: 340300
+txt: Delta Seventeen Forty Nine, traffic one o'clock, seven miles, southwestbound, at six thousand, descend maintain four thousand.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(E) traffic one o'clock, seven miles, southwestbound, at six thousand] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>DAL1749>F2-1
+tim: 345950
+txt: Okay, descending to four thousand and looking for the traffic, Delta Seventeen Forty Nine.
+cns: (2) [(D) Okay] [(B2) descending to] [(C2) four thousand] [(E) and looking for the traffic] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>F2-1>USA1528
+tim: 350150
+txt: USAir Fifteen Twenty Eight, turn right heading zero seven zero.
+cns: (1) [(A) USAir Fifteen Twenty Eight] [(B4) turn right heading] [(C4) zero seven zero]
+
+stm: 1>F2-1>DAL728
+tim: 355740
+txt: Delta Seven Twenty Eight, turn right heading zero niner zero.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B4) turn right heading] [(C4) zero niner zero]
+
+stm: 1>F2-1>V843
+tim: 360260
+txt: Navy Eight Four Three, descend maintain three thousand.
+cns: (1) [(A) Navy Eight Four Three] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 1>F2-1>USA1806
+tim: 364190
+txt: USAir Eighteen Zero Six, turn right heading zero niner zero.
+cns: (1) [(A) USAir Eighteen Zero Six] [(B4) turn right heading] [(C4) zero niner zero]
+
+stm: 1>F2-1>DAL1749
+tim: 375680
+txt: Delta Seventeen Forty Nine, turn left heading one eight zero.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B4) turn left heading] [(C4) one eight zero]
+
+stm: 1>DAL1749>F2-1
+tim: 378300
+txt: One eight zero, Delta Seven Forty Nine.
+cns: (2) [(C4) One eight zero] [(A) Delta Seven Forty Nine]
+
+stm: 1>F2-1>USA155
+tim: 383330
+txt: USAir One Fifty Five, turn left heading two five zero, descend maintain six thousand.
+cns: (1) [(A) USAir One Fifty Five] [(B4) turn left heading] [(C4) two five zero] [(B2) descend maintain] [(C2) six thousand]
+
+stm: 2>USA155>F2-1
+tim: 387950
+txt: Two fifty down to six thousand, USAir One Fifty Five.
+cns: (2) [(C4) Two fifty] [(B2) down to] [(C2) six thousand] [(A) USAir One Fifty Five]
+
+stm: 1>F2-1>USA1528
+tim: 396780
+txt: USAir Fifteen Twenty Eight, descend maintain five thousand, contact Baltimore Approach one one niner point seven.
+cns: (1) [(A) USAir Fifteen Twenty Eight] [(B2) descend maintain] [(C2) five thousand] [(B3) contact] [(G) Baltimore Approach] [(C3) one one niner point seven]
+
+stm: 1>F2-1>UNK
+tim: 405320
+txt: Good day.
+cns: (3) [(I) Good day]
+
+stm: 4>NO>NO
+tim: 405950
+txt: {'file_level_comment': 'see the cmt field'}
+cns: new controller
+
+stm: 2>F2-2>DAL728
+tim: 424480
+txt: Delta Seven Twenty Eight, turn left heading three six zero, vectors for in trail spacing.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B4) turn left heading] [(C4) three six zero] [(E) vectors for in trail spacing]
+
+stm: 1>F2-2>DAL1749
+tim: 431620
+txt: Delta Seventeen Forty Nine, descend maintain three thousand.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 1>DAL1749>F2-2
+tim: 435320
+txt: Down to three, Delta Seventeen Forty Nine.
+cns: (2) [(B2) Down to] [(C2) three] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>F2-2>TWA500
+tim: 437910
+txt: TWA Five Hundred, descend maintain seven thousand, expedite your descent.
+cns: (1) [(A) TWA Five Hundred] [(B2) descend maintain] [(C2) seven thousand] [(E) expedite your descent]
+
+stm: 1>F2-2>USA1806
+tim: 444260
+txt: USAir Eighteen, USAir Eighteen Zero Six, reduce speed to two thirty.
+cns: (1) [(A) USAir Eighteen Zero Six] [(B5) reduce speed to] [(C5) two thirty]
+
+stm: 1>F2-2>NAE4900
+tim: 458630
+txt: Eagle Forty Nine Hundred, descend maintain four thousand.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>F2-2>NAE4900
+tim: 465390
+txt: Eagle Forty Nine Hundred, descend to four thousand.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(B2) descend to] [(C2) four thousand]
+
+stm: 1>F2-2>DAL1749
+tim: 468870
+txt: Delta Seventeen Forty Nine, turn right heading two seven zero.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 2>DAL1749>F2-2
+tim: 471650
+txt: Two seventy, two seventy, Delta Seventeen Forty Nine.
+cns: (2) [(C4) Two seventy] [(C4) two seventy] [(A) Delta Seventeen Forty Nine]
+
+stm: 1>F2-2>V843
+tim: 485850
+txt: Navy Eight Four Three, turn right heading three six zero.
+cns: (1) [(A) Navy Eight Four Three] [(B4) turn right heading] [(C4) three six zero]
+
+stm: 1>F2-2>V843
+tim: 489850
+txt: Navy Eight Four Three, contact Andrews Radar one one niner point three.
+cns: (1) [(A) Navy Eight Four Three] [(B3) contact] [(G) Andrews Radar] [(C3) one one niner point three]
+
+stm: 2>F2-2>DAL1749
+tim: 498290
+txt: Delta Seventeen Forty Three, turn heading three three zero, follow the river, cleared Mount Vernon Approach Three Six.
+cns: (1) [(A) Delta Seventeen Forty Three] [(B4) turn heading] [(C4) three three zero] [(E) follow the river] [(E) cleared [(G) Mount Vernon Approach Three Six]]
+
+stm: 1>F2-2>DAL1749
+tim: 503080
+txt: For Delta Seventeen Forty Nine, continue the turn, follow the river.
+cns: (3) [(A) Delta Seventeen Forty Nine] [(E) continue the turn] [(E) follow the river]
+
+stm: 2>F2-2>DAL1749
+tim: 506280
+txt: Delta Seventeen Forty Nine, that is correct.
+cns: (3) [(A) Delta Seventeen Forty Nine] [(D) that is correct]
+
+stm: 1>F2-2>USA155
+tim: 514520
+txt: USAir One Fifty Five, turn left to one six zero.
+cns: (1) [(A) USAir One Fifty Five] [(B4) turn left to] [(C4) one six zero]
+
+stm: 1>USA155>F2-2
+tim: 516920
+txt: One sixty, USAir One Fifty Five.
+cns: (2) [(C4) One sixty] [(A) USAir One Fifty Five]
+
+stm: 1>F2-2>DAL728
+tim: 520380
+txt: Delta Seven Twenty Eight, turn right heading zero nine zero.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B4) turn right heading] [(C4) zero nine zero]
+
+stm: 1>F2-2>USA1806
+tim: 526000
+txt: USAir Eighteen Zero Six, descend to seven thousand.
+cns: (1) [(A) USAir Eighteen Zero Six] [(B2) descend to] [(C2) seven thousand]
+
+stm: 2>F2-2>USA2726
+tim: 540030
+txt: US Twenty Seven Twenty Six, Washington, roger.
+cns: (3) [(A) US Twenty Seven Twenty Six] [(G) Washington] [(D) roger]
+
+stm: 1>F2-2>NAE4900
+tim: 542290
+txt: Eagle Forty Nine Hundred, Washington.
+cns: (3) [(A) Eagle Forty Nine Hundred] [(G) Washington]
+
+stm: 1>F2-2>TWA500
+tim: 551970
+txt: TWA Five Hundred, descend to five thousand, expedite the descent.
+cns: (1) [(A) TWA Five Hundred] [(B2) descend to] [(C2) five thousand] [(E) expedite the descent]
+
+stm: 1>F2-2>TWA500
+tim: 560520
+txt: TWA Five Hundred, turn left heading zero seven zero, expedite your descent through niner thousand, maintain five.
+cns: (1) [(A) TWA Five Hundred] [(B4) turn left heading] [(C4) zero seven zero] [(E) expedite your descent through niner thousand] [(B2) maintain] [(C2) five]
+
+stm: 1>F2-2>DAL728
+tim: 568580
+txt: Delta Seven Twenty Eight, descend to seven thousand.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B2) descend to] [(C2) seven thousand]
+
+stm: 1>F2-2>USA1806
+tim: 572480
+txt: Eighteen Oh Six, descend to seven thousand, turn left heading zero seven zero.
+cns: (1) [(A) Eighteen Oh Six] [(B2) descend to] [(C2) seven thousand] [(B4) turn left heading] [(C4) zero seven zero]
+
+stm: 2>DAL1749>F2-2
+tim: 577770
+txt: Delta Seventeen Forty Nine, established inbound.
+cns: (4) [(A) Delta Seventeen Forty Nine] [(E) established inbound]
+
+stm: 1>F2-2>NAE4900
+tim: 579740
+txt: Eagle Forty Nine Hundred, descend maintain four thousand.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>F2-2>DAL1749
+tim: 584100
+txt: Delta Seventeen Forty Nine, Tower is nineteen one, good day.
+cns: (1) [(A) Delta Seventeen Forty Nine] [(G) Tower] [(C3) nineteen one] [(I) good day]
+
+stm: 1>DAL1749>F2-2
+tim: 586640
+txt: Good day.
+cns: (2) [(I) Good day]
+
+stm: 1>F2-2>USA155
+tim: 588220
+txt: USAir One Fifty Five, descend maintain four thousand.
+cns: (1) [(A) USAir One Fifty Five] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>USA155>F2-2
+tim: 591020
+txt: Six for four thousand, USAir One Fifty Five
+cns: (2) [(E) Six for] [(C2) four thousand] [(A) USAir One Fifty Five]
+
+stm: 1>F2-2>NAE4900
+tim: 593930
+txt: Eagle Forty Nine Hundred, Approach.
+cns: (3) [(A) Eagle Forty Nine Hundred] [(G) Approach]
+
+stm: 1>F2-2>NAE4900
+tim: 597330
+txt: Descend maintain three thousand now.
+cns: (1) [(B2) Descend maintain] [(C2) three thousand] [(E) now]
+
+stm: 2>F2-2>NAE4900
+tim: 601070
+txt: Eagle Forty Nine Hundred, turn right heading three three zero.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(B4) turn right heading] [(C4) three three zero]
+
+stm: 1>F2-2>MID2726
+tim: 604950
+txt: Midex Twenty Seven Twenty Six, descend maintain four thousand.
+cns: (1) [(A) Midex Twenty Seven Twenty Six] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 2>N0AM>F2-2
+tim: 609680
+txt: Washington Approach, Aerostar Three Zero Zero Alpha Mike is at three, four point five, we have Papa.
+cns: (4) [(G) Washington Approach] [(A) Aerostar Three Zero Zero Alpha Mike] [(E) is at four point five] [(E) we have Papa]
+
+stm: 1>F2-2>N0AM
+tim: 615640
+txt: Three Hundred Alpha Mike, Washington Approach, roger.
+cns: (3) [(A) Three Hundred Alpha Mike] [(G) Washington Approach] [(D) roger]
+
+stm: 1>F2-2>USA155
+tim: 618390
+txt: USAir One Fifty Five, turn right heading one niner zero.
+cns: (1) [(A) USAir One Fifty Five] [(B4) turn right heading] [(C4) one niner zero]
+
+stm: 2>USA155>F2-2
+tim: 621040
+txt: Right one ninety, USAir One Fifty Five.
+cns: (2) [(B4) Right] [(C4) one ninety] [(A) USAir One Fifty Five]
+
+stm: 2>F2-2>USA155
+tim: 622580
+txt: USAir One Fifty Five, turn right heading two seven zero.
+cns: (1) [(A) USAir One Fifty Five] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 1>USA155>F2-2
+tim: 624720
+txt: Continue to two seven, two seventy, USAir One Fifty Five.
+cns: (2) [(B4) Continue to] [(C4) two seventy] [(A) USAir One Fifty Five]
+
+stm: 1>F2-2>TWA500
+tim: 628130
+txt: TWA Five Hundred, Baltimore nineteen seven, good day.
+cns: (1) [(A) TWA Five Hundred] [(G) Baltimore] [(C3) nineteen seven] [(I) good day]
+
+stm: 2>F2-2>DAL728
+tim: 653170
+txt: Delta Seven Twenty Eight, maintain five thousand, contact Baltimore one niner point seven.
+cns: (1) [(A) Delta Seven Twenty Eight] [(B2) maintain] [(C2) five thousand] [(B3) contact] [(G) Baltimore] [(C3) one niner point seven]
+
+stm: 1>F2-2>MID2726
+tim: 663600
+txt: Midex Twenty Seven Twenty Six, turn left heading two five zero.
+cns: (1) [(A) Midex Twenty Seven Twenty Six] [(B4) turn left heading] [(C4) two five zero]
+
+stm: 2>F2-2>USA155
+tim: 671260
+txt: USAir One Fifty Five, turn right heading three six zero, follow the river to the airport, cleared Mount Vernon approach Three Six, reduce to one seventy please.
+cns: (1) [(A) USAir One Fifty Five] [(B4) turn right heading] [(C4) three six zero] [(E) follow the river to the airport] [(E) cleared [(H) Mount Vernon] approach Three Six] [(B5) reduce to] [(C5) one seventy] [(J) please]
+
+stm: 2>USA155>F2-2
+tim: 677440
+txt: Slow to one seventy, and right turn three sixty, and up the Mount Vernon visual, One Fifty Five.
+cns: (2) [(B5) Slow to] [(C5) one seventy] [(B4) right turn] [(C4) three sixty] [(E) and up the [(H) Mount Vernon] visual] [(A) One Fifty Five]
+
+stm: 2>F2-2>USA155
+tim: 692360
+txt: USAir One Fifty Five, one seventy till five DME, contact the Tower one niner point one.
+cns: (1) [(A) USAir One Fifty Five] [(E) one seventy [(F) till [(G) five DME]]] [(B3) contact] [(G) Tower] [(C3) one niner point one]
+
+stm: 2>USA155>F2-2
+tim: 696940
+txt: Nineteen one, USAir One Fifty Five.
+cns: (2) [(C3) Nineteen one] [(A) USAir One Fifty Five]
+
+stm: 1>F2-2>USA1806
+tim: 700510
+txt: USAir Eighteen Zero Six, descend maintain five thousand, and contact Baltimore one one niner point seven.
+cns: (1) [(A) USAir Eighteen Zero Six] [(B2) descend maintain] [(C2) five thousand] [(B3) contact] [(G) Baltimore] [(C3) one one niner point seven]
+
+stm: 1>F2-2>NAE4900
+tim: 712430
+txt: Eagle Forty Nine Hundred, turn left heading two seven zero.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(B4) turn left heading] [(C4) two seven zero]
+
+stm: 3>F2-2>MID2726
+tim: 718700
+txt: Midex Twenty Seven Twenty Six, turn left heading two seven zero.
+cns: (1) [(A) Midex Twenty Seven Twenty Six] [(B4) turn left heading] [(C4) two seven zero]
+
+stm: 1>F2-2>N0AM
+tim: 740150
+txt: November Three Hundred Alpha Mike, fly heading two zero zero.
+cns: (1) [(A) November Three Hundred Alpha Mike] [(B4) fly heading] [(C4) two zero zero]
+
+stm: 1>N0AM>F2-2
+tim: 744980
+txt: Two zero zero, Alpha Mike.
+cns: (2) [(C4) Two zero zero] [(A) Alpha Mike]
+
+stm: 1>F2-2>MID2726
+tim: 783160
+txt: Midex Twenty Seven Twenty Six, descend to three thousand.
+cns: (1) [(A) Midex Twenty Seven Twenty Six] [(B2) descend to] [(C2) three thousand]
+
+stm: 3>F2-2>USA1806
+tim: 807740
+txt: Eighteen Oh Six, Washington.
+cns: (3) [(A) Eighteen Oh Six] [(G) Washington]
+
+stm: 1>F2-2>UNK
+tim: 815100
+txt: Roger.
+cns: (3) [(D) Roger.]
+
+stm: 3>F2-2>MID2726
+tim: 819080
+txt: Midex Twenty Seven Twenty Six, turn heading three two zero.
+cns: (1) [(A) Midex Twenty Seven Twenty Six] [(B4) turn heading] [(C4) three two zero]
+
+stm: 1>F2-2>NAE4900
+tim: 825100
+txt: Eagle Forty Nine Hundred, turn right heading three zero zero.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(B4) turn right heading] [(C4) three zero zero]
+
+stm: 2>F2-2>NAE4900
+tim: 830980
+txt: Eagle Forty Nine, your traffic is eleven o'clock, five miles, northbound, two thousand, DC Nine, he will land Three Six, you will land Three Three behind him.
+cns: (3) [(A) Eagle Forty Nine] [(E) your traffic is eleven o'clock, five miles, northbound, two thousand] [(E) DC Nine, he will land [(G) Three Six]] [(E) you will land [(G) Three Three] behind him]
+
+stm: 2>F2-2>NAE4900
+tim: 840840
+txt: All right, proceed inbound for Runway Three Three, you are cleared visual approach. I will call the traffic.
+cns: (3) [(D) All right] [(E) proceed inbound for [(G) Runway Three Three]] [(E) you are cleared visual approach] [(E) I will call the traffic]
+
+stm: 1>F2-2>N0AM
+tim: 847800
+txt: Three Hundred Alpha Mike, turn left heading one niner zero.
+cns: (1) [(A) Three Hundred Alpha Mike] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 2>N0AM>F2-2
+tim: 850150
+txt: One nine zero, Alpha Mike, we have the airport.
+cns: (4) [(C4) One nine zero] [(A) Alpha Mike] [(E) we have the airport]
+
+stm: 1>F2-2>N0AM
+tim: 852290
+txt: Roger.
+cns: (3) [(D) Roger]
+
+stm: 1>F2-2>MID2726
+tim: 856600
+txt: Midex Twenty Seven Twenty Six, your traffic is eleven o'clock, five miles, northbound, four thousand, a USAir jet.
+cns: (3) [(A) Midex Twenty Seven Twenty Six] [(E) your traffic is eleven o'clock, five miles, northbound, four thousand, a USAir jet]
+
+stm: 1>F2-2>MID2726
+tim: 866770
+txt: All right, he is a DC Nine also.
+cns: (3) [(D) All right] [(E) he is a DC Nine also]
+
+stm: 1>F2-2>NAE4900
+tim: 871070
+txt: Eagle Forty Nine Hundred, descend maintain one thousand six, i'm sorry, you are cleared for the visual approach, your traffic ten o'clock, three miles, fifteen hundred, northbound.
+cns: (3) [(A) Eagle Forty Nine Hundred] [(E) descend maintain one thousand six] [(E) i'm sorry] [(E) you are cleared for the visual approach] [(E) your traffic ten o'clock, three miles, fifteen hundred, northbound]
+
+stm: 1>F2-2>NAE4900
+tim: 880910
+txt: All right, he will land Three Six, you land Three Three, contact Tower one one niner point one.
+cns: (1) [(D) All right] [(E) he will land [(G) Three Six]] [(E) you land [(G) Three Three]] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>F2-2>MID2726
+tim: 888130
+txt: Midex Twenty Seven Twenty Six, follow that traffic. He will land Three Six, you will land Three Three, cleared visual approach.
+cns: (3) [(A) Midex Twenty Seven Twenty Six] [(E) follow that traffic] [(E) He will land [(G) Three Six]] [(E) you will land [(G) Three Three]] [(E) cleared visual approach]
+
+stm: 1>F2-2>MID2726
+tim: 896860
+txt: The USAir jet will land Three Six, you land Three Three behind him.
+cns: (3) [(E) The USAir jet will land [(G) Three Six]] [(E) you land [(G) Three Three] behind him]
+
+stm: 1>F2-2>NAE4900
+tim: 917300
+txt: Eagle Forty Nine Hundred, Tower nineteen one.
+cns: (1) [(A) Eagle Forty Nine Hundred] [(G) Tower] [(C3) nineteen one]
+
+stm: 1>F2-2>MID2726
+tim: 920090
+txt: Midex Twenty Seven Twenty Six, contact Tower one one niner point one.
+cns: (1) [(A) Midex Twenty Seven Twenty Six] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 2>N5GA>F2-2
+tim: 927790
+txt: Washington Approach, Lear One Oh Five Golf Alpha, leveling ten thousand, we have information Papa.
+cns: (4) [(G) Washington Approach] [(A) Lear One Oh Five Golf Alpha] [(E) leveling ten thousand] [(E) we have information Papa]
+
+stm: 1>F2-2>N5GA
+tim: 932880
+txt: Lear One Oh Five Golf Alpha, Washington Depart, Baltimore Direct.
+cns: (3) [(A) Lear One Oh Five Golf Alpha] [(G) Washington Depart] [(E) [(H) Baltimore] direct]
+
+stm: 4>N5GA>F2-2
+tim: 936170
+txt: Okay, depart Baltimore direct Five Golf Alpha.
+cns: (4) [(D) Okay] [(E) depart [(H) Baltimore] direct] [(A) Five Golf Alpha]
+
+stm: 1>N0AM>F2-2
+tim: 939980
+txt: Alpha Mike, requesting lower.
+cns: (4) [(A) Alpha Mike] [(E) requesting lower]
+
+stm: 2>F2-2>N0AM
+tim: 942720
+txt: Three hundred Alpha Mike, maintain four thousand.
+cns: (1) [(A) Three hundred Alpha Mike] [(B2) maintain] [(C2) four thousand]
+
+stm: 2>N0AM>F2-2
+tim: 945590
+txt: Okay, we are out of four and a half for four.
+cns: (2) [(D) Okay] [(E) we are out of four and a half for] [(C2) four]
+
+stm: 1>F2-2>N0AM
+tim: 1013890
+txt: Hundred Alpha, correction, Three Hundred Alpha Mike, descend maintain three thousand.
+cns: (1) [(A) Hundred Alpha] [(E) correction] [(A) Three Hundred Alpha Mike] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 2>N0AM>F2-2
+tim: 1017950
+txt: Alpha Mike, out of four for three.
+cns: (2) [(A) Alpha Mike] [(E) out of four for] [(C2) three]
+
+stm: 2>F2-2>N0AM
+tim: 1046220
+txt: Three Hundred Alpha Mike, descend maintain two thousand.
+cns: (1) [(A) Three Hundred Alpha Mike] [(B2) descend maintain] [(C2) two thousand]
+
+stm: 3>N0AM>F2-2
+tim: 1048950
+txt: Okay, we are descending to two thousand, Alpha Mike.
+cns: (4) [(D) Okay] [(E) we are] [(B2) descending to] [(C2) two thousand] [(A) Alpha Mike]
+
+stm: 2>F2-2>N0AM
+tim: 1058300
+txt: November Three Hundred Alpha Mike, you are following a Northwest jet, he is two o'clock, three miles, northbound, two thousand seven hundred.
+cns: (3) [(A) November Three Hundred Alpha Mike] [(E) you are following a Northwest jet] [(E) he is two o'clock, three miles, northbound, two thousand seven hundred]
+
+stm: 1>N0AM>F2-2
+tim: 1065720
+txt: Alpha Mike, we are looking.
+cns: (4) [(A) Alpha Mike] [(E) we are looking]
+
+stm: 3>F2-2>N0AM
+tim: 1066960
+txt: Three Hundred Alpha Mike, turn right heading three six zero.
+cns: (1) [(A) Three Hundred Alpha Mike] [(B4) turn right heading] [(C4) three six zero]
+
+stm: 2>N0AM>F2-2
+tim: 1069660
+txt: Three sixty, Alpha Mike.
+cns: (2) [(C4) Three sixty] [(A) Alpha Mike]
+
+stm: 1>F2-2>N0AM
+tim: 1090750
+txt: Three Hundred Alpha Mike, your traffic is at one o'clock, three miles, northbound, two thousand two hundred, a Seven Two Seven.
+cns: (3) [(A) Three Hundred Alpha Mike] [(E) your traffic is at one o'clock, three miles, northbound, two thousand two hundred, a [(A) Seven Two Seven]]
+
+stm: 3>N0AM>F2-2
+tim: 1096580
+txt: Alpha Mike, we have one, in that area.
+cns: (4) [(A) Alpha Mike] [(E) we have one in that area]
+
+stm: 1>F2-2>N0AM
+tim: 1099960
+txt: All right, continue on the heading. I want you to keep him in sight. He will land Three Six, you will land Three Three behind him.
+cns: (3) [(D) All right] [(E) continue on the heading] [(E) I want you to keep him in sight] [(E) He will land [(G) Three Six]] [(E) you will land [(G) Three Three] behind him]
+
+stm: 3>N0AM>F2-2
+tim: 1105460
+txt: Alpha Mike, and we have the traffic now.
+cns: (4) [(A) Alpha Mike] [(E) and we have the traffic now]
+
+stm: 3>F2-2>N0AM
+tim: 1107040
+txt: All right, continue on that, continue the turn to three sixty, and I do not want you to get ahead of him.
+cns: (3) [(D) All right] [(E) continue on that] [(E) continue the turn to three sixty] [(E) I do not want you to get ahead of him]
+
+stm: 3>N0AM>F2-2
+tim: 1113480
+txt: Alpha Mike.
+cns: (4) [(A) Alpha Mike]
+
+stm: 2>R22936>F2-2
+tim: 1115180
+txt: Washington, Army Two Two Niner Three Six is with you, at six thousand.
+cns: (4) [(G) Washington] [(A) Army Two Two Niner Three Six] [(E) is with you, at six thousand]
+
+stm: 1>F2-2>R22936
+tim: 1118460
+txt: Army Two Two Nine Three Six, Washington Approach, depart Baltimore heading two two zero.
+cns: (1) [(A) Army Two Two Nine Three Six] [(G) Washington Approach] [(E) depart [(H) Baltimore]] [(B4) heading] [(C4) two two zero]
+
+stm: 2>R22936>F2-2
+tim: 1122700
+txt: Okay, two two zero off of Baltimore for Army Niner Three Six.
+cns: (2) [(D) Okay] [(C4) two two zero] [(E) off of [(H) Baltimore]] [(A) Army Niner Three Six]
+
+stm: 2>F2-2>N0AM
+tim: 1128530
+txt: November Three Hundred Alpha Mike, the Northwest jet will land Runway Three Six, you land Three Three behind him. Descend at your discretion, contact the Tower one niner point one.
+cns: (1) [(A) November Three Hundred Alpha Mike] [(E) the Northwest jet will land [(G) Runway Three Six]] [(E) you land [(G) Three Three] behind him] [(E) descend at your discretion] [(B3) contact] [(G) Tower] [(C3) one niner point one]
+
+stm: 1>N0AM>F2-2
+tim: 1136430
+txt: Nineteen one, so long.
+cns: (2) [(C3) Nineteen one] [(I) so long]
+
+stm: 1>USA1767>F2-2
+tim: 1159950
+txt: Washington Approach, USAir Seventeen Sixty Seven, ten thousand, and we have Papa.
+cns: (4) [(G) Washington Approach] [(A) USAir Seventeen Sixty Seven] [(E) ten thousand, and we have Papa]
+
+stm: 1>F2-2>USA1767
+tim: 1165520
+txt: USAir Seventeen Sixty Seven, Washington, proceed direct.
+cns: (3) [(A) USAir Seventeen Sixty Seven] [(G) Washington] [(E) proceed direct]
+
+stm: 1>N5GA>F2-2
+tim: 1171040
+txt: Five Golf Alpha, have the field in sight.
+cns: (4) [(A) Five Golf Alpha] [(E) have the field in sight]
+
+stm: 1>F2-2>N5GA
+tim: 1173520
+txt: Five Golf Alpha, descend maintain five thousand.
+cns: (1) [(A) Five Golf Alpha] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 2>N5GA>F2-2
+tim: 1176960
+txt: Past ten for five, Five Golf Alpha.
+cns: (2) [(E) Past ten for] [(C2) five] [(A) Five Golf Alpha]
+
+stm: 1>F2-2>R22936
+tim: 1189030
+txt: Army Nine Three Six, the Davison weather is four thousand scattered, one zero thousand scattered, estimated two zero thousand broken, visibility seven, wind calm, altimeter three zero one six, expect an ILS to Three Two.
+cns: (1) [(A) Army Nine Three Six] [(E) [(G) Davison] weather is four thousand scattered, one zero thousand scattered, estimated two zero thousand broken, visibility seven, wind calm] [(B1) altimeter] [(C1) three zero one six] [(E) expect an ILS to [(G) Three Two]]
+
+stm: 2>R22936>F2-2
+tim: 1200350
+txt: Army Niner Three Six, roger, and three zero one six.
+cns: (2) [(A) Army Niner Three Six] [(D) roger] [(C1) three zero one six]
+
+stm: 1>F2-2>N5GA
+tim: 1225530
+txt: November Five Golf Alpha, turn left heading one niner zero.
+cns: (1) [(A) November Five Golf Alpha] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>N5GA>F2-2
+tim: 1228720
+txt: Left one ninety, Five Golf Alpha.
+cns: (2) [(B4) Left] [(C4) one ninety] [(A) Five Golf Alpha]
+
+stm: 1>F2-2>N5GA
+tim: 1293610
+txt: Five Golf Alpha, descend maintain four thousand.
+cns: (1) [(A) Five Golf Alpha] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>N5GA>F2-2
+tim: 1296260
+txt: Down to four thousand, Five Golf Alpha.
+cns: (2) [(B2) Down to] [(C2) four thousand] [(A) Five Golf Alpha]
+
+stm: 2>N5GA>F2-2
+tim: 1329930
+txt: Five Golf Alpha, want to check down to four thousand.
+cns: (4) [(A) Five Golf Alpha] [(E) want to check down to four thousand]
+
+stm: 1>F2-2>N5GA
+tim: 1332840
+txt: Four thousand.
+cns: (3) [(E) Four thousand]
+
+stm: 1>F2-2>USA1767
+tim: 1354010
+txt: USAir Seventeen Sixty Seven, turn left heading two five zero, descend maintain six thousand.
+cns: (1) [(A) USAir Seventeen Sixty Seven] [(B4) turn left heading] [(C4) two five zero] [(B2) descend maintain] [(C2) six thousand]
+
+stm: 1>USA1767>F2-2
+tim: 1358360
+txt: USAir Seventeen Sixty Seven, two five zero, six thousand.
+cns: (2) [(A) USAir Seventeen Sixty Seven] [(C4) two five zero] [(C2) six thousand]
+
+stm: 1>F2-2>N5GA
+tim: 1427080
+txt: November Five Golf Alpha, descend to three thousand.
+cns: (1) [(A) November Five Golf Alpha] [(B2) descend to] [(C2) three thousand]
+
+stm: 1>N5GA>F2-2
+tim: 1429260
+txt: Down to three thousand, Five Golf Alpha.
+cns: (2) [(B2) Down to] [(C2) three thousand] [(A) Five Golf Alpha]
+
+stm: 2>R18038>F2-2
+tim: 1441770
+txt: Washington Approach, Army One Eight Zero Three Eight, six thousand.
+cns: (4) [(G) Washington Approach] [(A) Army One Eight Zero Three Eight] [(E) six thousand]
+
+stm: 1>F2-2>R18038
+tim: 1444780
+txt: Army One Eight Zero Three Eight, Washington Approach, roger, depart Baltimore heading two two zero.
+cns: (1) [(A) Army One Eight Zero Three Eight] [(G) Washington Approach] [(D) roger] [(E) depart [(H) Baltimore]] [(B4) heading] [(C4) two two zero]
+
+stm: 2>R18038>F2-2
+tim: 1450250
+txt: Roger, two two zero off Baltimore, Zero Three Eight.
+cns: (2) [(D) Roger] [(C4) two two zero] [(E) off [(H) Baltimore]] [(A) Zero Three Eight]
+
+stm: 1>F2-2>R22936
+tim: 1453680
+txt: Army Nine Three Six, descend maintain five thousand.
+cns: (1) [(A) Army Nine Three Six] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 2>F2-2>R22936
+tim: 1456310
+txt: Down to five thousand for Army Niner Three Six.
+cns: (2) [(B2) Down to] [(C2) five thousand] [(A) Army Niner Three Six]
+
+stm: 1>F2-2>USA1767
+tim: 1458510
+txt: US Seventeen Sixty Seven, turn left heading one niner zero.
+cns: (1) [(A) US Seventeen Sixty Seven] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>USA1767>F2-2
+tim: 1461640
+txt: One nine zero, USAir Seventeen Sixty Seven.
+cns: (2) [(C4) One nine zero] [(A) USAir Seventeen Sixty Seven]
+
+stm: 1>F2-2>N5GA
+tim: 1464390
+txt: November Five Golf Alpha, turn right heading three six zero, join the river, follow it to the airport.
+cns: (1) [(A) November Five Golf Alpha] [(B4) turn right heading] [(C4) three six zero] [(E) join the river, follow it to the airport]
+
+stm: 1>N5GA>F2-2
+tim: 1468550
+txt: Right three sixty, join the river to the airport, Five Golf Alpha.
+cns: (2) [(B4) Right] [(C4) three sixty] [(E) join the river to the airport] [(A) Five Golf Alpha]
+
+stm: 2>F2-2>N5GA
+tim: 1487660
+txt: November Five Golf Alpha is eleven south, cleared the Mount Vernon approach Three Six.
+cns: (3) [(A) November Five Golf Alpha] [(E) is eleven south] [(E) cleared the [(H) Mount Vernon] approach [(G) Three Six]]
+
+stm: 2>N5GA>F2-2
+tim: 1494230
+txt: Cleared the Mount Vernon approach Three Six, Five Golf Alpha.
+cns: (4) [(E) Cleared the [(H) Mount Vernon] approach [(G) Three Six]] [(A) Five Golf Alpha]
+
+stm: 1>F2-2>USA1767
+tim: 1520460
+txt: US Seventeen Sixty Seven, descend maintain three thousand.
+cns: (1) [(A) US Seventeen Sixty Seven] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 1>USA1767>F2-2
+tim: 1524230
+txt: USAir Seventeen Sixty Seven, descend to three thousand.
+cns: (2) [(A) USAir Seventeen Sixty Seven] [(B2) descend to] [(C2) three thousand]
+
+stm: 1>F2-2>R22936
+tim: 1529470
+txt: Army Nine Three Six, descend maintain four thousand, turn left heading two zero zero.
+cns: (1) [(A) Army Nine Three Six] [(B2) descend maintain] [(C2) four thousand] [(B4) turn left heading] [(C4) two zero zero]
+
+stm: 1>R22936>F2-2
+tim: 1534170
+txt: Okay, we are heading two two zero at this time, and you say two zero zero?
+cns: (2) [(D) Okay] [(E) we are] [(B4) heading] [(C4) two two zero] [(E) at this time and you say two zero zero?]
+
+stm: 1>F2-2>R22936
+tim: 1538240
+txt: Two zero zero.
+cns: (1) [(C4) Two zero zero]
+
+stm: 1>R22936>F2-2
+tim: 1539150
+txt: Okay, down to four thousand, and left to two zero zero.
+cns: (2) [(D) Okay] [(B2) down to] [(C2) four thousand] [(B4) left to] [(C4) two zero zero]
+
+stm: 2>F2-2>N5GA
+tim: 1544540
+txt: Five Golf Alpha, Tower nineteen one, see you later.
+cns: (1) [(A) Five Golf Alpha] [(G) Tower] [(C3) nineteen one] [(I) see you later]
+
+stm: 2>N5GA>F2-2
+tim: 1547180
+txt: Nineteen one, talk to you later, Five Geo, Golf Alpha.
+cns: (2) [(C3) Nineteen one] [(I) talk to you later] [(A) Five Golf Alpha]
+
+stm: 1>F2-2>USA1767
+tim: 1550350
+txt: USAir Seventeen Sixty Seven, turn right heading two seven zero.
+cns: (1) [(A) USAir Seventeen Sixty Seven] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 1>USA1767>F2-2
+tim: 1553790
+txt: Two seven zero, USAir Seventeen Sixty Seven.
+cns: (2) [(C4) Two seven zero] [(A) USAir Seventeen Sixty Seven]
+
+stm: 1>F2-2>R18038
+tim: 1565950
+txt: Army Zero Three Eight, Davison weather is, no, standby.
+cns: (3) [(A) Army Zero Three Eight] [(E) [(G) Davison] weather is] [(D) no] [(E) standby]
+
+stm: 4>R18038>F2-2
+tim: 1571360
+txt: Zero Three Eight.
+cns: (2) [(A) Zero Three Eight]
+
+stm: 2>F2-2>USA1767
+tim: 1589230
+txt: US Seventeen Sixty Seven, turn right heading three six zero, follow the river to the airport, cleared Mount Vernon Approach Three Six.
+cns: (1) [(A) US Seventeen Sixty Seven] [(B4) turn right heading] [(C4) three six zero] [(E) follow the river to the airport] [(E) cleared [(H) Mount Vernon] approach [(G) Three Six]]
+
+stm: 1>USA1767>F2-2
+tim: 1594990
+txt: USAir Seventeen Sixty Seven, three sixty, river visual Three Six.
+cns: (2) [(A) USAir Seventeen Sixty Seven] [(C4) three sixty] [(E) river visual [(G) Three Six]]
+
+stm: 2>F2-2>AAL314
+tim: 1599210
+txt: American Three Fourteen, Washington, altimeter three zero one eight, descend maintain one six thousand.
+cns: (1) [(A) American Three Fourteen] [(G) Washington] [(B1) altimeter] [(C1) three zero one eight] [(B2) descend maintain] [(C2) one six thousand]
+
+stm: 1>F2-2>AAL314
+tim: 1608620
+txt: Now.
+cns: (3) [(E) Now]
+
+stm: 2>F2-2>R18038
+tim: 1610040
+txt: Army Zero Three Eight, Davison weather is better than five thousand and five, expect an ILS to Three Two.
+cns: (3) [(A) Army Zero Three Eight] [(E) [(G) Davison] weather is better than five thousand and five] [(E) expect an ILS to [(G) Three Two]]
+
+stm: 1>R18038>F2-2
+tim: 1615720
+txt: Zero Three Eight, roger.
+cns: (4) [(A) Zero Three Eight] [(D) roger]
+
+stm: 2>F2-2>USA1767
+tim: 1622620
+txt: USAir Seventeen Sixty Seven, Tower nineteen one.
+cns: (1) [(A) USAir Seventeen Sixty Seven] [(G) Tower] [(C3) nineteen one]
+
+stm: 2>USA1767>F2-2
+tim: 1625550
+txt: USAir Seventeen Sixty Seven, goodbye now.
+cns: (4) [(A) USAir Seventeen Sixty Seven] [(I) goodbye now]
+
+stm: 1>F2-2>USA1767
+tim: 1659890
+txt: US Seventeen Sixty Seven, contact Tower one one niner point one.
+cns: (1) [(A) US Seventeen Sixty Seven] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>F2-2>R22936
+tim: 1690390
+txt: Army Nine Three Six, turn right heading two five zero, descend to one thousand six hundred.
+cns: (1) [(A) Army Nine Three Six] [(B4) turn right heading] [(C4) two five zero] [(B2) descend to] [(C2) one thousand six hundred]
+
+stm: 1>R22936>F2-2
+tim: 1694280
+txt: Right to two five zero and down to one point six, for Army Niner Three Six.
+cns: (2) [(B4) Right to] [(C4) two five zero] [(B2) down to] [(C2) one point six] [(A) Army Niner Three Six]
+
+stm: 2>F2-2>AAL314
+tim: 1759080
+txt: Okay, one eight zero is approved.
+cns: (3) [(D) Okay] [(E) one eight zero is approved]
+
+stm: 3>F2-2>AAL314
+tim: 1765000
+txt: American Three Fourteen, cross Jetta at, at six thousand.
+cns: (3) [(A) American Three Fourteen] [(E) cross [(H) Jetta] at six thousand]
+
+stm: 2>F2-2>R22936
+tim: 1773910
+txt: Army Nine Three Six, turn right heading to two seven zero. You are four from the marker, cleared ILS Three Two approach.
+cns: (1) [(A) Army Nine Three Six] [(B4) turn right heading to] [(C4) two seven zero] [(E) You are four from the marker] [(E) cleared ILS [(G) Three Two] approach]
+
+stm: 2>R22936>F2-2
+tim: 1779210
+txt: Okay, right to two seven zero, and cleared for the approach for Army Niner Three Six.
+cns: (2) [(D) Okay] [(B4) right to] [(C4) two seven zero] [(E) and cleared for the approach] [(A) Army Niner Three Six]
+
+stm: 1>F2-2>R22936
+tim: 1796440
+txt: Army Nine Three Six, traffic is VFR at ten o'clock and two miles, he is holding at the outer marker.
+cns: (3) [(A) Army Nine Three Six] [(E) traffic is VFR at ten o'clock and two miles] [(E) he is holding at the outer marker]
+
+stm: 2>R22936>F2-2
+tim: 1805530
+txt: Okay, I have an air target on my eleven thirty to twelve o'clock position, is that him?
+cns: (4) [(D) Okay] [(E) I have an air target on my eleven thirty to twelve o'clock position, is that him?]
+
+stm: 1>F2-2>R22936
+tim: 1810190
+txt: Yeah, that is him.
+cns: (3) [(D) Yeah] [(E) that is him]
+
+stm: 1>R22936>F2-2
+tim: 1811180
+txt: Okay, what is his altitude?
+cns: (4) [(D) Okay] [(E) what is his altitude]
+
+stm: 1>F2-2>R22936
+tim: 1812490
+txt: He is showing nineteen hundred. They say he is at two.
+cns: (3) [(E) He is showing nineteen hundred] [(E) They say he is at two]
+
+stm: 2>R22936>F2-2
+tim: 1815290
+txt: Okay, that is about right, and we are executing the ILS at this time.
+cns: (4) [(D) Okay] [(E) that is about right and we are executing the ILS at this time]
+
+stm: 1>F2-2>R22936
+tim: 1819290
+txt: Yes sir, you are cleared for the ILS Three Two Approach, Tower is nineteen one.
+cns: (3) [(D) Yes sir] [(E) you are cleared for the ILS [(G) Three Two] approach] [(G) Tower] [(E) is nineteen one]
+
+stm: 1>R22936>F2-2
+tim: 1822520
+txt: Okay, talk to you later, sir.
+cns: (4) [(D) Okay] [(I) talk to you later, sir]
+
+stm: 1>F2-2>R22936
+tim: 1823790
+txt: Good day.
+cns: (3) [(I) Good day]
+
+stm: 1>TPS6441>F2-2
+tim: 1847600
+txt: Trump Sixty Four Forty One, one zero thousand Papa.
+cns: (4) [(A) Trump Sixty Four Forty One] [(E) one zero thousand Papa]
+
+stm: 1>F2-2>TPS6441
+tim: 1850170
+txt: Trump Sixty Four Forty One, depart Baltimore direct to Washington.
+cns: (3) [(A) Trump Sixty Four Forty One] [(E) depart [(H) Baltimore] direct to [(H) Washington]]
+
+stm: 2>TPS6441>F2-2
+tim: 1853580
+txt: Baltimore to Washington, Trump Sixty Four Forty One.
+cns: (4) [(E) [(H) Baltimore] to [(H) Washington]] [(A) Trump Sixty Four Forty One]
+
+stm: 2>F2-2>AAL314
+tim: 1934650
+txt: American Three Fourteen, traffic twelve o'clock, five miles, southbound, leaving thirteen in the climb, is company.
+cns: (3) [(A) American Three Fourteen] [(E) traffic twelve o'clock, five miles, southbound, leaving thirteen in the climb, is company]
+
+stm: 1>VENUS81>F2-2
+tim: 2007270
+txt: Good morning Washington, Venus Eight One is at six thousand.
+cns: (4) [(I) Good morning] [(G) Washington] [(A) Venus Eight One] [(E) is at six thousand]
+
+stm: 1>F2-2>VENUS81
+tim: 2009800
+txt: Venus Eight One, Washington, fly heading two three zero.
+cns: (1) [(A) Venus Eight One] [(G) Washington] [(B4) fly heading] [(C4) two three zero]
+
+stm: 1>VENUS81>F2-2
+tim: 2012630
+txt: Two thirty, Venus Eight One.
+cns: (2) [(C4) Two thirty] [(A) Venus Eight One]
+
+stm: 2>F2-2>R18038
+tim: 2022810
+txt: Army Zero Three Eight, descend maintain four thousand.
+cns: (1) [(A) Army Zero Three Eight] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 2>R18038>F2-2
+tim: 2025860
+txt: Okay, Zero Three Eight is out of six for four.
+cns: (2) [(D) Okay] [(A) Zero Three Eight] [(E) is out of six for] [(C2) four]
+
+stm: 2>VENUS26>F2-2
+tim: 2029810
+txt: Washington Approach, Venus Two Six, ten thousand, Lima at Andrews.
+cns: (4) [(G) Washington Approach] [(A) Venus Two Six] [(E) ten thousand, Lima at [(G) Andrews]]
+
+stm: 1>F2-2>VENUS26
+tim: 2033090
+txt: Venus Two Six, fly heading two three zero after Baltimore.
+cns: (1) [(A) Venus Two Six] [(B4) fly heading] [(C4) two three zero] [(F) after [(H) Baltimore]]
+
+stm: 1>VENUS26>F2-2
+tim: 2035940
+txt: Two three zero after Baltimore.
+cns: (2) [(C4) Two three zero] [(F) after [(H) Baltimore]]
+
+stm: 1>F2-2>TPS6441
+tim: 2040900
+txt: Trump Sixty Four Forty One, descend maintain six thousand, turn left heading one niner zero.
+cns: (1) [(A) Trump Sixty Four Forty One] [(B2) descend maintain] [(C2) six thousand] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 3>TPS6441>F2-2
+tim: 2045240
+txt: Six thousand, one niner zero, Trump Sixty Four Forty One, how long is the final?
+cns: (2) [(C2) Six thousand] [(C4) one niner zero] [(A) Trump Sixty Four Forty One] [(E) how long is the final?]
+
+stm: 1>F2-2>AAL314
+tim: 2052850
+txt: American Three Fourteen, Baltimore nineteen seven, see you later.
+cns: (3) [(A) American Three Fourteen] [(G) Baltimore nineteen seven] [(I) see you later]
+
+stm: 1>F2-2>R18038
+tim: 2111200
+txt: Army Zero Three Eight, turn left heading one niner zero.
+cns: (1) [(A) Army Zero Three Eight] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 2>R18038>F2-2
+tim: 2113830
+txt: Left to one nine zero, Zero Three Eight.
+cns: (2) [(B4) Left to] [(C4) one nine zero] [(A) Zero Three Eight]
+
+stm: 1>F2-2>R18038
+tim: 2136850
+txt: Army Zero Three Eight, descend maintain three thousand.
+cns: (1) [(A) Army Zero Three Eight] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 2>R18038>F2-2
+tim: 2140110
+txt: Okay Three Eight is continuing down to three thousand.
+cns: (2) [(D) Okay] [(A) Three Eight] [(E) is continuing] [(B2) down to] [(C2) three thousand]
+
+stm: 1>F2-2>R18038
+tim: 2177560
+txt: Army Zero Three Eight, descend maintain one thousand five hundred.
+cns: (1) [(A) Army Zero Three Eight] [(B2) descend maintain] [(C2) one thousand five hundred]
+
+stm: 1>R18038>F2-2
+tim: 2180750
+txt: Okay, we are continuing through three nine for one thousand five hundred.
+cns: (2) [(D) Okay] [(E) we are continuing through three nine for] [(C2) one thousand five hundred]
+
+stm: 1>F2-2>TPS6441
+tim: 2187400
+txt: Trump Sixty Four Forty One, descend maintain five thousand.
+cns: (1) [(A) Trump Sixty Four Forty One] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 1>TPS6441>F2-2
+tim: 2191170
+txt: Five thousand, Trump Sixty Four Forty One, how long is the final?
+cns: (2) [(C2) Five thousand] [(A) Trump Sixty Four Forty One] [(E) how long is the final?]
+
+stm: 2>F2-2>TPS6441
+tim: 2195770
+txt: Not long, I have an Army underneath you that is going to keep you up awhile. I will turn you westbound here in just a moment though.
+cns: (3) [(E) Not long] [(E) I have an Army underneath you that is going to keep you up awhile] [(E) I will turn you westbound here in just a moment though]
+
+stm: 1>TPS6441>F2-2
+tim: 2201050
+txt: Thank you.
+cns: (4) [(D) Thank you]
+
+stm: 2>F2-2>TPS6441
+tim: 2223830
+txt: Trump Sixty Four Forty One, turn right heading two seven zero, descend to four thousand.
+cns: (1) [(A) Trump Sixty Four Forty One] [(B4) turn right heading] [(C4) two seven zero] [(B2) descend to] [(C2) four thousand]
+
+stm: 2>TPS6441>F2-2
+tim: 2227330
+txt: Two seven zero, four thousand, Sixty Four Forty One.
+cns: (2) [(C4) Two seven zero] [(C2) four thousand] [(A) Sixty Four Forty One]
+
+stm: 1>F2-2>TPS6441
+tim: 2251300
+txt: Trump Sixty Four Forty One, turn right heading three two zero.
+cns: (1) [(A) Trump Sixty Four Forty One] [(B4) turn right heading] [(C4) three two zero]
+
+stm: 1>TPS6441>F2-2
+tim: 2254420
+txt: Three two zero, Trump Sixty Four Forty One.
+cns: (2) [(C4) Three two zero] [(A) Trump Sixty Four Forty One]
+
+stm: 1>F2-2>VENUS81
+tim: 2256090
+txt: Venus Eight One, descend maintain five thousand.
+cns: (1) [(A) Venus Eight One] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 1>VENUS81>F2-2
+tim: 2259720
+txt: Six for five, Venus Eight One.
+cns: (2) [(E) Six for] [(C2) five] [(A) Venus Eight One]
+
+stm: 1>F2-2>TPS6441
+tim: 2275260
+txt: Trump Sixty Four Forty One, turn right heading three six zero.
+cns: (1) [(A) Trump Sixty Four Forty One] [(B4) turn right heading] [(C4) three six zero]
+
+stm: 2>TPS6441>F2-2
+tim: 2278100
+txt: Three six zero, Trump Sixty Four Forty One, we have got the river.
+cns: (2) [(C4) Three six zero] [(A) Trump Sixty Four Forty One] [(E) we have got the river]
+
+stm: 1>F2-2>TPS6441
+tim: 2280610
+txt: All right.
+cns: (3) [(D) All right]
+
+stm: 2>F2-2>TPS6441
+tim: 2283590
+txt: Trump Sixty Four Forty One, you are clear of the traffic now, you are cleared visual, Mount Vernon visual Three Six, tower is nineteen one.
+cns: (3) [(A) Trump Sixty Four Forty One] [(E) you are clear of the traffic now] [(E) you are cleared visual [(H) Mount Vernon] visual [(G) Three Six]] [(E) tower is nineteen one]
+
+stm: 2>TPS6441>F2-2
+tim: 2289520
+txt: Cleared the visual, thank you, Trump Sixty Four Forty One. Good day.
+cns: (4) [(E) cleared the visual] [(D) thank you] [(A) Trump Sixty Four Forty One] [(I) Good day]
+
+stm: 1>F2-2>VENUS26
+tim: 2292800
+txt: Venus Two Six, descend maintain six thousand.
+cns: (1) [(A) Venus Two Six] [(B2) descend maintain] [(C2) six thousand]
+
+stm: 1>VENUS26>F2-2
+tim: 2296080
+txt: Six thousand, Venus Two Six.
+cns: (2) [(C2) Six thousand] [(A) Venus Two Six]
+
+stm: 2>R18038>F2-2
+tim: 2317760
+txt: And Washington, Army Zero Three Eight got Davison in sight.
+cns: (4) [(G) Washington] [(A) Army Zero Three Eight] [(E) got [(G) Davison] in sight]
+
+stm: 1>F2-2>R18038
+tim: 2320350
+txt: Army Zero Three Eight, roger, you want a visual?
+cns: (3) [(A) Army Zero Three Eight] [(D) roger] [(E) you want a visual?]
+
+stm: 1>R18038>F2-2
+tim: 2322920
+txt: Yeah, that will be fine.
+cns: (4) [(D) Yeah] [(E) that will be fine]
+
+stm: 2>F2-2>R18038
+tim: 2324180
+txt: All right, turn right heading two seven zero.
+cns: (1) [(D) All right] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 2>R18038>F2-2
+tim: 2326280
+txt: Right to two seventy.
+cns: (2) [(B4) Right to] [(C4) two seventy]
+
+stm: 1>F2-2>R18038
+tim: 2338430
+txt: Army Zero Three Eight, cleared visual approach Runway Three Two at Davison.
+cns: (3) [(A) Army Zero Three Eight] [(E) cleared visual approach [(G) Runway Three Two] at [(G) Davison]]
+
+stm: 2>R18038>F2-2
+tim: 2341950
+txt: Zero Three Eight, roger, cleared for the approach, thanks.
+cns: (4) [(A) Zero Three Eight] [(D) roger] [(E) cleared for the approach] [(D) thanks]
+
+stm: 1>F2-2>VENUS81
+tim: 2344400
+txt: Venus Eight One, turn left heading one eight zero.
+cns: (1) [(A) Venus Eight One] [(B4) turn left heading] [(C4) one eight zero]
+
+stm: 1>VENUS81>F2-2
+tim: 2346650
+txt: One eight zero, Venus Eight One.
+cns: (2) [(C4) One eight zero] [(A) Venus Eight One]
+
+stm: 2>F2-2>TPS6441
+tim: 2357880
+txt: Trump Sixty Four Forty One, are you going to be able to get down?
+cns: (3) [(A) Trump Sixty Four Forty One] [(E) are you going to be able to get down]
+
+stm: 1>F2-2>TPS6441
+tim: 2362680
+txt: Trump Sixty Four Forty One, Tower nineteen one.
+cns: (1) [(A) Trump Sixty Four Forty One] [(G) Tower] [(C3) nineteen one]
+
+stm: 1>F2-2>VENUS26
+tim: 2367730
+txt: Venus Two Six, turn left heading one niner zero.
+cns: (1) [(A) Venus Two Six] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>VENUS26>F2-2
+tim: 2369930
+txt: One nine zero, Two Six.
+cns: (2) [(C4) One nine zero] [(A) Two Six]
+
+stm: 1>F2-2>R18038
+tim: 2385520
+txt: Army Zero Three Eight, traffic at ten o'clock, three miles, northbound, eighteen hundred and he is going to Davison, assigned code VFR.
+cns: (3) [(A) Army Zero Three Eight] [(E) traffic at ten o'clock, three miles, northbound, eighteen hundred and he is going to [(G) Davison] assigned code VFR]
+
+stm: 2>R18038>F2-2
+tim: 2394790
+txt: Okay we are looking, no contact. Yeah, we have got him now.
+cns: (4) [(D) Okay] [(E) we are looking, no contact] [(E) Yeah, we have got him now]
+
+stm: 2>F2-2>R18038
+tim: 2398340
+txt: All right, you are cleared a visual Three Two. Tower is nineteen, one twenty six three, see you later.
+cns: (3) [(D) All right] [(E) you are cleared a visual [(G) Three Two]] [(E) Tower is one twenty six three] [(I) see you later]
+
+stm: 1>R18038>F2-2
+tim: 2402450
+txt: Goodbye, thanks.
+cns: (4) [(I) Goodbye] [(D) thanks]
+
+stm: 1>F2-2>VENUS81
+tim: 2433380
+txt: Venus Eight One, descend maintain three thousand.
+cns: (1) [(A) Venus Eight One] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 1>VENUS81>F2-2
+tim: 2437170
+txt: Five for three, Venus Eight One.
+cns: (2) [(E) Five for] [(C2) three] [(A) Venus Eight One]
+
+stm: 1>F2-2>VENUS26
+tim: 2461250
+txt: Venus Two Six, reduce to one seventy.
+cns: (1) [(A) Venus Two Six] [(B5) reduce to] [(C5) one seventy]
+
+stm: 1>VENUS26>F2-2
+tim: 2464090
+txt: Two Six, we got our C nine in sight.
+cns: (4) [(A) Two Six] [(E) we got our C nine in sight]
+
+stm: 1>F2-2>VENUS26
+tim: 2466890
+txt: All right. I'm going to have to sequence you though.
+cns: (3) [(D) All right] [(E) I'm going to have to sequence you though]
+
+stm: 1>VENUS26>F2-2
+tim: 2469010
+txt: Understand, we are slowing.
+cns: (4) [(D) Understand] [(E) we are slowing]
+
+stm: 1>F2-2>VENUS26
+tim: 2472300
+txt: Venus Two Six, contact Andrews Radar one one niner point seven, correction, one one niner point three.
+cns: (1) [(A) Venus Two Six] [(B3) contact] [(G) Andrews Radar] [(C3) one one niner point seven] [(E) correction] [(C3) one one niner point three]
+
+stm: 1>VENUS26>F2-2
+tim: 2477840
+txt: Nineteen three, Two Six, so long.
+cns: (2) [(C3) Nineteen three] [(A) Two Six] [(I) so long]
+
+stm: 1>F2-2>VENUS81
+tim: 2504030
+txt: Venus Eight One, Washington.
+cns: (3) [(A) Venus Eight One] [(G) Washington]
+
+stm: 1>VENUS81>F2-2
+tim: 2505590
+txt: Yes sir.
+cns: (4) [(D) Yes sir]
+
+stm: 1>F2-2>VENUS81
+tim: 2506700
+txt: Contact Andrews one one niner point three.
+cns: (1) [(B3) Contact] [(G) Andrews] [(C3) one one niner point three]
+
+stm: 1>VENUS81>F2-2
+tim: 2509350
+txt: So long.
+cns: (2) [(I) So long]
+
+stm: 2>VENUS26>F2-2
+tim: 2511060
+txt: Washington, Venus Two Six is back with you.
+cns: (4) [(G) Washington] [(A) Venus Two Six] [(E) is back with you]
+
+stm: 1>F2-2>VENUS26
+tim: 2513260
+txt: Venus Two Six, roger. Venus Two Six, descend to four thousand.
+cns: (1) [(A) Venus Two Six] [(D) roger] [(A) Venus Two Six] [(B2) descend to] [(C2) four thousand]
+
+stm: 2>VENUS26>F2-2
+tim: 2517080
+txt: Kind of thought that was weird to send us over before you cleared us to three down to four.
+cns: (2) [(E) Kind of thought that was weird to send us over before you cleared us to three down to four]
+
+stm: 2>F2-2>VENUS26
+tim: 2520550
+txt: No, the other one I cleared to three.
+cns: (3) [(D) No] [(E) the other one I cleared to three]
+
+stm: 2>VENUS26>F2-2
+tim: 2523930
+txt: No no, I you cleared, you changed us over to Approach.
+cns: (4) [(D) No no] [(E) I you cleared, you changed us over to Approach]
+
+stm: 2>F2-2>VENUS26
+tim: 2527300
+txt: Ah, okay, I, yeah, I, thought I changed eight one.
+cns: (3) [(D) okay] [(E) I, yeah, I, thought I changed eight one]
+
+stm: 1>VENUS26>F2-2
+tim: 2532280
+txt: Yeah, I think you said us, maybe not.
+cns: (4) [(D) Yeah] [(E) I think you said us, maybe not]
+
+stm: 1>F2-2>VENUS26
+tim: 2533930
+txt: All right.
+cns: (3) [(D) All right]
+
+stm: 2>F2-2>VENUS26
+tim: 2535860
+txt: Well, the guy from Andrews is sitting right beside me now, so it was not any problem.
+cns: (3) [(E) Well the guy from [(G) Andrews] is sitting right beside me now, so it was not any problem]
+
+stm: 1>VENUS26>F2-2
+tim: 2539810
+txt: Okay, do not you love that kind of communication.
+cns: (4) [(D) Okay] [(E) do not you love that kind of communication]
+
+stm: 1>F2-2>VENUS26
+tim: 2542650
+txt: Yeah, they are over here for about three months.
+cns: (3) [(D) Yeah] [(E) they are over here for about three months.]
+
+stm: 1>VENUS26>F2-2
+tim: 2544910
+txt: Yeah, I knew that.
+cns: (4) [(D) Yeah] [(E) I knew that]
+
+stm: 1>USA843>F2-2
+tim: 2547700
+txt: USAir Eight Forty Three, level one zero thousand with Papa.
+cns: (4) [(A) USAir Eight Forty Three] [(E) level one zero thousand with Papa]
+
+stm: 1>F2-2>USA843
+tim: 2550720
+txt: Eight Forty Three, Washington, roger, proceed direct.
+cns: (3) [(A) Eight Forty Three] [(G) Washington] [(D) roger] [(E) proceed direct]
+
+stm: 1>USA843>F2-2
+tim: 2553000
+txt: Roger.
+cns: (4) [(D) Roger]
+
+stm: 1>F2-2>N960
+tim: 2555450
+txt: November Nine Six Zero, Washington Approach.
+cns: (3) [(A) November Nine Six Zero] [(G) Washington Approach]
+
+stm: 1>F2-2>VENUS26
+tim: 2566670
+txt: Venus Two Six, descend maintain four thousand.
+cns: (1) [(A) Venus Two Six] [(B2) descend maintain] [(C2) four thousand]
+
+stm: 1>VENUS26>F2-2
+tim: 2568910
+txt: Roger, we are on our way to four thousand, Two Six.
+cns: (2) [(D) Roger] [(E) we are on our way to] [(C2) four thousand] [(A) Two Six]
+
+stm: 1>F2-2>VENUS26
+tim: 2618250
+txt: Venus Two Six, descend maintain three thousand.
+cns: (1) [(A) Venus Two Six] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 1>VENUS26>F2-2
+tim: 2620410
+txt: Three thousand, Two Six.
+cns: (2) [(C2) Three thousand] [(A) Two Six]
+
+stm: 2>F2-2>VENUS26
+tim: 2628330
+txt: Venus Two Six, you can contact Andrews now, one one niner point three, see you later.
+cns: (1) [(A) Venus Two Six] [(E) you can] [(B3) contact] [(G) Andrews] [(C3) one one niner point three] [(I) see you later]
+
+stm: 1>VENUS26>F2-2
+tim: 2632070
+txt: Okay, so long.
+cns: (2) [(D) Okay] [(I) so long]
+
+stm: 2>N960>F2-2
+tim: 2677210
+txt: Washington Approach, Cessna Niner Six Niner Six Zero is with you, at four point five.
+cns: (4) [(G) Washington Approach] [(A) Cessna Niner Six Niner Six Zero] [(E) is with you, at four point five]
+
+stm: 2>F2-2>N960
+tim: 2681660
+txt: November Nine Six Five Six Zero, proceed direct to Washington.
+cns: (3) [(A) November Nine Six Five Six Zero] [(E) proceed direct to [(H) Washington]]
+
+stm: 2>N960>F2-2
+tim: 2685500
+txt: Nine Six Zero.
+cns: (4) [(A) Nine Six Zero]
+
+stm: 2>F2-2>USA843
+tim: 2721340
+txt: Eight Forty Three, turn left heading two five zero, descend to four thousand.
+cns: (1) [(A) Eight Forty Three] [(B4) turn left heading] [(C4) two five zero] [(B2) descend to] [(C2) four thousand]
+
+stm: 1>USA843>F2-2
+tim: 2724960
+txt: Two five zero, down to four, USAir Eight Forty Three.
+cns: (2) [(C4) Two five zero] [(B2) down to] [(C2) four] [(A) USAir Eight Forty Three]
+
+stm: 1>USA465>F2-2
+tim: 2732330
+txt: Washington, USAir Four Sixty Five, ten thousand with Papa.
+cns: (4) [(G) Washington] [(A) USAir Four Sixty Five] [(E) ten thousand with Papa]
+
+stm: 2>F2-2>USA465
+tim: 2735510
+txt: Air Four Sixty Five, Washington Approach, depart Baltimore direct Washington.
+cns: (3) [(A) Air Four Sixty Five] [(G) Washington Approach] [(E) depart [(H) Baltimore] direct [(H) Washington]]
+
+stm: 1>USA465>F2-2
+tim: 2739180
+txt: Baltimore direct Washington.
+cns: (4) [(E) [(H) Baltimore] direct [(H) Washington]]
+
+stm: 1>F2-2>USA843
+tim: 2792610
+txt: USAir Eight Forty Three, descend maintain three thousand, turn right heading two seven zero.
+cns: (1) [(A) USAir Eight Forty Three] [(B2) descend maintain] [(C2) three thousand] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 1>USA843>F2-2
+tim: 2798240
+txt: Okay, two seven zero down to three, USAir Eight Forty Three.
+cns: (2) [(D) Okay] [(C4) two seven zero] [(B2) down to] [(C2) three] [(A) USAir Eight Forty Three]
+
+stm: 1>USA843>F2-2
+tim: 2812170
+txt: USAir Eight Forty Three, you need us to hustle right down?
+cns: (4) [(A) USAir Eight Forty Three] [(E) you need us to hustle right down?]
+
+stm: 1>F2-2>USA843
+tim: 2814750
+txt: Well, you are number one.
+cns: (3) [(J) Well] [(E) you are number one]
+
+stm: 1>COA309>F2-2
+tim: 2818930
+txt: Good afternoon, Washington Approach, Continental Three Zero Nine, ten thousand, Papa.
+cns: (4) [(I) Good afternoon] [(G) Washington Approach] [(A) Continental Three Zero Nine] [(E) ten thousand, Papa]
+
+stm: 1>F2-2>COA309
+tim: 2822900
+txt: Continental Three Oh Nine, Washington, depart Baltimore direct Washington.
+cns: (3) [(A) Continental Three Oh Nine] [(G) Washington] [(E) depart [(H) Baltimore] direct [(H) Washington]]
+
+stm: 2>COA309>F2-2
+tim: 2826210
+txt: Baltimore direct Washington, Continental Three Oh Nine.
+cns: (4) [(E) [(H) Baltimore] direct [(H) Washington]] [(A) Continental Three Oh Nine]
+
+stm: 1>F2-2>USA465
+tim: 2849000
+txt: USAir Four Sixty Five, descend maintain six thousand.
+cns: (1) [(A) USAir Four Sixty Five] [(B2) descend maintain] [(C2) six thousand]
+
+stm: 1>USA465>F2-2
+tim: 2854300
+txt: Six thousand, USAir Four Sixty Five.
+cns: (2) [(C2) Six thousand] [(A) USAir Four Sixty Five]
+
+stm: 2>F2-2>USA843
+tim: 2865820
+txt: Eight Forty Three, you have the river in sight?
+cns: (3) [(A) Eight Forty Three] [(E) you have the river in sight?]
+
+stm: 1>USA843>F2-2
+tim: 2868140
+txt: Affirm.
+cns: (4) [(D) Affirm]
+
+stm: 2>F2-2>USA843
+tim: 2869770
+txt: Follow the river to the airport, you are cleared the Mount Vernon approach Three Six.
+cns: (3) [(E) Follow the river to the airport] [(E) you are cleared the [(H) Mount Vernon] approach [(G) Three Six]]
+
+stm: 3>USA843>F2-2
+tim: 2872730
+txt: Cleared Mount Vernon Three Six, USAir Eight Forty Three.
+cns: (4) [(E) Cleared [(H) Mount Vernon] [(G) Three Six]] [(A) USAir Eight Forty Three]
+
+stm: 1>F2-2>USA843
+tim: 2890070
+txt: USAir Four Sixty Five, Tower is nine, I'm sorry, it is USAir Eight Forty Three, contact the Tower one one niner point one, good day.
+cns: (1) [(A) USAir Four Sixty Five] [(E) Tower is nine] [(E) I'm sorry] [(A) USAir Eight Forty Three] [(B3) contact] [(G) Tower] [(C3) one one niner point one] [(I) good day]
+
+stm: 3>USA843>F2-2
+tim: 2896410
+txt: Nineteen one, so long, USAir Eight Forty Three.
+cns: (2) [(C3) Nineteen one] [(I) so long] [(A) USAir Eight Forty Three]
+
+stm: 1>F2-2>USA426
+tim: 2967120
+txt: USAir Four Twenty Six, Washington Approach, thank you. Washington altimeter is three zero one eight, expect vectors Baltimore.
+cns: (1) [(A) USAir Four Twenty Six] [(G) Washington Approach] [(D) thank you] [(B1) Washington altimeter is] [(C1) three zero one eight] [(E) expect vectors [(H) Baltimore]]
+
+stm: 1>F2-2>USA465
+tim: 2976860
+txt: USAir Four Sixty Five, descend maintain five thousand.
+cns: (1) [(A) USAir Four Sixty Five] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 1>USA465>F2-2
+tim: 2980600
+txt: Five thousand, USAir Four Sixty Five.
+cns: (2) [(C2) Five thousand] [(A) USAir Four Sixty Five]
+
+stm: 1>F2-2>USA465
+tim: 2995010
+txt: USAir Four Sixty Five, turn left heading one niner zero.
+cns: (1) [(A) USAir Four Sixty Five] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>USA465>F2-2
+tim: 2998070
+txt: One ninety, USAir Four Sixty Five.
+cns: (2) [(C4) One ninety] [(A) USAir Four Sixty Five]
+
+stm: 2>F2-2>VENUS24
+tim: 3005520
+txt: Venus Two Four, Washington Approach, thank you. Expect ILS Runway One Left.
+cns: (3) [(A) Venus Two Four] [(G) Washington Approach] [(D) thank you] [(E) Expect ILS [(G) Runway One Left]]
+
+stm: 1>F2-2>UNK
+tim: 3011810
+txt: Thank you.
+cns: (3) [(D) Thank you]
+
+stm: 1>N960>F2-2
+tim: 3014240
+txt: Washington Approach, Nine Six Zero would like to start a descent at this point.
+cns: (4) [(G) Washington Approach] [(A) Nine Six Zero] [(E) would like to start a descent at this point]
+
+stm: 1>F2-2>N960
+tim: 3017870
+txt: November Nine Six Zero, I'm working on that for you.
+cns: (3) [(A) November Nine Six Zero] [(E) I'm working on that for you]
+
+stm: 1>N960>F2-2
+tim: 3020810
+txt: Nine Six Zero, thank you sir.
+cns: (4) [(A) Nine Six Zero] [(D) thank you sir]
+
+stm: 1>F2-2>N960
+tim: 3022240
+txt: Probably going to be four to five more miles.
+cns: (3) [(E) Probably going to be four to five more miles]
+
+stm: 1>F2-2>COA309
+tim: 3025620
+txt: Continental Three Zero Nine, descend maintain five thousand, expect an eight mile final.
+cns: (1) [(A) Continental Three Zero Nine] [(B2) descend maintain] [(C2) five thousand] [(E) expect an eight mile final]
+
+stm: 2>COA309>F2-2
+tim: 3030110
+txt: Down to five, eight mile final, Continental Three Oh Nine.
+cns: (2) [(B2) Down to] [(C2) five] [(E) eight mile final] [(A) Continental Three Oh Nine]
+
+stm: 1>F2-2>USA426
+tim: 3037880
+txt: USAir Four Twenty Six, turn right heading zero six zero, descend maintain one one thousand.
+cns: (1) [(A) USAir Four Twenty Six] [(B4) turn right heading] [(C4) zero six zero] [(B2) descend maintain] [(C2) one one thousand]
+
+stm: 1>USA867>F2-2
+tim: 3060330
+txt: Good afternoon, Washington Approach, USAir Eight Sixty Seven, one zero thousand with Papa.
+cns: (4) [(I) Good afternoon] [(G) Washington Approach] [(A) USAir Eight Sixty Seven] [(E) one zero thousand with Papa]
+
+stm: 1>F2-2>USA867
+tim: 3065710
+txt: USAir Eight Sixty Seven, Washington Approach, thank you. Expect further descent in ten miles.
+cns: (3) [(A) USAir Eight Sixty Seven] [(G) Washington Approach] [(D) thank you] [(E) Expect further descent in ten miles]
+
+stm: 1>USA867>F2-2
+tim: 3069340
+txt: Roger.
+cns: (4) [(D) Roger]
+
+stm: 1>F2-2>USA465
+tim: 3077040
+txt: USAir Four Sixty Five, descend maintain three thousand, base leg in five miles.
+cns: (1) [(A) USAir Four Sixty Five] [(B2) descend maintain] [(C2) three thousand] [(E) base leg in five miles]
+
+stm: 1>USA465>F2-2
+tim: 3082130
+txt: Three thousand, USAir Four Sixty Five.
+cns: (2) [(C2) Three thousand] [(A) USAir Four Sixty Five]
+
+stm: 1>F2-2>USA465
+tim: 3103100
+txt: USAir Four Sixty Five, change altitude please, and I will tell you what, no, three will be all right.
+cns: (1) [(A) USAir Four Sixty Five] [(B2) change altitude] [(J) please and I will tell you what] [(C2) three] [(E) will be all right]
+
+stm: 1>USA465>F2-2
+tim: 3109230
+txt: Three thousand, USAir Four Sixty Five.
+cns: (2) [(C2) Three thousand] [(A) USAir Four Sixty Five]
+
+stm: 1>F2-2>COA309
+tim: 3111350
+txt: Continental Three Zero Nine, turn left heading one niner zero.
+cns: (1) [(A) Continental Three Zero Nine] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 2>COA309>F2-2
+tim: 3114130
+txt: Left one ninety, Continental Three Oh Nine.
+cns: (2) [(B4) Left] [(C4) one ninety] [(A) Continental Three Oh Nine]
+
+stm: 3>N5DW>F2-2
+tim: 3124660
+txt: Washington Approach, Citabria Triple Five Delta Whiskey.
+cns: (4) [(G) Washington Approach] [(A) Citabria Triple Five Delta Whiskey]
+
+stm: 1>N305>F2-2
+tim: 3127970
+txt: Washington Approach, Lance Three Eight Three Zero Five, coming up on Andrews, two point five.
+cns: (4) [(G) Washington Approach] [(A) Lance Three Eight Three Zero Five] [(E) coming up on [(G) Andrews] two point five]
+
+stm: 2>F2-2>N305
+tim: 3131440
+txt: Lance Three Eight Three Zero Five, thank you, Andrews. Depart Andrews heading two eight zero.
+cns: (1) [(A) Lance Three Eight Three Zero Five] [(D) thank you] [(E) [(H) Andrews]] [(E) Depart [(H) Andrews]] [(B4) heading] [(C4) two eight zero]
+
+stm: 1>N305>F2-2
+tim: 3135550
+txt: Two eight zero out of Andrews, Three Zero Five.
+cns: (2) [(C4) Two eight zero] [(E) out of [(H) Andrews]] [(A) Three Zero Five]
+
+stm: 1>F2-2>USA465
+tim: 3137580
+txt: USAir Four Sixty Five, turn right heading two seven zero.
+cns: (1) [(A) USAir Four Sixty Five] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 1>USA465>F2-2
+tim: 3140560
+txt: Two seven zero, we have the Runway in sight, USAir Four Sixty Five.
+cns: (2) [(C4) Two seven zero] [(E) we have the Runway in sight] [(A) USAir Four Sixty Five]
+
+stm: 1>F2-2>USA465
+tim: 3143590
+txt: USAir Four Sixty Five, thank you.
+cns: (3) [(A) USAir Four Sixty Five] [(D) thank you]
+
+stm: 4>N5DW>F2-2
+tim: 3148170
+txt: Citabria Triple Five Delta Whiskey.
+cns: (4) [(A) Citabria Triple Five Delta Whiskey]
+
+stm: 1>F2-2>VENUS24
+tim: 3154660
+txt: Venus Two Four, descend maintain four thousand, turn right heading zero six zero.
+cns: (1) [(A) Venus Two Four] [(B2) descend maintain] [(C2) four thousand] [(B4) turn right heading] [(C4) zero six zero]
+
+stm: 1>F2-2>USA867
+tim: 3163250
+txt: USAir Eight Sixty Seven, descend maintain six thousand.
+cns: (1) [(A) USAir Eight Sixty Seven] [(B2) descend maintain] [(C2) six thousand]
+
+stm: 1>USA867>F2-2
+tim: 3166710
+txt: Down to six thousand, US Eight Sixty Seven.
+cns: (2) [(B2) Down to] [(C2) six thousand] [(A) US Eight Sixty Seven]
+
+stm: 1>F2-2>USA465
+tim: 3171790
+txt: USAir Four Sixty Five, descend maintain two thousand.
+cns: (1) [(A) USAir Four Sixty Five] [(B2) descend maintain] [(C2) two thousand]
+
+stm: 3>USA465>F2-2
+tim: 3175630
+txt: Down to two, USAir Four Sixty Five.
+cns: (2) [(B2) Down to] [(C2) two] [(A) USAir Four Sixty Five]
+
+stm: 1>F2-2>N960
+tim: 3178370
+txt: Cessna Niner Six Zero, turn left heading one niner zero.
+cns: (1) [(A) Cessna Niner Six Zero] [(B4) turn left heading] [(C4) one niner zero]
+
+stm: 1>N960>F2-2
+tim: 3181540
+txt: One niner zero, Nine Six Zero.
+cns: (2) [(C4) One niner zero] [(A) Nine Six Zero]
+
+stm: 1>F2-2>N960
+tim: 3183350
+txt: And I'm still working on lower, it is not yet available.
+cns: (3) [(E) And I'm still working on lower, it is not yet available]
+
+stm: 1>N960>F2-2
+tim: 3185870
+txt: Thank you, sir.
+cns: (4) [(E) Thank you, sir.]
+
+stm: 2>N5DW>F2-2
+tim: 3190140
+txt: Citabria Triple Five Delta Whiskey.
+cns: (4) [(A) Citabria Triple Five Delta Whiskey]
+
+stm: 1>F2-2>USA867
+tim: 3194030
+txt: USAir Eight Sixty Seven, turn left heading two seven zero, and expect a ten mile final.
+cns: (1) [(A) USAir Eight Sixty Seven] [(B4) turn left heading] [(C4) two seven zero] [(E) and expect a ten mile final]
+
+stm: 1>F2-2>USA465
+tim: 3202100
+txt: USAir Four Sixty Five, turn right heading three six zero, cleared Mount Vernon approach.
+cns: (1) [(A) USAir Four Sixty Five] [(B4) turn right heading] [(C4) three six zero] [(E) cleared [(H) Mount Vernon] approach]
+
+stm: 1>USA465>F2-2
+tim: 3206210
+txt: Three six zero, cleared Mount Vernon, USAir Four Sixty Five.
+cns: (2) [(C4) Three six zero] [(E) cleared [(H) Mount Vernon]] [(A) USAir Four Sixty Five]
+
+stm: 1>F2-2>USA867
+tim: 3209690
+txt: USAir Eight Sixty Seven, turn left heading two six zero, and expect a ten mile final.
+cns: (1) [(A) USAir Eight Sixty Seven] [(B4) turn left heading] [(C4) two six zero] [(E) and expect a ten mile final]
+
+stm: 1>USA867>F2-2
+tim: 3213640
+txt: Two six zero for a ten mile final, USAir Eight Sixty Seven.
+cns: (2) [(C4) Two six zero] [(E) for a ten mile final] [(A) USAir Eight Sixty Seven]
+
+stm: 1>F2-2>USA426
+tim: 3216380
+txt: USAir Four Twenty Six, descend maintain five thousand.
+cns: (1) [(A) USAir Four Twenty Six] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 1>F2-2>USA465
+tim: 3223690
+txt: USAir Four Sixty Five is number one for the airport, contact the Tower one one niner point one.
+cns: (1) [(A) USAir Four Sixty Five] [(E) is number one for the airport] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>USA465>F2-2
+tim: 3228020
+txt: Nineteen one, USAir Four Sixty Five, good day.
+cns: (2) [(C3) Nineteen one] [(A) USAir Four Sixty Five] [(I) good day]
+
+stm: 1>F2-2>COA309
+tim: 3230570
+txt: Continental Three Zero Nine, descend maintain three thousand.
+cns: (1) [(A) Continental Three Zero Nine] [(B2) descend maintain] [(C2) three thousand]
+
+stm: 1>COA309>F2-2
+tim: 3233430
+txt: Leaving five for three, Continental Three Oh Nine.
+cns: (2) [(E) Leaving five for] [(C2) three] [(A) Continental Three Oh Nine]
+
+stm: 1>F2-2>COA309
+tim: 3259250
+txt: Continental Three Zero Nine, descend and main, disregard, maintain three, base leg momentarily.
+cns: (1) [(A) Continental Three Zero Nine] [(E) descend and main] [(E) disregard] [(B2) maintain] [(C2) three] [(E) base leg momentarily]
+
+stm: 2>COA309>F2-2
+tim: 3265630
+txt: Three thousand for Continental Three Oh Nine.
+cns: (2) [(C2) Three thousand] [(A) Continental Three Oh Nine]
+
+stm: 1>F2-2>N305
+tim: 3267020
+txt: Lance Three Zero Five, turn left heading two five zero.
+cns: (1) [(A) Lance Three Zero Five] [(B4) turn left heading] [(C4) two five zero]
+
+stm: 1>N305>F2-2
+tim: 3270070
+txt: Two five zero, Three Zero Five, we have the traffic at twelve o'clock.
+cns: (2) [(C4) Two five zero] [(A) Three Zero Five] [(E) we have the traffic at twelve o'clock]
+
+stm: 1>F2-2>COA309
+tim: 3277270
+txt: Continental Three Oh Nine, turn right heading two seven zero.
+cns: (1) [(A) Continental Three Oh Nine] [(B4) turn right heading] [(C4) two seven zero]
+
+stm: 1>COA309>F2-2
+tim: 3279850
+txt: Right two seventy, Continental Three Oh Nine.
+cns: (2) [(B4) Right] [(C4) two seventy] [(A) Continental Three Oh Nine]
+
+stm: 1>F2-2>N960
+tim: 3282480
+txt: November Nine Six Zero, descend maintain two thousand five hundred.
+cns: (1) [(A) November Nine Six Zero] [(B2) descend maintain] [(C2) two thousand five hundred]
+
+stm: 2>N960>F2-2
+tim: 3286930
+txt: Nine Six Zero, four five to two five, thank you sir.
+cns: (2) [(A) Nine Six Zero] [(E) four five to] [(C2) two five] [(D) thank you sir]
+
+stm: 1>F2-2>N305
+tim: 3290220
+txt: Lance Three Zero Five, descend maintain one thousand seven hundred.
+cns: (1) [(A) Lance Three Zero Five] [(B2) descend maintain] [(C2) one thousand seven hundred]
+
+stm: 1>N305>F2-2
+tim: 3294680
+txt: Down to one point seven, Three Zero Five.
+cns: (2) [(B2) Down to] [(C2) one point seven] [(A) Three Zero Five]
+
+stm: 1>F2-2>COA309
+tim: 3306750
+txt: Continental Three Zero Nine, turn right heading three six zero, cleared Mount Vernon Approach.
+cns: (1) [(A) Continental Three Zero Nine] [(B4) turn right heading] [(C4) three six zero] [(E) cleared [(H) Mount Vernon] approach]
+
+stm: 2>COA309>F2-2
+tim: 3310450
+txt: Three six zero, cleared for the approach, Continental Three Oh Nine.
+cns: (2) [(C4) Three six zero] [(E) cleared for the approach] [(A) Continental Three Oh Nine]
+
+stm: 1>F2-2>N305
+tim: 3331830
+txt: Lance Three Zero Five, your traffic is twelve o'clock, three miles, turning inbound, descending out two point five.
+cns: (3) [(A) Lance Three Zero Five] [(E) your traffic is twelve o'clock, three miles, turning inbound, descending out two point five]
+
+stm: 1>N305>F2-2
+tim: 3337090
+txt: Three Zero Five, roger, we have him.
+cns: (4) [(A) Three Zero Five] [(D) roger] [(E) we have him]
+
+stm: 1>F2-2>USA426
+tim: 3339100
+txt: USAir Four Twenty Six, turn left heading zero five zero.
+cns: (1) [(A) USAir Four Twenty Six] [(B4) turn left heading] [(C4) zero five zero]
+
+stm: 2>F2-2>VENUS24
+tim: 3343950
+txt: Venus Two Four, turn left heading zero three zero, join localizer.
+cns: (1) [(A) Venus Two Four] [(B4) turn left heading] [(C4) zero three zero] [(E) join localizer]
+
+stm: 1>F2-2>N305
+tim: 3349950
+txt: Lance Three Zero Five, turn straight in to Runway Three Three, descend at your discretion.
+cns: (3) [(A) Lance Three Zero Five] [(E) turn straight in to [(G) Runway Three Three]] [(E) descend at your discretion]
+
+stm: 1>N305>F2-2
+tim: 3353770
+txt: Three Zero Five, will do.
+cns: (4) [(A) Three Zero Five] [(D) will do]
+
+stm: 1>F2-2>USA867
+tim: 3354990
+txt: USAir Eight Sixty Seven, descend maintain two thousand. Expect a vector across the localizer for spacing, across the final for spacing.
+cns: (1) [(A) USAir Eight Sixty Seven] [(B2) descend maintain] [(C2) two thousand] [(E) Expect a vector across the localizer for spacing, across the final for spacing]
+
+stm: 2>USA867>F2-2
+tim: 3361370
+txt: Okay, we will expect to the cross the final. We are descending to two thousand, USAir Eight Sixty Seven.
+cns: (2) [(D) Okay] [(E) we will expect to the cross the final] [(B2) descending to] [(C2) two thousand] [(A) USAir Eight Sixty Seven]
+
+stm: 1>F2-2>COA309
+tim: 3365580
+txt: Continental Three Zero Nine, your traffic is short final for Three, your speed is good. Contact Tower one one niner point one.
+cns: (1) [(A) Continental Three Zero Nine] [(E) your traffic is short final for Three] [(E) your speed is good] [(B3) Contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>F2-2>COA309
+tim: 3374210
+txt: Continental Three Oh Nine, contact Tower one one niner point one.
+cns: (1) [(A) Continental Three Oh Nine] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>F2-2>N305
+tim: 3378170
+txt: Lance Three Zero Five, contact Tower one one niner point one.
+cns: (1) [(A) Lance Three Zero Five] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>N305>F2-2
+tim: 3381500
+txt: Three Zero Five, will do.
+cns: (2) [(A) Three Zero Five] [(D) will do]
+
+stm: 1>F2-2>VENUS24
+tim: 3382830
+txt: Venus Two Four, contact correction, descend maintain three thousand, contact Andrews, radar one one niner point three.
+cns: (1) [(A) Venus Two Four] [(B3) contact] [(E) correction] [(B2) descend maintain] [(C2) three thousand] [(B3) contact] [(G) Andrews radar] [(C3) one one niner point three]
+
+stm: 1>F2-2>USA426
+tim: 3392650
+txt: USAir Four Two Six, change your altitude please, maintain six thousand.
+cns: (1) [(A) USAir Four Two Six] [(E) change your altitude please] [(B2) maintain] [(C2) six thousand]
+
+stm: 1>F2-2>USA867
+tim: 3402530
+txt: USAir Eight Sixty Seven, turn right heading three four zero.
+cns: (1) [(A) USAir Eight Sixty Seven] [(B4) turn right heading] [(C4) three four zero]
+
+stm: 1>USA867>F2-2
+tim: 3405090
+txt: Three four zero, USAir Eight Sixty Seven.
+cns: (2) [(C4) Three four zero] [(A) USAir Eight Sixty Seven]
+
+stm: 1>F2-2>USA867
+tim: 3430500
+txt: USAir Eight Sixty Seven, seven from the airport, cleared Mount Vernon Approach.
+cns: (3) [(A) USAir Eight Sixty Seven] [(E) seven from the airport] [(E) cleared [(H) Mount Vernon] approach]
+
+stm: 1>USA867>F2-2
+tim: 3433990
+txt: Cleared to the Mount Vernon Approach, USAir Eight Sixty Seven.
+cns: (4) [(E) Cleared to the [(H) Mount Vernon] approach] [(A) USAir Eight Sixty Seven]
+
+stm: 1>F2-2>USA426
+tim: 3436790
+txt: USAir Four Twenty Six, contact Baltimore Approach one one niner point seven, good day.
+cns: (1) [(A) USAir Four Twenty Six] [(B3) contact] [(G) Baltimore Approach] [(C3) one one niner point seven] [(I) good day]
+
+stm: 1>NWA1859>F2-2
+tim: 3444720
+txt: Washington Approach, Northwest Eighteen Fifty Nine, out of ten point five for ten thousand with Papa.
+cns: (4) [(G) Washington Approach] [(A) Northwest Eighteen Fifty Nine] [(E) out of ten point five for ten thousand with Papa]
+
+stm: 1>F2-2>NWA1859
+tim: 3449650
+txt: Northwest Eighteen Fifty Nine, Washington Approach, thank you, expect further descent in ten miles.
+cns: (3) [(A) Northwest Eighteen Fifty Nine] [(G) Washington Approach] [(D) thank you] [(E) expect further descent in ten miles]
+
+stm: 1>NWA1859>F2-2
+tim: 3453920
+txt: Roger.
+cns: (4) [(D) Roger]
+
+stm: 1>F2-2>N960
+tim: 3457260
+txt: Cessna Nine Six Zero, turn right heading two six zero.
+cns: (1) [(A) Cessna Nine Six Zero] [(B4) turn right heading] [(C4) two six zero]
+
+stm: 1>N960>F2-2
+tim: 3461170
+txt: Two six zero, Nine Six Zero.
+cns: (2) [(C4) Two six zero] [(A) Nine Six Zero]
+
+stm: 1>F2-2>N960
+tim: 3463280
+txt: Cessna Nine Six Zero, descend maintain one thousand five hundred.
+cns: (1) [(A) Cessna Nine Six Zero] [(B2) descend maintain] [(C2) one thousand five hundred]
+
+stm: 2>N960>F2-2
+tim: 3467390
+txt: Two point five to one point five, Nine Six Zero.
+cns: (2) [(E) Two point five to] [(C2) one point five] [(A) Nine Six Zero]
+
+stm: 1>F2-2>USA867
+tim: 3470500
+txt: USAir Eight Sixty Seven, your traffic is short final for Three Three, your speed is fine, contact the Tower one one niner point one.
+cns: (1) [(A) USAir Eight Sixty Seven] [(E) your traffic is short final for [(G) Three Three]] [(E) your speed is fine] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+
+stm: 1>USA867>F2-2
+tim: 3476820
+txt: Switching Tower, USAir Eight Sixty Seven, good day.
+cns: (2) [(E) Switching Tower] [(A) USAir Eight Sixty Seven] [(I) good day]
+
+stm: 1>F2-2>N960
+tim: 3484990
+txt: Cessna Nine Six Zero, verify you have the airport in sight.
+cns: (3) [(A) Cessna Nine Six Zero] [(E) verify you have the airport in sight]
+
+stm: 1>N960>F2-2
+tim: 3488010
+txt: Got the airport in sight, sir.
+cns: (4) [(E) Got the airport in sight, sir]
+
+stm: 1>F2-2>N960
+tim: 3489350
+txt: Cessna Nine Six Zero, roger, turn straight in to Runway Three Three, descend at your discretion. There is traffic over the river at your one o'clock, three miles. They will be landing well ahead of you.
+cns: (3) [(A) Cessna Nine Six Zero] [(D) roger] [(E) turn straight in to [(G) Runway Three Three]] [(E) descend at your discretion] [(E) There is traffic over the river at your one o'clock, three miles] [(E) They will be landing well ahead of you]
+
+stm: 2>N960>F2-2
+tim: 3498480
+txt: Nine Six Zero, I have traffic.
+cns: (4) [(A) Nine Six Zero] [(E) I have traffic]
+
+stm: 2>DAL1751>F2-2
+tim: 3510610
+txt: Washington, Delta Seventeen Fifty One, one, one zero thousand with Papa.
+cns: (4) [(G) Washington] [(A) Delta Seventeen Fifty One] [(E) one zero thousand with Papa]
+
+stm: 1>F2-2>DAL1751
+tim: 3514920
+txt: Delta Seventeen Fifty One, Washington Approach, thank you, direct to Washington, further descent twelve miles northeast.
+cns: (3) [(A) Delta Seventeen Fifty One] [(G) Washington Approach] [(D) thank you] [(E) direct to [(H) Washington]] [(E) further descent twelve miles northeast]
+
+stm: 3>DAL1751>F2-2
+tim: 3520750
+txt: Okay direct Washington, Seventeen Fifty One.
+cns: (4) [(D) Okay] [(E) direct [(H) Washington]] [(A) Seventeen Fifty One]
+
+stm: 1>F2-2>N960
+tim: 3523810
+txt: Cessna Niner Six Zero, contact the Tower one one niner point one, good day.
+cns: (1) [(A) Cessna Niner Six Zero] [(B3) contact] [(G) the Tower] [(C3) one one niner point one] [(I) good day]
+
+stm: 1>N960>F2-2
+tim: 3527560
+txt: One one niner point one, thank you sir.
+cns: (2) [(C3) One one niner point one] [(D) thank you sir]
+
+stm: 1>F2-2>NWA1859
+tim: 3531020
+txt: Northwest Eighteen Fifty Nine, turn left heading two seven zero, descend maintain five thousand.
+cns: (1) [(A) Northwest Eighteen Fifty Nine] [(B4) turn left heading] [(C4) two seven zero] [(B2) descend maintain] [(C2) five thousand]
+
+stm: 1>NWA1859>F2-2
+tim: 3538830
+txt: Left to two seventy, down to five thousand, Northwest Eighteen Fifty Nine, roger.
+cns: (2) [(B4) Left to] [(C4) two seventy] [(B2) down to] [(C2) five thousand] [(A) Northwest Eighteen Fifty Nine] [(D) roger]
+
+stm: 1>F2-2>NWA1859
+tim: 3543110
+txt: Northwest Eighteen Fifty Nine, expect seven mile final.
+cns: (3) [(A) Northwest Eighteen Fifty Nine] [(E) expect seven mile final]
+
+stm: 1>NWA1859>F2-2
+tim: 3547290
+txt: Roger.
+cns: (4) [(D) Roger]
+
+stm: 4>NO>NO
+tim: 3548790
+txt: {'End of TextGrid': 'N/A'}
+cns:
+

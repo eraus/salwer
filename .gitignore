@@ -24,7 +24,15 @@
 # Unignore examples
 !/examples/
 !/examples/*.*
-!/examples/atc0json/
-!/examples/atc0json/*.json
-!/examples/atc0cns/
-!/examples/atc0cns/*.cns
+!/examples/files_for_wer/
+!/examples/files_for_wer/*.*
+!/examples/files_for_wer/ref/
+!/examples/files_for_wer/ref/*.cns
+!/examples/files_for_wer/b12_aug2_l12/
+!/examples/files_for_wer/b12_aug2_l12/*.txt
+!/examples/json_to_cns/
+!/examples/json_to_cns/*.*
+!/examples/json_to_cns/atc0json/
+!/examples/json_to_cns/atc0json/*.json
+!/examples/json_to_cns/atc0cns/
+!/examples/json_to_cns/atc0cns/*.cns
