@@ -3,6 +3,7 @@ import os
 import typer
 from typing import List
 
+from .recipes.calculate_avg_wer import calculate_avg_wer_
 from .recipes.calculate_seg_wer import calculate_seg_wer_
 from .recipes.inspect_llm_class_n_seg_results import inspect_class_seg_
 from .recipes.class_n_seg_cues_with_llm import class_n_seg_cues_
@@ -19,6 +20,37 @@ app = typer.Typer()
 def version():
     """Print the version."""
     typer.echo(f"Version of salalp: {__version__}")
+
+
+@app.command("calculate-average-wer")
+@app.command("caw")
+def calculate_avg_wer(
+    ref_dir: str = typer.Argument(
+        ..., help="Directory containing reference LLM files"
+    ),
+    hyp_dir: str = typer.Argument(
+        ..., help="Directory containing hypothesis JSON files"
+    ),
+    level: int = typer.Option(
+        3, "--level", "-l", help="Audio quality level (1, 2, or 3)"
+    ),
+):
+    """Calculate class/segment WER between hypothesis & reference transcripts.
+
+    This command compares hypothesis transcripts (from JSON files) with ref
+    transcripts and classes/segments (from LLM files) to calculate WER metrics.
+
+    Arguments:
+    -  ref_dir: str. Directory containing ref LLM files
+    -  hyp_dir: str. Directory containing hypo transcript JSON files
+    -  level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
+              with a number greater than level will be dropped.
+
+    Example:
+    -  salwer caw ref b12_aug2_l12 --level 2
+    """
+
+    return calculate_avg_wer_(ref_dir, hyp_dir, level)
 
 
 @app.command("calculate-seg-wer")
