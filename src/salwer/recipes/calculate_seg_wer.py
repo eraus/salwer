@@ -11,33 +11,36 @@ from salwer.utils import (
     _cue_seg_ranges,
     read_file_to_text,
 )
-from salwer.levenshtein import seg_size_n_edit_distance
+from salwer.levenshtein import (
+    levenshtein_seg_fast,
+    levenshtein_seg,
+)
 
 
 def calculate_seg_wer_(
-    hyp_folder: str,
-    ref_folder: str,
-    class_sel: Optional[str],
-    seg_sel: Optional[str],
+    ref_dir: str,
+    hyp_dir: str,
     level: int = 3,
+    fn_cls: str = "1",
+    seg: str = "A",
 ):
     """Calculate segment WER using hypothesis and reference transcripts.
 
     Args:
-        hyp_folder: Path to folder containing hypothesis JSON files
-        ref_folder: Path to folder containing reference LLM files
-        class_sel: Selected class filter (optional)
-        seg_sel: Selected segment filter (optional)
+        ref_dir: Path to folder containing reference LLM files
+        hyp_dir: Path to folder containing hypothesis JSON files
         level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
               with a number greater than level will be dropped.
+        fn_cls: Selected class filter (optional)
+        seg: Selected segment filter (optional)
     """
     total_edit_dist = 0
     total_num_words = 0
 
-    hyp_dir = Path(hyp_folder)
-    ref_dir = Path(ref_folder)
+    hyp_dir = Path(hyp_dir)
+    ref_dir = Path(ref_dir)
 
-    if seg_sel is None:
+    if seg is None:
         raise ValueError("Missing appropriate Segment Selector")
 
     for file in hyp_dir.glob("*.txt"):
@@ -46,8 +49,8 @@ def calculate_seg_wer_(
             # Read from original JSON file (without prefix)
             ref_file = str(ref_dir / f"{file.stem}.cns")
             # ref_file = str(ref_dir / f"{file.stem}.llm")
-            edit_dist, num_words = _wer_file(
-                ref_file, hyp_file, class_sel, seg_sel, level
+            edit_dist, num_words = seg_dist_of_file(
+                ref_file, hyp_file, level, fn_cls, seg
             )
             total_edit_dist += edit_dist
             total_num_words += num_words
@@ -55,19 +58,19 @@ def calculate_seg_wer_(
     print("\n\nResults:")
     if total_num_words > 0:
         wer = total_edit_dist / total_num_words
-        typer.echo(f"WER of class {class_sel} and seg {seg_sel} is {wer}")
+        typer.echo(f"WER of class {fn_cls} and seg {seg} is {wer}")
     typer.echo(
         f"Total edit distance {total_edit_dist}; total number of words "
         f"{total_num_words}."
     )
 
 
-def _wer_file(
+def seg_dist_of_file(
     ref_file: str,
     hyp_file: str,
-    class_sel: Optional[str],
-    seg_sel: Optional[str],
     level: int,
+    fn_cls: Optional[str],
+    seg: Optional[str],
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -81,14 +84,14 @@ def _wer_file(
             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
         )
 
-    return _wer_ann(ref_ann, hyp_ann, class_sel, seg_sel)
+    return seg_dist_of_ann(ref_ann, hyp_ann, fn_cls, seg)
 
 
-def _wer_ann(
+def seg_dist_of_ann(
     ref_ann: Transcripts,
     hyp_ann: Transcripts,
-    class_sel: Optional[str],
-    seg_sel: Optional[str],
+    fn_cls: Optional[str],
+    seg: Optional[str],
 ):
     total_edit_dist = 0
     total_num_words = 0
@@ -96,20 +99,17 @@ def _wer_ann(
         ref_cue = ref_ann.cues[i]
         hyp_cue = hyp_ann.cues[i]
         cue_class = _cue_class(ref_cue.cns)
-        # cue_class = _cue_class(ref_cue.cmt)
-        if class_sel is not None and cue_class != class_sel:
+        if fn_cls is not None and cue_class != fn_cls:
             continue
-        if "*" in ref_cue.txt:  # Skip transcripts with "*"
-            continue
+
         ref_cue.txt = _clean_transcript(ref_cue.txt)
         hyp_cue.txt = _clean_transcript(hyp_cue.txt)
+        cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cns, seg)
 
-        cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cns, seg_sel)
-        # cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cmt, seg_sel)
         cue_num_words, cue_edit_dist = 0, 0
         if cue_seg_ranges:
-            results = seg_size_n_edit_distance(
-                cue_seg_ranges, ref_cue.txt.split(), hyp_cue.txt.split()
+            results = levenshtein_seg_fast(
+                ref_cue.txt.split(), hyp_cue.txt.split(), cue_seg_ranges
             )
             for seg_size, edit_dist in results:
                 cue_edit_dist += edit_dist
@@ -139,7 +139,7 @@ def _wer_ann(
 # Essentially, we convert txt, the first argument of _cue_seg_ranges into
 # a list of words, as we did in lines 206 to 210; denote it as txt_lst.
 # The return of the function should be a list of lists. Each of the inner list
-# contains the indexes of the words in the brackets with the seg_sel string,
+# contains the indexes of the words in the brackets with the seg string,
 # "A" is "(A)" or "B" in "(B4)". We need to find the start and end index of
 # the words in the brackets in txt_lst. Just create the code in _cue_seg_ranges
 # in @src\salalp\recipes\s_class_n_seg_wer.py. I will look at the code and we

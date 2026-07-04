@@ -24,17 +24,17 @@ def version():
 @app.command("calculate-seg-wer")
 @app.command("csw")
 def calculate_seg_wer(
-    hyp_folder: str = typer.Argument(
-        ..., help="Path to folder containing hypothesis JSON files"
+    ref_dir: str = typer.Argument(
+        ..., help="Directory containing reference LLM files"
     ),
-    ref_folder: str = typer.Argument(
-        ..., help="Path to folder containing reference LLM files"
+    hyp_dir: str = typer.Argument(
+        ..., help="Directory containing hypothesis JSON files"
     ),
-    class_sel: str = typer.Option("1", "--class",
-                                  help="Select class to filter by"),
-    seg_sel: str = typer.Option("A", "--segment",
-                                help="Select segment to filter by"),
     level: int = typer.Option(3, "--level", "-l"),
+    fn_cls: str = typer.Option("1", "--class", "-c",
+                            help="Select class to filter by"),
+    seg: str = typer.Option("A", "--segment", "-s",
+                                help="Select segment to filter by"),
 ):
     """Calculate class/segment WER between hypothesis & reference transcripts.
 
@@ -42,12 +42,12 @@ def calculate_seg_wer(
     transcripts and classes/segments (from LLM files) to calculate WER metrics.
 
     Arguments:
-    -  hyp_folder: str. Path to folder containing hypo transcript JSON files
-    -  ref_folder: str. Path to folder containing ref LLM files
-    -  class_sel: str="1". Use "--class" to select a class for filtering
-    -  seg_sel: str="A". Use "--segment" to select a segment for filtering
+    -  ref_dir: str. Directory containing ref LLM files
+    -  hyp_dir: str. Directory containing hypo transcript JSON files
     -  level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
               with a number greater than level will be dropped.
+    -  fn_cls: str="1". Use "--class" to select a class for filtering
+    -  seg: str="A". Use "--segment" to select a segment for filtering
 
     Example:
     -  salalp csw hyp_json_folder ref_llm_folder
@@ -55,7 +55,7 @@ def calculate_seg_wer(
     -  salalp csw hyp_json_folder ref_llm_folder --segment "B" --level 1
     """
 
-    return calculate_seg_wer_(hyp_folder, ref_folder, class_sel, seg_sel, level)
+    return calculate_seg_wer_(ref_dir, hyp_dir, level, fn_cls, seg)
 
 
 @app.command("class-n-seg-cues")
