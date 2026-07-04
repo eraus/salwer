@@ -30,11 +30,22 @@ def calculate_seg_wer(
     hyp_dir: str = typer.Argument(
         ..., help="Directory containing hypothesis JSON files"
     ),
-    level: int = typer.Option(3, "--level", "-l"),
-    fn_cls: str = typer.Option("1", "--class", "-c",
-                            help="Select class to filter by"),
-    seg: str = typer.Option("A", "--segment", "-s",
-                                help="Select segment to filter by"),
+    level: int = typer.Option(
+        3, "--level", "-l", help="Audio quality level (1, 2, or 3)"
+    ),
+    fn_cls: str = typer.Option(
+        "1", "--class", "-c", help="Select functional class to filter by"
+    ),
+    seg: str = typer.Option(
+        "A", "--segment", "-s", help="Select semantic segment to filter by"
+    ),
+    approach: str = typer.Option(
+        "accurate", "--approach", "-a",
+        help="Calculation approach for segment-based dist: fast or accurate"
+    ),
+    head: str = typer.Option(
+        "yes", "--head", "-h", help="Include head errors: yes or no"
+    ),
 ):
     """Calculate class/segment WER between hypothesis & reference transcripts.
 
@@ -48,14 +59,16 @@ def calculate_seg_wer(
               with a number greater than level will be dropped.
     -  fn_cls: str="1". Use "--class" to select a class for filtering
     -  seg: str="A". Use "--segment" to select a segment for filtering
+    -  approach: str="fast". Use "--approach" to select calculation method
+    -  head: str="yes". Use "--head" to include header output
 
     Example:
-    -  salalp csw hyp_json_folder ref_llm_folder
-    -  salalp csw hyp_json_folder ref_llm_folder --class "2"
-    -  salalp csw hyp_json_folder ref_llm_folder --segment "B" --level 1
+    -  salwer csw ref b12_aug2_l12 --level 2 --approach fast
     """
 
-    return calculate_seg_wer_(ref_dir, hyp_dir, level, fn_cls, seg)
+    return calculate_seg_wer_(ref_dir, hyp_dir,
+                              level, fn_cls, seg,
+                              approach, head)
 
 
 @app.command("class-n-seg-cues")

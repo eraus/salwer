@@ -20,9 +20,11 @@ from salwer.levenshtein import (
 def calculate_seg_wer_(
     ref_dir: str,
     hyp_dir: str,
-    level: int = 3,
-    fn_cls: str = "1",
-    seg: str = "A",
+    level: int,
+    fn_cls: str,
+    seg: str,
+    approach: str,
+    head: str,
 ):
     """Calculate segment WER using hypothesis and reference transcripts.
 
@@ -50,7 +52,9 @@ def calculate_seg_wer_(
             ref_file = str(ref_dir / f"{file.stem}.cns")
             # ref_file = str(ref_dir / f"{file.stem}.llm")
             edit_dist, num_words = seg_dist_of_file(
-                ref_file, hyp_file, level, fn_cls, seg
+                ref_file, hyp_file,
+                level, fn_cls, seg,
+                approach, head
             )
             total_edit_dist += edit_dist
             total_num_words += num_words
@@ -71,6 +75,8 @@ def seg_dist_of_file(
     level: int,
     fn_cls: Optional[str],
     seg: Optional[str],
+    approach: str,
+    head: str,
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -84,7 +90,7 @@ def seg_dist_of_file(
             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
         )
 
-    return seg_dist_of_ann(ref_ann, hyp_ann, fn_cls, seg)
+    return seg_dist_of_ann(ref_ann, hyp_ann, fn_cls, seg, approach, head)
 
 
 def seg_dist_of_ann(
@@ -92,7 +98,18 @@ def seg_dist_of_ann(
     hyp_ann: Transcripts,
     fn_cls: Optional[str],
     seg: Optional[str],
+    approach: str,
+    head: str,
 ):
+    # Define a mapping outside the loop for efficiency
+    approach_map = {
+        "fast": levenshtein_seg_fast,
+        "accurate": levenshtein_seg,  # or "accurate"
+    }
+
+# Then use it:
+    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
+    use_head = True if head.lower() == "yes" else False
     total_edit_dist = 0
     total_num_words = 0
     for i in range(len(ref_ann.cues)):
@@ -108,8 +125,11 @@ def seg_dist_of_ann(
 
         cue_num_words, cue_edit_dist = 0, 0
         if cue_seg_ranges:
-            results = levenshtein_seg_fast(
-                ref_cue.txt.split(), hyp_cue.txt.split(), cue_seg_ranges
+            results = seg_func(
+                ref_cue.txt.split(),
+                hyp_cue.txt.split(),
+                cue_seg_ranges,
+                use_head
             )
             for seg_size, edit_dist in results:
                 cue_edit_dist += edit_dist
