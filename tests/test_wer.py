@@ -18,8 +18,8 @@ from salwer.utils import (
     _cue_class,
     _cue_seg_ranges,
 )
-from salwer.recipes.check_llm_class_n_seg_results import (
-    _check_class_seg_ann,
+from salwer.recipes.inspect_llm_class_n_seg_results import (
+    _inspect_class_seg_ann,
 )
 from salwer.labels import Transcripts
 
@@ -512,11 +512,11 @@ cns: (4) [(A) Charlie Fox] [(D) roger]
 """
 
 
-def test_check_class_seg_ann():
-    """Test _check_class_seg_ann using cns_text."""
+def test_inspect_class_seg_ann():
+    """Test _inspect_class_seg_ann using cns_text."""
     ann = Transcripts.from_ref_cns_text(cns_text)
-    # _check_class_seg_ann(ann, prnt=True)
-    _check_class_seg_ann(ann)
+    # _inspect_class_seg_ann(ann, prnt=True)
+    _inspect_class_seg_ann(ann)
 
 
 ##

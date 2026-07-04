@@ -26,7 +26,7 @@ from salwer.levenshtein import seg_size_n_edit_distance
 # - We may want to put the LLM code for creating the segments here as well.
 #   For this case, we need to add one more command to create the classes and
 #   segments.
-def check_class_seg_(folder: str, diff: int = 0):
+def inspect_class_seg_(folder: str, diff: int = 0):
     """Checks class/segment of reference transcripts.
 
     Arguments:
@@ -42,20 +42,20 @@ def check_class_seg_(folder: str, diff: int = 0):
             ref_file = str(file)
             # Read from original JSON file (without prefix)
             ref_file = str(ref_dir / f"{file.stem}.cns")
-            _check_class_seg_file(ref_file, diff)
+            _inspect_class_seg_file(ref_file, diff)
     print(f"Checked {files_checked} files.")
 
 
-def _check_class_seg_file(ref_file: str, diff: int = 0):
+def _inspect_class_seg_file(ref_file: str, diff: int = 0):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text)
-    _check_class_seg_ann(ref_ann, diff)
+    _inspect_class_seg_ann(ref_ann, diff)
 
 
 # The following function is used to check if the segments and the transcripts
 # are consistent. If not, the results will be print out and we can check
 # the original text classfication.
-def _check_class_seg_ann(
+def _inspect_class_seg_ann(
         ref_ann: Transcripts, diff: int = 0, prnt: bool = False):
     segs = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     total_edit_dist = 0
