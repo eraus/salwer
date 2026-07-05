@@ -211,6 +211,10 @@ def obtain_word_count(
     level: int = typer.Option(
         3, "--level", "-l", help="Audio quality level (1, 2, or 3)"
     ),
+    porder: str = typer.Option(
+        "value", "--porder", "-s",
+        help="Select the print order: 'value' (default) or 'key'"
+    ),
 ):
     """Calculate class/segment WER between hypothesis & reference transcripts.
 
@@ -227,7 +231,7 @@ def obtain_word_count(
     -  salwer caw ref b12_aug2_l12 --level 2
     """
 
-    return obtain_word_count_(txt_dir, level)
+    return obtain_word_count_(txt_dir, level, porder)
 
 
 @app.command("print-levenshtein-table")

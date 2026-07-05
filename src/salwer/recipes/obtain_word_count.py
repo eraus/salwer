@@ -15,6 +15,7 @@ from salwer.word_dict import (
 def obtain_word_count_(
     txt_dir: str,
     level: int,
+    porder: int,
 ):
     """Obtain the word count dict: key = word; value = number of occurrence.
 
@@ -35,8 +36,17 @@ def obtain_word_count_(
             dir_wrd_dict = merge_word_count_dicts(dir_wrd_dict, file_wrd_dict)
 
     print("\n\nResults:")
-    for key, val in dir_wrd_dict.items():
-        print(f"{key = }; {val = }")
+    if porder.lower() == "key":
+        # Print according to the order of words.
+        for word in sorted(dir_wrd_dict.keys()):
+            print(f"{word}; {dir_wrd_dict[word]}")
+    else:
+        # Print according to the order of words for a certain count value.
+        # Higher valued will print out first.
+        for word, count in sorted(
+            dir_wrd_dict.items(), key=lambda x: (-x[1], x[0])
+        ):
+            print(f"{word}: {count}")
 
 
 def wrd_count_of_file(
