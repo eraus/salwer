@@ -106,9 +106,9 @@ def seg_dist_of_ann(
         "fast": levenshtein_seg_fast,
         "accurate": levenshtein_seg,  # or "accurate"
     }
+    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 
 # Then use it:
-    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
     use_head = True if head.lower() == "yes" else False
     total_edit_dist = 0
     total_num_words = 0

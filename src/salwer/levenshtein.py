@@ -412,7 +412,13 @@ def seg_size_n_edit_distance(
     ref: List[str],
     hyp: List[str],
 ) -> List[List]:
-    pass
+    raise ValueError("seg_size_n_edit_distance is not defined.")
+
+def is_bad_transcription(s: List[str], t: List[str]):
+    THRESHOLD = 0.8     # Threshold for classifying for bad tanscription
+    num_s = len(s)
+    dist = levenshtein(s, t)
+    return True if dist > THRESHOLD * num_s else False
 
 
 def levenshtein_seg_fast(
@@ -447,6 +453,10 @@ def levenshtein_seg_fast(
 
     def base_seg_dist_head(d0, d1): # base seg dist with prefix drift
         return min(d0)
+
+    # if is_bad_transcription(s, t): # If the number of errors is too high
+    #     rslts = [[segs[i][1] - segs[i][0]] * 2 for i in range(len(segs))]
+    #     return rslts
 
     base_seg_dist = base_seg_dist_head if head else base_seg_dist
 
@@ -502,6 +512,9 @@ def levenshtein_seg(
       - segment_length (end - start),
       - levenshtein_dist between s[start:end] and the correcponding t sequence.
     """
+    # if is_bad_transcription(s, t): # If the number of errors is too high
+    #     rslts = [[segs[i][1] - segs[i][0]] * 2 for i in range(len(segs))]
+    #     return rslts
 
     m, n = len(s), len(t)
     m0 = m
@@ -550,5 +563,11 @@ def levenshtein_seg(
                 seg += 1
             d0, d1 = d1, d0
         if b + i >= m0 - 1: break
+
+    # Verify data to ensure calculated seg size is the same as provided
+    for seg in range(l_segs):
+        if rslts[seg][0] == 0:
+            rslts[seg][0] = segs[seg][1] - segs[seg][0]
+            rslts[seg][1] = rslts[seg][0]
 
     return rslts

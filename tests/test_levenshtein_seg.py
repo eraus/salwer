@@ -9,15 +9,15 @@ from salwer.levenshtein import (
 
 ###############################################################
 # Planning of test cases:
-# 1. ch s/t---Source/Target or Ref/Hyp
-# 2. num n (1/2/3)---Up to n substitutions/deletions/insertions
-# 3. ch s/d/i---substitutions/deletions/insertions
-# 4. num m---case number
-# 5. ch w---additional test case for word-sized segs
+# 1. char s/t---Source/Target or Ref/Hyp
+# 2. num  n (1/2/3)---Up to n substitutions/deletions/insertions
+# 3. char s/d/i---substitutions/deletions/insertions
+# 4. num  m---case number
+# 5. char w---additional test case for word-sized segs
 ###############################################################
 # Notations:
 # ^ = substitution/deletion/insertion
-# | = boundary of segments or  sepa
+# | = boundary of segments
 # + = Min of d0 for a certain value of i
 # - = Min of d0 for a ceatain value of i
 # * = Base value used for tight seg distance
@@ -570,3 +570,65 @@ def test_levenshtein_seg_fast_head_3s1():
     assert levenshtein_seg(s3s1, t3s1, segs, head=True) == \
         [[4, 2], [5, 3]]
 
+
+## Special tests
+
+def test_levenshtein_seg_head_st1():
+    """Test seg_size_n_edit_distance with the above lists."""
+    s_st = "roger".split()
+    t_st = "all right".split()
+    segs = [[0, 1]]
+    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == \
+        [[1, 1]]
+    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
+        [[1, 1]]
+
+
+def test_levenshtein_seg_head_st2():
+    """Test seg_size_n_edit_distance with the above lists."""
+    s_st = "wilco".split()
+    t_st = "will come".split()
+    segs = [[0, 1]]
+    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == \
+        [[1, 1]]
+    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
+        [[1, 1]]
+
+# #    s = "A B".split()
+# #    t = "C D E".split()
+# s\t j   C   D   E
+# i   0   1   2   3
+# A   1   1   2   3
+# B   2   2   2   3
+
+############################################
+# x3s1
+# s3s1 = "  A B C D E F G H I".split()
+# t3s1 = "B A   C D E E B A I".split()
+#        |^   ^    |  ^ ^ ^  |
+# s\t j   B   A   C   D   E   E   B   A   I
+# i   0+  1*| 2   3   4 | 5   6   7   8   9
+#     --------------------------------------
+# A   1   1 | 1-  2   3 | 4   5   6   7   8
+# B   2   1 | 2   2   3 | 4   5   5   6   7
+# C   3   2 | 2   2   3 | 4   5   6   6   7
+# D   4   3 | 3   3   2+| 3   4   5   6   7
+
+def test_levenshtein_seg_head_st3():
+    """Test seg_size_n_edit_distance with the above lists."""
+    s_st = "affirm gaithersburg".split()
+    t_st = "affirmative gaither sir".split()
+    segs = [[1, 2]]
+    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
+        [[1, 1]]
+
+
+def test_levenshtein_seg_head_st4():
+    """Test seg_size_n_edit_distance with the above lists."""
+    s_st = "roger wilco".split()
+    t_st = "you will tell".split()
+    segs = [[1, 2]]
+    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
+        [[1, 1]]

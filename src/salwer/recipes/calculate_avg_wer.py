@@ -9,6 +9,8 @@ from salwer.utils import (
 )
 from salwer.levenshtein import (
     levenshtein,
+    levenshtein_seg,
+    levenshtein_seg_fast,
 )
 
 
@@ -16,6 +18,8 @@ def calculate_avg_wer_(
     ref_dir: str,
     hyp_dir: str,
     level: int,
+    section: str,
+    approach: str,
 ):
     """Calculate average WER reference and hypothesis transcripts.
 
@@ -25,6 +29,10 @@ def calculate_avg_wer_(
         level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
               with a number greater than level will be dropped.
     """
+    if section.lower() not in ('all', 'first', 'second+'):
+        raise ValueError(
+            f"Value of 'section' can only be 'all', 'first', and 'second+'!"
+        )
     total_edit_dist = 0
     total_num_words = 0
 
@@ -34,12 +42,10 @@ def calculate_avg_wer_(
     for file in hyp_dir.glob("*.txt"):
         if file.is_file():
             hyp_file = str(file)
-            # Read from original JSON file (without prefix)
             ref_file = str(ref_dir / f"{file.stem}.cns")
-            # ref_file = str(ref_dir / f"{file.stem}.llm")
             edit_dist, num_words = dist_of_file(
                 ref_file, hyp_file,
-                level,
+                level, section, approach
             )
             total_edit_dist += edit_dist
             total_num_words += num_words
@@ -58,6 +64,8 @@ def dist_of_file(
     ref_file: str,
     hyp_file: str,
     level: int,
+    section: str,
+    approach: str,
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -71,13 +79,21 @@ def dist_of_file(
             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
         )
 
-    return dist_of_ann(ref_ann, hyp_ann)
+    return dist_of_ann(ref_ann, hyp_ann, section, approach)
 
 
 def dist_of_ann(
     ref_ann: Transcripts,
     hyp_ann: Transcripts,
+    section: str,
+    approach: str,
 ):
+    # Define a mapping outside the loop for efficiency
+    approach_map = {
+        "fast": levenshtein_seg_fast,
+        "accurate": levenshtein_seg,  # or "accurate"
+    }
+    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 
 # Then use it:
     total_edit_dist = 0
@@ -87,12 +103,25 @@ def dist_of_ann(
         hyp_cue = hyp_ann.cues[i]
         ref_cue.txt = _clean_transcript(ref_cue.txt)
         hyp_cue.txt = _clean_transcript(hyp_cue.txt)
-
-        dist = levenshtein(ref_cue.txt.split(), hyp_cue.txt.split())
-
+        seg_size = len(ref_cue.txt.split())
+        if section.lower() == "all":
+            dist = levenshtein(ref_cue.txt.split(), hyp_cue.txt.split())
+        else:
+            if section.lower() == "first":
+                cue_seg_ranges = [(0, 1)]
+            else:
+                cue_seg_ranges = [(1, seg_size)]
+            # results = levenshtein_seg_fast(
+            results = seg_func(
+                ref_cue.txt.split(),
+                hyp_cue.txt.split(),
+                cue_seg_ranges,
+                head=True
+            )
+            seg_size, dist = results[0]
 
         total_edit_dist += dist
-        total_num_words += len(ref_cue.txt.split())
+        total_num_words += seg_size
 
         if dist:
             print(f"\ntim: {ref_cue.bgn_time}")
@@ -101,24 +130,3 @@ def dist_of_ann(
             print(f"dst: {dist}")
 
     return total_edit_dist, total_num_words
-
-
-# Note that the above _cue_seg_ranges function is revised based on AI code,
-# created based on the following prompt:
-# -----
-# Now, we need to create the _cue_seg_ragens function in
-# @src\salalp\recipes\s_class_n_seg_wer.py so that it will return the indexes
-# of the selected words. Take a look at the test functions in lines 213 to 234
-# in @tests\test_wer.py; the test cases and expected values are defined there.
-# Essentially, we convert txt, the first argument of _cue_seg_ranges into
-# a list of words, as we did in lines 206 to 210; denote it as txt_lst.
-# The return of the function should be a list of lists. Each of the inner list
-# contains the indexes of the words in the brackets with the seg string,
-# "A" is "(A)" or "B" in "(B4)". We need to find the start and end index of
-# the words in the brackets in txt_lst. Just create the code in _cue_seg_ranges
-# in @src\salalp\recipes\s_class_n_seg_wer.py. I will look at the code and we
-# can go from there.
-# -----
-
-# Note also that after the revision of the above code, we added more test cases,
-# all of which have passed.

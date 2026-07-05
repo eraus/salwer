@@ -25,6 +25,10 @@ def calculate_wrd_wer_(
     seg: str,
     approach: str,
     head: str,
+    lower: int,
+    upper: int,
+    word: str,
+    lumped: str,
 ):
     """Calculate segment WER using hypothesis and reference transcripts.
 
@@ -51,7 +55,7 @@ def calculate_wrd_wer_(
             # Read from original JSON file (without prefix)
             ref_file = str(ref_dir / f"{file.stem}.cns")
             # ref_file = str(ref_dir / f"{file.stem}.llm")
-            edit_dist, num_words = seg_dist_of_file(
+            edit_dist, num_words = word_dist_of_file(
                 ref_file, hyp_file,
                 level, fn_cls, seg,
                 approach, head
@@ -69,7 +73,7 @@ def calculate_wrd_wer_(
     )
 
 
-def seg_dist_of_file(
+def word_dist_of_file(
     ref_file: str,
     hyp_file: str,
     level: int,

@@ -36,6 +36,15 @@ def calculate_avg_wer(
     level: int = typer.Option(
         3, "--level", "-l", help="Audio quality level (1, 2, or 3)"
     ),
+    section: str = typer.Option(
+        "all", "--section",
+        help="Choose to use a section of interests: 'all' for all sections," + \
+        "'first' for the first words, and 'second+' for other words."
+    ),
+    approach: str = typer.Option(
+        "accurate", "--approach", "-a",
+        help="Calculation approach for segment-based dist: fast or accurate"
+    ),
 ):
     """Calculate class/segment WER between hypothesis & reference transcripts.
 
@@ -52,7 +61,7 @@ def calculate_avg_wer(
     -  salwer caw ref b12_aug2_l12 --level 2
     """
 
-    return calculate_avg_wer_(ref_dir, hyp_dir, level)
+    return calculate_avg_wer_(ref_dir, hyp_dir, level, section, approach)
 
 
 @app.command("calculate-seg-wer")
@@ -131,6 +140,21 @@ def calculate_wrd_wer(
     head: str = typer.Option(
         "yes", "--head", "-h", help="Include head errors: yes or no"
     ),
+    lower: int = typer.Option(
+        1, "--lower", help="Lower limit of word count for WER calculation"
+    ),
+    upper: int = typer.Option(
+        10000000, "--upper",
+        help="Upperer limit of word count for word-level WER calculation"
+    ),
+    word: str = typer.Option(
+        "all--words", "--word", "-w",
+        help="Choose a specific word for WER calculation"
+    ),
+    lumped: str = typer.Option(
+        "no", "--lumped",
+        help="Choose to use lumped or separate output. Can be 'yes' or 'no'."
+    ),
 ):
     """Calculate class/segment WER between hypothesis & reference transcripts.
 
@@ -153,7 +177,9 @@ def calculate_wrd_wer(
 
     return calculate_wrd_wer_(ref_dir, hyp_dir,
                               level, fn_cls, seg,
-                              approach, head)
+                              approach, head,
+                              lower, upper,
+                              word, lumped)
 
 
 @app.command("class-n-seg-cues")
