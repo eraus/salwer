@@ -6,6 +6,7 @@ from salwer.word_dict import (
     word_dict_of_cue,
     merge_word_dicts,
 )
+from salwer.recipes.calculate_wrd_wer import _get_seg_wrd_list
 
 
 # Tests for word_count_of_cue
@@ -60,3 +61,19 @@ def test_merge_word_dicts():
         "E": [4, 8], "F": [4, 4], "H": [4, 4], "I": [2, 0],
     }
     assert merge_word_dicts(wrd_dict1, wrd_dict2) == wrd_dict3
+
+
+def test__get_seg_wrd_list():
+    cue_wrd_list = [
+        ["A", 2], ["B", 1], ["C", 3],
+        ["D", 4], ["E", 5],
+    ]
+    cue_seg_ranges = [
+        [0, 2], [3, 5],
+    ]
+    result = _get_seg_wrd_list(cue_wrd_list, cue_seg_ranges)
+    expected = [
+        ["A", 2], ["B", 1],
+        ["D", 4], ["E", 5],
+    ]
+    assert result == expected
