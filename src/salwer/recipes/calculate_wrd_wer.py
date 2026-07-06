@@ -15,6 +15,10 @@ from salwer.levenshtein import (
     levenshtein_word,
     levenshtein_seg,
 )
+from salwer.word_dict import (
+    word_dict_of_cue,
+    merge_word_dicts,
+)
 
 
 def calculate_wrd_wer_(

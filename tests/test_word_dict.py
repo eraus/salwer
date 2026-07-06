@@ -4,6 +4,7 @@ from salwer.word_dict import (
     word_count_of_cue,
     merge_word_count_dicts,
     word_dict_of_cue,
+    merge_word_dicts,
 )
 
 
@@ -41,3 +42,21 @@ def test_word_dict_of_cue():
         "E": [2, 4], "F": [2, 2], "H": [2, 2], "I": [2, 0],
     }
     assert word_dict_of_cue(wrd_list) == wrd_dict
+
+
+# Tests for merge_word_count_dicts
+def test_merge_word_dicts():
+    """Test merge_word_dicts."""
+    wrd_dict1 = {
+        "A": [2, 3], "B": [1, 1], "D": [1, 1],
+        "E": [2, 4], "F": [2, 2], "H": [2, 2], "I": [2, 0],
+    }
+    wrd_dict2 = {
+        "A": [2, 3], "B": [1, 1], "D": [1, 1], "C": [4, 3],
+        "E": [2, 4], "F": [2, 2], "H": [2, 2]
+    }
+    wrd_dict3 = {
+        "A": [4, 6], "B": [2, 2], "D": [2, 2], "C": [4, 3],
+        "E": [4, 8], "F": [4, 4], "H": [4, 4], "I": [2, 0],
+    }
+    assert merge_word_dicts(wrd_dict1, wrd_dict2) == wrd_dict3
