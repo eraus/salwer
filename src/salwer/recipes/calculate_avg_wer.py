@@ -18,7 +18,7 @@ def calculate_avg_wer_(
     ref_dir: str,
     hyp_dir: str,
     level: int,
-    section: str,
+    words: str,
     approach: str,
 ):
     """Calculate average WER reference and hypothesis transcripts.
@@ -29,7 +29,7 @@ def calculate_avg_wer_(
         level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
               with a number greater than level will be dropped.
     """
-    if section.lower() not in ('all', 'first', 'second+'):
+    if words.lower() not in ('all', 'first', 'second+'):
         raise ValueError(
             f"Value of 'section' can only be 'all', 'first', and 'second+'!"
         )
@@ -45,7 +45,7 @@ def calculate_avg_wer_(
             ref_file = str(ref_dir / f"{file.stem}.cns")
             edit_dist, num_words = dist_of_file(
                 ref_file, hyp_file,
-                level, section, approach
+                level, words, approach
             )
             total_edit_dist += edit_dist
             total_num_words += num_words
@@ -64,7 +64,7 @@ def dist_of_file(
     ref_file: str,
     hyp_file: str,
     level: int,
-    section: str,
+    words: str,
     approach: str,
 ):
     ref_text = read_file_to_text(ref_file)
@@ -79,13 +79,13 @@ def dist_of_file(
             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
         )
 
-    return dist_of_ann(ref_ann, hyp_ann, section, approach)
+    return dist_of_ann(ref_ann, hyp_ann, words, approach)
 
 
 def dist_of_ann(
     ref_ann: Transcripts,
     hyp_ann: Transcripts,
-    section: str,
+    words: str,
     approach: str,
 ):
     # Define a mapping outside the loop for efficiency
@@ -104,10 +104,10 @@ def dist_of_ann(
         ref_cue.txt = _clean_transcript(ref_cue.txt)
         hyp_cue.txt = _clean_transcript(hyp_cue.txt)
         seg_size = len(ref_cue.txt.split())
-        if section.lower() == "all":
+        if words.lower() == "all":
             dist = levenshtein(ref_cue.txt.split(), hyp_cue.txt.split())
         else:
-            if section.lower() == "first":
+            if words.lower() == "first":
                 cue_seg_ranges = [(0, 1)]
             else:
                 cue_seg_ranges = [(1, seg_size)]

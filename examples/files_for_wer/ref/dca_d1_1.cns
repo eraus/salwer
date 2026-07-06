@@ -100,8 +100,8 @@ cns: (2) [(D) Okay] [(C4) two ten] [(B4) heading] [(A) United Six Nineteen]
 
 stm: 2>N5CF>D1-2
 tim: 3291490
-txt: Good afternoon, Departure, King Air Seven Five Charlie Fox is with you, we are passing niner hundred, vector heading three two zero.
-cns: (4) [(I) Good afternoon] [(G) Departure] [(A) King Air Seven Five Charlie Fox] [(E) is with you] [(E) we are passing niner hundred, vector heading three two zero]
+txt: Good afternoon, Departure, King Air Seven Five Charlie Fox is with you, we are passing nine hundred, vector heading three two zero.
+cns: (4) [(I) Good afternoon] [(G) Departure] [(A) King Air Seven Five Charlie Fox] [(E) is with you] [(E) we are passing nine hundred, vector heading three two zero]
 
 stm: 1>D1-2>N5CF
 tim: 3296730
@@ -125,8 +125,8 @@ cns: (4) [(A) Charlie Fox] [(D) roger] [(I) thank you]
 
 stm: 1>D1-2>UAL619
 tim: 3318800
-txt: United Six Nineteen, turn right heading two niner five, join J one forty nine, resume your own navigation.
-cns: (1) [(A) United Six Nineteen] [(B4) turn right heading] [(C4) two niner five] [(E) join [(H) J one forty nine]] [(E) resume your own navigation]
+txt: United Six Nineteen, turn right heading two nine five, join J one forty nine, resume your own navigation.
+cns: (1) [(A) United Six Nineteen] [(B4) turn right heading] [(C4) two nine five] [(E) join [(H) J one forty nine]] [(E) resume your own navigation]
 
 stm: 2>UAL619>D1-2
 tim: 3324010
@@ -245,13 +245,13 @@ cns: (3) [(E) That works now] [(A) USAir Two Eleven]
 
 stm: 1>D1-2>N5CF
 tim: 3502290
-txt: King Air Five Charlie Foxtrot, climb maintain niner thousand, expedite your climb, contact Departure one two one point zero five.
-cns: (1) [(A) King Air Five Charlie Foxtrot] [(B2) climb maintain] [(C2) niner thousand] [(E) expedite your climb] [(B3) contact] [(G) Departure] [(C3) one two one point zero five]
+txt: King Air Five Charlie Foxtrot, climb maintain nine thousand, expedite your climb, contact Departure one two one point zero five.
+cns: (1) [(A) King Air Five Charlie Foxtrot] [(B2) climb maintain] [(C2) nine thousand] [(E) expedite your climb] [(B3) contact] [(G) Departure] [(C3) one two one point zero five]
 
 stm: 2>N5CF>D1-2
 tim: 3509240
-txt: Twenty one zero five, expediting to niner thousand, Seven Five Charlie Fox, good day now.
-cns: (2) [(C3) Twenty one zero five] [(B2) expediting to] [(C2) niner thousand] [(A) Seven Five Charlie Fox] [(I) good day now]
+txt: Twenty one zero five, expediting to nine thousand, Seven Five Charlie Fox, good day now.
+cns: (2) [(C3) Twenty one zero five] [(B2) expediting to] [(C2) nine thousand] [(A) Seven Five Charlie Fox] [(I) good day now]
 
 stm: 1>D1-2>USA211
 tim: 3536270
@@ -315,8 +315,8 @@ cns: (2) [(B4) Heading] [(C4) two seven zero] [(A) American Three Ninety Three]
 
 stm: 1>D1-2>AAL393
 tim: 3861060
-txt: American Three Ninety Three, turn left heading one niner zero, expect on course in ten miles.
-cns: (1) [(A) American Three Ninety Three] [(B4) turn left heading] [(C4) one niner zero] [(E) expect on course in ten miles]
+txt: American Three Ninety Three, turn left heading one nine zero, expect on course in ten miles.
+cns: (1) [(A) American Three Ninety Three] [(B4) turn left heading] [(C4) one nine zero] [(E) expect on course in ten miles]
 
 stm: 1>AAL393>D1-2
 tim: 3865430
@@ -325,8 +325,8 @@ cns: (2) [(C4) One ninety] [(B4) heading] [(A) American Three Ninety Three]
 
 stm: 1>D1-2>AAL393
 tim: 3946300
-txt: American Three Ninety Three, turn right heading two niner zero, join J one forty nine, resume your own navigation.
-cns: (1) [(A) American Three Ninety Three] [(B4) turn right heading] [(C4) two niner zero] [(E) join [(H) J one forty nine]] [(E) resume your own navigation]
+txt: American Three Ninety Three, turn right heading two nine zero, join J one forty nine, resume your own navigation.
+cns: (1) [(A) American Three Ninety Three] [(B4) turn right heading] [(C4) two nine zero] [(E) join [(H) J one forty nine]] [(E) resume your own navigation]
 
 stm: 1>AAL393>D1-2
 tim: 3950890
@@ -375,8 +375,8 @@ cns: (4) [(G) Washington] [(A) Juliet Bravo Seven Three Eight] [(E) is with you]
 
 stm: 1>VJB738>D1-2
 tim: 4066920
-txt: Climbing to one two thousand, and flying heading two niner zero.
-cns: (2) [(B2) Climbing to] [(C2) one two thousand] [(B4) flying heading] [(C4) two niner zero]
+txt: Climbing to one two thousand, and flying heading two nine zero.
+cns: (2) [(B2) Climbing to] [(C2) one two thousand] [(B4) flying heading] [(C4) two nine zero]
 
 stm: 2>D1-2>VJB738
 tim: 4071410
@@ -405,13 +405,13 @@ cns: (2) [(A) Pacer Eight One] [(E) out of three for] [(C2) four thousand]
 
 stm: 1>D1-2>AWE479
 tim: 4140480
-txt: Cactus Four Seven Nine, turn left heading one niner zero.
-cns: (1) [(A) Cactus Four Seven Nine] [(B4) turn left heading] [(C4) one niner zero]
+txt: Cactus Four Seven Nine, turn left heading one nine zero.
+cns: (1) [(A) Cactus Four Seven Nine] [(B4) turn left heading] [(C4) one nine zero]
 
 stm: 2>AWE479>D1-2
 tim: 4143630
-txt: Four Seventy Nine, left one niner zero.
-cns: (2) [(A) Four Seventy Nine] [(B4) left] [(C4) one niner zero]
+txt: Four Seventy Nine, left one nine zero.
+cns: (2) [(A) Four Seventy Nine] [(B4) left] [(C4) one nine zero]
 
 stm: 1>D1-2>VJB738
 tim: 4148170
@@ -460,8 +460,8 @@ cns: (2) [(A) Forty Three Eighty Six] [(E) best rate] [(B2) up to] [(C2) four th
 
 stm: 1>D1-2>PACER81
 tim: 4239680
-txt: Pacer Eight One, turn left heading of one niner zero, contact Departure one two one point zero five.
-cns: (1) [(A) Pacer Eight One] [(B4) turn left heading of] [(C4) one niner zero] [(B3) contact] [(G) Departure] [(C3) one two one point zero five]
+txt: Pacer Eight One, turn left heading of one nine zero, contact Departure one two one point zero five.
+cns: (1) [(A) Pacer Eight One] [(B4) turn left heading of] [(C4) one nine zero] [(B3) contact] [(G) Departure] [(C3) one two one point zero five]
 
 stm: 2>PACER81>D1-2
 tim: 4245280
@@ -470,13 +470,13 @@ cns: (2) [(C3) One two one zero five] [(B4) left turn] [(C4) one nine zero] [(A)
 
 stm: 1>D1-2>DAL349
 tim: 4250140
-txt: Delta Three Forty Nine, radar contact, climb maintain niner thousand.
-cns: (1) [(A) Delta Three Forty Nine] [(D) radar contact] [(B2) climb maintain] [(C2) niner thousand]
+txt: Delta Three Forty Nine, radar contact, climb maintain nine thousand.
+cns: (1) [(A) Delta Three Forty Nine] [(D) radar contact] [(B2) climb maintain] [(C2) nine thousand]
 
 stm: 1>DAL349>D1-2
 tim: 4254040
-txt: Delta Three Forty Nine, climbing up to niner thousand.
-cns: (2) [(A) Delta Three Forty Nine] [(B2) climbing up to] [(C2) niner thousand]
+txt: Delta Three Forty Nine, climbing up to nine thousand.
+cns: (2) [(A) Delta Three Forty Nine] [(B2) climbing up to] [(C2) nine thousand]
 
 stm: 1>D1-2>AWE479
 tim: 4257790
@@ -485,8 +485,8 @@ cns: (1) [(A) Cactus Four Seventy Nine] [(B4) turn right heading] [(C4) two nine
 
 stm: 1>AWE479>D1-2
 tim: 4265110
-txt: Cactus Four Seventy Nine, right turn heading two niner zero to join the Jetway, own navigation, one three four two.
-cns: (2) [(A) Cactus Four Seventy Nine] [(B4) right turn heading] [(C4) two niner zero] [(E) to join the [(H) Jetway]] [(E) own navigation] [(C3) one three four two]
+txt: Cactus Four Seventy Nine, right turn heading two nine zero to join the Jetway, own navigation, one three four two.
+cns: (2) [(A) Cactus Four Seventy Nine] [(B4) right turn heading] [(C4) two nine zero] [(E) to join the [(H) Jetway]] [(E) own navigation] [(C3) one three four two]
 
 stm: 1>D1-2>R16851
 tim: 4277680
@@ -530,13 +530,13 @@ cns: (2) [(A) Delta Three Forty Nine] [(B4) left to] [(C4) two seven zero] [(B2)
 
 stm: 1>D1-2>HNA4386
 tim: 4352200
-txt: Henson Forty Three Eighty Six, turn left heading one niner zero, vector for your climb, climb maintain niner thousand.
-cns: (1) [(A) Henson Forty Three Eighty Six] [(B4) turn left heading] [(C4) one niner zero] [(E) vector for your climb] [(B2) climb maintain] [(C2) niner thousand]
+txt: Henson Forty Three Eighty Six, turn left heading one nine zero, vector for your climb, climb maintain nine thousand.
+cns: (1) [(A) Henson Forty Three Eighty Six] [(B4) turn left heading] [(C4) one nine zero] [(E) vector for your climb] [(B2) climb maintain] [(C2) nine thousand]
 
 stm: 1>HNA4386>D1-2
 tim: 4356770
-txt: Forty Three Eighty Six, left one niner zero, and we are out of four up to niner thousand.
-cns: (2) [(A) Forty Three Eighty Six] [(B4) left] [(C4) one niner zero] [(E) and we are out of four] [(B2) up to] [(C2) niner thousand]
+txt: Forty Three Eighty Six, left one nine zero, and we are out of four up to nine thousand.
+cns: (2) [(A) Forty Three Eighty Six] [(B4) left] [(C4) one nine zero] [(E) and we are out of four] [(B2) up to] [(C2) nine thousand]
 
 stm: 1>D1-2>R16851
 tim: 4388250
@@ -645,8 +645,8 @@ cns: (4) [(I) Hello] [(G) Departure] [(A) USAir Two Twenty] [(E) is with you] [(
 
 stm: 1>D1-2>R16851
 tim: 4528600
-txt: Army Eight Five One, turn left heading zero niner zero.
-cns: (1) [(A) Army Eight Five One] [(B4) turn left heading] [(C4) zero niner zero]
+txt: Army Eight Five One, turn left heading zero nine zero.
+cns: (1) [(A) Army Eight Five One] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 1>D1-2>R16851
 tim: 4536010
@@ -750,8 +750,8 @@ cns: (3) [(E) I think you are going to experience that for quite a ways]
 
 stm: 1>D1-2>AAL609
 tim: 4751950
-txt: American Six Oh Nine, turn left heading of one niner zero, expect on course in eleven miles.
-cns: (1) [(A) American Six Oh Nine] [(B4) turn left heading of] [(C4) one niner zero] [(E) expect on course in eleven miles]
+txt: American Six Oh Nine, turn left heading of one nine zero, expect on course in eleven miles.
+cns: (1) [(A) American Six Oh Nine] [(B4) turn left heading of] [(C4) one nine zero] [(E) expect on course in eleven miles]
 
 stm: 2>AAL609>D1-2
 tim: 4757200
@@ -760,8 +760,8 @@ cns: (4) [(E) Left turn to two nine zero] [(J) did you say]
 
 stm: 1>D1-2>AAL609
 tim: 4762350
-txt: American Six Oh Nine, turn left heading one niner zero, expect on course in eleven miles.
-cns: (1) [(A) American Six Oh Nine] [(B4) turn left heading] [(C4) one niner zero] [(E) expect on course in eleven miles]
+txt: American Six Oh Nine, turn left heading one nine zero, expect on course in eleven miles.
+cns: (1) [(A) American Six Oh Nine] [(B4) turn left heading] [(C4) one nine zero] [(E) expect on course in eleven miles]
 
 stm: 1>AAL609>D1-2
 tim: 4766960

@@ -60,7 +60,7 @@ txt: Charmiger One One Zero Kilo, Washington Departure, without contact.
 
 stm: 2>D1-1>NWA579
 tim: 114.290 117.210
-txt: Northwest Five Seventy Nine, climb maintain niner thousand.
+txt: Northwest Five Seventy Nine, climb maintain nine thousand.
 
 stm: 1>NWA579>D1-1
 tim: 117.620 120.190
@@ -68,7 +68,7 @@ txt: Northwest Five Seventy Nine, climb to nine thousand.
 
 stm: 1>N01SK>D1-1
 tim: 155.860 157.050
-txt: Niner thousand, Sierra Kilo.
+txt: Nine thousand, Sierra Kilo.
 
 stm: 2>D1-1>SAM203
 tim: 165.920 171.180
@@ -116,11 +116,11 @@ txt: Direct one seven thousand, Sierra Kilo.
 
 stm: 1>D1-1>AAL875
 tim: 277.680 281.140
-txt: American Eight Seventy Five, Departure, radar contact, maintain niner thousand.
+txt: American Eight Seventy Five, Departure, radar contact, maintain nine thousand.
 
 stm: 1>AAL875>D1-1
 tim: 281.690 284.120
-txt: Maintain niner thousand, American Eight Seventy Five.
+txt: Maintain nine thousand, American Eight Seventy Five.
 
 stm: 2>D1-1>PAT060
 tim: 284.550 287.800
@@ -224,7 +224,7 @@ txt: American Eight Forty One, did...
 
 stm: 2>D1-2>G001
 tim: 577.730 581.680
-txt: Fard Zero Zero One, contact Andrews Radar one one niner point three.
+txt: Fard Zero Zero One, contact Andrews Radar one one nine point three.
 
 stm: 1>G001>D1-2
 tim: 581.680 583.550
@@ -352,7 +352,7 @@ txt: Cactus Fifty Four, one one thousand.
 
 stm: 1>D1-2>UAL601
 tim: 821.140 826.760
-txt: United Six Zero One, turn right heading two niner zero, join J one forty nine, resume own navigation.
+txt: United Six Zero One, turn right heading two nine zero, join J one forty nine, resume own navigation.
 
 stm: 1>UAL601>D1-2
 tim: 827.490 830.260
@@ -764,7 +764,7 @@ txt: Roger.
 
 stm: 2>D1-2>COA1173
 tim: 1594.150 1600.080
-txt: Continental Eleven Thirty Three, turn right heading two niner zero, intercept the Washington two four six radial, resume own navigation.
+txt: Continental Eleven Thirty Three, turn right heading two nine zero, intercept the Washington two four six radial, resume own navigation.
 
 stm: 1>D1-2>COA603
 tim: 1604.650 1608.450
@@ -868,11 +868,11 @@ txt: Navic three for four, Pacer Five One.
 
 stm: 2>D1-2>PACER51
 tim: 2026.630 2034.710
-txt: Pacer Five One, climb maintain niner thousand, traffic one o'clock, one five miles, southeastbound, descending at one zero thousand.
+txt: Pacer Five One, climb maintain nine thousand, traffic one o'clock, one five miles, southeastbound, descending at one zero thousand.
 
 stm: 2>PACER51>D1-2
 tim: 2035.240 2037.690
-txt: Climbing to niner thousand, and searching, Pacer Five One.
+txt: Climbing to nine thousand, and searching, Pacer Five One.
 
 stm: 1>DAL989>D1-2
 tim: 2095.060 2097.030
@@ -1224,11 +1224,11 @@ txt: Zero three zero.
 
 stm: 1>D1-3>UAL603
 tim: 4074.690 4077.360
-txt: United Six Zero Three, turn left heading two niner zero.
+txt: United Six Zero Three, turn left heading two nine zero.
 
 stm: 1>UAL603>D1-3
 tim: 4078.090 4080.220
-txt: Left two niner zero, United Six Zero Three.
+txt: Left two nine zero, United Six Zero Three.
 
 stm: 1>D1-3>UAL603
 tim: 4129.890 4132.860
@@ -1320,7 +1320,7 @@ txt: USAir Fourteen Ninety Nine, contact the Washington Center one three five po
 
 stm: 1>D1-3>USA1095
 tim: 4720.140 4727.430
-txt: USAir Ten Ninety Five, turn left heading one niner zero, climb maintain flight level two one zero.
+txt: USAir Ten Ninety Five, turn left heading one nine zero, climb maintain flight level two one zero.
 
 stm: 1>USA1095>D1-3
 tim: 4728.390 4732.800
@@ -1540,7 +1540,7 @@ txt: One thirty four two, Boxer Two Two, good day.
 
 stm: 1>D1-3>USA1697
 tim: 5204.940 5207.700
-txt: USAir Sixteen Ninety Seven, turn left heading one niner zero.
+txt: USAir Sixteen Ninety Seven, turn left heading one nine zero.
 
 stm: 1>USA1697>D1-3
 tim: 5208.120 5210.670
@@ -1740,7 +1740,7 @@ txt: Right two nine zero to join the airway, American Fifteen Forty Nine.
 
 stm: 2>D1-3>USA453
 tim: 6251.340 6255.830
-txt: USAir Four Fifty Three, expedite the climb through niner thousand, maintain one seven thousand.
+txt: USAir Four Fifty Three, expedite the climb through nine thousand, maintain one seven thousand.
 
 stm: 1>USA453>D1-3
 tim: 6255.830 6259.860
@@ -1836,7 +1836,7 @@ txt: Okay.
 
 stm: 1>D1-3>USA453
 tim: 6468.830 6472.670
-txt: USAir Four Fifty Three, turn right heading two niner zero, and join J one forty nine.
+txt: USAir Four Fifty Three, turn right heading two nine zero, and join J one forty nine.
 
 stm: 2>USA453>D1-3
 tim: 6473.010 6476.810

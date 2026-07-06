@@ -12,7 +12,7 @@ txt: TWA Five Hundred, descend maintain one six thousand.
 
 stm: 2>F2-1>MID2721
 tim: 29.100 31.520
-txt: Jetex Twenty Seven Twenty One, turn left heading one niner zero.
+txt: Jetex Twenty Seven Twenty One, turn left heading one nine zero.
 
 stm: 1>MID2721>F2-1
 tim: 31.970 34.160
@@ -44,7 +44,7 @@ txt: Delta Seven Twenty Eight, turn right heading zero, correction, fly heading 
 
 stm: 1>F2-1>MID2721
 tim: 74.580 78.610
-txt: Jetex Twenty Seven Twenty One, contact Washington Approach one one niner point eight five.
+txt: Jetex Twenty Seven Twenty One, contact Washington Approach one one nine point eight five.
 
 stm: 1>MID2721>F2-1
 tim: 79.140 81.300
@@ -60,7 +60,7 @@ txt: Henson Forty Three Thirty Four, turn left heading two four zero.
 
 stm: 1>F2-1>HNA4334
 tim: 100.730 104.330
-txt: Henson Forty Three Thirty Four, contact Washington Approach one one niner point eight five.
+txt: Henson Forty Three Thirty Four, contact Washington Approach one one nine point eight five.
 
 stm: 1>USA155>F2-1
 tim: 114.430 118.160
@@ -76,7 +76,7 @@ txt: Two seven zero heading, Northwest Nine Eighty Seven.
 
 stm: 1>F2-1>USA1546
 tim: 127.080 132.040
-txt: USAir Fifteen Forty Six, turn right heading zero seven zero, contact Baltimore Approach one one niner point seven.
+txt: USAir Fifteen Forty Six, turn right heading zero seven zero, contact Baltimore Approach one one nine point seven.
 
 stm: 1>F2-1>USA1528
 tim: 136.580 139.300
@@ -132,7 +132,7 @@ txt: Down to seven thousand, Delta Seventeen Forty Nine.
 
 stm: 1>F2-1>N310RD
 tim: 202.390 206.640
-txt: Cessna Three One Zero Romeo Delta, contact Washington Approach one one niner point eight five.
+txt: Cessna Three One Zero Romeo Delta, contact Washington Approach one one nine point eight five.
 
 stm: 2>N310RD>F2-1
 tim: 206.640 209.080
@@ -180,7 +180,7 @@ txt: Two seventy heading, down to two thousand, Northwest Nine Eighty Seven.
 
 stm: 1>F2-1>DAL1749
 tim: 284.430 286.910
-txt: Delta Seventeen Forty Nine, turn left heading one niner zero.
+txt: Delta Seventeen Forty Nine, turn left heading one nine zero.
 
 stm: 1>DAL1749>F2-1
 tim: 286.910 288.890
@@ -188,7 +188,7 @@ txt: One nine zero, Delta Seventeen Forty Nine.
 
 stm: 1>F2-1>NWA987
 tim: 289.550 292.900
-txt: Northwest Nine Eighty Seven, contact Washington Approach one one niner point eight five.
+txt: Northwest Nine Eighty Seven, contact Washington Approach one one nine point eight five.
 
 stm: 1>NWA987>F2-1
 tim: 293.560 296.370
@@ -196,15 +196,15 @@ txt: Nineteen eighty five, Northwest Nine Eighty Seven, take care.
 
 stm: 1>F2-1>USA1164
 tim: 296.760 300.080
-txt: USAir Eleven Sixty Four, contact Baltimore Approach one one niner point seven.
+txt: USAir Eleven Sixty Four, contact Baltimore Approach one one nine point seven.
 
 stm: 1>F2-1>V843
 tim: 302.830 305.360
-txt: TWA Eight Four Three, turn left heading two niner zero.
+txt: TWA Eight Four Three, turn left heading two nine zero.
 
 stm: 1>F2-1>DAL728
 tim: 307.380 309.860
-txt: Delta Seven Twenty Eight, descend maintain niner thousand.
+txt: Delta Seven Twenty Eight, descend maintain nine thousand.
 
 stm: 1>F2-1>USA1806
 tim: 311.650 314.580
@@ -236,7 +236,7 @@ txt: USAir Fifteen Twenty Eight, turn right heading zero seven zero.
 
 stm: 1>F2-1>DAL728
 tim: 355.740 358.290
-txt: Delta Seven Twenty Eight, turn right heading zero niner zero.
+txt: Delta Seven Twenty Eight, turn right heading zero nine zero.
 
 stm: 1>F2-1>V843
 tim: 360.260 362.610
@@ -244,7 +244,7 @@ txt: Navy Eight Four Three, descend maintain three thousand.
 
 stm: 1>F2-1>USA1806
 tim: 364.190 366.860
-txt: USAir Eighteen Zero Six, turn right heading zero niner zero.
+txt: USAir Eighteen Zero Six, turn right heading zero nine zero.
 
 stm: 1>F2-1>DAL1749
 tim: 375.680 378.300
@@ -264,7 +264,7 @@ txt: Two fifty, down to six thousand, USAir One Fifty Five.
 
 stm: 1>F2-1>USA1528
 tim: 396.780 401.540
-txt: USAir Fifteen Twenty Eight, descend maintain five thousand, contact Baltimore Approach one one niner point seven.
+txt: USAir Fifteen Twenty Eight, descend maintain five thousand, contact Baltimore Approach one one nine point seven.
 
 stm: 1>F2-1>UNK
 tim: 405.320 405.950
@@ -312,7 +312,7 @@ txt: Navy Eight Four Three, turn right heading three six zero.
 
 stm: 1>F2-2>V843
 tim: 489.850 492.750
-txt: Navy Four Three, contact the Andrews, Radar one one niner point three.
+txt: Navy Four Three, contact the Andrews, Radar one one nine point three.
 
 stm: 2>F2-2>DAL1749
 tim: 498.290 502.290
@@ -356,7 +356,7 @@ txt: TWA Five Hundred, descend to five thousand, expedite the descent.
 
 stm: 1>F2-2>TWA500
 tim: 560.520 565.420
-txt: TWA Five Hundred, turn left heading zero seven zero, expedite your descent through niner thousand, maintain five.
+txt: TWA Five Hundred, turn left heading zero seven zero, expedite your descent through nine thousand, maintain five.
 
 stm: 1>F2-2>DAL728
 tim: 568.580 570.470
@@ -416,7 +416,7 @@ txt: Three Hundred Alpha Mike, Washington Approach, roger.
 
 stm: 1>F2-2>USA155
 tim: 618.390 620.580
-txt: USAir One Fifty Five, turn right heading one niner zero.
+txt: USAir One Fifty Five, turn right heading one nine zero.
 
 stm: 2>USA155>F2-2
 tim: 621.040 622.580
@@ -436,7 +436,7 @@ txt: TWA Five Hundred, Baltimore nineteen seven, good day.
 
 stm: 2>F2-2>DAL728
 tim: 653.170 657.080
-txt: Delta Seven Twenty Eight, maintain five thousand, contact Baltimore one one niner point seven.
+txt: Delta Seven Twenty Eight, maintain five thousand, contact Baltimore one one nine point seven.
 
 stm: 1>F2-2>MID2726
 tim: 663.600 666.050
@@ -452,7 +452,7 @@ txt: Cloud to one seventy, right turn three sixty, and up to River visual One Fi
 
 stm: 2>F2-2>USA155
 tim: 692.360 696.070
-txt: USAir One Fifty Five, one seven until five DME, contact the Tower one one niner point one.
+txt: USAir One Fifty Five, one seven until five DME, contact the Tower one one nine point one.
 
 stm: 2>USA155>F2-2
 tim: 696.940 698.970
@@ -460,7 +460,7 @@ txt: Nineteen one, USAir One Fifty Five.
 
 stm: 1>F2-2>USA1806
 tim: 700.510 704.810
-txt: USAir Eighteen Zero Six, descend maintain five thousand, contact Baltimore one one niner point seven.
+txt: USAir Eighteen Zero Six, descend maintain five thousand, contact Baltimore one one nine point seven.
 
 stm: 1>F2-2>NAE4900
 tim: 712.430 714.730
@@ -496,7 +496,7 @@ txt: Proceed to inbound Runway Three Three, are cleared visual approach, I will 
 
 stm: 1>F2-2>N0AM
 tim: 847.800 849.850
-txt: Three Hundred Alpha Mike, turn left heading one niner zero.
+txt: Three Hundred Alpha Mike, turn left heading one nine zero.
 
 stm: 2>N0AM>F2-2
 tim: 850.150 851.980
@@ -520,7 +520,7 @@ txt: Eagle Forty Nine Hundred, descend maintain one thousand six. I'm sorry, you
 
 stm: 1>F2-2>NAE4900
 tim: 880.910 884.360
-txt: All right, U L S Three Six, U L S Three Three, contact one one niner point one.
+txt: All right, U L S Three Six, U L S Three Three, contact one one nine point one.
 
 stm: 1>F2-2>MID2726
 tim: 888.130 892.710
@@ -536,7 +536,7 @@ txt: Venor Point Nine Hundred, Tower nineteen one.
 
 stm: 1>F2-2>MID2726
 tim: 920.090 922.740
-txt: Jetex Twenty Seven Twenty Six, contact Tower one one niner point one.
+txt: Jetex Twenty Seven Twenty Six, contact Tower one one nine point one.
 
 stm: 2>N5GA>F2-2
 tim: 927.790 932.880
@@ -592,7 +592,7 @@ txt: All right, continue on the heading. I want you to keep him in sight. You wi
 
 stm: 2>R22936>F2-2
 tim: 1115.180 1118.460
-txt: Washington Arby Two Two Niner Three Six is with you at six thousand.
+txt: Washington Arby Two Two Nine Three Six is with you at six thousand.
 
 stm: 1>F2-2>R22936
 tim: 1118.460 1122.360
@@ -600,11 +600,11 @@ txt: Harmory Two Two Nine Three Six, Washington Approach, depart Baltimore headi
 
 stm: 2>R22936>F2-2
 tim: 1122.700 1125.620
-txt: Okay, two two zero, Henson, follow the wall, Carbon Niner Three Six.
+txt: Okay, two two zero, Henson, follow the wall, Carbon Nine Three Six.
 
 stm: 2>F2-2>N0AM
 tim: 1128.530 1136.430
-txt: November Three Hundred Alpha Mike, the Northwest jet will land Runway Three Six. You land Three Three behind him, standing at your discretion, contact the Tower one one niner point one.
+txt: November Three Hundred Alpha Mike, the Northwest jet will land Runway Three Six. You land Three Three behind him, standing at your discretion, contact the Tower one one nine point one.
 
 stm: 1>N0AM>F2-2
 tim: 1136.430 1137.450
@@ -640,7 +640,7 @@ txt: Lear Nine Oh Three Six, roger, and Three Zero One Six.
 
 stm: 1>F2-2>N5GA
 tim: 1225.530 1228.030
-txt: November Five Golf Alpha, turn left heading one niner zero.
+txt: November Five Golf Alpha, turn left heading one nine zero.
 
 stm: 1>N5GA>F2-2
 tim: 1228.720 1230.460
@@ -696,11 +696,11 @@ txt: Army Nine Three Six, descend maintain five thousand.
 
 stm: 2>F2-2>R22936
 tim: 1456.310 1458.510
-txt: Nine to five thousand, Flyway Niner Three Six.
+txt: Nine to five thousand, Flyway Nine Three Six.
 
 stm: 1>F2-2>USA1767
 tim: 1458.510 1461.200
-txt: USAir Seventeen Sixty Seven, turn left heading one niner zero.
+txt: USAir Seventeen Sixty Seven, turn left heading one nine zero.
 
 stm: 1>USA1767>F2-2
 tim: 1461.640 1464.390
@@ -800,7 +800,7 @@ txt: Oxero Seventeen Sixty Seven, good bye now.
 
 stm: 1>F2-2>USA1767
 tim: 1659.890 1662.750
-txt: Seventeen Sixty Seven, contact Tower one one niner point one.
+txt: Seventeen Sixty Seven, contact Tower one one nine point one.
 
 stm: 1>F2-2>R22936
 tim: 1690.390 1693.870
@@ -808,7 +808,7 @@ txt: November Nine Three Six, turn right heading two five zero, descend to one t
 
 stm: 1>R22936>F2-2
 tim: 1694.280 1697.840
-txt: Right two two five zero, and down to one point six, Library Niner Three Six.
+txt: Right two two five zero, and down to one point six, Library Nine Three Six.
 
 stm: 2>F2-2>AAL314
 tim: 1759.080 1762.120
@@ -820,7 +820,7 @@ txt: Climbing Nine Three Six, turn right heading two seven zero, here is four fo
 
 stm: 2>R22936>F2-2
 tim: 1779.210 1782.300
-txt: Okay, roger, two seven zero, cleared for the approach, Farming Niner Three Six.
+txt: Okay, roger, two seven zero, cleared for the approach, Farming Nine Three Six.
 
 stm: 1>F2-2>R22936
 tim: 1796.440 1804.030
@@ -908,7 +908,7 @@ txt: Two three zero after Baltimore.
 
 stm: 1>F2-2>TPS6441
 tim: 2040.900 2044.750
-txt: Trump Sixty Four Forty One, descend maintain six thousand, turn left heading one niner zero.
+txt: Trump Sixty Four Forty One, descend maintain six thousand, turn left heading one nine zero.
 
 stm: 1>F2-2>AAL314
 tim: 2052.850 2055.430
@@ -916,7 +916,7 @@ txt: American Three Fourteen, Baltimore nineteen seven, see you later.
 
 stm: 1>F2-2>R18038
 tim: 2111.200 2113.340
-txt: November Zero Three Eight, turn left heading one niner zero.
+txt: November Zero Three Eight, turn left heading one nine zero.
 
 stm: 2>R18038>F2-2
 tim: 2113.830 2115.420
@@ -1052,7 +1052,7 @@ txt: Trump Sixty Four Forty One, turn on nineteen one.
 
 stm: 1>F2-2>VENUS26
 tim: 2367.730 2369.930
-txt: Venus Two Six, turn left heading one niner zero.
+txt: Venus Two Six, turn left heading one nine zero.
 
 stm: 1>VENUS26>F2-2
 tim: 2369.930 2371.200
@@ -1100,7 +1100,7 @@ txt: Understand, we are slowing.
 
 stm: 1>F2-2>VENUS26
 tim: 2472.300 2477.450
-txt: Venus Two Six, contact Andrews Radar one one niner point seven, correction, one one niner point three.
+txt: Venus Two Six, contact Andrews Radar one one nine point seven, correction, one one nine point three.
 
 stm: 1>VENUS26>F2-2
 tim: 2477.840 2479.460
@@ -1116,7 +1116,7 @@ txt: Yes sir.
 
 stm: 1>F2-2>VENUS81
 tim: 2506.700 2509.350
-txt: Contact Andrews one one niner point three.
+txt: Contact Andrews one one nine point three.
 
 stm: 1>VENUS81>F2-2
 tim: 2509.350 2509.860
@@ -1204,7 +1204,7 @@ txt: Three thousand, Two Six.
 
 stm: 2>F2-2>VENUS26
 tim: 2628.330 2632.070
-txt: Venus Two Six, you can contact Andrews now one one niner point three, see you later.
+txt: Venus Two Six, you can contact Andrews now one one nine point three, see you later.
 
 stm: 1>VENUS26>F2-2
 tim: 2632.070 2633.130
@@ -1212,7 +1212,7 @@ txt: Okay, so long.
 
 stm: 2>N960>F2-2
 tim: 2677.210 2681.660
-txt: Washington Approach, Cessna Niner Six Niner Six Zero is with you at four point five.
+txt: Washington Approach, Cessna Nine Six Nine Six Zero is with you at four point five.
 
 stm: 2>F2-2>N960
 tim: 2681.660 2683.940
@@ -1292,7 +1292,7 @@ txt: Cleared River to the airport, you are cleared the Mount Merr, approach Thre
 
 stm: 1>F2-2>USA843
 tim: 2890.070 2896.410
-txt: Lear Four Sixty Five, Towers nine, I'm sorry, it is USAir Eight Forty Three, contact Tower one niner point one, good day.
+txt: Lear Four Sixty Five, Towers nine, I'm sorry, it is USAir Eight Forty Three, contact Tower one nine point one, good day.
 
 stm: 1>F2-2>USA426
 tim: 2967.120 2972.110
@@ -1308,7 +1308,7 @@ txt: Five thousand, USAir Four Sixty Five.
 
 stm: 1>F2-2>USA465
 tim: 2995.010 2997.730
-txt: USAir Four Sixty Five, turn left heading one niner zero.
+txt: USAir Four Sixty Five, turn left heading one nine zero.
 
 stm: 1>USA465>F2-2
 tim: 2998.070 2999.810
@@ -1380,7 +1380,7 @@ txt: Three thousand, USAir Four Sixty Five.
 
 stm: 1>F2-2>COA309
 tim: 3111.350 3113.590
-txt: Continental Three Zero Nine, turn left heading one niner zero.
+txt: Continental Three Zero Nine, turn left heading one nine zero.
 
 stm: 2>COA309>F2-2
 tim: 3114.130 3115.500
@@ -1428,11 +1428,11 @@ txt: USAir Four Sixty Five, descend maintain two thousand.
 
 stm: 1>F2-2>N960
 tim: 3178.370 3181.540
-txt: Cessna Niner Six Zero, turn left heading one niner zero.
+txt: Cessna Nine Six Zero, turn left heading one nine zero.
 
 stm: 1>N960>F2-2
 tim: 3181.540 3183.350
-txt: One niner zero, Nine Six Zero.
+txt: One nine zero, Nine Six Zero.
 
 stm: 1>F2-2>N960
 tim: 3183.350 3185.430
@@ -1472,7 +1472,7 @@ txt: USAir Four Twenty Six, descend maintain five thousand.
 
 stm: 1>F2-2>USA465
 tim: 3223.690 3228.020
-txt: USAir Four Sixty Five is number one for the airport, contact the Tower one one niner point one.
+txt: USAir Four Sixty Five is number one for the airport, contact the Tower one one nine point one.
 
 stm: 1>USA465>F2-2
 tim: 3228.020 3230.260
@@ -1568,15 +1568,15 @@ txt: Okay, we will expect her to cross the final, we are descended to two thousa
 
 stm: 1>F2-2>COA309
 tim: 3365.580 3370.550
-txt: Continental Three Zero Nine, your traffic is short final for three, your speed is good. Contact Tower one one niner point one.
+txt: Continental Three Zero Nine, your traffic is short final for three, your speed is good. Contact Tower one one nine point one.
 
 stm: 1>F2-2>COA309
 tim: 3374.210 3376.920
-txt: Continental Three Oh Nine, contact Tower one one niner point one.
+txt: Continental Three Oh Nine, contact Tower one one nine point one.
 
 stm: 1>F2-2>N305
 tim: 3378.170 3381.500
-txt: Lance Three Zero Five, contact Tower one one niner point one.
+txt: Lance Three Zero Five, contact Tower one one nine point one.
 
 stm: 1>N305>F2-2
 tim: 3381.500 3382.830
@@ -1584,7 +1584,7 @@ txt: Three zero five will do.
 
 stm: 1>F2-2>VENUS24
 tim: 3382.830 3389.330
-txt: Venus Two Four, contact, correction, descend maintain three thousand, contact Andrews Radar one one niner point three.
+txt: Venus Two Four, contact, correction, descend maintain three thousand, contact Andrews Radar one one nine point three.
 
 stm: 1>F2-2>USA426
 tim: 3392.650 3396.500
@@ -1608,7 +1608,7 @@ txt: Cleared to the mountain, turn and approach, USAir Eight Sixty Seven.
 
 stm: 1>F2-2>USA426
 tim: 3436.790 3441.030
-txt: USAir Four Twenty Six, contact Baltimore Approach one one niner point seven, good day.
+txt: USAir Four Twenty Six, contact Baltimore Approach one one nine point seven, good day.
 
 stm: 1>NWA1859>F2-2
 tim: 3444.720 3449.650
@@ -1640,7 +1640,7 @@ txt: Two point five to one point five, Nine Six Zero.
 
 stm: 1>F2-2>USA867
 tim: 3470.500 3476.440
-txt: USAir Eight Sixty Seven, your traffic is short the final for three three, your speed is fine. Contact the Tower one one niner point one.
+txt: USAir Eight Sixty Seven, your traffic is short the final for three three, your speed is fine. Contact the Tower one one nine point one.
 
 stm: 1>USA867>F2-2
 tim: 3476.820 3479.470
@@ -1672,7 +1672,7 @@ txt: Delta Seventeen Fifty One, Washington Approach, thank you, direct to Washin
 
 stm: 1>F2-2>N960
 tim: 3523.810 3527.560
-txt: Cessna Niner Six Zero, contact the Tower one one niner point one. Good day.
+txt: Cessna Nine Six Zero, contact the Tower one one nine point one. Good day.
 
 stm: 1>N960>F2-2
 tim: 3527.560 3529.350

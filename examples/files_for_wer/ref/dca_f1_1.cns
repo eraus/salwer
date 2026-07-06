@@ -25,8 +25,8 @@ cns: (2) [(E) Cleared approach] [(C5) one seventy] [(F) till [(H) OXONN]] [(A) A
 
 stm: 2>SWIFT91>F1
 tim: 62230
-txt: Washington Approach, Swift Niner One, passing one zero thousand for eight thousand, information Victor.
-cns: (4) [(G) Washington Approach] [(A) Swift Niner One] [(E) passing one zero thousand for eight thousand, information Victor]
+txt: Washington Approach, Swift Nine One, passing one zero thousand for eight thousand, information Victor.
+cns: (4) [(G) Washington Approach] [(A) Swift Nine One] [(E) passing one zero thousand for eight thousand, information Victor]
 
 stm: 1>F1>SWIFT91
 tim: 66020
@@ -60,8 +60,8 @@ cns: (2) [(B5) Back to] [(C5) one seventy] [(A) Seven Forty Six]
 
 stm: 1>F1>JEX2722
 tim: 169770
-txt: Jetex Twenty Seven Twenty Two, contact the Tower one one niner point one.
-cns: (1) [(A) Jetex Twenty Seven Twenty Two] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Jetex Twenty Seven Twenty Two, contact the Tower one one nine point one.
+cns: (1) [(A) Jetex Twenty Seven Twenty Two] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>F1>RBD746
 tim: 186630
@@ -105,8 +105,8 @@ cns: (2) [(D) Okay] [(C5) one seventy] [(C2) two point five]
 
 stm: 1>F1>N9TD
 tim: 244170
-txt: King Air Niner Tango Delta, contact the Tower one one niner point one.
-cns: (1) [(A) King Air Niner Tango Delta] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: King Air Nine Tango Delta, contact the Tower one one nine point one.
+cns: (1) [(A) King Air Nine Tango Delta] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>N9TD>F1
 tim: 247780
@@ -160,8 +160,8 @@ cns: (4) [(D) Yeah] [(E) we are right on it now]
 
 stm: 1>F1>SWIFT91
 tim: 373860
-txt: Swift Ninety One, descend maintain five thousand, turn right heading one niner zero.
-cns: (1) [(A) Swift Ninety One] [(B2) descend maintain] [(C2) five thousand] [(B4) turn right heading] [(C4) one niner zero]
+txt: Swift Ninety One, descend maintain five thousand, turn right heading one nine zero.
+cns: (1) [(A) Swift Ninety One] [(B2) descend maintain] [(C2) five thousand] [(B4) turn right heading] [(C4) one nine zero]
 
 stm: 2>SWIFT91>F1
 tim: 378780
@@ -230,8 +230,8 @@ cns: (4) [(A) Northwest Five Sixty]
 
 stm: 1>F1>N93X
 tim: 554820
-txt: Cheyenne Niner Three X-ray, fly heading one five zero.
-cns: (1) [(A) Cheyenne Niner Three X-ray] [(B4) fly heading] [(C4) one five zero]
+txt: Cheyenne Nine Three X-ray, fly heading one five zero.
+cns: (1) [(A) Cheyenne Nine Three X-ray] [(B4) fly heading] [(C4) one five zero]
 
 stm: 1>N93X>F1
 tim: 557640
@@ -245,8 +245,8 @@ cns: (3) [(E) Did you have the airport in sight?]
 
 stm: 4>N93X>F1
 tim: 563140
-txt: Niner Three X-Ray, we were cleared to land sir, we had miss a ~ the runway.
-cns: (4) [(A) Niner Three X-Ray] [(E) we were cleared to land sir] [(E) we had miss a ~ the runway]
+txt: Nine Three X-Ray, we were cleared to land sir, we had miss a ~ the runway.
+cns: (4) [(A) Nine Three X-Ray] [(E) we were cleared to land sir] [(E) we had miss a ~ the runway]
 
 stm: 1>F1>N93X
 tim: 569640
@@ -275,8 +275,8 @@ cns: (2) [(B2) Down to] [(C2) five] [(A) Two Thirty Six]
 
 stm: 1>F1>AAL236
 tim: 602030
-txt: American Two Thirty Six, turn right heading one niner zero.
-cns: (1) [(A) American Two Thirty Six] [(B4) turn right heading] [(C4) one niner zero]
+txt: American Two Thirty Six, turn right heading one nine zero.
+cns: (1) [(A) American Two Thirty Six] [(B4) turn right heading] [(C4) one nine zero]
 
 stm: 1>AAL236>F1
 tim: 605080
@@ -285,8 +285,8 @@ cns: (2) [(C4) One Nine Zero] [(A) Two Thirty Six]
 
 stm: 1>F1>N93X
 tim: 612190
-txt: Niner Three X-Ray, turn left heading zero niner zero.
-cns: (1) [(A) Niner Three X-Ray] [(B4) turn left heading] [(C4) zero niner zero]
+txt: Nine Three X-Ray, turn left heading zero nine zero.
+cns: (1) [(A) Nine Three X-Ray] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 2>N93X>F1
 tim: 614550
@@ -330,8 +330,8 @@ cns: (2) [(C4) Zero four zero] [(E) join the localizer] [(A) Three Three N J]
 
 stm: 1>F1>N93X
 tim: 657680
-txt: Cheyenne Niner Three X-Ray is eight miles from OXONN, turn left heading zero four zero, intercept the localizer at two thousand five hundred feet, cleared ILS Runway Three Six Approach.
-cns: (1) [(A) Cheyenne Niner Three X-Ray] [(E) is eight miles from [(H) OXONN]] [(B4) turn left heading] [(C4) zero four zero] [(E) intercept the localizer at two thousand five hundred feet] [(E) cleared ILS [(G) Runway Three Six] approach]
+txt: Cheyenne Nine Three X-Ray is eight miles from OXONN, turn left heading zero four zero, intercept the localizer at two thousand five hundred feet, cleared ILS Runway Three Six Approach.
+cns: (1) [(A) Cheyenne Nine Three X-Ray] [(E) is eight miles from [(H) OXONN]] [(B4) turn left heading] [(C4) zero four zero] [(E) intercept the localizer at two thousand five hundred feet] [(E) cleared ILS [(G) Runway Three Six] approach]
 
 stm: 1>N93X>F1
 tim: 666900
@@ -340,8 +340,8 @@ cns: (2) [(C4) Zero four zero] [(E) intercept twenty five hundred] [(E) cleared 
 
 stm: 1>F1>RBD746
 tim: 671230
-txt: Redbird Seven Forty Six, Tower one one niner point one.
-cns: (1) [(A) Redbird Seven Forty Six] [(G) Tower] [(C3) one one niner point one]
+txt: Redbird Seven Forty Six, Tower one one nine point one.
+cns: (1) [(A) Redbird Seven Forty Six] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>RBD746>F1
 tim: 674000
@@ -350,8 +350,8 @@ cns: (2) [(C3) Nineteen one]
 
 stm: 1>F1>SWIFT91
 tim: 674970
-txt: Swift Ninety One, turn left heading zero niner zero.
-cns: (1) [(A) Swift Ninety One] [(B4) turn left heading] [(C4) zero niner zero]
+txt: Swift Ninety One, turn left heading zero nine zero.
+cns: (1) [(A) Swift Ninety One] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 2>SWIFT91>F1
 tim: 677850
@@ -360,8 +360,8 @@ cns: (2) [(B4) Left] [(C4) zero nine zero] [(A) Swift Nine One]
 
 stm: 1>F1>N93X
 tim: 680250
-txt: Cheyenne Niner Three X-Ray, maintain a hundred and seventy knots till OXONN.
-cns: (1) [(A) Cheyenne Niner Three X-Ray] [(B5) maintain] [(C5) a hundred and seventy knots] [(F) till [(H) OXONN]]
+txt: Cheyenne Nine Three X-Ray, maintain a hundred and seventy knots till OXONN.
+cns: (1) [(A) Cheyenne Nine Three X-Ray] [(B5) maintain] [(C5) a hundred and seventy knots] [(F) till [(H) OXONN]]
 
 stm: 1>N93X>F1
 tim: 684100
@@ -380,13 +380,13 @@ cns: (2) [(D) Okay] [(B2) down to] [(C2) four] [(E) and then] [(C5) two ten] [(F
 
 stm: 2>N93X>F1
 tim: 698800
-txt: Approach, Niner Three X-Ray.
-cns: (4) [(G) Approach] [(A) Niner Three X-Ray]
+txt: Approach, Nine Three X-Ray.
+cns: (4) [(G) Approach] [(A) Nine Three X-Ray]
 
 stm: 1>F1>SWIFT91
 tim: 700190
-txt: Swift Ninety One, contact Andrews one one niner point three, fly heading zero niner zero.
-cns: (1) [(A) Swift Ninety One] [(B3) contact] [(G) Andrews] [(C3) one one niner point three] [(B4) fly heading] [(C4) zero niner zero]
+txt: Swift Ninety One, contact Andrews one one nine point three, fly heading zero nine zero.
+cns: (1) [(A) Swift Ninety One] [(B3) contact] [(G) Andrews] [(C3) one one nine point three] [(B4) fly heading] [(C4) zero nine zero]
 
 stm: 2>SWIFT91>F1
 tim: 704440
@@ -395,8 +395,8 @@ cns: (2) [(C3) One nineteen three] [(A) Swift Ninety One]
 
 stm: 1>N93X>F1
 tim: 708400
-txt: Approach, Niner Three X-Ray.
-cns: (4) [(G) Approach] [(A) Niner Three X-Ray]
+txt: Approach, Nine Three X-Ray.
+cns: (4) [(G) Approach] [(A) Nine Three X-Ray]
 
 stm: 1>F1>N93X
 tim: 710100
@@ -485,8 +485,8 @@ cns: (2) [(B2) down to] [(C2) five thousand] [(A) Northwest Five Sixty]
 
 stm: 1>F1>N93X
 tim: 816300
-txt: Niner Three X-ray, is a mile and a half from OXONN, you can slow to one fifty until OXONN, Tower nineteen one.
-cns: (1) [(A) Niner Three X-ray] [(E) is a mile and a half from [(H) OXONN]] [(E) you can] [(B5) slow to] [(C5) one fifty] [(F) until [(H) OXONN]] [(G) Tower] [(C3) nineteen one]
+txt: Nine Three X-ray, is a mile and a half from OXONN, you can slow to one fifty until OXONN, Tower nineteen one.
+cns: (1) [(A) Nine Three X-ray] [(E) is a mile and a half from [(H) OXONN]] [(E) you can] [(B5) slow to] [(C5) one fifty] [(F) until [(H) OXONN]] [(G) Tower] [(C3) nineteen one]
 
 stm: 1>N93X>F1
 tim: 821720
@@ -640,8 +640,8 @@ cns: (2) [(C2) Four thousand] [(A) Northwest Five Sixty]
 
 stm: 1>F1>USA458
 tim: 950770
-txt: USAir Four Fifty Eight is niner miles from OXONN, cleared ILS Runway Three Six approach, hold a hundred and seventy knots till OXONN.
-cns: (1) [(A) USAir Four Fifty Eight] [(E) is niner miles from [(H) OXONN]] [(E) cleared ILS [(G) Runway Three Six] approach] [(B5) hold] [(C5) a hundred and seventy knots] [(F) till [(H) OXONN]]
+txt: USAir Four Fifty Eight is nine miles from OXONN, cleared ILS Runway Three Six approach, hold a hundred and seventy knots till OXONN.
+cns: (1) [(A) USAir Four Fifty Eight] [(E) is nine miles from [(H) OXONN]] [(E) cleared ILS [(G) Runway Three Six] approach] [(B5) hold] [(C5) a hundred and seventy knots] [(F) till [(H) OXONN]]
 
 stm: 1>USA458>F1
 tim: 956160
@@ -685,8 +685,8 @@ cns: (4) [(E) Present heading for] [(A) Eight Delta Juliet]
 
 stm: 1>F1>NWA560
 tim: 988890
-txt: Northwest Five Sixty, turn left heading one niner zero, and you can reduce to one seven zero.
-cns: (1) [(A) Northwest Five Sixty] [(B4) turn left heading] [(C4) one niner zero] [(E) and you can] [(B5) reduce to] [(C5) one seven zero]
+txt: Northwest Five Sixty, turn left heading one nine zero, and you can reduce to one seven zero.
+cns: (1) [(A) Northwest Five Sixty] [(B4) turn left heading] [(C4) one nine zero] [(E) and you can] [(B5) reduce to] [(C5) one seven zero]
 
 stm: 1>NWA560>F1
 tim: 993370
@@ -695,8 +695,8 @@ cns: (2) [(B4) To] [(C4) one nine zero] [(D) we will] [(B5) slow to] [(C5) one s
 
 stm: 1>F1>AAL236
 tim: 996530
-txt: American Two Thirty Six, contact the Tower one one niner point one.
-cns: (1) [(A) American Two Thirty Six] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: American Two Thirty Six, contact the Tower one one nine point one.
+cns: (1) [(A) American Two Thirty Six] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>AAL236>F1
 tim: 999820
@@ -765,18 +765,18 @@ cns: (2) [(B2) Down to] [(C2) five thousand] [(A) Northwest Two Thirty Four]
 
 stm: 2>F1>N8DJ
 tim: 1074140
-txt: November Three Eight Delta Juliet, continue the right turn heading zero niner zero, vector to follow traffic.
-cns: (1) [(A) November Three Eight Delta Juliet] [(E) continue the] [(B4) right turn heading] [(C4) zero niner zero] [(E) vector to follow traffic]
+txt: November Three Eight Delta Juliet, continue the right turn heading zero nine zero, vector to follow traffic.
+cns: (1) [(A) November Three Eight Delta Juliet] [(E) continue the] [(B4) right turn heading] [(C4) zero nine zero] [(E) vector to follow traffic]
 
 stm: 1>N8DJ>F1
 tim: 1078280
-txt: Zero niner zero for Eight Delta Juliet.
-cns: (2) [(C4) Zero niner zero] [(A) Eight Delta Juliet]
+txt: Zero nine zero for Eight Delta Juliet.
+cns: (2) [(C4) Zero nine zero] [(A) Eight Delta Juliet]
 
 stm: 1>F1>USA458
 tim: 1080610
-txt: USAir Four Fifty Eight, contact the Tower one one niner point one.
-cns: (1) [(A) USAir Four Fifty Eight] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: USAir Four Fifty Eight, contact the Tower one one nine point one.
+cns: (1) [(A) USAir Four Fifty Eight] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>USA458>F1
 tim: 1083700
@@ -810,8 +810,8 @@ cns: (2) [(D) Okay] [(E) we are at [(C5) two ten] now]
 
 stm: 1>F1>N8DJ
 tim: 1100060
-txt: Roger, reduce to one niner zero knots.
-cns: (1) [(D) Roger] [(B5) reduce to] [(C5) one niner zero knots]
+txt: Roger, reduce to one nine zero knots.
+cns: (1) [(D) Roger] [(B5) reduce to] [(C5) one nine zero knots]
 
 stm: 1>N8DJ>F1
 tim: 1102590
@@ -825,8 +825,8 @@ cns: (3) [(D) That is correct]
 
 stm: 1>F1>NWA234
 tim: 1104790
-txt: Northwest Two Thirty Four, turn right heading one niner zero.
-cns: (1) [(A) Northwest Two Thirty Four] [(B4) turn right heading] [(C4) one niner zero]
+txt: Northwest Two Thirty Four, turn right heading one nine zero.
+cns: (1) [(A) Northwest Two Thirty Four] [(B4) turn right heading] [(C4) one nine zero]
 
 stm: 2>NWA234>F1
 tim: 1108190
@@ -835,8 +835,8 @@ cns: (2) [(B4) Right] [(C4) one nine zero] [(A) Northwest Two Thirty Four]
 
 stm: 1>F1>NWA560
 tim: 1110200
-txt: Northwest Five Sixty, turn left heading zero niner zero.
-cns: (1) [(A) Northwest Five Sixty] [(B4) turn left heading] [(C4) zero niner zero]
+txt: Northwest Five Sixty, turn left heading zero nine zero.
+cns: (1) [(A) Northwest Five Sixty] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 1>NWA560>F1
 tim: 1113190
@@ -895,8 +895,8 @@ cns: (2) [(B4) Left heading] [(C4) zero three zero] [(E) to join the localizer] 
 
 stm: 1>F1>N3NJ
 tim: 1171880
-txt: Learjet Three Three November Juliet, reduce to and maintain a hundred and seventy knots until OXONN, contact the Tower one one niner point one.
-cns: (1) [(A) Learjet Three Three November Juliet] [(B5) reduce to and maintain] [(C5) a hundred and seventy knots] [(F) until [(H) OXONN]] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Learjet Three Three November Juliet, reduce to and maintain a hundred and seventy knots until OXONN, contact the Tower one one nine point one.
+cns: (1) [(A) Learjet Three Three November Juliet] [(B5) reduce to and maintain] [(C5) a hundred and seventy knots] [(F) until [(H) OXONN]] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>N3NJ>F1
 tim: 1178030
@@ -965,8 +965,8 @@ cns: (2) [(B2) Down to] [(C2) four thousand] [(E) leaving five] [(A) Northwest T
 
 stm: 1>F1>UAL612
 tim: 1275190
-txt: United Six Twelve, turn right heading one niner zero.
-cns: (1) [(A) United Six Twelve] [(B4) turn right heading] [(C4) one niner zero]
+txt: United Six Twelve, turn right heading one nine zero.
+cns: (1) [(A) United Six Twelve] [(B4) turn right heading] [(C4) one nine zero]
 
 stm: 3>UAL612>F1
 tim: 1278420
@@ -1035,8 +1035,8 @@ cns: (2) [(B5) Slow to] [(C5) one seventy] [(A) Northwest Two Thirty Four]
 
 stm: 1>F1>NWA560
 tim: 1362500
-txt: Northwest Five Sixty, contact the Tower one one niner point one.
-cns: (1) [(A) Northwest Five Sixty] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Northwest Five Sixty, contact the Tower one one nine point one.
+cns: (1) [(A) Northwest Five Sixty] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>NWA560>F1
 tim: 1365980
@@ -1055,8 +1055,8 @@ cns: (2) [(C5) Two hundred and ten knots] [(F) then] [(B2) down to] [(C2) four] 
 
 stm: 1>F1>NWA234
 tim: 1420970
-txt: Northwest Two Thirty Four, turn left heading zero niner zero.
-cns: (1) [(A) Northwest Two Thirty Four] [(B4) turn left heading] [(C4) zero niner zero]
+txt: Northwest Two Thirty Four, turn left heading zero nine zero.
+cns: (1) [(A) Northwest Two Thirty Four] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 2>NWA234>F1
 tim: 1424420
@@ -1105,13 +1105,13 @@ cns: (3) [(E) Be advised that the DME is not on the final] [(E) It now just went
 
 stm: 1>F1>USA1678
 tim: 1483320
-txt: USAir Sixteen Seventy Eight, turn right heading one niner zero.
-cns: (1) [(A) USAir Sixteen Seventy Eight] [(B4) turn right heading] [(C4) one niner zero]
+txt: USAir Sixteen Seventy Eight, turn right heading one nine zero.
+cns: (1) [(A) USAir Sixteen Seventy Eight] [(B4) turn right heading] [(C4) one nine zero]
 
 stm: 2>USA1678>F1
 tim: 1486940
-txt: Right to one niner zero, USAir Sixteen Seventy Eight.
-cns: (2) [(B4) Right to] [(C4) one niner zero] [(A) USAir Sixteen Seventy Eight]
+txt: Right to one nine zero, USAir Sixteen Seventy Eight.
+cns: (2) [(B4) Right to] [(C4) one nine zero] [(A) USAir Sixteen Seventy Eight]
 
 stm: 1>USA428>F1
 tim: 1491120
@@ -1160,8 +1160,8 @@ cns: (3) [(A) Navy Hotel Whiskey Zero Two] [(G) Washington Approach] [(D) roger]
 
 stm: 1>F1>N8DJ
 tim: 1536190
-txt: Three Eight Delta Juliet, contact Tower one one niner point one.
-cns: (1) [(A) Three Eight Delta Juliet] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Three Eight Delta Juliet, contact Tower one one nine point one.
+cns: (1) [(A) Three Eight Delta Juliet] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>N8DJ>F1
 tim: 1539170
@@ -1170,8 +1170,8 @@ cns: (2) [(C3) Nineteen one] [(I) good day]
 
 stm: 1>F1>UAL612
 tim: 1546360
-txt: United Six Twelve, turn left heading zero niner zero.
-cns: (1) [(A) United Six Twelve] [(B4) turn left heading] [(C4) zero niner zero]
+txt: United Six Twelve, turn left heading zero nine zero.
+cns: (1) [(A) United Six Twelve] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 2>UAL612>F1
 tim: 1549310
@@ -1275,8 +1275,8 @@ cns: (4) [(D) You got it]
 
 stm: 1>F1>HNA4409
 tim: 1649430
-txt: Henson Forty Four Oh Nine, contact Tower one one niner point one.
-cns: (1) [(A) Henson Forty Four Oh Nine] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Henson Forty Four Oh Nine, contact Tower one one nine point one.
+cns: (1) [(A) Henson Forty Four Oh Nine] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>HNA4409>F1
 tim: 1652660
@@ -1305,8 +1305,8 @@ cns: (2) [(C2) Five thousand] [(A) USAir Four Twenty Eight]
 
 stm: 1>F1>USA1678
 tim: 1701640
-txt: USAir Sixteen Seventy Eight, turn left heading zero niner zero.
-cns: (1) [(A) USAir Sixteen Seventy Eight] [(B4) turn left heading] [(C4) zero niner zero]
+txt: USAir Sixteen Seventy Eight, turn left heading zero nine zero.
+cns: (1) [(A) USAir Sixteen Seventy Eight] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 2>USA1678>F1
 tim: 1705550
@@ -1370,8 +1370,8 @@ cns: (2) [(D) Okay] [(C4) three sixty] [(E) join the localizer] [(E) we are slow
 
 stm: 2>F1>DAL640
 tim: 1777070
-txt: Delta Six Forty, turn right heading zero niner zero, maintain four thousand.
-cns: (1) [(A) Delta Six Forty] [(B4) turn right heading] [(C4) zero niner zero] [(B2) maintain] [(C2) four thousand]
+txt: Delta Six Forty, turn right heading zero nine zero, maintain four thousand.
+cns: (1) [(A) Delta Six Forty] [(B4) turn right heading] [(C4) zero nine zero] [(B2) maintain] [(C2) four thousand]
 
 stm: 1>DAL640>F1
 tim: 1782450
@@ -1400,8 +1400,8 @@ cns: (4) [(A) Delta Six Forty] [(E) say again sir]
 
 stm: 1>F1>USA428
 tim: 1802820
-txt: USAir Four Twenty Eight, turn right heading one five, correction, fly heading zero niner zero, and contact Washington one twenty, correction, one eighteen three.
-cns: (1) [(A) USAir Four Twenty Eight] [(E) turn right heading one five] [(E) correction] [(B4) fly heading] [(C4) zero niner zero] [(B3) contact] [(G) Washington] [(E) one twenty] [(E) correction] [(C3) one eighteen three]
+txt: USAir Four Twenty Eight, turn right heading one five, correction, fly heading zero nine zero, and contact Washington one twenty, correction, one eighteen three.
+cns: (1) [(A) USAir Four Twenty Eight] [(E) turn right heading one five] [(E) correction] [(B4) fly heading] [(C4) zero nine zero] [(B3) contact] [(G) Washington] [(E) one twenty] [(E) correction] [(C3) one eighteen three]
 
 stm: 1>USA428>F1
 tim: 1811260
@@ -1410,8 +1410,8 @@ cns: (2) [(C3) Eighteen three] [(A) USAir Four Twenty Eight]
 
 stm: 1>F1>USA428
 tim: 1813990
-txt: And heading zero niner zero.
-cns: (1) [(B4) heading] [(C4) zero niner zero]
+txt: And heading zero nine zero.
+cns: (1) [(B4) heading] [(C4) zero nine zero]
 
 stm: 1>DAL640>F1
 tim: 1816810
@@ -1530,8 +1530,8 @@ cns: (3) [(A) One Zero Four Golf Alpha] [(G) Washington Approach]
 
 stm: 1>F1>USA1678
 tim: 1932040
-txt: USAir Sixteen Seventy Eight, contact the Tower one one niner point one.
-cns: (1) [(A) USAir Sixteen Seventy Eight] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: USAir Sixteen Seventy Eight, contact the Tower one one nine point one.
+cns: (1) [(A) USAir Sixteen Seventy Eight] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>USA1678>F1
 tim: 1935690
@@ -1585,8 +1585,8 @@ cns: (2) [(C4) Zero six zero] [(E) off [(H) OJAAY]]
 
 stm: 1>F1>VHW02
 tim: 1999960
-txt: Navy Hotel Whiskey Zero Two, descend maintain three thousand, contact Andrews one one niner point three or three three five five.
-cns: (1) [(A) Navy Hotel Whiskey Zero Two] [(B2) descend maintain] [(C2) three thousand] [(B3) contact] [(G) Andrews] [(C3) one one niner point three] [(E) or] [(C3) three three five five]
+txt: Navy Hotel Whiskey Zero Two, descend maintain three thousand, contact Andrews one one nine point three or three three five five.
+cns: (1) [(A) Navy Hotel Whiskey Zero Two] [(B2) descend maintain] [(C2) three thousand] [(B3) contact] [(G) Andrews] [(C3) one one nine point three] [(E) or] [(C3) three three five five]
 
 stm: 3>VHW02>F1
 tim: 2009420
@@ -1635,8 +1635,8 @@ cns: (2) [(A) Northwest Eighteen Oh Two] [(E) is cleared to] [(C2) four thousand
 
 stm: 1>F1>N4GA
 tim: 2097040
-txt: Four Golf Alpha, reduce speed to one niner zero knots.
-cns: (1) [(A) Four Golf Alpha] [(B5) reduce speed to] [(C5) one niner zero knots]
+txt: Four Golf Alpha, reduce speed to one nine zero knots.
+cns: (1) [(A) Four Golf Alpha] [(B5) reduce speed to] [(C5) one nine zero knots]
 
 stm: 1>N4GA>F1
 tim: 2100070
@@ -1725,8 +1725,8 @@ cns: (4) [(A) Four G A]
 
 stm: 1>F1>N4GA
 tim: 2286230
-txt: November Four Golf Alpha, turn left heading zero niner zero.
-cns: (1) [(A) November Four Golf Alpha] [(B4) turn left heading] [(C4) zero niner zero]
+txt: November Four Golf Alpha, turn left heading zero nine zero.
+cns: (1) [(A) November Four Golf Alpha] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 1>N4GA>F1
 tim: 2289850
@@ -1735,8 +1735,8 @@ cns: (2) [(B4) Left to] [(C4) zero nine zero] [(A) Golf Alpha]
 
 stm: 1>F1>DAL640
 tim: 2292040
-txt: Delta Six Forty, contact Tower one one niner point one.
-cns: (1) [(A) Delta Six Forty] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Delta Six Forty, contact Tower one one nine point one.
+cns: (1) [(A) Delta Six Forty] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>DAL640>F1
 tim: 2294760
@@ -1880,8 +1880,8 @@ cns: (2) [(C4) Two hundred] [(A) TWA Two Six Two]
 
 stm: 1>F1>NWA1802
 tim: 2518840
-txt: Northwest Eighteen Zero Two, contact the Tower one one niner point one.
-cns: (1) [(A) Northwest Eighteen Zero Two] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Northwest Eighteen Zero Two, contact the Tower one one nine point one.
+cns: (1) [(A) Northwest Eighteen Zero Two] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>NWA1802>F1
 tim: 2522270
@@ -1925,8 +1925,8 @@ cns: (4) [(D) Okay] [(A) Northwest Eighteen Twenty Eight] [(E) is cleared for th
 
 stm: 1>F1>N03K
 tim: 2600370
-txt: November Nine Zero Three Kilo, turn right heading one niner zero.
-cns: (1) [(A) November Nine Zero Three Kilo] [(B4) turn right heading] [(C4) one niner zero]
+txt: November Nine Zero Three Kilo, turn right heading one nine zero.
+cns: (1) [(A) November Nine Zero Three Kilo] [(B4) turn right heading] [(C4) one nine zero]
 
 stm: 1>N03K>F1
 tim: 2603840
@@ -2040,8 +2040,8 @@ cns: (2) [(B2) Down to] [(C2) two thousand five hundred] [(E) we are out of five
 
 stm: 1>F1>TWA262
 tim: 2773020
-txt: TWA Two Sixty Two, turn left heading zero niner zero.
-cns: (1) [(A) TWA Two Sixty Two] [(B4) turn left heading] [(C4) zero niner zero]
+txt: TWA Two Sixty Two, turn left heading zero nine zero.
+cns: (1) [(A) TWA Two Sixty Two] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 1>TWA262>F1
 tim: 2776360
@@ -2145,8 +2145,8 @@ cns: (3) [(I) Good day now]
 
 stm: 2>F1>N03K
 tim: 2910650
-txt: Sabre li, Sabreliner Nine Zero Three Kilo, turn left heading zero niner zero.
-cns: (1) [(A) Sabreliner Nine Zero Three Kilo] [(B4) turn left heading] [(C4) zero niner zero]
+txt: Sabre li, Sabreliner Nine Zero Three Kilo, turn left heading zero nine zero.
+cns: (1) [(A) Sabreliner Nine Zero Three Kilo] [(B4) turn left heading] [(C4) zero nine zero]
 
 stm: 1>N03K>F1
 tim: 2914500
@@ -2195,8 +2195,8 @@ cns: (1) [(A) TWA Two Six Two] [(B3) contact] [(G) Tower] [(C3) one one nine poi
 
 stm: 1>F1>USA1624
 tim: 2989730
-txt: USAir Sixteen Twenty Four, contact Tower one one niner point one.
-cns: (1) [(A) USAir Sixteen Twenty Four] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: USAir Sixteen Twenty Four, contact Tower one one nine point one.
+cns: (1) [(A) USAir Sixteen Twenty Four] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 2>USA1624>F1
 tim: 2992770
@@ -2210,8 +2210,8 @@ cns: (3) [(I) Good day]
 
 stm: 2>F1>N03K
 tim: 3117990
-txt: Sabre Nine Zero Three Kilo, you are four miles behind a USAir Seven Thirty Seven, contact Tower one one niner point one.
-cns: (1) [(A) Sabre Nine Zero Three Kilo] [(E) you are four miles behind a [(A) USAir Seven Thirty Seven]] [(B3) contact] [(G) Tower] [(C3) one one niner point one]
+txt: Sabre Nine Zero Three Kilo, you are four miles behind a USAir Seven Thirty Seven, contact Tower one one nine point one.
+cns: (1) [(A) Sabre Nine Zero Three Kilo] [(E) you are four miles behind a [(A) USAir Seven Thirty Seven]] [(B3) contact] [(G) Tower] [(C3) one one nine point one]
 
 stm: 1>N03K>F1
 tim: 3125420

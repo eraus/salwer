@@ -28,94 +28,114 @@ def version():
 @app.command("caw")
 def calculate_avg_wer(
     ref_dir: str = typer.Argument(
-        ..., help="Directory containing reference files."
+        ..., help="Specify the directory containing reference files."
     ),
     hyp_dir: str = typer.Argument(
-        ..., help="Directory containing hypothesis files."
+        ..., help="Specify the directory containing hypothesis files."
     ),
     level: int = typer.Option(
         3, "--level", "-l",
         help=(
-            "Audio quality level (1, 2, or 3) and below; "
-            "for example, level 3 will include also levels 1 and 2."
+            "Choose audio quality level (1, 2, or 3) and below; "
+            "for example, level 3 will include also levels 1 and 2. "
+            "The level value must match the level used during transcription."
         )
     ),
-    section: str = typer.Option(
-        "all", "--section",
+    words: str = typer.Option(
+        "all", "--words",
         help=(
-            "Choose to use a section of interests: "
-            "'all' for all sections, "
+            "Choose to use a `section` of interests of the transcripts: "
+            "'all' for all words, "
             "'first' for the first word, "
-            "and 'second+' for other words."
+            "and 'second+' for all words except the first."
         )
     ),
     approach: str = typer.Option(
         "normal", "--approach", "-a",
-        help="Calculation approach for segment-based dist: normal or fast."
+        help=(
+            "Calculation approach for segment-based dist: normal or fast. "
+            "This is only applicable if `words` is `first` or `second+`, "
+            "with which seg-level WER functions will be used."
+        )
     ),
 ):
-    """Calculate class/segment WER between hypothesis & reference transcripts.
+    """Calculate the average WER of all, first, and second+ words.
 
     This command compares hypothesis transcripts (from JSON files) with ref
     transcripts and classes/segments (from LLM files) to calculate WER metrics.
 
     Arguments:
-    -  ref_dir: str. Directory containing ref LLM files
-    -  hyp_dir: str. Directory containing hypo transcript JSON files
-    -  level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
+    -   ref_dir: str. Directory containing ref files (currently, cns files).
+    -   hyp_dir: str. Directory containing hyp files (currently, txt files).
+    -   level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
+            with a number greater than the value of level will be dropped.
+    -   words: str. All, the first, or all-but-the-first. Valid values:
+            (1) `all` (default), (2) `first`, and (3) `second+`.
+    -   approach: str. The approach used for calculating WER. Valid values:
+            (1) `normal` (default) and (2) `fast`.
 
-    Example:
-    -  salwer caw ref b12_aug2_l12 --level 2
+    Example: (executed in the parent folder of the ref folder)
+    -   salwer caw ref b12_aug2_l12 --level 2
+    -   salwer caw ref b12_aug2_l12 --level 2 --word first
+    -   salwer caw ref b12_aug2_l12 --level 2 --word second+
+    -   salwer caw ref b12_aug2_l12 --level 2 --word second+ --approach fast
     """
 
-    return calculate_avg_wer_(ref_dir, hyp_dir, level, section, approach)
+    return calculate_avg_wer_(ref_dir, hyp_dir, level, words, approach)
 
 
 @app.command("calculate-seg-wer")
 @app.command("csw")
 def calculate_seg_wer(
     ref_dir: str = typer.Argument(
-        ..., help="Directory containing reference LLM files"
+        ..., help="Specify the directory containing reference files."
     ),
     hyp_dir: str = typer.Argument(
-        ..., help="Directory containing hypothesis JSON files"
+        ..., help="Specify the directory containing hypothesis files."
     ),
     level: int = typer.Option(
         3, "--level", "-l",
         help=(
-            "Audio quality level (1, 2, or 3) and below; "
-            "for example, level 3 will include also levels 1 and 2."
+            "Choose audio quality level (1, 2, or 3) and below; "
+            "for example, level 3 will include also levels 1 and 2. "
+            "The level value must match the level used during transcription."
         )
     ),
     fn_cls: str = typer.Option(
-        "1", "--class", "-c", help="Select functional class to filter by"
+        "1", "--class", "-c",
+        help=(
+            "Select the functional class for WER calculation. "
+            "Class is application specific; if no class is used, use default."
+        )
     ),
     seg: str = typer.Option(
-        "A", "--segment", "-s", help="Select semantic segment to filter by"
+        "A", "--segment", "-s",
+        help=("Select a semantic segment for WER calculation.")
     ),
     approach: str = typer.Option(
         "normal", "--approach", "-a",
-        help="Calculation approach for segment-based dist: normal or fast."
+        help=(
+            "Calculation approach for segment-based dist: normal or fast."
+        )
     ),
-    head: str = typer.Option(
-        "yes", "--head", "-h", help="Include head errors: yes or no."
+    head: bool = typer.Option(
+        True, "--head/--no-head",
+        help="Include `head` errors; to exclude, use --no-head in CLI."
     ),
 ):
-    """Calculate class/segment WER between hypothesis & reference transcripts.
-
-    This command compares hypothesis transcripts (from JSON files) with ref
-    transcripts and classes/segments (from LLM files) to calculate WER metrics.
+    """Calculate (class-based) segment-level WER.
 
     Arguments:
-    -  ref_dir: str. Directory containing ref LLM files
-    -  hyp_dir: str. Directory containing hypo transcript JSON files
-    -  level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
-    -  fn_cls: str="1". Use "--class" to select a class for filtering
-    -  seg: str="A". Use "--segment" to select a segment for filtering
-    -  approach: str="normal". Use "--approach" to select calculation method
-    -  head: str="yes". Use "--head" to include header output
+    -   ref_dir: str. Directory containing ref files (currently, cns files).
+    -   hyp_dir: str. Directory containing hyp files (currently, txt files).
+    -   level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
+            with a number greater than the value of level will be dropped.
+    -   fn_cls: str="1". The functional class for WER calculation.
+    -   seg: str="A". The semantic segment for WER calculation.
+    -   approach: str. The approach used for calculating WER. Valid values:
+        (1) `normal` (default) and (2) `fast`.
+    -   head: bool=True. Indicator for using `head` or not when calculating
+            the Levenshtein distance.
 
     Example:
     -  salwer csw ref b12_aug2_l12 --level 2 --approach fast
@@ -126,7 +146,6 @@ def calculate_seg_wer(
                               approach, head)
 
 
-# TBD
 @app.command("calculate-word-wer")
 @app.command("cww")
 def calculate_wrd_wer(
@@ -157,29 +176,6 @@ def calculate_wrd_wer(
             "Other options are alphabet of the semantic segments."
         )
     ),
-    lower: int = typer.Option(
-        1, "--lower",
-        help="Set lower limit of word count for WER calculation."
-    ),
-    upper: int = typer.Option(
-        10000000, "--upper",
-        help="Set upperer limit of word count for WER calculation."
-    ),
-    word: str = typer.Option(
-        "all--words", "--word", "-w",
-        help=(
-            "Choose a specific word for WER calculation. "
-            "If the value is `all-words`, we will calculate the WER of all "
-            "words within the above boundaries."
-        )
-    ),
-    lumped: str = typer.Option(
-        "no", "--lumped",
-        help=(
-            "Choose to use lumped or separate output. This is a binary valuu, "
-            "which can be 'no' or 'yes'."
-        )
-    ),
 ):
     """Calculate word-level WER between ref and hyp transcripts.
 
@@ -199,10 +195,7 @@ def calculate_wrd_wer(
     -  salwer cww ref b12_aug2_l12 --level 2 --approach fast
     """
 
-    return calculate_wrd_wer_(ref_dir, hyp_dir,
-                              level, fn_cls, seg,
-                              lower, upper,
-                              word, lumped)
+    return calculate_wrd_wer_(ref_dir, hyp_dir, level, fn_cls, seg)
 
 
 @app.command("class-n-seg-cues")

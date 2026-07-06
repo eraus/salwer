@@ -24,7 +24,7 @@ def calculate_seg_wer_(
     fn_cls: str,
     seg: str,
     approach: str,
-    head: str,
+    head: bool,
 ):
     """Calculate segment WER using hypothesis and reference transcripts.
 
@@ -76,7 +76,7 @@ def seg_dist_of_file(
     fn_cls: Optional[str],
     seg: Optional[str],
     approach: str,
-    head: str,
+    head: bool,
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -99,7 +99,7 @@ def seg_dist_of_ann(
     fn_cls: Optional[str],
     seg: Optional[str],
     approach: str,
-    head: str,
+    head: bool,
 ):
     # Define a mapping outside the loop for efficiency
     approach_map = {
@@ -109,7 +109,7 @@ def seg_dist_of_ann(
     seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 
 # Then use it:
-    use_head = True if head.lower() == "yes" else False
+    use_head = head
     total_edit_dist = 0
     total_num_words = 0
     for i in range(len(ref_ann.cues)):
@@ -143,28 +143,6 @@ def seg_dist_of_ann(
             print(f"hyp: {hyp_cue.txt}")
             print(f"ref: {ref_cue.txt}")
             print(f"seg: {ref_cue.cns}")
-            # print(f"seg: {ref_cue.cmt}")
             print(f"dst: {cue_edit_dist}")
 
     return total_edit_dist, total_num_words
-
-
-# Note that the above _cue_seg_ranges function is revised based on AI code,
-# created based on the following prompt:
-# -----
-# Now, we need to create the _cue_seg_ragens function in
-# @src\salalp\recipes\s_class_n_seg_wer.py so that it will return the indexes
-# of the selected words. Take a look at the test functions in lines 213 to 234
-# in @tests\test_wer.py; the test cases and expected values are defined there.
-# Essentially, we convert txt, the first argument of _cue_seg_ranges into
-# a list of words, as we did in lines 206 to 210; denote it as txt_lst.
-# The return of the function should be a list of lists. Each of the inner list
-# contains the indexes of the words in the brackets with the seg string,
-# "A" is "(A)" or "B" in "(B4)". We need to find the start and end index of
-# the words in the brackets in txt_lst. Just create the code in _cue_seg_ranges
-# in @src\salalp\recipes\s_class_n_seg_wer.py. I will look at the code and we
-# can go from there.
-# -----
-
-# Note also that after the revision of the above code, we added more test cases,
-# all of which have passed.

@@ -76,7 +76,7 @@ txt: Charlie Four, roger, thank you.
 
 stm: 1>D1-2>UAL619
 tim: 3318.800 3323.550
-txt: United Six Nineteen, turn right heading two niner five, join J one forty nine, resume your own navigation.
+txt: United Six Nineteen, turn right heading two nine five, join J one forty nine, resume your own navigation.
 
 stm: 2>UAL619>D1-2
 tim: 3324.010 3326.920
@@ -160,11 +160,11 @@ txt: That works now, USAir Two Eleven.
 
 stm: 1>D1-2>N5CF
 tim: 3502.290 3509.240
-txt: King Air Five Charlie Foxtrot, climb maintain niner thousand, expedite your climb. Contact Departure one two one point zero five.
+txt: King Air Five Charlie Foxtrot, climb maintain nine thousand, expedite your climb. Contact Departure one two one point zero five.
 
 stm: 2>N5CF>D1-2
 tim: 3509.240 3513.450
-txt: Twenty one zero five, expediting to niner thousand, Seven Five Charlie Fox, good day now.
+txt: Twenty one zero five, expediting to nine thousand, Seven Five Charlie Fox, good day now.
 
 stm: 1>D1-2>USA211
 tim: 3536.270 3540.800
@@ -216,7 +216,7 @@ txt: Heading two seven zero, American Three Ninety Three.
 
 stm: 1>D1-2>AAL393
 tim: 3861.060 3864.870
-txt: American Three Nine Three, turn left heading one niner zero, expect on course in ten miles.
+txt: American Three Nine Three, turn left heading one nine zero, expect on course in ten miles.
 
 stm: 1>AAL393>D1-2
 tim: 3865.430 3867.680
@@ -224,7 +224,7 @@ txt: One ninety heading, American Three Ninety Three.
 
 stm: 1>D1-2>AAL393
 tim: 3946.300 3950.540
-txt: American Three Ninety Three, turn right heading two niner zero, join J one forty nine, resume your own navigation.
+txt: American Three Ninety Three, turn right heading two nine zero, join J one forty nine, resume your own navigation.
 
 stm: 1>AAL393>D1-2
 tim: 3950.890 3955.040
@@ -264,7 +264,7 @@ txt: Washington, Julie Bravo Seven Three Eight is with you, climbing to.
 
 stm: 1>VJB738>D1-2
 tim: 4066.920 4070.960
-txt: Climbing to one two thousand, and fly heading two niner zero.
+txt: Climbing to one two thousand, and fly heading two nine zero.
 
 stm: 2>D1-2>VJB738
 tim: 4071.410 4084.300
@@ -288,11 +288,11 @@ txt: TWA C Air One out of three for four thousand.
 
 stm: 1>D1-2>AWE479
 tim: 4140.480 4143.110
-txt: Cactus Four Seven Nine, turn left heading one niner zero.
+txt: Cactus Four Seven Nine, turn left heading one nine zero.
 
 stm: 2>AWE479>D1-2
 tim: 4143.630 4145.590
-txt: Cactus Four Seventy Nine, left one niner zero.
+txt: Cactus Four Seventy Nine, left one nine zero.
 
 stm: 1>D1-2>VJB738
 tim: 4148.170 4150.430
@@ -332,7 +332,7 @@ txt: Forty Three Eighty Six, best rate up to four thousand.
 
 stm: 1>D1-2>PACER81
 tim: 4239.680 4244.730
-txt: Pacer Eight One, turn left heading of one niner zero, contact Departure one two one point zero five.
+txt: Pacer Eight One, turn left heading of one nine zero, contact Departure one two one point zero five.
 
 stm: 2>PACER81>D1-2
 tim: 4245.280 4248.110
@@ -340,11 +340,11 @@ txt: One two one zero five and left turn one nine zero, pace right one.
 
 stm: 1>D1-2>DAL349
 tim: 4250.140 4253.710
-txt: Delta Three Forty Nine, radar contact, climb maintain niner thousand.
+txt: Delta Three Forty Nine, radar contact, climb maintain nine thousand.
 
 stm: 1>DAL349>D1-2
 tim: 4254.040 4256.640
-txt: Delta Three Forty Nine, climbing up to niner thousand.
+txt: Delta Three Forty Nine, climbing up to nine thousand.
 
 stm: 1>D1-2>AWE479
 tim: 4257.790 4264.370
@@ -352,7 +352,7 @@ txt: Cactus Four Seventy Nine, turn right heading two nine zero, join J one fort
 
 stm: 1>AWE479>D1-2
 tim: 4265.110 4272.810
-txt: Cactus Four Seventy Nine, right turn heading two niner zero to join the jetway, own navigation one three four two.
+txt: Cactus Four Seventy Nine, right turn heading two nine zero to join the jetway, own navigation one three four two.
 
 stm: 1>D1-2>R16851
 tim: 4277.680 4280.460
@@ -388,11 +388,11 @@ txt: Delta Three Forty Nine, left to two seven zero, climbing up to one five tho
 
 stm: 1>D1-2>HNA4386
 tim: 4352.200 4356.770
-txt: Henson Forty Three Eighty Six, turn left heading one niner zero, vector for your climb, climb maintain niner thousand.
+txt: Henson Forty Three Eighty Six, turn left heading one nine zero, vector for your climb, climb maintain nine thousand.
 
 stm: 1>HNA4386>D1-2
 tim: 4356.770 4360.700
-txt: Forty Three Eighty Six, left one niner zero, and we are out of four up to niner thousand.
+txt: Forty Three Eighty Six, left one nine zero, and we are out of four up to nine thousand.
 
 stm: 1>D1-2>R16851
 tim: 4388.250 4390.860
@@ -476,7 +476,7 @@ txt: Continental, Departure, USAir Two Twenty is with you, we are out of one tho
 
 stm: 1>D1-2>R16851
 tim: 4528.600 4530.960
-txt: Army Eight Five One, turn left heading zero niner zero.
+txt: Army Eight Five One, turn left heading zero nine zero.
 
 stm: 1>D1-2>R16851
 tim: 4536.010 4541.950
@@ -560,7 +560,7 @@ txt: I think you are going to experience that for quite a ways.
 
 stm: 1>D1-2>AAL609
 tim: 4751.950 4756.240
-txt: American Six Oh Nine, turn left heading of one niner zero, expect on course in eleven miles.
+txt: American Six Oh Nine, turn left heading of one nine zero, expect on course in eleven miles.
 
 stm: 2>AAL609>D1-2
 tim: 4757.200 4760.740
@@ -568,7 +568,7 @@ txt: Left turn to two nine zero, what did you say?
 
 stm: 1>D1-2>AAL609
 tim: 4762.350 4766.960
-txt: American Six Oh Nine, turn left heading one niner zero, expect on course in eleven miles.
+txt: American Six Oh Nine, turn left heading one nine zero, expect on course in eleven miles.
 
 stm: 1>AAL609>D1-2
 tim: 4766.960 4769.590

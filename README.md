@@ -192,3 +192,35 @@ To be added later.
 
 SaLAI's WER Calculation Toolkit — Bringing semantic awareness to ASR evaluation.
 
+
+---
+
+Note that we planned to use the following options in the CLI:
+
+```python
+    lower: int = typer.Option(
+        1, "--lower",
+        help="Set lower limit of word count for WER calculation."
+    ),
+    upper: int = typer.Option(
+        10000000, "--upper",
+        help="Set upperer limit of word count for WER calculation."
+    ),
+    word: str = typer.Option(
+        "all--words", "--word", "-w",
+        help=(
+            "Choose a specific word for WER calculation. "
+            "If the value is `all-words`, we will calculate the WER of all "
+            "words within the above boundaries."
+        )
+    ),
+    lumped: str = typer.Option(
+        "no", "--lumped",
+        help=(
+            "Choose to use lumped or separate output. This is a binary valuu, "
+            "which can be 'no' or 'yes'."
+        )
+    ),
+```
+
+We decided to move the above funuctionalities to excel for more flexible operations.

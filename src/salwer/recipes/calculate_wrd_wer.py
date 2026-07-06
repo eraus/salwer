@@ -1,5 +1,9 @@
 import copy
+import csv
+from datetime import datetime
+import os
 from pathlib import Path
+import shutil
 import re
 import typer
 from typing import Optional
@@ -27,10 +31,6 @@ def calculate_wrd_wer_(
     level: int,
     fn_cls: str,
     seg: str,
-    lower: int,
-    upper: int,
-    word: str,
-    lumped: str,
 ):
     """Calculate word-level WER between ref and hyp transcripts.
 
@@ -41,49 +41,7 @@ def calculate_wrd_wer_(
               with a number greater than level will be dropped.
         fn_cls: Selected class filter (optional)
         seg: Selected segment filter (optional)
-
-        ----
-
-    fn_cls: str = typer.Option(
-        "all", "--class", "-c",
-        help=(
-            "Select functional class to filter by. Default to 'all'. "
-            "Other options are numerical numbers of the functional classes."
-        )
-    ),
-    seg: str = typer.Option(
-        "all", "--segment", "-s",
-        help=(
-            "Select semantic segment to filter by. Default to 'all'. "
-            "Other options are alphabet of the semantic segments."
-        )
-    ),
-    lower: int = typer.Option(
-        1, "--lower",
-        help="Set lower limit of word count for WER calculation."
-    ),
-    upper: int = typer.Option(
-        10000000, "--upper",
-        help="Set upperer limit of word count for WER calculation."
-    ),
-    word: str = typer.Option(
-        "all--words", "--word", "-w",
-        help=(
-            "Choose a specific word for WER calculation. "
-            "If the value is `all-words`, we will calculate the WER of all "
-            "words within the above boundaries."
-        )
-    ),
-    lumped: str = typer.Option(
-        "no", "--lumped",
-        help=(
-            "Choose to use lumped or separate output. This is a binary valuu, "
-            "which can be 'no' or 'yes'."
-        )
-    ),
     """
-    # Check the options. TBD
-
     dir_wrd_dict = {}
 
     hyp_dir = Path(hyp_dir)
@@ -99,9 +57,28 @@ def calculate_wrd_wer_(
             )
             dir_wrd_dict = merge_word_dicts(dir_wrd_dict, file_wrd_dict)
 
-    print("\n\nResults:")
+    os.makedirs('log', exist_ok=True)
+    csv_filename = f"log/word-dict-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.csv"
+    with open(csv_filename, 'w', newline='', encoding='utf-8') as csvfile:
+        csvfile.write(f"# ref_dir: {ref_dir}\n")
+        csvfile.write(f"# hyp_dir: {hyp_dir}\n")
+        csvfile.write(f"# level: {level}\n")
+        csvfile.write(f"# fn_cls: {fn_cls}\n")
+        csvfile.write(f"# seg: {seg}\n")
+        writer = csv.writer(csvfile)
+        writer.writerow(['Word', 'Occurrence x 2', 'Error x 2', 'WER'])
+        for word in sorted(dir_wrd_dict.keys(), key=lambda w: (-dir_wrd_dict[w][0], w)):
+            occurance, error = dir_wrd_dict[word]
+            wer = f"{(error/(2*occurance)):.4f}"
+            writer.writerow([word, 2*occurance, error, wer])
+    shutil.copy(csv_filename, 'log/word-dict.csv')
+
+    total_word, total_dist = 0, 0
     for word in sorted(dir_wrd_dict.keys(), key=lambda w: (-dir_wrd_dict[w][0], w)):
-        print(f"{word}; {dir_wrd_dict[word]}")
+        total_word += dir_wrd_dict[word][0]
+        total_dist += dir_wrd_dict[word][1]
+    print(f"\nAverage WER: {(total_dist/(2*total_word)):.4f}")
+
 
 
 def word_dict_of_file(
