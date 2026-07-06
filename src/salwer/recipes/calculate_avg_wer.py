@@ -90,8 +90,8 @@ def dist_of_ann(
 ):
     # Define a mapping outside the loop for efficiency
     approach_map = {
+        "normal": levenshtein_seg,
         "fast": levenshtein_seg_fast,
-        "accurate": levenshtein_seg,  # or "accurate"
     }
     seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 

@@ -12,7 +12,7 @@ from salwer.utils import (
     read_file_to_text,
 )
 from salwer.levenshtein import (
-    levenshtein_seg_fast,
+    levenshtein_word,
     levenshtein_seg,
 )
 
@@ -23,14 +23,12 @@ def calculate_wrd_wer_(
     level: int,
     fn_cls: str,
     seg: str,
-    approach: str,
-    head: str,
     lower: int,
     upper: int,
     word: str,
     lumped: str,
 ):
-    """Calculate segment WER using hypothesis and reference transcripts.
+    """Calculate word-level WER between ref and hyp transcripts.
 
     Args:
         ref_dir: Path to folder containing reference LLM files
@@ -39,7 +37,52 @@ def calculate_wrd_wer_(
               with a number greater than level will be dropped.
         fn_cls: Selected class filter (optional)
         seg: Selected segment filter (optional)
+
+        ----
+
+    fn_cls: str = typer.Option(
+        "all", "--class", "-c",
+        help=(
+            "Select functional class to filter by. Default to 'all'. "
+            "Other options are numerical numbers of the functional classes."
+        )
+    ),
+    seg: str = typer.Option(
+        "all", "--segment", "-s",
+        help=(
+            "Select semantic segment to filter by. Default to 'all'. "
+            "Other options are alphabet of the semantic segments."
+        )
+    ),
+    lower: int = typer.Option(
+        1, "--lower",
+        help="Set lower limit of word count for WER calculation."
+    ),
+    upper: int = typer.Option(
+        10000000, "--upper",
+        help="Set upperer limit of word count for WER calculation."
+    ),
+    word: str = typer.Option(
+        "all--words", "--word", "-w",
+        help=(
+            "Choose a specific word for WER calculation. "
+            "If the value is `all-words`, we will calculate the WER of all "
+            "words within the above boundaries."
+        )
+    ),
+    lumped: str = typer.Option(
+        "no", "--lumped",
+        help=(
+            "Choose to use lumped or separate output. This is a binary valuu, "
+            "which can be 'no' or 'yes'."
+        )
+    ),
     """
+    # Check the options. TBD
+
+
+
+
     total_edit_dist = 0
     total_num_words = 0
 
@@ -58,7 +101,6 @@ def calculate_wrd_wer_(
             edit_dist, num_words = word_dist_of_file(
                 ref_file, hyp_file,
                 level, fn_cls, seg,
-                approach, head
             )
             total_edit_dist += edit_dist
             total_num_words += num_words
@@ -84,7 +126,6 @@ def word_dist_of_file(
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
-    # ref_ann = Transcripts.from_txt_llm_text(ref_text, level)
     hyp_text = read_file_to_text(hyp_file)
     hyp_ann = Transcripts.from_asr_pred_text(hyp_text)
 
@@ -107,12 +148,12 @@ def seg_dist_of_ann(
 ):
     # Define a mapping outside the loop for efficiency
     approach_map = {
+        "normal": levenshtein_seg,
         "fast": levenshtein_seg_fast,
-        "accurate": levenshtein_seg,  # or "accurate"
     }
+    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 
 # Then use it:
-    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
     use_head = True if head.lower() == "yes" else False
     total_edit_dist = 0
     total_num_words = 0
@@ -151,24 +192,3 @@ def seg_dist_of_ann(
             print(f"dst: {cue_edit_dist}")
 
     return total_edit_dist, total_num_words
-
-
-# Note that the above _cue_seg_ranges function is revised based on AI code,
-# created based on the following prompt:
-# -----
-# Now, we need to create the _cue_seg_ragens function in
-# @src\salalp\recipes\s_class_n_seg_wer.py so that it will return the indexes
-# of the selected words. Take a look at the test functions in lines 213 to 234
-# in @tests\test_wer.py; the test cases and expected values are defined there.
-# Essentially, we convert txt, the first argument of _cue_seg_ranges into
-# a list of words, as we did in lines 206 to 210; denote it as txt_lst.
-# The return of the function should be a list of lists. Each of the inner list
-# contains the indexes of the words in the brackets with the seg string,
-# "A" is "(A)" or "B" in "(B4)". We need to find the start and end index of
-# the words in the brackets in txt_lst. Just create the code in _cue_seg_ranges
-# in @src\salalp\recipes\s_class_n_seg_wer.py. I will look at the code and we
-# can go from there.
-# -----
-
-# Note also that after the revision of the above code, we added more test cases,
-# all of which have passed.

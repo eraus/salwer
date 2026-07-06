@@ -10,3 +10,7 @@ def word_count_of_cue(text):
 def merge_word_count_dicts(dict1, dict2):
     merged = dict(Counter(dict1) + Counter(dict2))
     return dict(sorted(merged.items(), key=lambda item: item[1], reverse=True))
+
+
+def word_dict_of_cue(text):
+    # Split the string into words and count them

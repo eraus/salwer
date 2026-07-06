@@ -2,7 +2,8 @@
 
 from salwer.word_dict import (
     word_count_of_cue,
-    merge_word_count_dicts
+    merge_word_count_dicts,
+    word_dict_of_cue,
 )
 
 
@@ -25,3 +26,18 @@ def test_merge_word_count_dicts():
     wrd_dict = {'the': 6, 'slow': 5, 'quick': 4, 'brown': 4, 'fox': 4, 'jumps': 2,
                 'over': 2, 'lazy': 2, 'dog': 2}
     assert merge_word_count_dicts(wrd_dict1, wrd_dict2) == wrd_dict
+
+
+# Tests for word_dict_of_cue
+def test_word_dict_of_cue():
+    """Test word_dict_of_cue for a given list of words and levenshtein dists."""
+    wrd_list = [
+        ["A", 2], ["B", 1], ["D", 1], ["A", 1],
+        ["E", 2], ["F", 1], ["H", 1], ["I", 0],
+        ["E", 2], ["F", 1], ["H", 1], ["I", 0],
+    ]
+    wrd_dict = {
+        "A": [2, 3], "B": [1, 1], "D": [1, 1],
+        "E": [2, 4], "F": [2, 2], "H": [2, 2], "I": [2, 0],
+    }
+    assert word_dict_of_cue(wrd_list) == wrd_dict
