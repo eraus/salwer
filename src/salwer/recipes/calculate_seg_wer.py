@@ -1,19 +1,16 @@
-import copy
 from pathlib import Path
-import re
 import typer
-from typing import Optional
 
 from salwer.labels import Transcripts
+from salwer.levenshtein import (
+    levenshtein_seg_fast,
+    levenshtein_seg,
+)
 from salwer.utils import (
     _clean_transcript,
     _cue_class,
     _cue_seg_ranges,
     read_file_to_text,
-)
-from salwer.levenshtein import (
-    levenshtein_seg_fast,
-    levenshtein_seg,
 )
 
 
@@ -28,22 +25,13 @@ def calculate_seg_wer_(
 ):
     """Calculate segment WER using hypothesis and reference transcripts.
 
-    Args:
-        ref_dir: Path to folder containing reference LLM files
-        hyp_dir: Path to folder containing hypothesis JSON files
-        level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
-        fn_cls: Selected class filter (optional)
-        seg: Selected segment filter (optional)
+    Args: See these of calculate_seg_wer
     """
     total_edit_dist = 0
     total_num_words = 0
 
     hyp_dir = Path(hyp_dir)
     ref_dir = Path(ref_dir)
-
-    if seg is None:
-        raise ValueError("Missing appropriate Segment Selector")
 
     for file in hyp_dir.glob("*.txt"):
         if file.is_file():
@@ -73,8 +61,8 @@ def seg_dist_of_file(
     ref_file: str,
     hyp_file: str,
     level: int,
-    fn_cls: Optional[str],
-    seg: Optional[str],
+    fn_cls: str,
+    seg: str,
     approach: str,
     head: bool,
 ):
@@ -96,19 +84,17 @@ def seg_dist_of_file(
 def seg_dist_of_ann(
     ref_ann: Transcripts,
     hyp_ann: Transcripts,
-    fn_cls: Optional[str],
-    seg: Optional[str],
+    fn_cls: str,
+    seg: str,
     approach: str,
     head: bool,
 ):
-    # Define a mapping outside the loop for efficiency
     approach_map = {
         "normal": levenshtein_seg,
         "fast": levenshtein_seg_fast,
     }
     seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 
-# Then use it:
     use_head = head
     total_edit_dist = 0
     total_num_words = 0

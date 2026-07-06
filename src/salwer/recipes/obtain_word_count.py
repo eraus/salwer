@@ -1,6 +1,4 @@
 from pathlib import Path
-import typer
-from typing import Optional
 
 from salwer.labels import Transcripts
 from salwer.utils import (
@@ -19,10 +17,7 @@ def obtain_word_count_(
 ):
     """Obtain the word count dict: key = word; value = number of occurrence.
 
-    Args:
-        txt_dir: Path to dir containing the transcript files
-        level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
+    Args: See these in obtain_word_count
     """
     dir_wrd_dict = {}
 

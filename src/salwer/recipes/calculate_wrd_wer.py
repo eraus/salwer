@@ -1,23 +1,19 @@
-import copy
 import csv
 from datetime import datetime
 import os
 from pathlib import Path
 import shutil
-import re
-import typer
-from typing import Optional
 
 from salwer.labels import Transcripts
+from salwer.levenshtein import (
+    levenshtein_word,
+    levenshtein_seg,
+)
 from salwer.utils import (
     _clean_transcript,
     _cue_class,
     _cue_seg_ranges,
     read_file_to_text,
-)
-from salwer.levenshtein import (
-    levenshtein_word,
-    levenshtein_seg,
 )
 from salwer.word_dict import (
     word_dict_of_cue,
@@ -58,7 +54,8 @@ def calculate_wrd_wer_(
             dir_wrd_dict = merge_word_dicts(dir_wrd_dict, file_wrd_dict)
 
     os.makedirs('log', exist_ok=True)
-    csv_filename = f"log/word-dict-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.csv"
+    csv_filename = \
+        f"log/word-dict-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.csv"
     with open(csv_filename, 'w', newline='', encoding='utf-8') as csvfile:
         csvfile.write(f"# ref_dir: {ref_dir}\n")
         csvfile.write(f"# hyp_dir: {hyp_dir}\n")
@@ -67,17 +64,21 @@ def calculate_wrd_wer_(
         csvfile.write(f"# seg: {seg}\n")
         writer = csv.writer(csvfile)
         writer.writerow(['Word', 'Occurrence x 2', 'Error x 2', 'WER'])
-        for word in sorted(dir_wrd_dict.keys(), key=lambda w: (-dir_wrd_dict[w][0], w)):
+        for word in sorted(dir_wrd_dict.keys(),
+                           key=lambda w: (-dir_wrd_dict[w][0], w)):
             occurance, error = dir_wrd_dict[word]
             wer = f"{(error/(2*occurance)):.4f}"
             writer.writerow([word, 2*occurance, error, wer])
     shutil.copy(csv_filename, 'log/word-dict.csv')
 
     total_word, total_dist = 0, 0
-    for word in sorted(dir_wrd_dict.keys(), key=lambda w: (-dir_wrd_dict[w][0], w)):
+    for word in sorted(dir_wrd_dict.keys(),
+                       key=lambda w: (-dir_wrd_dict[w][0], w)):
         total_word += dir_wrd_dict[word][0]
         total_dist += dir_wrd_dict[word][1]
-    print(f"\nAverage WER: {(total_dist/(2*total_word)):.4f}")
+
+    print(f"\nAverage WER: {(total_dist/(2*total_word)):.4f} "
+          f"based on {total_word} words. ")
 
 
 
@@ -85,8 +86,8 @@ def word_dict_of_file(
     ref_file: str,
     hyp_file: str,
     level: int,
-    fn_cls: Optional[str],
-    seg: Optional[str],
+    fn_cls: str,
+    seg: str,
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -105,8 +106,8 @@ def word_dict_of_file(
 def word_dict_of_ann(
     ref_ann: Transcripts,
     hyp_ann: Transcripts,
-    fn_cls: Optional[str],
-    seg: Optional[str],
+    fn_cls: str,
+    seg: str,
 ):
     file_wrd_dict = {}
     for i in range(len(ref_ann.cues)):

@@ -61,9 +61,6 @@ def calculate_avg_wer(
 ):
     """Calculate the average WER of all, first, and second+ words.
 
-    This command compares hypothesis transcripts (from JSON files) with ref
-    transcripts and classes/segments (from LLM files) to calculate WER metrics.
-
     Arguments:
     -   ref_dir: str. Directory containing ref files (currently, cns files).
     -   hyp_dir: str. Directory containing hyp files (currently, txt files).
@@ -150,23 +147,25 @@ def calculate_seg_wer(
 @app.command("cww")
 def calculate_wrd_wer(
     ref_dir: str = typer.Argument(
-        ..., help="Directory containing reference LLM files"
+        ..., help="Specify the directory containing reference files."
     ),
     hyp_dir: str = typer.Argument(
-        ..., help="Directory containing hypothesis JSON files"
+        ..., help="Specify the directory containing hypothesis files."
     ),
     level: int = typer.Option(
         3, "--level", "-l",
         help=(
-            "Audio quality level (1, 2, or 3) and below; "
-            "for example, level 3 will include also levels 1 and 2."
+            "Choose audio quality level (1, 2, or 3) and below; "
+            "for example, level 3 will include also levels 1 and 2. "
+            "The level value must match the level used during transcription."
         )
     ),
     fn_cls: str = typer.Option(
         "all", "--class", "-c",
         help=(
-            "Select functional class to filter by. Default to 'all'. "
-            "Other options are numerical numbers of the functional classes."
+            "Select the functional class for WER calculation. "
+            "Default to 'all'. Use the class number if a class should be "
+            "specified."
         )
     ),
     seg: str = typer.Option(
@@ -177,22 +176,22 @@ def calculate_wrd_wer(
         )
     ),
 ):
-    """Calculate word-level WER between ref and hyp transcripts.
+    """Calculate word-level WER and word dictionary for further processing.
 
     This command calculate word-level WER between ref and hyp trancripts.
-    Note that we use only the normal version of the levenshtein_word function,
-    so, there is not 'approach' option is provided.
+    It also save the word dictionary in a log file in log/word-dict.csv.
+    Note that we use only the normal version of the levenshtein_word function.
 
     Arguments:
-    -  ref_dir: str. Directory containing ref LLM files
-    -  hyp_dir: str. Directory containing hypo transcript JSON files
-    -  level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
-    -  fn_cls: str="1". Use "--class" to select a class for filtering
-    -  seg: str="A". Use "--segment" to select a segment for filtering
+    -   ref_dir: str. Directory containing ref files (currently, cns files).
+    -   hyp_dir: str. Directory containing hyp files (currently, txt files).
+    -   level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
+            with a number greater than the value of level will be dropped.
+    -   fn_cls: str="all". The functional class for WER calculation.
+    -   seg: str="all". The semantic segment for WER calculation.
 
     Example:
-    -  salwer cww ref b12_aug2_l12 --level 2 --approach fast
+    -  salwer cww ref b12_aug2_l12 --level 2
     """
 
     return calculate_wrd_wer_(ref_dir, hyp_dir, level, fn_cls, seg)
@@ -248,10 +247,15 @@ def inspect_class_seg(
 @app.command("owc")
 def obtain_word_count(
     txt_dir: str = typer.Argument(
-        ..., help="Directory containing reference LLM files"
+        ..., help="Directory containing the transcript files"
     ),
     level: int = typer.Option(
-        3, "--level", "-l", help="Audio quality level (1, 2, or 3)"
+        3, "--level", "-l",
+        help=(
+            "Choose audio quality level (1, 2, or 3) and below; "
+            "for example, level 3 will include also levels 1 and 2. "
+            "The level value must match the level used during training."
+        )
     ),
     porder: str = typer.Option(
         "value", "--porder", "-s",
@@ -264,13 +268,14 @@ def obtain_word_count(
     transcripts and classes/segments (from LLM files) to calculate WER metrics.
 
     Arguments:
-    -  ref_dir: str. Directory containing ref LLM files
-    -  hyp_dir: str. Directory containing hypo transcript JSON files
-    -  level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
+    -   txt_dir: str. Dir containing transcript files (currently, cns files).
+    -   level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
+            with a number greater than the value of level will be dropped.
+    -   porder: str="value". The order to print the word-dict for word count.
 
     Example:
-    -  salwer caw ref b12_aug2_l12 --level 2
+    -  salwer owc ref --level 3
+    -  salwer owc ref --level 3 --porder key
     """
 
     return obtain_word_count_(txt_dir, level, porder)

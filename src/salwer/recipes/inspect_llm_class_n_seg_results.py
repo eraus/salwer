@@ -10,7 +10,7 @@ from salwer.utils import (
     _cue_seg_ranges,
     read_file_to_text,
 )
-from salwer.levenshtein import seg_size_n_edit_distance
+from salwer.levenshtein import levenshtein_seg
 
 # The purpose of checking:
 # - The segments are produced by LLM, which may create errors.
@@ -71,7 +71,7 @@ def _inspect_class_seg_ann(
                 continue
             seg_ranges = _cue_seg_ranges(txt, ref_cue.cns, seg)
             if seg_ranges:
-                results = seg_size_n_edit_distance(seg_ranges, ref_lst, hyp_lst)
+                results = levenshtein_seg(ref_lst, hyp_lst, seg_ranges)
                 for seg_size, edit_dist in results:
                     total_edit_dist += edit_dist
                     total_num_words += seg_size

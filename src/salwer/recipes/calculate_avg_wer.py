@@ -1,16 +1,15 @@
 from pathlib import Path
 import typer
-from typing import Optional
 
 from salwer.labels import Transcripts
-from salwer.utils import (
-    _clean_transcript,
-    read_file_to_text,
-)
 from salwer.levenshtein import (
     levenshtein,
     levenshtein_seg,
     levenshtein_seg_fast,
+)
+from salwer.utils import (
+    _clean_transcript,
+    read_file_to_text,
 )
 
 
@@ -23,11 +22,7 @@ def calculate_avg_wer_(
 ):
     """Calculate average WER reference and hypothesis transcripts.
 
-    Args:
-        ref_dir: Path to folder containing reference files
-        hyp_dir: Path to folder containing hypothesis JSON files
-        level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
-              with a number greater than level will be dropped.
+    Args: See these of calculate_avg_wer
     """
     if words.lower() not in ('all', 'first', 'second+'):
         raise ValueError(
@@ -69,7 +64,6 @@ def dist_of_file(
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
-    # ref_ann = Transcripts.from_txt_llm_text(ref_text, level)
     hyp_text = read_file_to_text(hyp_file)
     hyp_ann = Transcripts.from_asr_pred_text(hyp_text)
 
@@ -88,14 +82,12 @@ def dist_of_ann(
     words: str,
     approach: str,
 ):
-    # Define a mapping outside the loop for efficiency
     approach_map = {
         "normal": levenshtein_seg,
         "fast": levenshtein_seg_fast,
     }
     seg_func = approach_map.get(approach.lower(), levenshtein_seg)
 
-# Then use it:
     total_edit_dist = 0
     total_num_words = 0
     for i in range(len(ref_ann.cues)):
@@ -111,7 +103,6 @@ def dist_of_ann(
                 cue_seg_ranges = [(0, 1)]
             else:
                 cue_seg_ranges = [(1, seg_size)]
-            # results = levenshtein_seg_fast(
             results = seg_func(
                 ref_cue.txt.split(),
                 hyp_cue.txt.split(),
