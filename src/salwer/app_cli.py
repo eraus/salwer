@@ -283,14 +283,26 @@ def obtain_word_count(
 
 @app.command("print-levenshtein-table")
 @app.command("plt")
-def print_levenshtein_table():
+def print_levenshtein_table(
+    s: str = typer.Argument(
+        help=(
+            "The source string of alphabets (J to R) such as "
+            "'J k   M   O'."
+        )
+    ),
+    t: str = typer.Argument(help="The target string of alphabets"),
+):
     """Print Levenshtein table using alphabet.
 
     Arguments:
-    -   N/A
+    -   s: str. The source string of alphabets.
+    -   t: str. The target string of alphabets.
 
     Example:
-    -  salalp plt
+    -  salalp plt 'J k   M   O' 'J K L M N O'
+       Note that the above sequences are usually planned as follows first:
+       s = 'J k   M   O'
+       t = 'J K L M N O'
     """
 
-    return print_levenshtein_table_()
+    return print_levenshtein_table_(s, t)
