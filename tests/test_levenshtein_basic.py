@@ -67,6 +67,21 @@ def test_levenshtein_single_insertion():
     assert levenshtein(s, t) == 1
 
 
+# s = "J K L M N O   Q".split() => s = J K L M N O Q
+# t = "J R L M   O P Q".split() => t = J R L M O P Q
+# diff   ^     ^   ^
+# type   S     D   I
+# s\t j   J   R   L   M   O   P   Q
+#                                 i = 0   1   2   3   4   5   6
+# i   0 | 1   2   3   4   5   6   7   d0  :   :   :   :   :   :
+#    -------------------------------  :   :   :   :   :   :   :
+# J   1 | 0   1   2   3   4   5   6   d1  d0  :   :   :   :   :
+# K   2 | 1   1   2   3   4   5   6       d1  d0  :   :   :   :
+# L   3 | 2   2   1   2   3   4   5           d1  d0  :   :   :
+# M   4 | 3   3   2   1   2   3   4               d1  d0  :   :
+# N   5 | 4   4   3   2   2   3   4                   d1  d0  :
+# O   6 | 5   5   4   3   2   3   4                       d1  d0
+# Q   7 | 6   6   5   4   3   3   3                           d1
 def test_levenshtein_single_sub_del_ins():
     """Test Levenshtein distance when there is one S, D, and I."""
     s = "J K L M N O   Q".split()

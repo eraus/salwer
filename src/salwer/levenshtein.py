@@ -105,41 +105,42 @@ def levenshtein_seg_fast(
       - levenshtein_dist between s[start:end] and the correcponding t sequence.
     """
 
-    def base_seg_dist(d0, d1):      # base seg distance w/o prefix drift
+    # base seg dist w/o prefix drift, hence no head
+    def base_seg_dist_nohead(d0, d1):
         dist_ind = max_ind_of_min(d1)
         dist = d0[dist_ind - 1]
         return dist
 
-    def base_seg_dist_head(d0, d1): # base seg dist with prefix drift
+    # base seg dist with prefix drift, hence head
+    def base_seg_dist_head(d0, d1):
         return min(d0)
 
-    base_seg_dist = base_seg_dist_head if head else base_seg_dist
+    base_seg_dist = base_seg_dist_head if head else base_seg_dist_nohead
 
     m, n = len(s), len(t)
     d0 = list(range(n+1))   # prev dist
     d1 = [0] * (n+1)        # curr dist
-    base_dist = 0           # The base dist of a seg; d1[0]
-    rslts = [[0] * 2 for _ in range(len(segs))]
-    seg = 0
-
+    base_dist = 0           # base dist of a Seg; d1[0]
+    len_segs = len(segs)
+    rslts = [[0] * 2 for _ in range(len_segs)]
+    k = 0                   # index of segment
     for i in range(m):
         d1[0] = i + 1
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
             d1[j+1] = min(
-                d0[j] + c,    # sub s->t
-                d0[j+1] + 1,  # del of s
-                d1[j] + 1,    # ins to s
+                d0[j] + c,      # sub s->t
+                d0[j+1] + 1,    # del of s
+                d1[j] + 1,      # ins to s
             )
-        if seg >= len(segs): break
-        if segs[seg][0] == i:
+        if segs[k][0] == i:
             base_dist = base_seg_dist(d0, d1)
-        if segs[seg][1] == i + 1:
-            rslts[seg][0] = segs[seg][1] - segs[seg][0]  # Seg size
-            rslts[seg][1] = min(d1) - base_dist          # Seg dist
-            seg += 1
+        if segs[k][1] == i + 1:
+            rslts[k][0] = segs[k][1] - segs[k][0]   # Seg size
+            rslts[k][1] = min(d1) - base_dist       # Seg dist
+            k += 1
+            if k >= len_segs: break
         d0, d1 = d1, d0
-
     return rslts
 
 
