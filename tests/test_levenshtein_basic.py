@@ -41,6 +41,7 @@ def test_levenshtein_single_substitute():
     """Test Levenshtein distance when there is one substitution."""
     s = "J K L".split()
     t = "J M L".split()
+    #      ^
     assert levenshtein_2d(s, t) == 1
     assert levenshtein_2d(t, s) == 1
     assert levenshtein_1d(s, t) == 1
@@ -67,34 +68,11 @@ def test_levenshtein_single_insertion():
     assert levenshtein(s, t) == 1
 
 
-# s = "J K L M N O   Q".split() => s = J K L M N O Q
-# t = "J R L M   O P Q".split() => t = J R L M O P Q
-# diff   ^     ^   ^
-# type   S     D   I
-# s\t j   J   R   L   M   O   P   Q
-#                                 i = 0   1   2   3   4   5   6
-# i   0 | 1   2   3   4   5   6   7   d0  :   :   :   :   :   :
-#    -------------------------------  :   :   :   :   :   :   :
-# J   1 | 0   1   2   3   4   5   6   d1  d0  :   :   :   :   :
-# K   2 | 1   1   2   3   4   5   6       d1  d0  :   :   :   :
-# L   3 | 2   2   1   2   3   4   5           d1  d0  :   :   :
-# M   4 | 3   3   2   1   2   3   4               d1  d0  :   :
-# N   5 | 4   4   3   2   2   3   4                   d1  d0  :
-# O   6 | 5   5   4   3   2   3   4                       d1  d0
-# Q   7 | 6   6   5   4   3   3   3                           d1
-def test_levenshtein_single_sub_del_ins():
-    """Test Levenshtein distance when there is one S, D, and I."""
-    s = "J K L M N O   Q".split()
-    t = "J R L M   O P Q".split()
-    assert levenshtein_2d(s, t) == 3
-    assert levenshtein_1d(s, t) == 3
-    assert levenshtein(s, t) == 3
-
-
 def test_levenshtein_two_substitutes():
     """Test Levenshtein distance when there are two substitutions."""
     s = "J K L M".split()
     t = "J M L N".split()
+    #      ^   ^
     assert levenshtein_2d(s, t) == 2
     assert levenshtein_2d(t, s) == 2
     assert levenshtein_1d(s, t) == 2
@@ -124,8 +102,9 @@ def test_levenshtein_two_insertions():
 # Test Levenshtein distance without common elements
 def test_levenshtein_no_common_elements():
     """Test Levenshtein distance when lists have not commen elements."""
-    s = "J     M".split()
-    t = "  K L  ".split()
+    s = "J M".split()
+    t = "K L".split()
+    #    ^ ^
     assert levenshtein_2d(s, t) == 2
     assert levenshtein_2d(t, s) == 2
     assert levenshtein_1d(s, t) == 2
@@ -145,3 +124,28 @@ def test_levenshtein_prefix_hallucination_removal():
     assert levenshtein(s, t[3:]) == 2
     assert levenshtein(s, t[4:]) == 1
     assert levenshtein(s, t[5:]) == 2
+
+
+# Illustration using the Levenshtein distance table
+# s = "J K L M N O   Q".split() => s = J K L M N O Q
+# t = "J R L M   O P Q".split() => t = J R L M O P Q
+# diff   ^     ^   ^
+# type   S     D   I
+#                                 i = 0   1   2   3   4   5   6
+# s\t j   J   R   L   M   O   P   Q   :   :   :   :   :   :   :
+# i   0 | 1   2   3   4   5   6   7   d0  :   :   :   :   :   :
+#    -------------------------------  :   :   :   :   :   :   :
+# J   1 | 0   1   2   3   4   5   6   d1  d0  :   :   :   :   :
+# K   2 | 1   1   2   3   4   5   6       d1  d0  :   :   :   :
+# L   3 | 2   2   1   2   3   4   5           d1  d0  :   :   :
+# M   4 | 3   3   2   1   2   3   4               d1  d0  :   :
+# N   5 | 4   4   3   2   2   3   4                   d1  d0  :
+# O   6 | 5   5   4   3   2   3   4                       d1  d0
+# Q   7 | 6   6   5   4   3   3   3                           d1
+def test_levenshtein_single_sub_del_ins():
+    """Test Levenshtein distance when there is one S, D, and I."""
+    s = "J K L M N O   Q".split()
+    t = "J R L M   O P Q".split()
+    assert levenshtein_2d(s, t) == 3
+    assert levenshtein_1d(s, t) == 3
+    assert levenshtein(s, t) == 3

@@ -217,7 +217,7 @@ def levenshtein_seg(
             d0, d1 = d1, d0
         if b + i >= m0 - 1: break
 
-    # Verify data to ensure calculated seg size is the same as provided
+    # Safety net to ensure calculated seg size is the same as provided
     for seg in range(l_segs):
         if rslts[seg][0] == 0:
             rslts[seg][0] = segs[seg][1] - segs[seg][0]

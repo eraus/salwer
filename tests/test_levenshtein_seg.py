@@ -73,7 +73,7 @@ def test_levenshtein_seg_fast_head_1s1a():
 # x1s1b
 #    s = "J K L M N O P Q R".split()
 #    t = "Z K L M Y O P Q X".split()
-# segdif |^      |^       ^|
+# segs   |^      |^       ^|
 # type    S       S       S
 #                                         i = 0   1   2   3   4   5   6   7   8
 # s\t j   Z   K   L   M   Y   O   P   Q   X   :   :   :   :   :   :   :   :   :
@@ -109,10 +109,11 @@ def test_levenshtein_seg_fast_head_1s1b():
 
 ############################################
 # x1s2
-# s1s2 = "J K J M N K P Q J".split()
-# t1s2 = "J K L M N O P Q R".split()
-# segdif |    ^|    ^|    ^|
+#    s = "J K J M N K P Q J".split()
+#    t = "J K L M N O P Q R".split()
+# segs   |    ^|    ^|    ^|
 # type        S     S     S
+#
 # s\t j   J   K   L   M   N   O   P   Q   R
 # i  *0+| 1   2   3 | 4   5   6 | 7   8   9
 #    ---------------------------------------
@@ -152,8 +153,9 @@ def test_levenshtein_seg_fast_head_1s2():
 # x1d1a
 #    s = "J K L M N O P Q R".split()
 #    t = "  K L M   O P Q  ".split()
-# segdif |^    |  ^  |    ^|
+# segs   |^    |  ^  |    ^|
 # type    D       D       D
+#
 # s\t j   K   L   M   O   P   Q
 # i  *0+| 1   2 | 3   4 | 5   6
 #    ---------------------------
@@ -193,8 +195,9 @@ def test_levenshtein_seg_fast_head_1d1a():
 # x1d1b
 #    s = "J K L M N O P Q R".split()
 #    t = "  K L M   O P Q  ".split()
-# segdif |^      |^       ^|
+# segs   |^      |^       ^|
 # type    D       D       D
+#
 # s\t j   K   L   M   O   P   Q
 # i  *0+| 1   2   3 | 4   5   6
 #    ---------------------------
@@ -230,10 +233,10 @@ def test_levenshtein_seg_fast_head_1d1b():
 # x1i1a
 #    s = "  K L M   O P Q  ".split()
 #    t = "J K L M N O P Q R".split()
-# segdif  ^|   |  ^  |   |^
+# segs    ^|   |  ^  |   |^
 # type    I       I       I
-# s\t j   J   K   L   M   N   O   P   Q   R   :   :   :   :   :   :
 #                                         i = 0   1   2   3   4   5
+# s\t j   J   K   L   M   N   O   P   Q   R   :   :   :   :   :   :
 # i   0+|*1 | 2   3 | 4   5   6 | 7   8 | 9   d0  :   :   :   :   :
 #    ---------------------------------------  :   :   :   :   :   :
 # K   1 | 1 | 1-  2 | 3   4   5 | 6   7 | 8   d1  d0  :   :   :   :
@@ -269,10 +272,10 @@ def test_levenshtein_seg_fast_head_1i1a():
 # x1i1b
 #    s = "  K L M   O P Q  ".split()
 #    t = "J K L M N O P Q R".split()
-# segdif  ^|     |^|     |^
+# segs    ^|     |^|     |^
 # type    I       I       I
-# s\t j   J   K   L   M   N   O   P   Q   R   :   :   :   :   :   :
 #                                         i = 0   1   2   3   4   5
+# s\t j   J   K   L   M   N   O   P   Q   R   :   :   :   :   :   :
 # i   0+|*1 | 2   3   4 | 5 | 6   7   8 | 9   d0  :   :   :   :   :
 #    ---------------------------------------  :   :   :   :   :   :
 # K   1 | 1 | 1-  2   3 | 4 | 5   6   7 | 8   d1  d0  :   :   :   :
@@ -305,12 +308,12 @@ def test_levenshtein_seg_fast_head_1i1b():
 
 ############################################
 # x1sdi1a
-# s1sdi1 = "J K L M N O   Q".split()
-# t1sdi1 = "J R L M   O P Q".split()
-# segdif   |  ^  |  ^|  ^  |
-# type        S     D   I
-# s\t j   J   R   L   M   O   P   Q
+#    s = "J K L M N O   Q".split()
+#    t = "J R L M   O P Q".split()
+# segs   |  ^  |  ^|  ^  |
+# type      S     D   I
 #                                 i = 0   1   2   3   4   5   6
+# s\t j   J   R   L   M   O   P   Q   :   :   :   :   :   :   :
 # i  *0+| 1   2   3 | 4 | 5   6   7   d0  :   :   :   :   :   :
 #    -------------------------------  :   :   :   :   :   :   :
 # J   1 | 0-  1   2 | 3 | 4   5   6   d1  d0  :   :   :   :   :
@@ -345,12 +348,12 @@ def test_levenshtein_seg_fast_head_1sdi1():
 
 ############################################
 # x1sdi2
-# s1sdi2 = "  J K L   N O P Q".split()
-# t1sdi2 = "X J   L M N X   Q".split()
-# segs      ^|  ^  |^|  ^ ^  |
-# type      I   D   I   S D
-# s\t j   X   J   L   M   N   X   Q
+#    s = "  J K L   N O P Q".split()
+#    t = "X J   L M N X   Q".split()
+# segs    ^|  ^  |^|  ^ ^  |
+# type    I   D   I   S D
 #                                 i = 0   1   2   3   4   5   6
+# s\t j   X   J   L   M   N   X   Q   :   :   :   :   :   :   :
 # i   0+|*1 | 2   3 | 4 | 5   6   7   d0  :   :   :   :   :   :
 #    -------------------------------  :   :   :   :   :   :   :
 # J   1 | 1 | 1-  2 | 3 | 4   5   6   d1  d0  :   :   :   :   :
@@ -384,12 +387,12 @@ def test_levenshtein_seg_fast_head_1sdi2():
 
 ############################################
 # x1sdi3
-# s1sdi3 = "J K   M N O   Q R".split()
-# t1sdi3 = "K K L M   O P Q R".split()
-# segs     |^  |^|  ^  |^|   |
-# type      S   S   D   I
-# s\t j   K   K   L   M   O   P   Q   R
+#    s = "J K   M N O   Q R".split()
+#    t = "K K L M   O P Q R".split()
+# segs   |^  |^|  ^  |^|   |
+# type    S   S   D   I
 #                                     i = 0   1   2   3   4   5   6
+# s\t j   K   K   L   M   O   P   Q   R   :   :   :   :   :   :   :
 # i   0+| 1   2 | 3 | 4   5 | 6 | 7   8   d0  :   :   :   :   :   :
 #    -----------------------------------  :   :   :   :   :   :   :
 # J   1 | 1-  2 | 3 | 4   5 | 6 | 7   8   d1  d0  :   :   :   :   :
@@ -424,10 +427,11 @@ def test_levenshtein_seg_fast_head_1sdi3():
 
 ############################################
 # x1sdi4a
-# s1sdi4 = "  J K L   N O P Q".split()
-# t1sdi4 = "X Y K L M N   Z Q".split()
-# segs      ^|^    |^|  ^ ^  |
-# type      I S     I   D S
+#    s = "  J K L   N O P Q".split()
+#    t = "X Y K L M N   Z Q".split()
+# segs    ^|^    |^|  ^ ^  |
+# type    I S     I   D S
+#
 # s\t j   X   Y   K   L   M   N   Z   Q
 # i  *0+| 1   2   3   4 | 5 | 6   7   8
 #    -----------------------------------
@@ -466,10 +470,11 @@ def test_levenshtein_seg_fast_head_1sdi4a():
 
 ############################################
 # x1sdi4b
-# s1sdi4 = "  J K L   N O P Q".split()
-# t1sdi4 = "X Y K L M N   Z Q".split()
-# segs      ^ ^|   |^|  ^ ^  |
-# type      I S     I   D S
+#    s = "  J K L   N O P Q".split()
+#    t = "X Y K L M N   Z Q".split()
+# segs    ^ ^|   |^|  ^ ^  |
+# type    I S     I   D S
+#
 # s\t j   X   Y   K   L   M   N   Z   Q
 # i  *0+| 1   2 | 3   4 | 5 | 6   7   8
 #    -----------------------------------
@@ -506,26 +511,26 @@ def test_levenshtein_seg_fast_head_1sdi4b():
 
 ############################################
 # x2s1
-# s2s1 = "A B C D E F G H".split()
-# t2s1 = "X Y C D E F E B".split()
-#        |^ ^    |    ^ ^|
-# segs   |    ^|    ^|    ^|
-# diff        S     S     S
-# s\t j   X   Y   C   D   E   F   E   B
+#   s = "J K L M N O P Q".split()
+#   t = "X Y L M N O N K".split()
+# segs   |^ ^    |    ^ ^|
+# type    S S         S S
+#
+# s\t j   X   Y   L   M   N   O   N   K
 # i  *0+| 1   2   3   4 | 5   6   7   8
 #    -----------------------------------
-# A   1 | 1-  2   3   4 | 5   6   7   8
-# B   2 | 2   2   3   4 | 5   6   7   7
-# C   3 | 3   3   2   3 | 4   5   6   7
-# D   4 | 4   4   3  *2+| 3   4   5   6
+# J   1 | 1-  2   3   4 | 5   6   7   8
+# K   2 | 2   2   3   4 | 5   6   7   7
+# L   3 | 3   3   2   3 | 4   5   6   7
+# M   4 | 4   4   3  *2+| 3   4   5   6
 #    -----------------------------------
-# E   5 | 5   5   4   3 | 2-  3   4   5
-# F   6 | 6   6   5   4 | 3   2   3   4
-# G   7 | 7   7   6   5 | 4   3   3   4
-# H   8 | 8   8   7   6 | 5   4+  4+  4+
+# N   5 | 5   5   4   3 | 2-  3   4   5
+# O   6 | 6   6   5   4 | 3   2   3   4
+# P   7 | 7   7   6   5 | 4   3   3   4
+# Q   8 | 8   8   7   6 | 5   4+  4+  4+
 
-s2s1 = "A B C D E F G H".split()
-t2s1 = "X Y C D E F E B".split()
+s2s1 = "J K L M N O P Q".split()
+t2s1 = "X Y L M N O N K".split()
 
 def test_levenshtein_seg_fast_2s1():
     """Test levenshtein_seg with the above lists."""
@@ -546,28 +551,28 @@ def test_levenshtein_seg_fast_head_2s1():
 
 ############################################
 # x2d1
-# s2d1 = "A B C D E F G H I".split()
-# t2d1 = "    C D     G H  ".split()
-#        |^ ^  |  ^ ^  |  ^|
-# segs   |    ^|    ^|    ^|
-# diff        S     S     S
-# s\t j   C   D   G   H
+#    s = "J K L M N O P Q R".split()
+#    t = "    L M     P Q  ".split()
+# segs   |^ ^  |  ^ ^  |  ^|
+# type    D D     D D     D
+#
+# s\t j   L   M   P   Q
 # i  *0+| 1 | 2   3 | 4
 #    -------------------
-# A   1 | 1-| 2   3 | 4
-# B   2 | 2 | 2   3 | 4
-# C   3 |*2+| 3   3 | 4
+# J   1 | 1-| 2   3 | 4
+# J   2 | 2 | 2   3 | 4
+# L   3 |*2+| 3   3 | 4
 #    -------------------
-# D   4 | 3 | 2-  3 | 4
-# E   5 | 4 | 3   3 | 4
-# F   6 | 5 | 4   4 | 4
-# G   7 | 6 | 5  *4+| 5
+# M   4 | 3 | 2-  3 | 4
+# N   5 | 4 | 3   3 | 4
+# O   6 | 5 | 4   4 | 4
+# P   7 | 6 | 5  *4+| 5
 #    -------------------
-# H   8 | 7 | 6   5 | 4-
-# I   9 | 8 | 7   6 | 5+
+# Q   8 | 7 | 6   5 | 4-
+# R   9 | 8 | 7   6 | 5+
 
-s2d1 = "A B C D E F G H I".split()
-t2d1 = "    C D     G H  ".split()
+s2d1 = "J K L M N O P Q R".split()
+t2d1 = "    L M     P Q  ".split()
 
 def test_levenshtein_seg_fast_2d1():
     """Test levenshtein_seg with the above lists."""
@@ -588,25 +593,25 @@ def test_levenshtein_seg_fast_head_2d1():
 
 ############################################
 # x2d2
-# s2d2 = "A B C D E F G".split()
-# t2d2 = "    C D E    ".split()
-#        |^ ^  |    ^ ^|
-# segs   |    ^|    ^|    ^|
-# diff        S     S     S
-# s\t j   C   D   E
+#    s = "J K L M N O P".split()
+#    t = "    L M N    ".split()
+# segs   |^ ^  |    ^ ^|
+# type    D D       D D
+#
+# s\t j   L   M   N
 # i  *0+| 1 | 2   3
 #    ---------------
-# A   1 | 1-| 2   3
-# B   2 | 2 | 2   3
-# C   3 |*2+| 3   3
+# J   1 | 1-| 2   3
+# K   2 | 2 | 2   3
+# L   3 |*2+| 3   3
 #    ---------------
-# D   4 | 3 | 2-  3
-# E   5 | 4 | 3   2
-# F   6 | 5 | 4   3
-# G   7 | 6 | 5   4+
+# M   4 | 3 | 2-  3
+# N   5 | 4 | 3   2
+# O   6 | 5 | 4   3
+# P   7 | 6 | 5   4+
 
-s2d2 = "A B C D E F G".split()
-t2d2 = "    C D E    ".split()
+s2d2 = "J K L M N O P".split()
+t2d2 = "    L M N    ".split()
 
 def test_levenshtein_seg_fast_2d2():
     """Test levenshtein_seg with the above lists."""
@@ -627,25 +632,23 @@ def test_levenshtein_seg_fast_head_2d2():
 
 ############################################
 # x2i1
-# s2i1 = "    C D E     H I".split()
-# t2i1 = "A B C D E F G H I".split()
-#         ^ ^ |    |^ ^|   |
-# segs   |    ^|    ^|    ^|
-# diff        S     S     S
-##############################################################################
-#                                           i = 0   1   2   3   4   5   6   7
-# s\t j   A   B   C   D   E   F   G   H   I
-# i  *0+| 1   2   3   4   5 | 6   7   8   9     d0
+#    s = "    L M N     Q R".split()
+#    t = "J K L M N O P Q R".split()
+# segs    ^ ^|     |^ ^|   |
+# type    I I       I I
+#
+# s\t j   J   K   L   M   N   O   P   Q   R
+# i  *0+| 1   2   3   4   5 | 6   7   8   9
 #    ---------------------------------------
-# C   1 | 1-  2   2   3   4 | 5   6   7   8     d1
-# D   2 | 2   2   3   2   3 | 4   5   6   7
-# E   3 | 3   3   3   3  *2+| 3   4   5   6
+# L   1 | 1-  2   2   3   4 | 5   6   7   8
+# M   2 | 2   2   3   2   3 | 4   5   6   7
+# N   3 | 3   3   3   3  *2+| 3   4   5   6
 #    ---------------------------------------
-# H   4 | 4   4   4   4   3 | 3-  4   4   5
-# I   5 | 5   5   5   5   4+| 4+  4+  5   4+
+# Q   4 | 4   4   4   4   3 | 3-  4   4   5
+# R   5 | 5   5   5   5   4+| 4+  4+  5   4+
 
-s2i1 = "    C D E     H I".split()
-t2i1 = "A B C D E F G H I".split()
+s2i1 = "    L M N     Q R".split()
+t2i1 = "J K L M N O P Q R".split()
 
 def test_levenshtein_seg_fast_2i1():
     """Test levenshtein_seg with the above lists."""
@@ -668,11 +671,11 @@ def test_levenshtein_seg_fast_head_2i1():
 
 ############################################
 # x3s1
-# s3s1 = "  A B C D E F G H I".split()
-# t3s1 = "B A   C D E E B A I".split()
-#        |^   ^    |  ^ ^ ^  |
-# segs   |    ^|    ^|    ^|
-# diff        S     S     S
+#    s = "  J K L M N O P Q R".split()
+#    t = "K J   L M N N K J R".split()
+# segs   |^   ^    |  ^ ^ ^  |
+# type    I   D       S S S
+#
 # s\t j   B   A   C   D   E   E   B   A   I
 # i   0+|*1 | 2   3   4 | 5   6   7   8   9
 #     --------------------------------------
@@ -687,8 +690,8 @@ def test_levenshtein_seg_fast_head_2i1():
 # H   8 | 7 | 7   7   6 | 5   5   5   5   6
 # I   9 | 8 | 8   8   7 | 6   6   6   6   5+
 
-s3s1 = "  A B C D E F G H I".split()
-t3s1 = "B A   C D E E B A I".split()
+s3s1 = "  J K L M N O P Q R".split()
+t3s1 = "K J   L M N N K J R".split()
 
 def test_levenshtein_seg_fast_3s1():
     """Test levenshtein_seg with the above lists."""
@@ -707,64 +710,42 @@ def test_levenshtein_seg_fast_head_3s1():
         [[4, 2], [5, 3]]
 
 
-## Special tests
-
-def test_levenshtein_seg_head_st1():
-    """Test levenshtein_seg with the above lists."""
-    s_st = "roger".split()
-    t_st = "all right".split()
+## Special tests without matchings
+# Note that the cases of levenshtein_seg are handled by the safety net code.
+def test_levenshtein_seg_special_test1():
+    """Test levenshtein_seg with the following lists."""
+    s = "J  ".split()
+    t = "K L".split()
+# segs  |^|^
+# type   S I
     segs = [[0, 1]]
-    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == \
-        [[1, 1]]
-    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
-        [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs) == [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, head=True) == [[1, 1]]
 
 
-def test_levenshtein_seg_head_st2():
-    """Test levenshtein_seg with the above lists."""
-    s_st = "wilco".split()
-    t_st = "will come".split()
+def test_levenshtein_seg_special_test2():
+    """Test levenshtein_seg with the following lists."""
+    s = "J K".split()
+    t = "L  ".split()
+# segs  |^|^
+# type   S D
     segs = [[0, 1]]
-    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == \
-        [[1, 1]]
-    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
-        [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs) == [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, head=True) == [[1, 1]]
 
-# #    s = "A B".split()
-# #    t = "C D E".split()
-# s\t j   C   D   E
-# i   0   1   2   3
-# A   1   1   2   3
-# B   2   2   2   3
-
-############################################
-# x3s1
-# s3s1 = "  A B C D E F G H I".split()
-# t3s1 = "B A   C D E E B A I".split()
-#        |^   ^    |  ^ ^ ^  |
-# s\t j   B   A   C   D   E   E   B   A   I
-# i   0+  1*| 2   3   4 | 5   6   7   8   9
-#     --------------------------------------
-# A   1   1 | 1-  2   3 | 4   5   6   7   8
-# B   2   1 | 2   2   3 | 4   5   5   6   7
-# C   3   2 | 2   2   3 | 4   5   6   6   7
-# D   4   3 | 3   3   2+| 3   4   5   6   7
 
 def test_levenshtein_seg_head_st3():
-    """Test levenshtein_seg with the above lists."""
-    s_st = "affirm gaithersburg".split()
-    t_st = "affirmative gaither sir".split()
+    """Test levenshtein_seg with the following lists."""
+    s = "J K  ".split()
+    t = "L M N".split()
+# segs   ^|^|^
+# type   S S I
     segs = [[1, 2]]
-    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
-        [[1, 1]]
-
-
-def test_levenshtein_seg_head_st4():
-    """Test levenshtein_seg with the above lists."""
-    s_st = "roger wilco".split()
-    t_st = "you will tell".split()
-    segs = [[1, 2]]
-    assert levenshtein_seg_fast(s_st, t_st, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s_st, t_st, segs, head=True) == \
-        [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs) == [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, head=True) == [[1, 1]]
