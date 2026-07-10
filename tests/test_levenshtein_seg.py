@@ -4,6 +4,7 @@ import pytest
 
 from salwer.levenshtein import (
     levenshtein_align_fast,
+    levenshtein_align,
     levenshtein_seg_fast,
     levenshtein_seg,
 )
@@ -54,7 +55,8 @@ def test_levenshtein_align_1sdi():
     segs = [[0, 3], [3, 6]]
     assert levenshtein_align_fast(s1sdi, t1sdi, segs) == \
         [[1, 3], [4, 8]]
-
+    assert levenshtein_align(s1sdi, t1sdi, segs) == \
+        [[1, 3], [4, 8]]
 
 def test_levenshtein_seg_1sdi():
     """Test levenshtein_seg with the above lists."""
@@ -103,6 +105,8 @@ def test_levenshtein_align_fast_1s1a():
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_align_fast(s1s1, t1s1, segs) == \
         [[0, 3], [3, 6], [6, 9]]
+    assert levenshtein_align(s1s1, t1s1, segs) == \
+        [[0, 3], [3, 6], [6, 9]]
 
 def test_levenshtein_seg_fast_1s1a():
     """Test levenshtein_seg with the above lists."""
@@ -146,6 +150,8 @@ def test_levenshtein_align_fast_1s1b():
     """Test levenshtein_align_fast with the above lists."""
     segs = [[0, 4], [4, 9]]
     assert levenshtein_align_fast(s1s1, t1s1, segs) == \
+        [[0, 4], [4, 9]]
+    assert levenshtein_align(s1s1, t1s1, segs) == \
         [[0, 4], [4, 9]]
 
 def test_levenshtein_seg_fast_1s1b():
@@ -195,6 +201,8 @@ def test_levenshtein_align_fast_1s2():
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_align_fast(s1s2, t1s2, segs) == \
         [[0, 3], [3, 6], [6, 9]]
+    assert levenshtein_align(s1s2, t1s2, segs) == \
+        [[0, 3], [3, 6], [6, 9]]
 
 def test_levenshtein_seg_fast_1s2():
     """Test levenshtein_seg with the above lists."""
@@ -243,6 +251,8 @@ def test_levenshtein_align_fast_1d1a():
     segs = [[0, 3], [3, 6], [6, 9]]
     assert levenshtein_align_fast(s1d1, t1d1, segs) == \
         [[0, 2], [2, 4], [4, 6]]
+    assert levenshtein_align(s1d1, t1d1, segs) == \
+        [[0, 2], [2, 4], [4, 6]]
 
 def test_levenshtein_seg_fast_1d1a():
     """Test levenshtein_seg with the above lists."""
@@ -287,6 +297,8 @@ def test_levenshtein_align_fast_1d1b():
     segs = [[0, 4], [4, 9]]
     assert levenshtein_align_fast(s1d1, t1d1, segs) == \
         [[0, 3], [3, 6]]
+    assert levenshtein_align(s1d1, t1d1, segs) == \
+        [[0, 3], [3, 6]]
 
 def test_levenshtein_seg_fast_1d1b():
     """Test levenshtein_seg with the above lists."""
@@ -327,10 +339,12 @@ def test_levenshtein_seg_fast_head_1d1b():
 s1i1 = "  K L M   O P Q  ".split()
 t1i1 = "J K L M N O P Q R".split()
 
-def test_levenshtein_align_fast_1i1a():
+def test_levenshtein_align_1i1a():
     """Test levenshtein_align_fast with the above lists."""
     segs = [[0, 2], [2, 4], [4, 6]]
     assert levenshtein_align_fast(s1i1, t1i1, segs) == \
+        [[1, 3], [3, 6], [6, 8]]
+    assert levenshtein_align(s1i1, t1i1, segs) == \
         [[1, 3], [3, 6], [6, 8]]
 
 def test_levenshtein_seg_fast_1i1a():
@@ -371,6 +385,14 @@ def test_levenshtein_seg_fast_head_1i1a():
 s1i1 = "  K L M   O P Q  ".split()
 t1i1 = "J K L M N O P Q R".split()
 
+def test_levenshtein_align_1i1b():
+    """Test levenshtein_align functions with the above lists."""
+    segs = [[0, 3], [3, 6]]
+    assert levenshtein_align_fast(s1i1, t1i1, segs) == \
+        [[1, 4], [5, 8]]
+    assert levenshtein_align(s1i1, t1i1, segs) == \
+        [[1, 4], [5, 8]]
+
 def test_levenshtein_seg_fast_1i1b():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 6]]
@@ -410,6 +432,15 @@ def test_levenshtein_seg_fast_head_1i1b():
 
 s1sdi1 = "J K L M N O   Q".split()
 t1sdi1 = "J R L M   O P Q".split()
+
+def test_levenshtein_align_1sdi1():
+    """Test levenshtein_align functions with the above lists."""
+    segs = [[0, 3], [3, 5], [5, 7]]
+    assert levenshtein_align_fast(s1sdi1, t1sdi1, segs) == \
+        [[0, 3], [3, 5], [4, 7]]
+    # Note           ^ this should be 4; caused by training source
+    assert levenshtein_align(s1sdi1, t1sdi1, segs) == \
+        [[0, 3], [3, 5], [4, 7]]
 
 def test_levenshtein_seg_fast_1sdi1():
     """Test levenshtein_seg with the above lists."""
