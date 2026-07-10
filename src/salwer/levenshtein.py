@@ -32,10 +32,15 @@ def levenshtein_2d(
                 d[i+1][j] + 1,  # ins to s
             )
     if print_d:
-        print("s\\t j   " + '   '.join(t))
-        print("i   " + '   '.join(str(num) for num in d[0]))
+        print("s\\t      " + '   '.join(t))
+        print("     j > ")
+        i_line = "  i  0 | 1   " + '   '.join(str(num) for num in d[0][2:])
+        print(i_line)
+        divider = ''.join(["-"] * (len(i_line)-3))
+        print("  v " + divider)
         for ch, row in zip(s, d[1:]):
-            print(ch + "   " + '   '.join(str(num) for num in row))
+            print(f"{ch}    {row[0]} | "
+                  f"{'   '.join(str(num) for num in row[1:])}")
     return d[m][n]
 
 
@@ -76,6 +81,102 @@ def levenshtein_1d(s: List[str], t: List[str]) -> int:
             )
             d0j = d0j1
     return d[n]
+
+
+#--------------------------------------------------------------------
+# Levenshtein alignment
+def levenshtein_align_fast(
+    s: List[str],
+    t: List[str],
+    segs: List[List],
+) -> List[List]:
+    """Levenshtein distance and size of semantic segments--fast version.
+
+    Args:
+      - s: Source (reference) sequence as list of strings.
+      - t: Target (hypothesis) sequence as list of strings.
+      - segs: List of semantic segments of s, each segment is [start, end].
+
+    Return:
+      - segt: List of aligned segments of t, each corresponds to a segment
+            in segs; so it has the same dimension as segs.
+    """
+
+    m, n = len(s), len(t)
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+    len_segs = len(segs)
+    # segs = segments of s; segt = segments of t
+    segt = [[0] * 2 for _ in range(len_segs)]
+    k = 0                   # index of segs
+    for i in range(m):
+        d1[0] = i + 1
+        for j in range(n):
+            c = 0 if s[i] == t[j] else 1
+            d1[j+1] = min(
+                d0[j] + c,      # sub s->t
+                d0[j+1] + 1,    # del of s
+                d1[j] + 1,      # ins to s
+            )
+        print(f"{d1 = }")
+        if segs[k][0] == i:
+            segt[k][0] = max_ind_of_min(d1) - 1
+        if segs[k][1] == i + 1:
+            segt[k][1] = max_ind_of_min(d1)
+            k += 1
+            if k >= len_segs: break
+        d0, d1 = d1, d0
+    return segt
+
+
+def levenshtein_align(
+    s: List[str],
+    t: List[str],
+    segs: List[List],
+) -> List[List]:
+    """Levenshtein distance and size of semantic segments--fast version.
+
+    Args:
+      - s: Source (reference) sequence as list of strings.
+      - t: Target (hypothesis) sequence as list of strings.
+      - segs: List of semantic segments of s, each segment is [start, end].
+
+    Return:
+      - segt: List of aligned segments of t, each corresponds to a segment
+            in segs; so it has the same dimension as segs.
+    """
+
+    m, n = len(s), len(t)
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+    len_segs = len(segs)
+    segt = [[0] * 2 for _ in range(len_segs)]
+    k = 0                   # index of segs
+    L = 0                   # shift of segt
+    for i in range(m):
+        d1[0] = i + 1
+        for j in range(n):
+            c = 0 if s[i] == t[j] else 1
+            d1[j+1] = min(
+                d0[j] + c,      # sub s->t
+                d0[j+1] + 1,    # del of s
+                d1[j] + 1,      # ins to s
+            )
+        print(f"{d1 = }")
+        if segs[k][0] == i:
+            # ind_star = max_ind_of_min(d1) - 1
+            # ind_minus = max_ind_of_min(d0)
+            # L += ind_star - ind_minus
+            # segt[k][0] = L + ind_star
+            # print(f"{i = }; {ind_star = }; {ind_minus = }; {L = }")
+            segt[k][0] = max_ind_of_min(d1) - 1
+        if segs[k][1] == i + 1:
+            # segt[k][1] = L + max_ind_of_min(d1)
+            segt[k][1] = max_ind_of_min(d1)
+            k += 1
+            if k >= len_segs: break
+        d0, d1 = d1, d0
+    return segt
 
 
 #--------------------------------------------------------------------
