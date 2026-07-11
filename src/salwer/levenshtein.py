@@ -17,7 +17,16 @@ def levenshtein_2d(
         t: List[str],
         print_ld: bool = False,  # print the LD table if True
     ) -> int:
-    """Full-memory implementation of the Levenshtein distance alg."""
+    """Full-memory implementation of the Levenshtein distance alg.
+
+    Args:
+    -   s: List[str]. Source (reference) sequence as list of strings.
+    -   t: List[str]. Target (hypothesis) sequence as list of strings.
+    -   print_ld: bool = False. Print the LD table if True.
+
+    Return:
+    -   The Levenshtein distance between s and t.
+    """
 
     # Initialize the 2D Levenshtein distance (LD) table
     m, n = len(s), len(t)   # sizes of s and t
@@ -57,6 +66,13 @@ def levenshtein(s: List[str], t: List[str]) -> int:
     """Two-list implementation of the Levenshtein distance alg.
 
     Two 1D lists, d0 and d1, are used instead of a 2D list.
+
+    Args:
+    -   s: List[str]. Source (reference) sequence as list of strings.
+    -   t: List[str]. Target (hypothesis) sequence as list of strings.
+
+    Return:
+    -   The Levenshtein distance between s and t.
     """
 
     # Initialize the 2 1D LD lists.
@@ -83,6 +99,13 @@ def levenshtein_1d(s: List[str], t: List[str]) -> int:
     """Single-list implementation of the Levenshtein distance alg.
 
     A single 1D list, d, is used instead of 2 1D lists.
+
+    Args:
+    -   s: List[str]. Source (reference) sequence as list of strings.
+    -   t: List[str]. Target (hypothesis) sequence as list of strings.
+
+    Return:
+    -   The Levenshtein distance between s and t.
     """
 
     m, n = len(s), len(t)   # sizes of s and t
@@ -113,17 +136,17 @@ def levenshtein_align_fast(
     t: List[str],
     segs: List[List],
 ) -> List[List]:
-    """Segment alignment based Levenshtein distance---the fast version.
+    """Segment alignment based on Levenshtein distance---the fast version.
 
     See the doc string of the levenshtein_align() function for details.
     """
 
-    m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev dist
-    d1 = [0] * (n+1)        # curr dist
+    m, n = len(s), len(t)     # sizes of s and t
+    d0 = list(range(n+1))     # prev LD dist
+    d1 = [0] * (n+1)          # curr LD dist
 
     n_segs = len(segs)      # num of segments
-    # segments of t corresponding to segments of s: segs
+    # segt = segments of t corresponding to segments of s: segs
     segt = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
@@ -160,7 +183,7 @@ def levenshtein_align(
     t: List[str],
     segs: List[List],
 ) -> List[List]:
-    """Segment alignment based Levenshtein distance---the normal version.
+    """Segment alignment based on Levenshtein distance---the normal version.
 
     Notations:
     -   d0: The Levenshtein distance of the previous iteration.
@@ -174,8 +197,6 @@ def levenshtein_align(
     -   2+: They are also the min values of d1 with the max index. Yet, they
             are for the upper bounbdary of a segment only. They are referrred
             to as v_plus, and the corresponding index is called ind_v_plus.
-    -   *2: They are the value of d0 with index (ind_v_minus - 1). The value
-            is referred to as v_star, and the index is ind_v_star.
 
     Args:
     -   s: Source (reference) sequence as list of strings.
@@ -187,7 +208,6 @@ def levenshtein_align(
             in segs; so it has the same dimension as segs.
     """
 
-    # s, t, m, n, d0, d1, ss, i = update_st_vars(s, t, 0, 0, 0)
     m, n = len(s), len(t)   # sizes of s and t
     d0 = list(range(n+1))   # prev LD dist
     d1 = [0] * (n+1)        # curr LD dist
@@ -200,12 +220,10 @@ def levenshtein_align(
     ss = 0   # sequence s' total shift due to update of s
     ts = 0   # sequence t's total shift; counterpart of ss
     mm = m   # m's original value for loop control
-
     check_shift = True      # flag for checking shift
 
     while True:
         for i in range(m):
-
             # Check the prefix drift at seg's lower boundary.
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
@@ -216,10 +234,10 @@ def levenshtein_align(
 
                 # Restart the "for i loop" as needed if there is prefix drift
                 if n_pd:
-                    check_shift = False     # will not check prefix drift again
                     s, t, m, n, d0, d1, ss, i = \
                         update_st_vars(r, h, n_pd, ss, i)
                     ts = ts + t_ind + n_pd  # needed for alignment
+                    check_shift = False     # no check again for this boundary
                     # Only break the current "for i loop" if s has 2+ elements
                     if m > 1: break
 
@@ -231,12 +249,11 @@ def levenshtein_align(
 
             # Find segment upper boundary for t based on ind_v_plus.
             if segs[k][1] == ss + i + 1:
-                segt[k][1] = max_ind_of_min(d1)
                 segt[k][0] += ts     # update lower boundary
-                segt[k][1] += ts     # update upper boundary
-                check_shift = False  # get ready for prefix drift checking
+                segt[k][1] = max_ind_of_min(d1) + ts
+                check_shift = True   # get ready for prefix drift checking
                 k += 1               # update the segment index
-                if k >= n_segs: return segt  # exit as needed
+                if k >= n_segs: return segt  # done with all segs; exit
 
             d0, d1 = d1, d0
 
@@ -253,65 +270,77 @@ def levenshtein_seg_fast(
     segs: List[List],
     head: bool = False,
 ) -> List[List]:
-    """Levenshtein distance and size of semantic segments--fast version.
+    """Calculate size and Levenshtein dist of segments---the fast version.
 
-    This function takes (1) the source list (s), (2) the target lyst (t),
-    (3) the semantic segment list (segs), and (4) a boolean variable for
-    including prefix drift or hallucination of each segment (head).
+    Notations:
+    -   d0: The Levenshtein distance of the previous iteration.
+    -   d1: The Levenshtein distance of the current iteration.
+
+    In the comments of the code and test case illustrations, we use notations
+    for the following (here 2 is just an example; it can be any number):
+    -   2-: They are the min value of d1 with the max index. They are for the
+            lower boundary of a segment only. They are referred to as
+            v_minus, and the corresponding index is called ind_v_minus.
+    -   2+: They are also the min values of d1 with the max index. Yet, they
+            are for the upper bounbdary of a segment only. They are referrred
+            to as v_plus, and the corresponding index is called ind_v_plus.
+    -   *2: They are the value of d0 with index (ind_v_minus - 1). The value
+            is referred to as v_star, and the index is ind_v_star. Used in
+            segment-level LD calculation.
 
     Args:
-      - s: Source (reference) sequence as list of strings.
-      - t: Target (hypothesis) sequence as list of strings.
-      - segs: List of semantic segments, each segment is [start, end].
-      - head: Boolean indicator for including prefix drift before each segment:
-        - False: do not include (default)
-        - True: include
+    -   s: Source (reference) sequence as list of strings.
+    -   t: Target (hypothesis) sequence as list of strings.
+    -   segs: List of semantic segments, each segment is [start, end].
+    -   head: Boolean indicator for including prefix drift (hallucination)
+        before each segment:
+        -   False: do not include (default)
+        -   True: include
 
     Returns:
-      - segd: segment distance---a list of [seg_size, edit_dist] for
+    -   segd: segment distance---a list of [seg_size, edit_dist] for
             each segment, where
-        - seg_size (= end - start),
-        - edit_dist between s[start:end] and the correcponding t sequence.
+        -   seg_size (= end - start),
+        -   edit_dist between s[start:end] and the correcponding t sequence.
     """
 
-    # base seg dist w/o prefix drift, hence no head
-    def base_seg_dist_nohead(d0, d1):
+    #--------------------------------------------------------------
+    # Define function base_seg_dist for calculate the seg distance.
+    def v_star(d0, d1):  # used for obtaining seg dist w/o head
         dist_ind = max_ind_of_min(d1)
         dist = d0[dist_ind - 1]
         return dist
 
-    # base seg dist with prefix drift, hence head
-    def base_seg_dist_head(d0, d1):
+    # Calculate v_plus used for obtaining seg dist wit head.
+    def v_plus(d0, d1):  # used for obtaining seg dist with head
         return min(d0)
 
-    base_seg_dist = base_seg_dist_head if head else base_seg_dist_nohead
+    base_seg_dist = v_plus if head else v_star
+    #--------------------------------------------------------------
 
-    m, n = len(s), len(t)
-    d0 = list(range(n+1))   # prev dist
-    d1 = [0] * (n+1)        # curr dist
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD dist
+    d1 = [0] * (n+1)        # curr LD dist
 
-    n_segs = len(segs)
+    n_segs = len(segs)      # num of segments
+    # segd = segment size and dist corresponding to segs
     segd = [[0] * 2 for _ in range(n_segs)]
-    k = 0           # index of segs
-    base_dist = 0   # base dist: *value or value-
+    k = 0                   # index of segs/segt
+
+    base_dist = 0   # base dist: v_plus or v_star
 
     for i in range(m):
-        d1[0] = i + 1
-        for j in range(n):
-            c = 0 if s[i] == t[j] else 1
-            d1[j+1] = min(
-                d0[j] + c,      # sub s->t
-                d0[j+1] + 1,    # del of s
-                d1[j] + 1,      # ins to s
-            )
+        d1 = update_d1(s, t, d0, d1, i, n)
 
+        # Find the base dist at the segment lower boundary.
         if segs[k][0] == i:
             base_dist = base_seg_dist(d0, d1)
 
+        # Find the seg size and dist at the segment upper boundary.
         if segs[k][1] == i + 1:
-            segd[k][0] = segs[k][1] - segs[k][0]   # Seg size
-            segd[k][1] = min(d1) - base_dist       # Seg dist
-            k += 1
+            segd[k][0] = segs[k][1] - segs[k][0]   # seg size
+            segd[k][1] = min(d1) - base_dist       # seg dist
+            k += 1                  # update the segment index
             if k >= n_segs: break
 
         d0, d1 = d1, d0
@@ -325,77 +354,56 @@ def levenshtein_seg(
     segs: List[List],
     head: bool = False,
 ) -> List[List]:
-    """Levenshtein distance and size of semantic segments.
+    """Calculate size and Levenshtein dist of segments---the normal version.
 
-    This function takes (1) the source list (s), (2) the target list (t),
-    (3) the semantic segment list (segs), and (4) a boolean variable for
-    including prefix drift or hallucination of each segment (head).
-
-    Args:
-      - s: Source (reference) sequence as list of strings.
-      - t: Target (hypothesis) sequence as list of strings.
-      - segs: List of semantic segments, each segment is [start, end].
-      - head: Boolean indicator for including prefix drift before each segment:
-        - False: do not include (default)
-        - True: include
-
-    Returns:
-      - segd: segment distance---a list of [seg_size, edit_dist] for
-            each segment, where
-        - seg_size (= end - start),
-        - edit_dist between s[start:end] and the correcponding t sequence.
+    See the doc string of the levenshtein_seg_fast function.
     """
 
-    m, n = len(s), len(t)
-    d0 = list(range(n+1))   # prev dist
-    d1 = [0] * (n+1)        # curr dist
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD dist
+    d1 = [0] * (n+1)        # curr LD dist
 
-    n_segs = len(segs)
+    n_segs = len(segs)      # num of segments
+    # segd = segment size and dist corresponding to segs
     segd = [[0] * 2 for _ in range(n_segs)]
-    k = 0           # index of segs
-    base_dist = 0   # base dist: value-
+    k = 0                   # index of segs/segt
 
-    ss = 0           # base index for s
-    pd = 0          # num of prefix drift
+    base_dist = 0   # base dist: v_plus or v_star
+
+    ss = 0          # base index for s
     mm = m          # copy of m for loop control
+    check_shift = True      # flag for checking shift
 
     while True:
         for i in range(m):
-            d1[0] = i + 1
-            for j in range(n):
-                c = 0 if s[i] == t[j] else 1
-                d1[j+1] = min(
-                    d0[j] + c,    # sub s->t
-                    d0[j+1] + 1,  # del of s
-                    d1[j] + 1,    # ins to s
-                )
+            # Check the prefix drift at seg's lower boundary.
+            # If exist, update s and t and related variables.
+            if segs[k][0] == ss + i and check_shift:
+                # n_pd: num of prefix drift (leading ins of t compared to s).
+                # t_ind: t's index used for prefix drift checking.
+                # r, h: sub sequences in s and t for prefix drift checking.
+                n_pd, t_ind, r, h = check_prefix_drift(s, t, d0, i)
 
+                # Restart the "for i loop" as needed if there is prefix drift
+                if n_pd:
+                    s, t, m, n, d0, d1, ss, i = \
+                        update_st_vars(r, h, n_pd, ss, i)
+                    check_shift = False     # no check again for this boundary
+                    # Only break the current "for i loop" if s has 2+ elements
+                    if m > 1: break
+
+            d1 = update_d1(s, t, d0, d1, i, n)
+
+            # Find the base dist at the segment lower boundary.
             if segs[k][0] == ss + i:
                 base_dist = min(d0)
 
-                # Check n_pd: the num of prefix drift
-                t_ind = max_ind_of_min(d0)    # value-
-                r = s[i:]           # ref = partial source
-                h = t[t_ind:]     # hyp = partial target
-                n_pd = num_prefix_drift(r, h)
-
-                # Restart for i loop if there is prefix drift
-                if n_pd:
-                    s = r                   # new source
-                    t = h[n_pd:]       # new target
-                    m, n = len(s), len(t)   # new sizes
-                    d0 = list(range(n+1))   # new prev dist
-                    d1 = [0] * (n+1)        # new curr dist
-                    ss += i
-                    i = 0
-                    pd = n_pd
-                    break       # break the current for i loop
-
+            # Find the seg size and dist at the segment upper boundary.
             if segs[k][1] == ss + i + 1:
                 segd[k][0] = segs[k][1] - segs[k][0]    # seg size
                 segd[k][1] = min(d1) - base_dist        # seg dist
-                if head: segd[k][1] += pd               # seg dist
-                pd = 0
+                if head: segd[k][1] += n_pd               # seg dist
+                check_shift = True   # get ready for prefix drift checking
                 k += 1
                 if k >= n_segs: return segd
 
@@ -403,17 +411,8 @@ def levenshtein_seg(
 
         if ss + i >= mm - 1: break   # break the while loop
 
-    # Safety net to ensure calculated seg size is assigned
-    # Need to debug why we arrive here using
-    #     assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1c) == \
-    #     [[2, 1], [3, 2], [1, 1]]
-
-    for k in range(n_segs):
-        if segd[k][0] == 0:
-            segd[k][0] = segs[k][1] - segs[k][0]
-            segd[k][1] = segd[k][0]
-
     return segd
+
 
 #--------------------------------------------------------------------
 # Different implementation of the Levenshtein algorithm
@@ -589,7 +588,7 @@ def update_d1(s, t, d0, d1, i, n):
 # This is needed when we want address the leading shift of t against s.
 def update_st_vars(r, h, n_pd, ss, i):
     s = r                   # new source
-    t = h[n_pd:]       # new target
+    t = h[n_pd:]            # new target
     m, n = len(s), len(t)   # new sizes
     d0 = list(range(n+1))   # new prev dist
     d1 = [0] * (n+1)        # new curr dist
@@ -599,8 +598,8 @@ def update_st_vars(r, h, n_pd, ss, i):
 
 
 def check_prefix_drift(s, t, d0, i):
-    t_ind = max_ind_of_min(d0)    # value-
+    t_ind = max_ind_of_min(d0)  # ind_v_minus
     r = s[i:]           # ref = partial source
-    h = t[t_ind:]     # hyp = partial target
+    h = t[t_ind:]       # hyp = partial target
     n_pd = num_prefix_drift(r, h)
     return n_pd, t_ind, r, h

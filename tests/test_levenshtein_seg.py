@@ -435,8 +435,8 @@ def test_levenshtein_align_1sdi1b_with_diff():
     assert levenshtein_align_fast(s1sdi1, t1sdi1, sg1sdi1b) == \
         [[1, 2], [2, 5], [5, 8]]
     assert levenshtein_align(s1sdi1, t1sdi1, sg1sdi1b) == \
-        [[1, 2], [2, 5], [5, 8]]
-    # Note the difference    ^
+        [[1, 2], [2, 5], [6, 8]]
+    # Note the difference ^
 
 def test_levenshtein_seg_1sdi1b_with_diff():
     assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1b) == \
@@ -480,12 +480,11 @@ def test_levenshtein_align_1sdi1c_with_diff():
         [[1, 3], [2, 6], [7, 8]]
     #        ^  Note the differece
 
-def test_levenshtein_seg_1sdi1c_with_diff():
+def test_levenshtein_seg_1sdi1c_all_normal():
     assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c) == \
         [[2, 1], [3, 2], [1, 0]]
     assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1c) == \
-        [[2, 1], [3, 2], [1, 1]]
-    # Note the difference    ^
+        [[2, 1], [3, 2], [1, 0]]
 
 def test_levenshtein_seg_head_1sdi1c_all_normal():
     assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c, head=True) == \
@@ -926,7 +925,7 @@ def test_levenshtein_seg_special_test1():
     assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
     assert levenshtein_seg(s, t, segs) == [[1, 1]]
     assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s, t, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, head=True) == [[1, 2]]
 
 
 def test_levenshtein_seg_special_test2():
@@ -952,4 +951,4 @@ def test_levenshtein_seg_head_st3():
     assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
     assert levenshtein_seg(s, t, segs) == [[1, 1]]
     assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s, t, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, head=True) == [[1, 2]]
