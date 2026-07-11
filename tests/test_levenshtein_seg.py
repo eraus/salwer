@@ -435,7 +435,7 @@ def test_levenshtein_align_1sdi1b_with_diff():
     assert levenshtein_align_fast(s1sdi1, t1sdi1, sg1sdi1b) == \
         [[1, 2], [2, 5], [5, 8]]
     assert levenshtein_align(s1sdi1, t1sdi1, sg1sdi1b) == \
-        [[1, 2], [2, 5], [6, 8]]
+        [[1, 2], [2, 5], [5, 8]]
     # Note the difference    ^
 
 def test_levenshtein_seg_1sdi1b_with_diff():
