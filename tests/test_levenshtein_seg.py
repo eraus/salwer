@@ -28,51 +28,7 @@ from salwer.levenshtein import (
 #       to the lower boundary of a segment before swapping d0 and d1.
 # * = (before the number) base value used for no-head seg distance.
 
-
-############################################
-# x1sdi
-#    s = "  J K L   N O   Q".split()
-#    t = "X J   L M N X P Q".split()
-# segs    ^|  ^  |^|  ^ ^  |
-# type    I   D   I   S I
-# s\t      X   J   L   M   N   X   P   Q
-#      j >
-#   i  0+|*1 | 2   3 | 4 | 5   6   7   8                d0 (i = 0)
-#   v -----------------------------------
-# J    1 | 1 | 1-  2 | 3 | 4   5   6   7    d1 (i = 0), d0 (i = 1)
-# K    2 | 2 | 2   2 | 3 | 4   5   6   7    d1 (i = 1), d0 (i = 2)
-# L    3 | 3 | 3   2+|*3 | 4   5   6   7    d1 (i = 2), d0 (i = 3)
-#     -----------------------------------
-# N    4 | 4 | 4   3 | 3 | 3-  4   5   6    d1 (i = 3), d0 (i = 4)
-# O    5 | 5 | 5   4 | 4 | 4   4   5   6    d1 (i = 4), d0 (i = 5)
-# Q    6 | 6 | 6   5 | 5 | 5+  5+  5+  5+   d1 (i = 5)
-
-s1sdi = "  J K L   N O   Q".split()
-t1sdi = "X J   L M N X P Q".split()
-
-def test_levenshtein_align_1sdi():
-    """Test levenshtein_align_fast with the above lists."""
-    segs = [[0, 3], [3, 6]]
-    assert levenshtein_align_fast(s1sdi, t1sdi, segs) == \
-        [[1, 3], [4, 8]]
-    assert levenshtein_align(s1sdi, t1sdi, segs) == \
-        [[1, 3], [4, 8]]
-
-def test_levenshtein_seg_1sdi():
-    """Test levenshtein_seg with the above lists."""
-    segs = [[0, 3], [3, 6]]
-    assert levenshtein_seg_fast(s1sdi, t1sdi, segs) == \
-        [[3, 1], [3, 2]]
-    assert levenshtein_seg(s1sdi, t1sdi, segs) == \
-        [[3, 1], [3, 2]]
-
-def test_levenshtein_seg_head_1sdi():
-    """Test levenshtein_seg with the above lists."""
-    segs = [[0, 3], [3, 6]]
-    assert levenshtein_seg_fast(s1sdi, t1sdi, segs, head=True) == \
-        [[3, 2], [3, 3]]
-    assert levenshtein_seg(s1sdi, t1sdi, segs, head=True) == \
-        [[3, 2], [3, 3]]
+# Search for x1sdi0 for comments about d0 and d1
 
 
 ############################################
@@ -412,6 +368,134 @@ def test_levenshtein_seg_fast_head_1i1b():
 
 ############################################
 # x1sdi1a
+#    s = "  J K L   N O   Q".split()
+#    t = "X J   L M N X P Q".split()
+# segs    ^|  ^  |^|  ^ ^  |
+# type    I   D   I   S I
+#
+# s\t      X   J   L   M   N   X   P   Q
+#      j >
+#   i  0+|*1 | 2   3 | 4 | 5   6   7   8                d0 (i = 0)
+#   v -----------------------------------
+# J    1 | 1 | 1-  2 | 3 | 4   5   6   7    d1 (i = 0), d0 (i = 1)
+# K    2 | 2 | 2   2 | 3 | 4   5   6   7    d1 (i = 1), d0 (i = 2)
+# L    3 | 3 | 3   2+|*3 | 4   5   6   7    d1 (i = 2), d0 (i = 3)
+#     -----------------------------------
+# N    4 | 4 | 4   3 | 3 | 3-  4   5   6    d1 (i = 3), d0 (i = 4)
+# O    5 | 5 | 5   4 | 4 | 4   4   5   6    d1 (i = 4), d0 (i = 5)
+# Q    6 | 6 | 6   5 | 5 | 5+  5+  5+  5+   d1 (i = 5)
+
+s1sdi1 = "  J K L   N O   Q".split()
+t1sdi1 = "X J   L M N X P Q".split()
+sg1sdi1a = [[0, 3], [3, 6]]
+
+def test_levenshtein_align_1sdi1a_all_normal():
+    assert levenshtein_align_fast(s1sdi1, t1sdi1, sg1sdi1a) == \
+        [[1, 3], [4, 8]]
+    assert levenshtein_align(s1sdi1, t1sdi1, sg1sdi1a) == \
+        [[1, 3], [4, 8]]
+
+def test_levenshtein_seg_1sdi1a_all_normal():
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1a) == \
+        [[3, 1], [3, 2]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1a) == \
+        [[3, 1], [3, 2]]
+
+def test_levenshtein_seg_head_1sdi1a_all_normal():
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1a, head=True) == \
+        [[3, 2], [3, 3]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1a, head=True) == \
+        [[3, 2], [3, 3]]
+
+
+############################################
+# x1sdi1b
+#    s = "  J K L   N O   Q".split()
+#    t = "X J   L M N X P Q".split()
+# segs    ^| |^   ^  |^ ^  |
+# type    I   D   I   S I
+#
+# s\t      X   J   L   M   N   X   P   Q
+#      j >
+#   i  0+|*1 | 2 | 3   4   5 | 6   7   8
+#   v -----------------------------------
+# J    1+| 1+|*1+| 2   3   4 | 5   6   7
+#     -----------------------------------
+# K    2 | 2 | 2 | 2-  3   4 | 5   6   7
+# L    3 | 3 | 3 | 2   3   4 | 5   6   7
+# N    4 | 4 | 4 | 3+  3+ *3+| 4   5   6
+#     -----------------------------------
+# O    5 | 5 | 5 | 4   4   4 | 4-  5   6
+# Q    6 | 6 | 6 | 5   5   5+| 5+  5+  5+
+# Note: the element at J/J should be 1- as well
+
+sg1sdi1b = [[0, 1], [1, 4], [4, 6]]
+
+def test_levenshtein_align_1sdi1b_with_diff():
+    assert levenshtein_align_fast(s1sdi1, t1sdi1, sg1sdi1b) == \
+        [[1, 2], [2, 5], [5, 8]]
+    assert levenshtein_align(s1sdi1, t1sdi1, sg1sdi1b) == \
+        [[1, 2], [2, 5], [6, 8]]
+    # Note the difference    ^
+
+def test_levenshtein_seg_1sdi1b_with_diff():
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1b) == \
+        [[1, 0], [3, 2], [2, 2]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1b) == \
+        [[1, 0], [3, 2], [2, 1]]
+    # Note the difference    ^
+
+def test_levenshtein_seg_head_1sdi1b_all_normal():
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1b, head=True) == \
+        [[1, 1], [3, 2], [2, 2]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1b, head=True) == \
+        [[1, 1], [3, 2], [2, 2]]
+
+
+############################################
+# x1sdi1c
+#    s = "  J K L   N O   Q".split()
+#    t = "X J   L M N X P Q".split()
+# segs    ^|  ^|  ^   ^|^| |
+# type    I   D   I   S I
+# s\t      X   J   L   M   N   X   P   Q
+#      j >
+#   i  0+|*1 | 2   3 | 4   5   6 | 7 | 8
+#   v -----------------------------------
+# J    1 | 1 | 1-  2 | 3   4   5 | 6 | 7
+# K    2+| 2+|*2+  2+| 3   4   5 | 6 | 7
+#     -----------------------------------
+# L    3 | 3 | 3 | 2-  3   4   5 | 6 | 7
+# N    4 | 4 | 4 | 3   3   3   4 | 5 | 6
+# O    5 | 5 | 5 | 4+  4+  4+  4+|*5 | 6
+#     -----------------------------------
+# Q    6 | 6 | 6 | 5+  5+  5+  5+| 5+| 5+
+# Note: the element at Q/Q should be 5- as well
+sg1sdi1c = [[0, 2], [2, 5], [5, 6]]
+
+def test_levenshtein_align_1sdi1c_with_diff():
+    assert levenshtein_align_fast(s1sdi1, t1sdi1, sg1sdi1c) == \
+        [[1, 3], [2, 6], [7, 8]]
+    assert levenshtein_align(s1sdi1, t1sdi1, sg1sdi1c) == \
+        [[1, 3], [2, 6], [7, 8]]
+    #        ^  Note the differece
+
+def test_levenshtein_seg_1sdi1c_with_diff():
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c) == \
+        [[2, 1], [3, 2], [1, 0]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1c) == \
+        [[2, 1], [3, 2], [1, 1]]
+    # Note the difference    ^
+
+def test_levenshtein_seg_head_1sdi1c_all_normal():
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c, head=True) == \
+        [[2, 2], [3, 2], [1, 1]]
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1c, head=True) == \
+        [[2, 2], [3, 2], [1, 1]]
+
+
+############################################
+# x1sdi2a
 #    s = "J K L M N O   Q".split()
 #    t = "J R L M   O P Q".split()
 # segs   |  ^  |  ^|  ^  |
@@ -430,37 +514,37 @@ def test_levenshtein_seg_fast_head_1i1b():
 # O   6 | 5   5   4 | 3 | 2-  3   4                       d1  d0
 # Q   7 | 6   6   5 | 4 | 3   3+  3+                          d1
 
-s1sdi1 = "J K L M N O   Q".split()
-t1sdi1 = "J R L M   O P Q".split()
+s1sdi2 = "J K L M N O   Q".split()
+t1sdi2 = "J R L M   O P Q".split()
 
-def test_levenshtein_align_1sdi1():
+def test_levenshtein_align_1sdi2():
     """Test levenshtein_align functions with the above lists."""
     segs = [[0, 3], [3, 5], [5, 7]]
-    assert levenshtein_align_fast(s1sdi1, t1sdi1, segs) == \
+    assert levenshtein_align_fast(s1sdi2, t1sdi2, segs) == \
         [[0, 3], [3, 5], [4, 7]]
     # Note           ^ this should be 4; caused by training source
-    assert levenshtein_align(s1sdi1, t1sdi1, segs) == \
+    assert levenshtein_align(s1sdi2, t1sdi2, segs) == \
         [[0, 3], [3, 5], [4, 7]]
 
-def test_levenshtein_seg_fast_1sdi1():
+def test_levenshtein_seg_fast_1sdi2():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 5], [5, 7]]
-    assert levenshtein_seg_fast(s1sdi1, t1sdi1, segs) == \
+    assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs) == \
         [[3, 1], [2, 1], [2, 1]]
-    assert levenshtein_seg(s1sdi1, t1sdi1, segs) == \
+    assert levenshtein_seg(s1sdi2, t1sdi2, segs) == \
         [[3, 1], [2, 1], [2, 1]]
 
-def test_levenshtein_seg_fast_head_1sdi1():
+def test_levenshtein_seg_fast_head_1sdi2():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 5], [5, 7]]
-    assert levenshtein_seg_fast(s1sdi1, t1sdi1, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs, head=True) == \
         [[3, 1], [2, 1], [2, 1]]
-    assert levenshtein_seg(s1sdi1, t1sdi1, segs, head=True) == \
+    assert levenshtein_seg(s1sdi2, t1sdi2, segs, head=True) == \
         [[3, 1], [2, 1], [2, 1]]
 
 
 ############################################
-# x1sdi2
+# x1sdi3
 #    s = "  J K L   N O P Q".split()
 #    t = "X J   L M N X   Q".split()
 # segs    ^|  ^  |^|  ^ ^  |
@@ -478,28 +562,28 @@ def test_levenshtein_seg_fast_head_1sdi1():
 # P   6 | 6 | 6   5 | 5 | 5   5   5                       d1  d0
 # Q   7 | 7 | 7   6 | 6 | 6   6   5+                          d1
 
-s1sdi2 = "  J K L   N O P Q".split()
-t1sdi2 = "X J   L M N X   Q".split()
+s1sdi3 = "  J K L   N O P Q".split()
+t1sdi3 = "X J   L M N X   Q".split()
 
-def test_levenshtein_seg_fast_1sdi2():
+def test_levenshtein_seg_fast_1sdi3():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 7]]
-    assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs) == \
+    assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs) == \
         [[3, 1], [4, 2]]
-    assert levenshtein_seg(s1sdi2, t1sdi2, segs) == \
+    assert levenshtein_seg(s1sdi3, t1sdi3, segs) == \
         [[3, 1], [4, 2]]
 
-def test_levenshtein_seg_fast_head_1sdi2():
+def test_levenshtein_seg_fast_head_1sdi3():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 7]]
-    assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs, head=True) == \
         [[3, 2], [4, 3]]
-    assert levenshtein_seg(s1sdi2, t1sdi2, segs, head=True) == \
+    assert levenshtein_seg(s1sdi3, t1sdi3, segs, head=True) == \
         [[3, 2], [4, 3]]
 
 
 ############################################
-# x1sdi3
+# x1sdi4
 #    s = "J K   M N O   Q R".split()
 #    t = "K K L M   O P Q R".split()
 # segs   |^  |^|  ^  |^|   |
@@ -518,28 +602,28 @@ def test_levenshtein_seg_fast_head_1sdi2():
 # Q   6 | 5   5 | 5 | 5   4 | 4 | 4-  5                       d1  d0
 # R   7 | 6   6 | 6 | 6   5 | 5 | 5   4+                          d1
 
-s1sdi3 = "J K   M N O   Q R".split()
-t1sdi3 = "K K L M   O P Q R".split()
+s1sdi4 = "J K   M N O   Q R".split()
+t1sdi4 = "K K L M   O P Q R".split()
 
-def test_levenshtein_seg_fast_1sdi3():
+def test_levenshtein_seg_fast_1sdi4():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 2], [2, 5], [5, 7]]
-    assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs) == \
+    assert levenshtein_seg_fast(s1sdi4, t1sdi4, segs) == \
         [[2, 1], [3, 1], [2, 0]]
-    assert levenshtein_seg(s1sdi3, t1sdi3, segs) == \
+    assert levenshtein_seg(s1sdi4, t1sdi4, segs) == \
         [[2, 1], [3, 1], [2, 0]]
 
-def test_levenshtein_seg_fast_head_1sdi3():
+def test_levenshtein_seg_fast_head_1sdi4():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 2], [2, 5], [5, 7]]
-    assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi4, t1sdi4, segs, head=True) == \
         [[2, 1], [3, 2], [2, 1]]
-    assert levenshtein_seg(s1sdi3, t1sdi3, segs, head=True) == \
+    assert levenshtein_seg(s1sdi4, t1sdi4, segs, head=True) == \
         [[2, 1], [3, 2], [2, 1]]
 
 
 ############################################
-# x1sdi4a
+# x1sdi5a
 #    s = "  J K L   N O P Q".split()
 #    t = "X Y K L M N   Z Q".split()
 # segs    ^|^    |^|  ^ ^  |
@@ -557,32 +641,32 @@ def test_levenshtein_seg_fast_head_1sdi3():
 # P   6 | 6   6   6   5 | 5 | 5   5   5
 # Q   7 | 7   7   7   6 | 6 | 6   6   5+
 
-s1sdi4 = "  J K L   N O P Q".split()
-t1sdi4 = "X Y K L M N   Z Q".split()
+s1sdi5 = "  J K L   N O P Q".split()
+t1sdi5 = "X Y K L M N   Z Q".split()
 
-def test_levenshtein_seg_fast_1sdi4a():
+def test_levenshtein_seg_fast_1sdi5a():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 7]]
-    assert levenshtein_seg_fast(s1sdi4, t1sdi4, segs) == \
+    assert levenshtein_seg_fast(s1sdi5, t1sdi5, segs) == \
         [[3, 2], [4, 2]]
 # Note       ^
 #     This extra distance is caused by the min of d1 in Line A
-    assert levenshtein_seg(s1sdi4, t1sdi4, segs) == \
+    assert levenshtein_seg(s1sdi5, t1sdi5, segs) == \
         [[3, 1], [4, 2]]
 # Note       ^
 #     This is the correct distance.
 
-def test_levenshtein_seg_fast_head_1sdi4a():
+def test_levenshtein_seg_fast_head_1sdi5a():
     """Test levenshtein_seg with the above lists."""
     segs = [[0, 3], [3, 7]]
-    assert levenshtein_seg_fast(s1sdi4, t1sdi4, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi5, t1sdi5, segs, head=True) == \
         [[3, 2], [4, 3]]
-    assert levenshtein_seg(s1sdi4, t1sdi4, segs, head=True) == \
+    assert levenshtein_seg(s1sdi5, t1sdi5, segs, head=True) == \
         [[3, 2], [4, 3]]
 
 
 ############################################
-# x1sdi4b
+# x1sdi5b
 #    s = "  J K L   N O P Q".split()
 #    t = "X Y K L M N   Z Q".split()
 # segs    ^ ^|   |^|  ^ ^  |
@@ -601,22 +685,22 @@ def test_levenshtein_seg_fast_head_1sdi4a():
 # P   6 | 6   6 | 6   5 | 5 | 5   5   5
 # Q   7 | 7   7 | 7   6 | 6 | 6   6   5+
 
-def test_levenshtein_seg_fast_1sdi4b():
+def test_levenshtein_seg_fast_1sdi5b():
     """Test levenshtein_seg with the above lists."""
     segs = [[1, 3], [3, 7]]
-    assert levenshtein_seg_fast(s1sdi4, t1sdi4, segs) == \
+    assert levenshtein_seg_fast(s1sdi5, t1sdi5, segs) == \
         [[2, 0], [4, 2]]
-    assert levenshtein_seg(s1sdi4, t1sdi4, segs) == \
+    assert levenshtein_seg(s1sdi5, t1sdi5, segs) == \
         [[2, 0], [4, 2]]
 
-def test_levenshtein_seg_fast_head_1sdi4b():
+def test_levenshtein_seg_fast_head_1sdi5b():
     """Test levenshtein_seg with the above lists."""
     segs = [[1, 3], [3, 7]]
-    assert levenshtein_seg_fast(s1sdi4, t1sdi4, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi5, t1sdi5, segs, head=True) == \
         [[2, 1], [4, 3]]
 # Note       ^
 #     There is ambiguity about how to determine this.
-    assert levenshtein_seg(s1sdi4, t1sdi4, segs, head=True) == \
+    assert levenshtein_seg(s1sdi5, t1sdi5, segs, head=True) == \
         [[2, 1], [4, 3]]
 # Note       ^
 #     This is determined by the shifting.

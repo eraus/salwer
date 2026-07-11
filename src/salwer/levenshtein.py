@@ -174,12 +174,12 @@ def levenshtein_align(
                 segt[k][0] = ind_valua_minus - 1
 
                 # Check num_shift: the num of prefix drift
-                num_shift, index4t, r, h = \
-                    check_prefix_drift(s, t, d0, i)
-                # index4t = max_ind_of_min(d0)    # value-
-                # r = s[i:]           # ref = partial source
-                # h = t[index4t:]     # hyp = partial target
-                # num_shift = num_prefix_drift(r, h)
+                # num_shift, index4t, r, h = \
+                #     check_prefix_drift(s, t, d0, i)
+                index4t = max_ind_of_min(d0)    # value-
+                r = s[i:]           # ref = partial source
+                h = t[index4t:]     # hyp = partial target
+                num_shift = num_prefix_drift(r, h)
 
                 # Restart for i loop if there is prefix drift
                 if num_shift:
@@ -360,7 +360,7 @@ def levenshtein_seg(
 
         if b + i >= m0 - 1: break   # break the while loop
 
-    # Safety net to ensure calculated seg size is assigned
+    Safety net to ensure calculated seg size is assigned
     for k in range(n_segs):
         if segd[k][0] == 0:
             segd[k][0] = segs[k][1] - segs[k][0]

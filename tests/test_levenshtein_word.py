@@ -35,7 +35,12 @@ def test_max_ind_of_min():
     d2 = [3, 2, 1, 1, 1, 2, 3, 4]
     #                 ^
     assert max_ind_of_min(d2) == 4
-
+    d3 = [1, 1]
+    #        ^
+    assert max_ind_of_min(d3) == 1
+    d4 = [1]
+    #     ^
+    assert max_ind_of_min(d4) == 0
 
 
 # When we calculate the word-level Levenshtein distance using the seg-based
