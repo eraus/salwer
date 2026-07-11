@@ -3,7 +3,7 @@
 import pytest
 
 from salwer.levenshtein import (
-    num_prefix_drift,
+    num_hallucination,
     max_ind_of_min,
     levenshtein_seg_fast,
     levenshtein_word_fast,
@@ -13,19 +13,19 @@ from salwer.levenshtein import (
 
 # Test the helper functions used for levenshtein_word.
 
-def test_num_prefix_drift():
+def test_num_hallucination():
     r1 = "B C D".split()
     h1 = "A C D".split()
-    assert num_prefix_drift(r1, h1) == 0
+    assert num_hallucination(r1, h1) == 0
     r2 = "B C D".split()
     h2 = "  C D".split()
-    assert num_prefix_drift(r2, h2) == 0
+    assert num_hallucination(r2, h2) == 0
     r3 = "  B C D".split()
     h3 = "A B C D".split()
-    assert num_prefix_drift(r3, h3) == 1
+    assert num_hallucination(r3, h3) == 1
     r4 = "    B C D".split()
     h4 = "Z A B C D".split()
-    assert num_prefix_drift(r4, h4) == 2
+    assert num_hallucination(r4, h4) == 2
 
 
 def test_max_ind_of_min():

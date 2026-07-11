@@ -128,7 +128,7 @@ def levenshtein_1d(s: List[str], t: List[str]) -> int:
 
 
 #--------------------------------------------------------------------
-# Levenshtein alignment
+# Levenshtein alignment functions
 #--------------------------------------------------------------------
 
 def levenshtein_align_fast(
@@ -219,7 +219,7 @@ def levenshtein_align(
 
     ss = 0   # sequence s' total shift due to update of s
     ts = 0   # sequence t's total shift; counterpart of ss
-    mm = m   # m's original value for loop control
+    mc = m   # m's original value for loop control
     check_shift = True      # flag for checking shift
 
     while True:
@@ -227,10 +227,11 @@ def levenshtein_align(
             # Check the prefix drift at seg's lower boundary.
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
-                # n_pd: num of prefix drift (leading ins of t compared to s).
                 # t_ind: t's index used for prefix drift checking.
+                t_ind = max_ind_of_min(d0)
+                # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
-                n_pd, t_ind, r, h = check_prefix_drift(s, t, d0, i)
+                n_pd, r, h = prefix_drift_rh(s, t, i, t_ind)
 
                 # Restart the "for i loop" as needed if there is prefix drift
                 if n_pd:
@@ -257,13 +258,15 @@ def levenshtein_align(
 
             d0, d1 = d1, d0
 
-        if ss + i >= mm - 1: break   # all elements in s scanned
+        if ss + i >= mc - 1: break   # all elements in s scanned
 
     return segt
 
 
 #--------------------------------------------------------------------
-# Different implementation of the Levenshtein algorithm
+# Levenshtein segment-level distance functions
+#--------------------------------------------------------------------
+
 def levenshtein_seg_fast(
     s: List[str],
     t: List[str],
@@ -368,10 +371,10 @@ def levenshtein_seg(
     segd = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
-    base_dist = 0   # base dist: v_plus or v_star
+    base_dist = 0           # base dist: v_plus
 
-    ss = 0          # base index for s
-    mm = m          # copy of m for loop control
+    ss = 0                  # base index for s
+    mc = m                  # copy of m for loop control
     check_shift = True      # flag for checking shift
 
     while True:
@@ -379,10 +382,11 @@ def levenshtein_seg(
             # Check the prefix drift at seg's lower boundary.
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
-                # n_pd: num of prefix drift (leading ins of t compared to s).
                 # t_ind: t's index used for prefix drift checking.
+                t_ind = max_ind_of_min(d0)
+                # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
-                n_pd, t_ind, r, h = check_prefix_drift(s, t, d0, i)
+                n_pd, r, h = prefix_drift_rh(s, t, i, t_ind)
 
                 # Restart the "for i loop" as needed if there is prefix drift
                 if n_pd:
@@ -402,175 +406,159 @@ def levenshtein_seg(
             if segs[k][1] == ss + i + 1:
                 segd[k][0] = segs[k][1] - segs[k][0]    # seg size
                 segd[k][1] = min(d1) - base_dist        # seg dist
-                if head: segd[k][1] += n_pd               # seg dist
+                if head: segd[k][1] += n_pd             # seg dist
                 check_shift = True   # get ready for prefix drift checking
                 k += 1
                 if k >= n_segs: return segd
 
             d0, d1 = d1, d0
 
-        if ss + i >= mm - 1: break   # break the while loop
+        if ss + i >= mc - 1: break   # break the while loop
 
     return segd
 
 
 #--------------------------------------------------------------------
-# Different implementation of the Levenshtein algorithm
+# Levenshtein word-level distance functions
+#--------------------------------------------------------------------
+
 def levenshtein_word_fast(
     s: List[str],
     t: List[str],
 ) -> List[List]:
-    """Levenshtein distance of each word without examining errors (fast).
+    """Levenshtein dist of each word w/o examining errors---the fast version.
 
-    This function calculates the word-level levenshtein distance. The meaning
-    of raw is two fold:
+    This function calculates the 'raw' word-level levenshtein distance.
+    The meaning of raw is two fold:
 
-    1. The errors (distance being one for a word) are not examined for type,
-            which is substitution/delete/insertion.
-    2. The error due to a hallucination is only considered as prefix drift.
+    1.  The errors (distance being one for a word) are not examined for type.
+            Insertions (hallucination) can lead to issues with other words.
+    2.  The error due to a hallucination is only considered as prefix drift.
 
     Args:
-        s: Reference sequence as list of strings.
-        t: Hypothesis sequence as list of strings.
+    -   s: Source (reference) sequence as list of strings.
+    -   t: Target (hypothesis) sequence as list of strings.
 
     Returns:
-        List of [word, levenshtein_dist] for each word, where
-        levenshtein_dist is 0 or 1.
+    -   wlst: Word list---a list of [word, levenshtein_dist] for each word,
+        where levenshtein_dist is 0 or 1.
     """
 
-    m, n = len(s), len(t)
-    d0 = list(range(n+1))   # prev dist
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD dist
+    d1 = [0] * (n+1)        # curr LD dist
+
+    wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
     min_d0 = 0
-    d1 = [0] * (n+1)        # curr dist
-    rslts = [[0] * 2 for _ in range(m)]
 
     for i in range(m):
-        d1[0] = i + 1
-        for j in range(n):
-            c = 0 if s[i] == t[j] else 1
-            d1[j+1] = min(
-                d0[j] + c,    # sub s->t
-                d0[j+1] + 1,  # del of s
-                d1[j] + 1,    # ins to s
-            )
+        d1 = update_d1(s, t, d0, d1, i, n)
+
         min_d1 = min(d1)
-        rslts[i][0] = s[i]              # word
-        rslts[i][1] = min_d1 - min_d0   # dist
+        wlst[i][0] = s[i]              # word
+        wlst[i][1] = min_d1 - min_d0   # dist
+
         d0, d1, min_d0 = d1, d0, min_d1
 
-    return rslts
+    return wlst
 
 
 def levenshtein_word(
     s: List[str],
     t: List[str],
 ) -> List[List]:
-    """Levenshtein distance of each word with errors examined.
+    """Levenshtein dist of each word with errors examined---the normal version.
 
-    This function calculates the word-level levenshtein distance in a refined
-    way as compared to levenshtein_word_fast. The meaning of refinement
+    This function calculates the word-level levenshtein distance in a 'refined'
+    way as compared to levenshtein_word_fast. The meaning of `refinement`
     is multi-fold:
 
-    1. Each error (Levenshtein dist being 1 for a word) is tested to see if
-       it is an insertion (prefix drift or hallucination).
-    2. If tested as a prefix hallucination, it is split to by the two words
-       on the two sides of the hallucination.
-    3. If the word is at the beginning of the source, all prefix hallucinations
-       will be on this word.
-    4. If the word is at the end of the source, all the surfix hallucinations
-       will be on this word.
+    1.  Each error (Levenshtein dist being 1 for a word) is tested to see if
+        it is an insertion (also called prefix drift or hallucination).
+    2.  If tested as a prefix hallucination, the 'blame' is split to
+        the two words on the two sides of the hallucination.
+    3.  If the word is at the beginning of the source, all prefix
+        hallucinations will be blamed to this word.
+    4.  If the word is at the end of the source, all the surfix hallucinations
+        will be blamed to this word.
 
     Note that due to the splitting of error, we need to DOUBLE the value of
     the Levenshtein distance for easy processing and testing.
 
     Args:
-        s: Reference sequence as list of strings.
-        t: Hypothesis sequence as list of strings.
+    -   s: Source (reference) sequence as list of strings.
+    -   t: Target (hypothesis) sequence as list of strings.
 
     Returns:
-        List of [word, levenshtein_dist] for each word, where
-        levenshtein_dist is can be a real number.
+    -   wlst: Word list---a list of [word, levenshtein_dist] for each word,
+        where levenshtein_dist is an integer, assuming values 0, 1, 2, ...
     """
 
-    m, n = len(s), len(t)
-    mm, s0 = m, s.copy()
-    d0 = list(range(n+1))   # prev dist
-    d1 = [0] * (n+1)        # curr dist
-    min_d0 = 0              # min value of d0
-    rslts = [[0] * 2 for _ in range(m)]
-    ss = 0   # the base for s
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD dist
+    d1 = [0] * (n+1)        # curr LD dist
+
+    wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
+    min_d0 = 0
+
+    ss = 0                  # base index for s
+    mc, sc = m, s.copy()
+
     while True:
         for i in range(m):
-            d1[0] = i + 1
-            for j in range(n):
-                c = 0 if s[i] == t[j] else 1
-                d1[j+1] = min(
-                    d0[j] + c,    # sub s->t
-                    d0[j+1] + 1,  # del of s
-                    d1[j] + 1,    # ins to s
-                )
+            d1 = update_d1(s, t, d0, d1, i, n)
+
+            # Assign word and initial dist to word list
+            wlst[ss+i][0] = sc[ss+i]    # word
             min_d1 = min(d1)
-            rslts[ss+i][0] = s0[ss+i]     # word
-            dist = min_d1 - min_d0      # dist
-            rslts[ss+i][1] += dist
+            dist = min_d1 - min_d0
+            wlst[ss+i][1] += dist       # 0 or 1
+
             t_ind = max_ind_of_min(d0)
             d0, d1, min_d0 = d1, d0, min_d1
+
             if dist == 0: continue
-            # Otherwise, check the num of prefix drift
-            r = s[i:]           # ref = source
-            h = t[t_ind:]     # hyp = target
-            n_pd = num_prefix_drift(r, h)
+
+            # Otherwise, check for potential prefix drift
+            n_pd, r, h = prefix_drift_rh(s, t, i, t_ind)
+            # Restart the "for i loop" as needed if there is prefix drift
             if n_pd:
-                rslts[ss+i][1] = n_pd
+                wlst[ss+i][1] = n_pd         # add num of hallucinations
                 if ss+i == 0:
-                    rslts[ss+i][1] += n_pd
+                    wlst[ss+i][1] += n_pd    # add again for s[0]
                 else:
-                    rslts[ss+i-1][1] += n_pd
-                s = r
-                t = h[n_pd:]
-                m, n = len(s), len(t)
-                d0 = list(range(n+1))   # prev dist
-                d1 = [0] * (n+1)        # curr dist
-                min_d0 = 0              # min value of d0
-                ss += i
-                i = 0
+                    wlst[ss+i-1][1] += n_pd  # share blame with neighbor
+
+                s, t, m, n, d0, d1, ss, i = \
+                    update_st_vars(r, h, n_pd, ss, i)
+                min_d0 = 0
+
                 break
-            else:
-                rslts[ss+i][1] += 1
-        if ss + i >= mm - 1:
+            else:  # substitution or deletion
+                wlst[ss+i][1] += 1  # seg dist = 2 now
+
+        if ss + i >= mc - 1:
+            # Blame the last word in s for all tail issues.
             num_tail = len(d0) - max_ind_of_min(d0) - 1
             if num_tail:
-                rslts[mm-1][1] += 2 * num_tail
-            break
+                wlst[mc-1][1] += 2 * num_tail
 
-    return rslts
+            break  # all elements of s scanned
+
+    return wlst
 
 
 #--------------------------------------------------------------------
 # Utility/Helper functions
 #--------------------------------------------------------------------
-def num_prefix_drift(s: List[str], t: List[str]) -> int:
-    """Find the num of prefix drifts (insertion or hallucination) of s & t."""
 
-    shift = 0
-    dist0 = levenshtein(s, t)
-    dist1 = levenshtein(s, t[1:])
-    while dist0 > dist1:
-        shift += 1
-        dist0 = dist1
-        dist1 = levenshtein(s, t[shift+1:])
-    return shift
-
-
+# Find the max index of the min value of a list.
 def max_ind_of_min(d: List[int]) -> int:
-    """Find the max index of the min value of a list."""
-
     min_val = min(d)
     ind = [i for i, x in enumerate(d) if x == min_val]
     return max(ind)
 
 
-# Utility function for updating d1.
 # Direct implementation can be found in the levenshtein() function.
 def update_d1(s, t, d0, d1, i, n):
     d1[0] = i + 1
@@ -585,7 +573,7 @@ def update_d1(s, t, d0, d1, i, n):
 
 
 # Utility function for updating s and t sequences and related variables.
-# This is needed when we want address the leading shift of t against s.
+# Needed when we have leading hallucinations of t against s.
 def update_st_vars(r, h, n_pd, ss, i):
     s = r                   # new source
     t = h[n_pd:]            # new target
@@ -597,9 +585,20 @@ def update_st_vars(r, h, n_pd, ss, i):
     return s, t, m, n, d0, d1, ss, i
 
 
-def check_prefix_drift(s, t, d0, i):
-    t_ind = max_ind_of_min(d0)  # ind_v_minus
+def prefix_drift_rh(s, t, i, t_ind):
     r = s[i:]           # ref = partial source
     h = t[t_ind:]       # hyp = partial target
-    n_pd = num_prefix_drift(r, h)
-    return n_pd, t_ind, r, h
+    n_pd = num_hallucination(r, h)
+    return n_pd, r, h
+
+
+# Find the num of prefix drifts (insertion or hallucination) of s & t.
+def num_hallucination(s: List[str], t: List[str]) -> int:
+    shift = 0
+    dist0 = levenshtein(s, t)
+    dist1 = levenshtein(s, t[1:])
+    while dist0 > dist1:
+        shift += 1
+        dist0 = dist1
+        dist1 = levenshtein(s, t[shift+1:])
+    return shift
