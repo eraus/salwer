@@ -3,44 +3,10 @@
 import pytest
 
 from salwer.levenshtein import (
-    num_hallucination,
-    max_ind_of_min,
     levenshtein_seg_fast,
     levenshtein_word_fast,
     levenshtein_word,
 )
-
-
-# Test the helper functions used for levenshtein_word.
-
-def test_num_hallucination():
-    r1 = "B C D".split()
-    h1 = "A C D".split()
-    assert num_hallucination(r1, h1) == 0
-    r2 = "B C D".split()
-    h2 = "  C D".split()
-    assert num_hallucination(r2, h2) == 0
-    r3 = "  B C D".split()
-    h3 = "A B C D".split()
-    assert num_hallucination(r3, h3) == 1
-    r4 = "    B C D".split()
-    h4 = "Z A B C D".split()
-    assert num_hallucination(r4, h4) == 2
-
-
-def test_max_ind_of_min():
-    d1 = [1, 0, 0, 1, 2, 3, 4, 5]
-    #           ^
-    assert max_ind_of_min(d1) == 2
-    d2 = [3, 2, 1, 1, 1, 2, 3, 4]
-    #                 ^
-    assert max_ind_of_min(d2) == 4
-    d3 = [1, 1]
-    #        ^
-    assert max_ind_of_min(d3) == 1
-    d4 = [1]
-    #     ^
-    assert max_ind_of_min(d4) == 0
 
 
 # When we calculate the word-level Levenshtein distance using the seg-based
@@ -660,3 +626,46 @@ def test_levenshtein_seg_fast_head_3s1w():
         [[1, 1], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [1, 1], [1, 1], [1, 0]]
 # Note               ^       ^
 
+
+############################################
+# x3i3t1
+#    s = "      M N M    ".split()
+#    t = "J K L M N O P Q".split()
+#         ^ ^ ^     ^ ^ ^
+
+s3i3t1 = "      M N O P      ".split()
+t3i3t1 = "J K L M N O P Q R J".split()
+
+def test_levenshtein_word_3i3t1_default_err_limit():
+    assert levenshtein_word(s3i3t1, t3i3t1) == \
+        [["M", 5], ["N", 0], ["O", 0], ["P", 5]]
+
+def test_levenshtein_word_3i3t1_err_limit_to_3():
+    assert levenshtein_word(s3i3t1, t3i3t1, err_limit=3) == \
+        [["M", 3], ["N", 0], ["O", 0], ["P", 3]]
+
+def test_levenshtein_word_3i3t1_err_limit_to_9():
+    assert levenshtein_word(s3i3t1, t3i3t1, err_limit=9) == \
+        [["M", 6], ["N", 0], ["O", 0], ["P", 6]]
+
+############################################
+# x3i1s2t
+#    s = "      M N M    ".split()
+#    t = "J K L M N O P Q".split()
+#         ^ ^ ^     ^ ^ ^
+
+s3i1s3t1 = "      M N O P M      ".split()
+t3i1s3t1 = "J K L M N O P Q R J K".split()
+
+def test_levenshtein_word_3i1s3t_default_err_limit():
+    assert levenshtein_word(s3i1s3t1, t3i1s3t1) == \
+        [["M", 5], ["N", 0], ["O", 0], ["P", 3], ["M", 5]]
+    # Note the difference                    ^  caused by 3 shifts of t at M.
+
+def test_levenshtein_word_3i1s3t1_err_limit_to_3():
+    assert levenshtein_word(s3i1s3t1, t3i1s3t1, err_limit=3) == \
+        [["M", 3], ["N", 0], ["O", 0], ["P", 3], ["M", 3]]
+
+def test_levenshtein_word_3i1s3t1_err_limit_to_9():
+    assert levenshtein_word(s3i1s3t1, t3i1s3t1, err_limit=9) == \
+        [["M", 6], ["N", 0], ["O", 0], ["P", 3], ["M", 5]]

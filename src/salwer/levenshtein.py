@@ -152,7 +152,7 @@ def levenshtein_align_fast(
 
     for i in range(m):
         # Update d1. To make the main loop more readable, this code block
-        # can be implemented as update_d1(s, t, d0, d1, i, n).
+        # can be implemented as _update_d1(s, t, d0, d1, i, n).
         d1[0] = i + 1
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
@@ -164,12 +164,12 @@ def levenshtein_align_fast(
 
         # Find segment lower boundary for t based on ind_v_minus - 1
         if segs[k][0] == i:
-            segt[k][0] = max_ind_of_min(d1) - 1
+            segt[k][0] = _max_ind_of_min(d1) - 1
 
         # Find segment upper boundary for t based on ind_v_plus.
         # Update the segment index; exit as needed.
         if segs[k][1] == i + 1:
-            segt[k][1] = max_ind_of_min(d1)
+            segt[k][1] = _max_ind_of_min(d1)
             k += 1
             if k >= n_segs: break
 
@@ -228,30 +228,30 @@ def levenshtein_align(
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
                 # t_ind: t's index used for prefix drift checking.
-                t_ind = max_ind_of_min(d0)
+                t_ind = _max_ind_of_min(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
-                n_pd, r, h = prefix_drift_rh(s, t, i, t_ind)
+                n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
 
                 # Restart the "for i loop" as needed if there is prefix drift
                 if n_pd:
                     s, t, m, n, d0, d1, ss, i = \
-                        update_st_vars(r, h, n_pd, ss, i)
+                        _update_st_vars(r, h, n_pd, ss, i)
                     ts = ts + t_ind + n_pd  # needed for alignment
                     check_shift = False     # no check again for this boundary
                     # Only break the current "for i loop" if s has 2+ elements
                     if m > 1: break
 
-            d1 = update_d1(s, t, d0, d1, i, n)
+            d1 = _update_d1(s, t, d0, d1, i, n)
 
             # Find segment lower boundary for t based on ind_v_minus - 1.
             if segs[k][0] == ss + i:
-                segt[k][0] = max_ind_of_min(d1) - 1
+                segt[k][0] = _max_ind_of_min(d1) - 1
 
             # Find segment upper boundary for t based on ind_v_plus.
             if segs[k][1] == ss + i + 1:
                 segt[k][0] += ts     # update lower boundary
-                segt[k][1] = max_ind_of_min(d1) + ts
+                segt[k][1] = _max_ind_of_min(d1) + ts
                 check_shift = True   # get ready for prefix drift checking
                 k += 1               # update the segment index
                 if k >= n_segs: return segt  # done with all segs; exit
@@ -310,7 +310,7 @@ def levenshtein_seg_fast(
     #--------------------------------------------------------------
     # Define function base_seg_dist for calculate the seg distance.
     def v_star(d0, d1):  # used for obtaining seg dist w/o head
-        dist_ind = max_ind_of_min(d1)
+        dist_ind = _max_ind_of_min(d1)
         dist = d0[dist_ind - 1]
         return dist
 
@@ -333,7 +333,7 @@ def levenshtein_seg_fast(
     base_dist = 0   # base dist: v_plus or v_star
 
     for i in range(m):
-        d1 = update_d1(s, t, d0, d1, i, n)
+        d1 = _update_d1(s, t, d0, d1, i, n)
 
         # Find the base dist at the segment lower boundary.
         if segs[k][0] == i:
@@ -383,20 +383,20 @@ def levenshtein_seg(
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
                 # t_ind: t's index used for prefix drift checking.
-                t_ind = max_ind_of_min(d0)
+                t_ind = _max_ind_of_min(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
-                n_pd, r, h = prefix_drift_rh(s, t, i, t_ind)
+                n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
 
                 # Restart the "for i loop" as needed if there is prefix drift
                 if n_pd:
                     s, t, m, n, d0, d1, ss, i = \
-                        update_st_vars(r, h, n_pd, ss, i)
+                        _update_st_vars(r, h, n_pd, ss, i)
                     check_shift = False     # no check again for this boundary
                     # Only break the current "for i loop" if s has 2+ elements
                     if m > 1: break
 
-            d1 = update_d1(s, t, d0, d1, i, n)
+            d1 = _update_d1(s, t, d0, d1, i, n)
 
             # Find the base dist at the segment lower boundary.
             if segs[k][0] == ss + i:
@@ -452,7 +452,7 @@ def levenshtein_word_fast(
     min_d0 = 0
 
     for i in range(m):
-        d1 = update_d1(s, t, d0, d1, i, n)
+        d1 = _update_d1(s, t, d0, d1, i, n)
 
         min_d1 = min(d1)
         wlst[i][0] = s[i]              # word
@@ -466,13 +466,13 @@ def levenshtein_word_fast(
 def levenshtein_word(
     s: List[str],
     t: List[str],
+    err_limit: int = 5,
 ) -> List[List]:
     """Levenshtein dist of each word with errors examined---the normal version.
 
     This function calculates the word-level levenshtein distance in a 'refined'
     way as compared to levenshtein_word_fast. The meaning of `refinement`
     is multi-fold:
-
     1.  Each error (Levenshtein dist being 1 for a word) is tested to see if
         it is an insertion (also called prefix drift or hallucination).
     2.  If tested as a prefix hallucination, the 'blame' is split to
@@ -482,12 +482,16 @@ def levenshtein_word(
     4.  If the word is at the end of the source, all the surfix hallucinations
         will be blamed to this word.
 
-    Note that due to the splitting of error, we need to DOUBLE the value of
-    the Levenshtein distance for easy processing and testing.
+    Note that:
+    1.  Due to the splitting of error, we need to DOUBLE the value of
+        the Levenshtein distance for easy processing and testing.
+    2.  We need to use an error limit to so that a long hallucination
+        will not skew the word-level WER too much.
 
     Args:
     -   s: Source (reference) sequence as list of strings.
     -   t: Target (hypothesis) sequence as list of strings.
+    -   err_limit: Upper limit of the error for each word (in the double case).
 
     Returns:
     -   wlst: Word list---a list of [word, levenshtein_dist] for each word,
@@ -506,7 +510,7 @@ def levenshtein_word(
 
     while True:
         for i in range(m):
-            d1 = update_d1(s, t, d0, d1, i, n)
+            d1 = _update_d1(s, t, d0, d1, i, n)
 
             # Assign word and initial dist to word list
             wlst[ss+i][0] = sc[ss+i]    # word
@@ -514,13 +518,13 @@ def levenshtein_word(
             dist = min_d1 - min_d0
             wlst[ss+i][1] += dist       # 0 or 1
 
-            t_ind = max_ind_of_min(d0)
+            t_ind = _max_ind_of_min(d0)
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
 
             # Otherwise, check for potential prefix drift
-            n_pd, r, h = prefix_drift_rh(s, t, i, t_ind)
+            n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
             # Restart the "for i loop" as needed if there is prefix drift
             if n_pd:
                 wlst[ss+i][1] = n_pd         # add num of hallucinations
@@ -530,7 +534,7 @@ def levenshtein_word(
                     wlst[ss+i-1][1] += n_pd  # share blame with neighbor
 
                 s, t, m, n, d0, d1, ss, i = \
-                    update_st_vars(r, h, n_pd, ss, i)
+                    _update_st_vars(r, h, n_pd, ss, i)
                 min_d0 = 0
 
                 break
@@ -539,9 +543,11 @@ def levenshtein_word(
 
         if ss + i >= mc - 1:
             # Blame the last word in s for all tail issues.
-            num_tail = len(d0) - max_ind_of_min(d0) - 1
+            num_tail = len(d0) - _max_ind_of_min(d0) - 1
             if num_tail:
                 wlst[mc-1][1] += 2 * num_tail
+
+            wlst = _clip_wlst_err(wlst, err_limit)
 
             break  # all elements of s scanned
 
@@ -553,14 +559,42 @@ def levenshtein_word(
 #--------------------------------------------------------------------
 
 # Find the max index of the min value of a list.
-def max_ind_of_min(d: List[int]) -> int:
+def _clip_wlst_err(wlst, err_limit):
+    for word_err in wlst:
+        word_err[1] = min(word_err[1], err_limit)
+    return wlst
+
+
+# Find the max index of the min value of a list.
+def _max_ind_of_min(d: List[int]) -> int:
     min_val = min(d)
     ind = [i for i, x in enumerate(d) if x == min_val]
     return max(ind)
 
 
+# Find the num of prefix drifts (insertion or hallucination words) of s & t.
+def _num_hallucinations(s: List[str], t: List[str]) -> int:
+    shift = 0
+    dist0 = levenshtein(s, t)
+    dist1 = levenshtein(s, t[1:])
+    while dist0 > dist1:
+        shift += 1
+        dist0 = dist1
+        dist1 = levenshtein(s, t[shift+1:])
+    return shift
+
+
+# Find the num of prefix drifts and new s & t sequences.
+def _prefix_drift_rh(s, t, i, t_ind):
+    r = s[i:]               # r = ref, partial source
+    h = t[t_ind:]           # h = hyp, partial target
+    n_pd = _num_hallucinations(r, h)
+    return n_pd, r, h
+
+
+# Update list d1 for Levenshtein distance.
 # Direct implementation can be found in the levenshtein() function.
-def update_d1(s, t, d0, d1, i, n):
+def _update_d1(s, t, d0, d1, i, n):
     d1[0] = i + 1
     for j in range(n):
         c = 0 if s[i] == t[j] else 1
@@ -572,33 +606,15 @@ def update_d1(s, t, d0, d1, i, n):
     return d1
 
 
-# Utility function for updating s and t sequences and related variables.
+# Update s and t sequences and related variables used when reset everthing.
 # Needed when we have leading hallucinations of t against s.
-def update_st_vars(r, h, n_pd, ss, i):
-    s = r                   # new source
-    t = h[n_pd:]            # new target
-    m, n = len(s), len(t)   # new sizes
-    d0 = list(range(n+1))   # new prev dist
-    d1 = [0] * (n+1)        # new curr dist
-    ss += i
-    i = 0
+def _update_st_vars(r, h, n_pd, ss, i):
+    s = r                   # source
+    t = h[n_pd:]            # target
+    m, n = len(s), len(t)   # sizes
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+    ss += i                 # base index for s
+    i = 0                   # index for s
     return s, t, m, n, d0, d1, ss, i
 
-
-def prefix_drift_rh(s, t, i, t_ind):
-    r = s[i:]           # ref = partial source
-    h = t[t_ind:]       # hyp = partial target
-    n_pd = num_hallucination(r, h)
-    return n_pd, r, h
-
-
-# Find the num of prefix drifts (insertion or hallucination) of s & t.
-def num_hallucination(s: List[str], t: List[str]) -> int:
-    shift = 0
-    dist0 = levenshtein(s, t)
-    dist1 = levenshtein(s, t[1:])
-    while dist0 > dist1:
-        shift += 1
-        dist0 = dist1
-        dist1 = levenshtein(s, t[shift+1:])
-    return shift

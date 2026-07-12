@@ -1,23 +1,29 @@
-"""Test functions for Levenshtein distance calculations."""
+"""Test functions for BASIC Levenshtein distance calculations."""
 
 from salwer.levenshtein import (
     levenshtein_2d,
     levenshtein,
     levenshtein_1d,
+    _clip_wlst_err,
+    _max_ind_of_min,
+    _num_hallucinations,
 )
 
+
+#--------------------------------------------------------------------
 # Test Levenshtein distance with empty lists
-def test_levenshtein_two_empty_lists():
-    """Test Levenshtein distance with two empty lists."""
+#--------------------------------------------------------------------
+
+def test_levenshtein_with_two_empty_lists():
     assert levenshtein_2d([], []) == 0
     assert levenshtein_1d([], []) == 0
     assert levenshtein([], []) == 0
 
 
-def test_levenshtein_single_empty_list():
-    """Test Levenshtein distance with one empty list."""
+def test_levenshtein_with_single_empty_list():
     s = "J K L".split()
-    t = []
+    t = "     ".split()
+    #    ^ ^ ^
     assert levenshtein_2d(s, t) == 3
     assert levenshtein_2d(t, s) == 3
     assert levenshtein_1d(s, t) == 3
@@ -26,9 +32,11 @@ def test_levenshtein_single_empty_list():
     assert levenshtein(t, s) == 3
 
 
+#--------------------------------------------------------------------
 # Test Levenshtein distance with identical lists
-def test_levenshtein_identical_lists():
-    """Test Levenshtein distance when the lists are identical."""
+#--------------------------------------------------------------------
+
+def test_levenshtein_with_identical_lists_case1():
     s = "J K L".split()
     t = "J K L".split()
     assert levenshtein_2d(s, t) == 0
@@ -36,9 +44,19 @@ def test_levenshtein_identical_lists():
     assert levenshtein(s, t) == 0
 
 
-# Test Levenshtein distance with partial differences
-def test_levenshtein_single_substitute():
-    """Test Levenshtein distance when there is one substitution."""
+def test_levenshtein_with_identical_lists_case2():
+    s = "J".split()
+    t = "J".split()
+    assert levenshtein_2d(s, t) == 0
+    assert levenshtein_1d(s, t) == 0
+    assert levenshtein(s, t) == 0
+
+
+#--------------------------------------------------------------------
+# Test Levenshtein distance with single partial difference
+#--------------------------------------------------------------------
+
+def test_levenshtein_with_single_substitute():
     s = "J K L".split()
     t = "J M L".split()
     #      ^
@@ -50,26 +68,29 @@ def test_levenshtein_single_substitute():
     assert levenshtein(t, s) == 1
 
 
-def test_levenshtein_single_deletion():
-    """Test Levenshtein distance when there is one deletion."""
+def test_levenshtein_with_single_deletion():
     s = "J K L".split()
     t = "J   L".split()
+    #      ^
     assert levenshtein_2d(s, t) == 1
     assert levenshtein_1d(s, t) == 1
     assert levenshtein(s, t) == 1
 
 
-def test_levenshtein_single_insertion():
-    """Test Levenshtein distance when there is one deletion."""
+def test_levenshtein_with_single_insertion():
     s = "J   L".split()
     t = "J K L".split()
+    #      ^
     assert levenshtein_2d(s, t) == 1
     assert levenshtein_1d(s, t) == 1
     assert levenshtein(s, t) == 1
 
 
-def test_levenshtein_two_substitutes():
-    """Test Levenshtein distance when there are two substitutions."""
+#--------------------------------------------------------------------
+# Test Levenshtein distance with two partial differences
+#--------------------------------------------------------------------
+
+def test_levenshtein_wiht_two_substitutes():
     s = "J K L M".split()
     t = "J M L N".split()
     #      ^   ^
@@ -81,27 +102,29 @@ def test_levenshtein_two_substitutes():
     assert levenshtein(t, s) == 2
 
 
-def test_levenshtein_two_deletions():
-    """Test Levenshtein distance when there are two deletions."""
+def test_levenshtein_with_two_deletions():
     s = "J K L M".split()
     t = "J     M".split()
+    #      ^ ^
     assert levenshtein_2d(s, t) == 2
     assert levenshtein_1d(s, t) == 2
     assert levenshtein(s, t) == 2
 
 
-def test_levenshtein_two_insertions():
-    """Test Levenshtein distance when there are two deletions."""
+def test_levenshtein_with_two_insertions():
     s = "J     M".split()
     t = "J K L M".split()
+    #      ^ ^
     assert levenshtein_2d(s, t) == 2
     assert levenshtein_1d(s, t) == 2
     assert levenshtein(s, t) == 2
 
 
+#--------------------------------------------------------------------
 # Test Levenshtein distance without common elements
-def test_levenshtein_no_common_elements():
-    """Test Levenshtein distance when lists have not commen elements."""
+#--------------------------------------------------------------------
+
+def test_levenshtein_with_no_common_elements():
     s = "J M".split()
     t = "K L".split()
     #    ^ ^
@@ -113,9 +136,78 @@ def test_levenshtein_no_common_elements():
     assert levenshtein(t, s) == 2
 
 
-# Test alignment with a Levenshtein algorithm
+#--------------------------------------------------------------------
+# Test Levenshtein distance with mixed differences
+#--------------------------------------------------------------------
+
+def test_levenshtein_with_single_sub_del_ins():
+    s = "J K L M N O   Q".split()
+    t = "J R L M   O P Q".split()
+    #      ^     ^   ^
+    #      S     D   I
+    assert levenshtein_2d(s, t) == 3
+    assert levenshtein_1d(s, t) == 3
+    assert levenshtein(s, t) == 3
+
+
+#--------------------------------------------------------------------
+# Test the helper functions used for levenshtein_word.
+#--------------------------------------------------------------------
+
+def test_clip_wlst_err():
+    wlst = [['A', 2], ['B', 4], ['A', 8], ['B', 6]]
+    assert _clip_wlst_err(wlst, 5) == \
+        [['A', 2], ['B', 4], ['A', 5], ['B', 5]]
+
+
+def test_max_ind_of_min():
+    d0 = [1]
+    #     ^
+    assert _max_ind_of_min(d0) == 0
+    d1 = [1, 1]
+    #        ^
+    assert _max_ind_of_min(d1) == 1
+    d2 = [1, 0, 0, 1, 2, 3, 4, 5]
+    #           ^
+    assert _max_ind_of_min(d2) == 2
+    d3 = [3, 2, 1, 1, 2, 3, 4]
+    #              ^
+    assert _max_ind_of_min(d3) == 3
+
+
+def test_num_hallucinations():
+    r0 = "B C D".split()
+    h0 = "A C D".split()
+    assert _num_hallucinations(r0, h0) == 0
+    r1 = "  B C D".split()
+    h1 = "A B C D".split()
+    assert _num_hallucinations(r1, h1) == 1
+    r2 = "    B C D".split()
+    h2 = "Z A B C D".split()
+    assert _num_hallucinations(r2, h2) == 2
+    r3 = "      B".split()
+    h3 = "Y Z A B".split()
+    assert _num_hallucinations(r3, h3) == 3
+
+    r5 = "B C D".split()
+    h5 = "  C D".split()
+    assert _num_hallucinations(r5, h5) == 0
+    r6 = "B C".split()
+    h6 = "  C".split()
+    assert _num_hallucinations(r6, h6) == 0
+    r7 = "B".split()
+    h7 = " ".split()
+    assert _num_hallucinations(r7, h7) == 0
+    r8 = "B C D".split()
+    h8 = "  C  ".split()
+    assert _num_hallucinations(r8, h8) == 0
+
+
+#--------------------------------------------------------------------
+# Idea behind the _num_hallucinations function
+#--------------------------------------------------------------------
+
 def test_levenshtein_prefix_hallucination_removal():
-    """Test Levenshtein distance with alignments."""
     s = "        N O P Q R".split()
     t = "J K L M N   P Q R".split()
     assert levenshtein(s, t) == 5
@@ -124,28 +216,3 @@ def test_levenshtein_prefix_hallucination_removal():
     assert levenshtein(s, t[3:]) == 2
     assert levenshtein(s, t[4:]) == 1
     assert levenshtein(s, t[5:]) == 2
-
-
-# Illustration using the Levenshtein distance table
-# s = "J K L M N O   Q".split() => s = J K L M N O Q
-# t = "J R L M   O P Q".split() => t = J R L M O P Q
-# diff   ^     ^   ^
-# type   S     D   I
-#                                 i = 0   1   2   3   4   5   6
-# s\t j   J   R   L   M   O   P   Q   :   :   :   :   :   :   :
-# i   0 | 1   2   3   4   5   6   7   d0  :   :   :   :   :   :
-#    -------------------------------  :   :   :   :   :   :   :
-# J   1 | 0   1   2   3   4   5   6   d1  d0  :   :   :   :   :
-# K   2 | 1   1   2   3   4   5   6       d1  d0  :   :   :   :
-# L   3 | 2   2   1   2   3   4   5           d1  d0  :   :   :
-# M   4 | 3   3   2   1   2   3   4               d1  d0  :   :
-# N   5 | 4   4   3   2   2   3   4                   d1  d0  :
-# O   6 | 5   5   4   3   2   3   4                       d1  d0
-# Q   7 | 6   6   5   4   3   3   3                           d1
-def test_levenshtein_single_sub_del_ins():
-    """Test Levenshtein distance when there is one S, D, and I."""
-    s = "J K L M N O   Q".split()
-    t = "J R L M   O P Q".split()
-    assert levenshtein_2d(s, t) == 3
-    assert levenshtein_1d(s, t) == 3
-    assert levenshtein(s, t) == 3
