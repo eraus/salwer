@@ -15,14 +15,14 @@ def seg_size_n_edit_distance(
 def levenshtein_2d(
         s: List[str],
         t: List[str],
-        print_ld: bool = False,  # print the LD table if True
+        print_ld: bool = False,
     ) -> int:
     """Full-memory implementation of the Levenshtein distance alg.
 
     Args:
     -   s: List[str]. Source (reference) sequence as list of strings.
     -   t: List[str]. Target (hypothesis) sequence as list of strings.
-    -   print_ld: bool = False. Print the LD table if True.
+    -   print_ld: bool = False. Print the Levenshtein dist (LD) table if True.
 
     Return:
     -   The Levenshtein distance between s and t.

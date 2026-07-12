@@ -9,4 +9,4 @@ def print_levenshtein_table_(s: str, t: str):
     -   t: str. The target string of alphabets.
     """
 
-    levenshtein_2d(s.split(), t.split(), print_d=True)
+    levenshtein_2d(s.split(), t.split(), print_ld=True)
