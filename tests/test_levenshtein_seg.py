@@ -292,10 +292,11 @@ sg1d1b = [[0, 4], [4, 5], [5, 9]]
 
 def test_levenshtein_align_1d1b():
     assert levenshtein_align_fast(s1d1, t1d1, sg1d1b) == \
-        [[0, 3], [3, 4], [3, 6]]
+        [[0, 3], [3, 3], [3, 6]]
     assert levenshtein_align(s1d1, t1d1, sg1d1b) == \
-        [[0, 3], [3, 4], [3, 6]]
-    #                ^   Should be addressed
+        [[0, 3], [3, 3], [3, 6]]
+        # [[0, 3], [3, 4], [3, 6]]
+    #                ^ ^   Correction of upper boundary overshoot
 
 def test_levenshtein_seg_1d1b():
     assert levenshtein_seg_fast(s1s1, t1s1, sg1d1b) == \
@@ -445,9 +446,10 @@ def test_levenshtein_seg_head_1i1b():
 # segs    ^|     |^|     |^
 # type    I       I       I
 #                                               :
-# s\t j   J   K   L   M   N   O   P   Q   R     :
-# i   0+|*1 | 2   3   4 | 5 | 6   7   8 | 9     :
-#    ---------------------------------------    :
+# s\t     J   K   L   M   N   O   P   Q   R     :
+#     j >                                       :
+#  i  0+|*1 | 2   3   4 | 5 | 6   7   8 | 9     :
+#  v ---------------------------------------    :
 # K   1 | 1 | 1-  2   3 | 4 | 5   6   7 | 8     :
 # L   2 | 2 | 2   1   2 | 3 | 4   5   6 | 7     :
 # M   3 | 3 | 3   2   1+|*2 | 3   4   5 | 6     :
@@ -589,10 +591,11 @@ sg1sdi1c = [[0, 2], [2, 5], [5, 6]]
 
 def test_levenshtein_align_1sdi1c_with_diff():
     assert levenshtein_align_fast(s1sdi1, t1sdi1, sg1sdi1c) == \
-        [[1, 3], [2, 6], [7, 8]]
+        [[1, 2], [2, 6], [7, 8]]
     assert levenshtein_align(s1sdi1, t1sdi1, sg1sdi1c) == \
-        [[1, 3], [2, 6], [7, 8]]
-    #        ^  Note the differece
+        [[1, 2], [2, 6], [7, 8]]
+        # [[1, 3], [2, 6], [7, 8]]
+    #        ^ ^   Correction of upper boundary overshoot
 
 def test_levenshtein_seg_1sdi1c_all_normal():
     assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c) == \
@@ -634,11 +637,11 @@ sg1sdi2a = [[0, 3], [3, 5], [5, 7]]
 
 def test_levenshtein_align_1sdi2a_with_diff():
     assert levenshtein_align_fast(s1sdi2, t1sdi2, sg1sdi2a) == \
-        [[0, 3], [3, 5], [4, 7]]
-    #                ^ Note the difference.
+        [[0, 3], [3, 4], [4, 7]]
     assert levenshtein_align(s1sdi2, t1sdi2, sg1sdi2a) == \
-        [[0, 3], [3, 5], [4, 7]]
-    #                ^ should be 4; caused by additional trailing element in s.
+        [[0, 3], [3, 4], [4, 7]]
+        # [[0, 3], [3, 5], [4, 7]]
+    #                ^ ^   Correction of upper boundary overshoot
 
 def test_levenshtein_seg_fast_1sdi2a_all_normal():
     assert levenshtein_seg_fast(s1sdi2, t1sdi2, sg1sdi2a) == \
@@ -849,10 +852,11 @@ sg1sdi4b = [[0, 3], [3, 4], [4, 7]]
 
 def test_levenshtein_align_1sdi4b_all_normal():
     assert levenshtein_align_fast(s1sdi4, t1sdi4, sg1sdi4b) == \
-        [[0, 4], [4, 5], [4, 8]]
+        [[0, 4], [4, 4], [4, 8]]
     assert levenshtein_align(s1sdi4, t1sdi4, sg1sdi4b) == \
-        [[0, 4], [4, 5], [4, 8]]
-    #                ^    ^  Note the difference
+        [[0, 4], [4, 4], [4, 8]]
+        # [[0, 4], [4, 5], [4, 8]]
+    #                ^ ^   Correction of upper boundary overshoot
 
 def test_levenshtein_seg_fast_1sdi4b_all_normal():
     assert levenshtein_seg_fast(s1sdi4, t1sdi4, sg1sdi4b) == \

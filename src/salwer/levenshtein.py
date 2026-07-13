@@ -166,14 +166,22 @@ def levenshtein_align_fast(
 
         # Find segment lower boundary for t based on ind_v_minus - 1
         if segs[k][0] == i:
-            segt[k][0] = _max_ind_of_min(d1) - 1
+            segt[k][0] = _ind_v_minus_lower(d1) - 1
 
         # Find segment upper boundary for t based on ind_v_plus.
         # Update the segment index; exit as needed.
         if segs[k][1] == i + 1:
-            segt[k][1] = _max_ind_of_min(d1)
+            segt[k][1] = _ind_v_plus_upper(d1)
             k += 1
             if k >= n_segs: break
+
+        # Correct the overshoot of the upper boundary which happens when
+        # v_plus is not to the left of v_minus, as shown in x1d1b in
+        # test_levenshtein_seg.py
+        if segs[k-1][1] == i:  # just above the upper boundary
+            ind_v_minus_i = _ind_v_minus_lower(d1) - 1
+            if ind_v_minus_i < segt[k-1][1]:
+                segt[k-1][1] = ind_v_minus_i
 
         d0, d1 = d1, d0
 
@@ -208,6 +216,12 @@ def levenshtein_align(
     Return:
     -   segt: List of aligned segments of t, each corresponds to a segment
             in segs; so it has the same dimension as segs.
+
+Will address the issue with extended end index. This can be done
+-   by comparing the start index of the next immediate segment.
+-   If there is no immediate next section, add one, which a size of 1.
+    This needs an
+-
     """
 
     m, n = len(s), len(t)   # sizes of s and t
@@ -230,7 +244,7 @@ def levenshtein_align(
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
                 # t_ind: t's index used for prefix drift checking.
-                t_ind = _max_ind_of_min(d0)
+                t_ind = _ind_v_plus_lower(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
                 n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
@@ -246,17 +260,25 @@ def levenshtein_align(
 
             d1 = _update_d1(s, t, d0, d1, i, n)
 
-            # Find segment lower boundary for t based on ind_v_minus - 1.
+            # Find segment lower boundary for t, which is _ind_v_star(d1).
             if segs[k][0] == ss + i:
-                segt[k][0] = _max_ind_of_min(d1) - 1
+                segt[k][0] = _ind_v_star(d1)
 
             # Find segment upper boundary for t based on ind_v_plus.
             if segs[k][1] == ss + i + 1:
                 segt[k][0] += ts     # update lower boundary
-                segt[k][1] = _max_ind_of_min(d1) + ts
+                segt[k][1] = _ind_v_plus_upper(d1) + ts
                 check_shift = True   # get ready for prefix drift checking
                 k += 1               # update the segment index
                 if k >= n_segs: return segt  # done with all segs; exit
+
+            # Correct the overshoot of the upper boundary which happens when
+            # v_plus is not to the left of v_minus, as shown in x1d1b in
+            # test_levenshtein_seg.py
+            if segs[k-1][1] == ss + i:  # just above the upper boundary
+                ind_v_minus_i = _ind_v_minus_lower(d1) - 1 + ts
+                if ind_v_minus_i < segt[k-1][1]:
+                    segt[k-1][1] = ind_v_minus_i
 
             d0, d1 = d1, d0
 
@@ -309,19 +331,7 @@ def levenshtein_seg_fast(
         -   edit_dist between s[start:end] and the correcponding t sequence.
     """
 
-    #--------------------------------------------------------------
-    # Define function base_seg_dist for calculate the seg distance.
-    def v_star(d0, d1):  # used for obtaining seg dist w/o head
-        dist_ind = _max_ind_of_min(d1)
-        dist = d0[dist_ind - 1]
-        return dist
-
-    # Calculate v_plus used for obtaining seg dist wit head.
-    def v_plus(d0, d1):  # used for obtaining seg dist with head
-        return min(d0)
-
-    base_seg_dist = v_plus if head else v_star
-    #--------------------------------------------------------------
+    base_seg_dist = _v_plus if head else _v_star
 
     m, n = len(s), len(t)   # sizes of s and t
     d0 = list(range(n+1))   # prev LD dist
@@ -385,7 +395,7 @@ def levenshtein_seg(
             # If exist, update s and t and related variables.
             if segs[k][0] == ss + i and check_shift:
                 # t_ind: t's index used for prefix drift checking.
-                t_ind = _max_ind_of_min(d0)
+                t_ind = _ind_v_plus_lower(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
                 n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
@@ -520,7 +530,7 @@ def levenshtein_word(
             dist = min_d1 - min_d0
             wlst[ss+i][1] += dist       # 0 or 1
 
-            t_ind = _max_ind_of_min(d0)
+            t_ind = _ind_v_plus_lower(d0)
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
@@ -545,7 +555,7 @@ def levenshtein_word(
 
         if ss + i >= mc - 1:
             # Blame the last word in s for all tail issues.
-            num_tail = len(d0) - _max_ind_of_min(d0) - 1
+            num_tail = len(d0) - _ind_v_plus_lower(d0) - 1
             if num_tail:
                 wlst[mc-1][1] += 2 * num_tail
 
@@ -557,7 +567,7 @@ def levenshtein_word(
 
 
 #--------------------------------------------------------------------
-# Utility/Helper functions
+# Common Utility/Helper functions
 #--------------------------------------------------------------------
 
 # Find the max index of the min value of a list.
@@ -565,13 +575,6 @@ def _clip_wlst_err(wlst, err_limit):
     for word_err in wlst:
         word_err[1] = min(word_err[1], err_limit)
     return wlst
-
-
-# Find the max index of the min value of a list.
-def _max_ind_of_min(d: List[int]) -> int:
-    min_val = min(d)
-    ind = [i for i, x in enumerate(d) if x == min_val]
-    return max(ind)
 
 
 # Find the num of prefix drifts (insertion or hallucination words) of s & t.
@@ -620,3 +623,55 @@ def _update_st_vars(r, h, n_pd, ss, i):
     i = 0                   # index for s
     return s, t, m, n, d0, d1, ss, i
 
+
+#--------------------------------------------------------------------
+# Utility/Helper functions for special value and index
+#--------------------------------------------------------------------
+
+# Find the max index of the min value of a list.
+def _max_ind_of_min(d: List[int]) -> int:
+    min_val = min(d)
+    ind = [i for i, x in enumerate(d) if x == min_val]
+    return max(ind)
+
+
+# Find v_minus at the lower boundary.
+def _v_minus_lower(d1):
+    return min(d1)
+
+# Find index of v_minus at the lower boundary.
+def _ind_v_minus_lower(d1):
+    return _max_ind_of_min(d1)
+
+
+# Find v_plus at the lower boundary.
+def _v_plus_lower(d0):
+    return min(d0)
+
+# Find index of v_plus at the lower boundary.
+def _ind_v_plus_lower(d0):
+    return _max_ind_of_min(d0)
+
+
+# Find v_plus at the upper boundary.
+def _v_plus_upper(d1):
+    return min(d1)
+
+# Find index of v_plus at the upper boundary.
+def _ind_v_plus_upper(d1):
+    return _max_ind_of_min(d1)
+
+
+# Calculate v_plus used for obtaining seg dist with head.
+def _v_plus(d0, d1):  # used for obtaining seg dist with head
+    return min(d0)
+
+
+# Define function base_seg_dist for calculate the seg distance.
+def _v_star(d0, d1):  # used for obtaining seg dist w/o head
+    return d0[_ind_v_star(d1)]
+
+
+# Find index of v_plus at the lower boundary of a segment.
+def _ind_v_star(d1):
+    return _max_ind_of_min(d1) - 1
