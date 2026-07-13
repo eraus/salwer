@@ -81,6 +81,7 @@ def levenshtein(s: List[str], t: List[str]) -> int:
     d1 = [0] * (n+1)          # curr LD dist
 
     for i in range(m):
+        # def _update_d1(s, t, d0, d1, i, n):
         d1[0] = i + 1
         for j in range(n):
             c = 0 if s[i] == t[j] else 1
@@ -89,6 +90,7 @@ def levenshtein(s: List[str], t: List[str]) -> int:
                 d0[j+1] + 1,  # del of s
                 d1[j] + 1,    # ins to s
             )
+        # return d1
 
         d0, d1 = d1, d0       # swap lists
 
