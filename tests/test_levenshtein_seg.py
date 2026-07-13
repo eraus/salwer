@@ -353,6 +353,51 @@ def test_levenshtein_seg_head_1d1c():
         [[4, 1], [5, 2]]
 
 
+# x1d1d                                 :
+#    s = "J K L M N O P Q R".split()    :
+#    t = "  K L M   O P Q  ".split()    :
+# segs   |^      |^|      ^|            :
+# type    D       D       D             :
+#                                       :
+# s\t     K   L   M   O   P   Q         :
+#     j >                               :
+#  i *0+| 1   2   3 | 4 | 5   6         :
+#  v ---------------------------        :
+# J   1 | 1-  2   3 | 4 | 5   6         :
+# K   2 | 1   2   3 | 4 | 5   6         :
+# L   3 | 2   1   2 | 3 | 4   5         :
+# M   4 | 3   2  *1+| 2 | 3   4         :
+#    ---------------------------        :
+# N   5 | 4   3  *2 | 2+| 3   4         :
+#    ---------------------------        :
+# O   6 | 5   4   3 | 2-  3   4         :
+# P   7 | 6   5   4 | 3   2   3         :
+# Q   8 | 7   6   5 | 4   3   2         :
+# R   9 | 8   7   6 | 5   4   3+        :
+
+sg1d1 = [[0, 4], [4, 5]]
+
+def test_levenshtein_align_1d1d():
+    assert levenshtein_align_fast(s1d1, t1d1, sg1d1) == \
+        [[0, 3], [3, 3]]
+    assert levenshtein_align(s1d1, t1d1, sg1d1) == \
+        [[0, 3], [3, 3]]
+        # [[0, 3], [3, 4]]
+    #                ^ ^   Correction of upper boundary overshoot
+
+def test_levenshtein_seg_1d1d():
+    assert levenshtein_seg_fast(s1s1, t1s1, sg1d1) == \
+        [[4, 1], [1, 1]]
+    assert levenshtein_seg(s1s1, t1s1, sg1d1) == \
+        [[4, 1], [1, 1]]
+
+def test_levenshtein_seg_head_1d1d():
+    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1, head=True) == \
+        [[4, 1], [1, 1]]
+    assert levenshtein_seg(s1d1, t1d1, sg1d1, head=True) == \
+        [[4, 1], [1, 1]]
+
+
 #--------------------------------------------------------------------
 # Test Levenshtein segment alignment and distance for x1i1
 #--------------------------------------------------------------------

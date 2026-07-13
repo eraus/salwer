@@ -138,14 +138,14 @@ def levenshtein_align_fast(
     t: List[str],
     segs: List[List],
 ) -> List[List]:
-    """Segment alignment based on Levenshtein distance---the fast version.
+    """Segment alignment based on the alignment rules---the fast version.
 
     See the doc string of the levenshtein_align() function for details.
     """
 
-    m, n = len(s), len(t)     # sizes of s and t
-    d0 = list(range(n+1))     # prev LD dist
-    d1 = [0] * (n+1)          # curr LD dist
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD dist
+    d1 = [0] * (n+1)        # curr LD dist
 
     n_segs = len(segs)      # num of segments
     # segt = segments of t corresponding to segments of s: segs
@@ -153,35 +153,25 @@ def levenshtein_align_fast(
     k = 0                   # index of segs/segt
 
     for i in range(m):
-        # Update d1. To make the main loop more readable, this code block
-        # can be implemented as _update_d1(s, t, d0, d1, i, n).
-        d1[0] = i + 1
-        for j in range(n):
-            c = 0 if s[i] == t[j] else 1
-            d1[j+1] = min(
-                d0[j] + c,      # sub s->t
-                d0[j+1] + 1,    # del of s
-                d1[j] + 1,      # ins to s
-            )
+        d1 = _update_d1(s, t, d0, d1, i, n)
 
-        # Find segment lower boundary for t based on ind_v_minus - 1
+        # Correct the overshoot of the upper boundary which happens when
+        # upper boundary, _ind_v_plus_upper, is greater than _ind_v_minus,
+        # as shown in x1d1b in test_levenshtein_seg.py
+        if k > 0 and segs[k-1][1] == i:  # just above the upper boundary
+            ind_v_minus_i = _ind_v_minus_lower(d1) - 1
+            if segt[k-1][1] > ind_v_minus_i:
+                segt[k-1][1] = ind_v_minus_i
+            if k >= n_segs: break
+
+        # Find segment lower boundary for t based on _ind_v_minus_lower(d1)
         if segs[k][0] == i:
             segt[k][0] = _ind_v_minus_lower(d1) - 1
 
         # Find segment upper boundary for t based on ind_v_plus.
-        # Update the segment index; exit as needed.
         if segs[k][1] == i + 1:
             segt[k][1] = _ind_v_plus_upper(d1)
-            k += 1
-            if k >= n_segs: break
-
-        # Correct the overshoot of the upper boundary which happens when
-        # v_plus is not to the left of v_minus, as shown in x1d1b in
-        # test_levenshtein_seg.py
-        if segs[k-1][1] == i:  # just above the upper boundary
-            ind_v_minus_i = _ind_v_minus_lower(d1) - 1
-            if ind_v_minus_i < segt[k-1][1]:
-                segt[k-1][1] = ind_v_minus_i
+            k += 1                 # update the segment index
 
         d0, d1 = d1, d0
 
@@ -193,7 +183,7 @@ def levenshtein_align(
     t: List[str],
     segs: List[List],
 ) -> List[List]:
-    """Segment alignment based on Levenshtein distance---the normal version.
+    """Segment alignment with prefix drift addressed---the normal version.
 
     Notations:
     -   d0: The Levenshtein distance of the previous iteration.
@@ -242,7 +232,7 @@ Will address the issue with extended end index. This can be done
         for i in range(m):
             # Check the prefix drift at seg's lower boundary.
             # If exist, update s and t and related variables.
-            if segs[k][0] == ss + i and check_shift:
+            if k < n_segs and segs[k][0] == ss + i and check_shift:
                 # t_ind: t's index used for prefix drift checking.
                 t_ind = _ind_v_plus_lower(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
@@ -260,6 +250,13 @@ Will address the issue with extended end index. This can be done
 
             d1 = _update_d1(s, t, d0, d1, i, n)
 
+            # Correct upper boundary overshoot; see comments of fast version.
+            if k > 0 and segs[k-1][1] == ss + i:  # just above the upper boundary
+                ind_v_minus_i = _ind_v_minus_lower(d1) - 1 + ts
+                if segt[k-1][1] > ind_v_minus_i:
+                    segt[k-1][1] = ind_v_minus_i
+                if k >= n_segs: return segt  # done with all segs; exit
+
             # Find segment lower boundary for t, which is _ind_v_star(d1).
             if segs[k][0] == ss + i:
                 segt[k][0] = _ind_v_star(d1)
@@ -268,17 +265,8 @@ Will address the issue with extended end index. This can be done
             if segs[k][1] == ss + i + 1:
                 segt[k][0] += ts     # update lower boundary
                 segt[k][1] = _ind_v_plus_upper(d1) + ts
-                check_shift = True   # get ready for prefix drift checking
                 k += 1               # update the segment index
-                if k >= n_segs: return segt  # done with all segs; exit
-
-            # Correct the overshoot of the upper boundary which happens when
-            # v_plus is not to the left of v_minus, as shown in x1d1b in
-            # test_levenshtein_seg.py
-            if segs[k-1][1] == ss + i:  # just above the upper boundary
-                ind_v_minus_i = _ind_v_minus_lower(d1) - 1 + ts
-                if ind_v_minus_i < segt[k-1][1]:
-                    segt[k-1][1] = ind_v_minus_i
+                check_shift = True   # get ready for prefix drift checking
 
             d0, d1 = d1, d0
 
@@ -338,7 +326,7 @@ def levenshtein_seg_fast(
     d1 = [0] * (n+1)        # curr LD dist
 
     n_segs = len(segs)      # num of segments
-    # segd = segment size and dist corresponding to segs
+    # segd = segment size and LD corresponding to segs
     segd = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
@@ -351,10 +339,10 @@ def levenshtein_seg_fast(
         if segs[k][0] == i:
             base_dist = base_seg_dist(d0, d1)
 
-        # Find the seg size and dist at the segment upper boundary.
+        # Find the seg size and LD at the segment upper boundary.
         if segs[k][1] == i + 1:
-            segd[k][0] = segs[k][1] - segs[k][0]   # seg size
-            segd[k][1] = min(d1) - base_dist       # seg dist
+            segd[k][0] = segs[k][1] - segs[k][0]        # seg size
+            segd[k][1] = _v_plus_upper(d1) - base_dist  # seg dist
             k += 1                  # update the segment index
             if k >= n_segs: break
 
