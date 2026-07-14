@@ -155,8 +155,8 @@ def levenshtein_align_fast(
     for i in range(m):
         d1 = _update_d1(s, t, d0, d1, i, n)
 
-        # Correct the overshoot of the upper boundary which happens when
-        # upper boundary, _ind_v_plus_upper, is greater than _ind_v_minus,
+        # Correct upper boundary overshoot which happens when the upper
+        # boundary, _ind_v_plus_upper, is greater than _ind_v_minus - 1,
         # as shown in x1d1b in test_levenshtein_seg.py
         if k > 0 and segs[k-1][1] == i:  # just above the upper boundary
             ind_v_minus_i = _ind_v_minus_lower(d1) - 1
@@ -171,7 +171,7 @@ def levenshtein_align_fast(
         # Find segment upper boundary for t based on ind_v_plus.
         if segs[k][1] == i + 1:
             segt[k][1] = _ind_v_plus_upper(d1)
-            k += 1                 # update the segment index
+            k += 1          # update the segment index
 
         d0, d1 = d1, d0
 
@@ -285,7 +285,7 @@ def levenshtein_seg_fast(
     segs: List[List],
     head: bool = False,
 ) -> List[List]:
-    """Calculate size and Levenshtein dist of segments---the fast version.
+    """Segment size and LD calculation---the fast version.
 
     Notations:
     -   d0: The Levenshtein distance of the previous iteration.
@@ -566,7 +566,7 @@ def _clip_wlst_err(wlst, err_limit):
 
 
 # Find the num of prefix drifts (insertion or hallucination words) of s & t.
-def _num_hallucinations(s: List[str], t: List[str]) -> int:
+def _num_prefix_drift(s: List[str], t: List[str]) -> int:
     shift = 0
     dist0 = levenshtein(s, t)
     dist1 = levenshtein(s, t[1:])
@@ -581,7 +581,7 @@ def _num_hallucinations(s: List[str], t: List[str]) -> int:
 def _prefix_drift_rh(s, t, i, t_ind):
     r = s[i:]               # r = ref, partial source
     h = t[t_ind:]           # h = hyp, partial target
-    n_pd = _num_hallucinations(r, h)
+    n_pd = _num_prefix_drift(r, h)
     return n_pd, r, h
 
 

@@ -6,7 +6,7 @@ from salwer.levenshtein import (
     levenshtein_1d,
     _clip_wlst_err,
     _max_ind_of_min,
-    _num_hallucinations,
+    _num_prefix_drift,
 )
 
 
@@ -175,36 +175,36 @@ def test_max_ind_of_min():
     assert _max_ind_of_min(d3) == 3
 
 
-def test_num_hallucinations():
+def test_num_prefix_drift():
     r0 = "B C D".split()
     h0 = "A C D".split()
-    assert _num_hallucinations(r0, h0) == 0
+    assert _num_prefix_drift(r0, h0) == 0
     r1 = "  B C D".split()
     h1 = "A B C D".split()
-    assert _num_hallucinations(r1, h1) == 1
+    assert _num_prefix_drift(r1, h1) == 1
     r2 = "    B C D".split()
     h2 = "Z A B C D".split()
-    assert _num_hallucinations(r2, h2) == 2
+    assert _num_prefix_drift(r2, h2) == 2
     r3 = "      B".split()
     h3 = "Y Z A B".split()
-    assert _num_hallucinations(r3, h3) == 3
+    assert _num_prefix_drift(r3, h3) == 3
 
     r5 = "B C D".split()
     h5 = "  C D".split()
-    assert _num_hallucinations(r5, h5) == 0
+    assert _num_prefix_drift(r5, h5) == 0
     r6 = "B C".split()
     h6 = "  C".split()
-    assert _num_hallucinations(r6, h6) == 0
+    assert _num_prefix_drift(r6, h6) == 0
     r7 = "B".split()
     h7 = " ".split()
-    assert _num_hallucinations(r7, h7) == 0
+    assert _num_prefix_drift(r7, h7) == 0
     r8 = "B C D".split()
     h8 = "  C  ".split()
-    assert _num_hallucinations(r8, h8) == 0
+    assert _num_prefix_drift(r8, h8) == 0
 
 
 #--------------------------------------------------------------------
-# Idea behind the _num_hallucinations function
+# Idea behind the _num_prefix_drift function
 #--------------------------------------------------------------------
 
 def test_levenshtein_prefix_hallucination_removal():
