@@ -77,8 +77,8 @@ def levenshtein(s: List[str], t: List[str]) -> int:
 
     # Initialize the 2 1D LD lists.
     m, n = len(s), len(t)     # sizes of s and t
-    d0 = list(range(n+1))     # prev LD dist
-    d1 = [0] * (n+1)          # curr LD dist
+    d0 = list(range(n+1))     # prev LD list
+    d1 = [0] * (n+1)          # curr LD list
 
     for i in range(m):
         # def _update_d1(s, t, d0, d1, i, n):
@@ -144,8 +144,8 @@ def levenshtein_align_fast(
     """
 
     m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev LD dist
-    d1 = [0] * (n+1)        # curr LD dist
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
     # segt = segments of t corresponding to segments of s: segs
@@ -155,7 +155,7 @@ def levenshtein_align_fast(
     for i in range(m):
         d1 = _update_d1(s, t, d0, d1, i, n)
 
-        # Correct upper boundary overshoot which happens when the upper
+        # Amend upper boundary overshoot which happens when the upper
         # boundary, _ind_v_plus_upper, is greater than _ind_v_minus - 1,
         # as shown in x1d1b in test_levenshtein_seg.py
         if k > 0 and segs[k-1][1] == i:  # just above the upper boundary
@@ -183,7 +183,7 @@ def levenshtein_align(
     t: List[str],
     segs: List[List],
 ) -> List[List]:
-    """Segment alignment with prefix drift addressed---the normal version.
+    """Segment alignment with prefix drift removed---the normal version.
 
     Notations:
     -   d0: The Levenshtein distance of the previous iteration.
@@ -215,8 +215,8 @@ Will address the issue with extended end index. This can be done
     """
 
     m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev LD dist
-    d1 = [0] * (n+1)        # curr LD dist
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
     # segments of t corresponding to segments of s: segs
@@ -225,14 +225,13 @@ Will address the issue with extended end index. This can be done
 
     ss = 0   # sequence s' total shift due to update of s
     ts = 0   # sequence t's total shift; counterpart of ss
-    mc = m   # m's original value for loop control
     check_shift = True      # flag for checking shift
 
     while True:
         for i in range(m):
-            # Check the prefix drift at seg's lower boundary.
+            # Check the prefix drift at the lower boundary of each segment.
             # If exist, update s and t and related variables.
-            if k < n_segs and segs[k][0] == ss + i and check_shift:
+            if  check_shift and k < n_segs and segs[k][0] == ss + i:
                 # t_ind: t's index used for prefix drift checking.
                 t_ind = _ind_v_plus_lower(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
@@ -245,12 +244,11 @@ Will address the issue with extended end index. This can be done
                         _update_st_vars(r, h, n_pd, ss, i)
                     ts = ts + t_ind + n_pd  # needed for alignment
                     check_shift = False     # no check again for this boundary
-                    # Only break the current "for i loop" if s has 2+ elements
-                    if m > 1: break
+                    break
 
             d1 = _update_d1(s, t, d0, d1, i, n)
 
-            # Correct upper boundary overshoot; see comments of fast version.
+            # Amend upper boundary overshoot; see comments of fast version.
             if k > 0 and segs[k-1][1] == ss + i:  # just above the upper boundary
                 ind_v_minus_i = _ind_v_minus_lower(d1) - 1 + ts
                 if segt[k-1][1] > ind_v_minus_i:
@@ -259,20 +257,17 @@ Will address the issue with extended end index. This can be done
 
             # Find segment lower boundary for t, which is _ind_v_star(d1).
             if segs[k][0] == ss + i:
-                segt[k][0] = _ind_v_star(d1)
+                segt[k][0] = _ind_v_star(d1) + ts
 
             # Find segment upper boundary for t based on ind_v_plus.
             if segs[k][1] == ss + i + 1:
-                segt[k][0] += ts     # update lower boundary
                 segt[k][1] = _ind_v_plus_upper(d1) + ts
                 k += 1               # update the segment index
                 check_shift = True   # get ready for prefix drift checking
 
             d0, d1 = d1, d0
 
-        if ss + i >= mc - 1: break   # all elements in s scanned
-
-    return segt
+        if k >= n_segs: return segt
 
 
 #--------------------------------------------------------------------
@@ -322,8 +317,8 @@ def levenshtein_seg_fast(
     base_seg_dist = _v_plus if head else _v_star
 
     m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev LD dist
-    d1 = [0] * (n+1)        # curr LD dist
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
     # segd = segment size and LD corresponding to segs
@@ -363,8 +358,8 @@ def levenshtein_seg(
     """
 
     m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev LD dist
-    d1 = [0] * (n+1)        # curr LD dist
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
     # segd = segment size and dist corresponding to segs
@@ -374,14 +369,14 @@ def levenshtein_seg(
     base_dist = 0           # base dist: v_plus
 
     ss = 0                  # base index for s
-    mc = m                  # copy of m for loop control
     check_shift = True      # flag for checking shift
 
     while True:
         for i in range(m):
-            # Check the prefix drift at seg's lower boundary.
+            # Check the prefix drift at the lower boundary of each segment.
             # If exist, update s and t and related variables.
-            if segs[k][0] == ss + i and check_shift:
+            if  check_shift and k < n_segs and segs[k][0] == ss + i:
+            # if check_shift and segs[k][0] == ss + i:
                 # t_ind: t's index used for prefix drift checking.
                 t_ind = _ind_v_plus_lower(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
@@ -393,8 +388,7 @@ def levenshtein_seg(
                     s, t, m, n, d0, d1, ss, i = \
                         _update_st_vars(r, h, n_pd, ss, i)
                     check_shift = False     # no check again for this boundary
-                    # Only break the current "for i loop" if s has 2+ elements
-                    if m > 1: break
+                    break
 
             d1 = _update_d1(s, t, d0, d1, i, n)
 
@@ -412,10 +406,6 @@ def levenshtein_seg(
                 if k >= n_segs: return segd
 
             d0, d1 = d1, d0
-
-        if ss + i >= mc - 1: break   # break the while loop
-
-    return segd
 
 
 #--------------------------------------------------------------------
@@ -445,10 +435,11 @@ def levenshtein_word_fast(
     """
 
     m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev LD dist
-    d1 = [0] * (n+1)        # curr LD dist
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
 
-    wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
+    # wlst = word list [[word1, LD1], ..., [wordm, LDm]]
+    wlst = [[0] * 2 for _ in range(m)]
     min_d0 = 0
 
     for i in range(m):
@@ -456,7 +447,7 @@ def levenshtein_word_fast(
 
         min_d1 = min(d1)
         wlst[i][0] = s[i]              # word
-        wlst[i][1] = min_d1 - min_d0   # dist
+        wlst[i][1] = min_d1 - min_d0   # LD of word
 
         d0, d1, min_d0 = d1, d0, min_d1
 
@@ -499,8 +490,8 @@ def levenshtein_word(
     """
 
     m, n = len(s), len(t)   # sizes of s and t
-    d0 = list(range(n+1))   # prev LD dist
-    d1 = [0] * (n+1)        # curr LD dist
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
 
     wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
     min_d0 = 0
@@ -578,8 +569,8 @@ def _num_prefix_drift(s: List[str], t: List[str]) -> int:
 
 
 # Find the num of prefix drifts and new s & t sequences.
-def _prefix_drift_rh(s, t, i, t_ind):
-    r = s[i:]               # r = ref, partial source
+def _prefix_drift_rh(s, t, s_ind, t_ind):
+    r = s[s_ind:]           # r = ref, partial source
     h = t[t_ind:]           # h = hyp, partial target
     n_pd = _num_prefix_drift(r, h)
     return n_pd, r, h

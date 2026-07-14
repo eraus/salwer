@@ -32,6 +32,100 @@ from salwer.levenshtein import (
 
 
 #--------------------------------------------------------------------
+# Basic check
+#--------------------------------------------------------------------
+
+sbc1 = "J".split()
+tbc1 = "J".split()
+
+# s\t      J
+#      j >
+#   i *0+| 1
+#   v ----------
+# J    1 | 0+
+
+sgbc1 = [[0, 1]]
+
+def test_levenshtein_align_bc1():
+    assert levenshtein_align_fast(sbc1, tbc1, sgbc1) == \
+        [[0, 1]]
+    assert levenshtein_align(sbc1, tbc1, sgbc1) == \
+        [[0, 1]]
+
+def test_levenshtein_seg_bc1():
+    assert levenshtein_seg_fast(sbc1, tbc1, sgbc1) == \
+        [[1, 0]]
+    assert levenshtein_seg(sbc1, tbc1, sgbc1) == \
+        [[1, 0]]
+
+def test_levenshtein_seg_head_bc1():
+    assert levenshtein_seg_fast(sbc1, tbc1, sgbc1, head=True) == \
+        [[1, 0]]
+    assert levenshtein_seg(sbc1, tbc1, sgbc1, head=True) == \
+        [[1, 0]]
+
+
+sbc2 = "  K".split()
+tbc2 = "J K".split()
+
+# s\t      L   K
+#      j >
+#   i  0+|*1 | 2
+#   v -----------
+# K    1 | 1 | 1+
+
+sgbc2 = [[0, 1]]
+
+def test_levenshtein_align_bc2():
+    assert levenshtein_align_fast(sbc2, tbc2, sgbc2) == \
+        [[1, 2]]
+    assert levenshtein_align(sbc2, tbc2, sgbc2) == \
+        [[1, 2]]
+
+def test_levenshtein_seg_bc2():
+    assert levenshtein_seg_fast(sbc2, tbc2, sgbc2) == \
+        [[1, 0]]
+    assert levenshtein_seg(sbc2, tbc2, sgbc2) == \
+        [[1, 0]]
+
+def test_levenshtein_seg_head_bc2():
+    assert levenshtein_seg_fast(sbc2, tbc2, sgbc2, head=True) == \
+        [[1, 1]]
+    assert levenshtein_seg(sbc2, tbc2, sgbc2, head=True) == \
+        [[1, 1]]
+
+
+sbc3 = "    L".split()
+tbc3 = "J K L".split()
+
+# s\t      J   K   L
+#      j >
+#   i *0+| 1 | 2   3
+#   v ---------------
+# L    1 | 1+| 2   3
+
+sgbc3 = [[0, 1]]
+
+def test_levenshtein_align_bc3():
+    assert levenshtein_align_fast(sbc3, tbc3, sgbc3) == \
+        [[0, 1]]
+    assert levenshtein_align(sbc3, tbc3, sgbc3) == \
+        [[2, 3]]
+
+def test_levenshtein_seg_bc3():
+    assert levenshtein_seg_fast(sbc3, tbc3, sgbc3) == \
+        [[1, 1]]
+    assert levenshtein_seg(sbc3, tbc3, sgbc3) == \
+        [[1, 0]]
+
+def test_levenshtein_seg_head_bc3():
+    assert levenshtein_seg_fast(sbc3, tbc3, sgbc3, head=True) == \
+        [[1, 1]]
+    assert levenshtein_seg(sbc3, tbc3, sgbc3, head=True) == \
+        [[1, 2]]
+
+
+#--------------------------------------------------------------------
 # Test Levenshtein segment alignment and distance for x1s1
 #--------------------------------------------------------------------
 
