@@ -26,7 +26,7 @@ from salwer.levenshtein import (
 #       to the upper boundary of a segment before swapping d0 and d1.
 # - = minimum value of d1 with the max index for a given i corresponding
 #       to the lower boundary of a segment before swapping d0 and d1.
-# * = (before the number) base value used for no-head seg distance.
+# * = (before the number) base value used for tight seg Levenshtein distance.
 
 # Comments about d0 and d1 can be found below in the x1s1a example.
 
@@ -59,9 +59,9 @@ def test_levenshtein_seg_bc1():
         [[1, 0]]
 
 def test_levenshtein_seg_head_bc1():
-    assert levenshtein_seg_fast(sbc1, tbc1, sgbc1, head=True) == \
+    assert levenshtein_seg_fast(sbc1, tbc1, sgbc1, tight=False) == \
         [[1, 0]]
-    assert levenshtein_seg(sbc1, tbc1, sgbc1, head=True) == \
+    assert levenshtein_seg(sbc1, tbc1, sgbc1, tight=False) == \
         [[1, 0]]
 
 
@@ -89,9 +89,9 @@ def test_levenshtein_seg_bc2():
         [[1, 0]]
 
 def test_levenshtein_seg_head_bc2():
-    assert levenshtein_seg_fast(sbc2, tbc2, sgbc2, head=True) == \
+    assert levenshtein_seg_fast(sbc2, tbc2, sgbc2, tight=False) == \
         [[1, 1]]
-    assert levenshtein_seg(sbc2, tbc2, sgbc2, head=True) == \
+    assert levenshtein_seg(sbc2, tbc2, sgbc2, tight=False) == \
         [[1, 1]]
 
 
@@ -119,9 +119,9 @@ def test_levenshtein_seg_bc3():
         [[1, 0]]
 
 def test_levenshtein_seg_head_bc3():
-    assert levenshtein_seg_fast(sbc3, tbc3, sgbc3, head=True) == \
+    assert levenshtein_seg_fast(sbc3, tbc3, sgbc3, tight=False) == \
         [[1, 1]]
-    assert levenshtein_seg(sbc3, tbc3, sgbc3, head=True) == \
+    assert levenshtein_seg(sbc3, tbc3, sgbc3, tight=False) == \
         [[1, 2]]
 
 
@@ -169,9 +169,9 @@ def test_levenshtein_seg_1s1a_all_normal():
         [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_head_1s1a_all_normal():
-    assert levenshtein_seg_fast(s1s1, t1s1, sg1s1a, head=True) == \
+    assert levenshtein_seg_fast(s1s1, t1s1, sg1s1a, tight=False) == \
         [[3, 1], [3, 1], [3, 1]]
-    assert levenshtein_seg(s1s1, t1s1, sg1s1a, head=True) == \
+    assert levenshtein_seg(s1s1, t1s1, sg1s1a, tight=False) == \
         [[3, 1], [3, 1], [3, 1]]
 
 
@@ -212,9 +212,9 @@ def test_levenshtein_seg_1s1b():
         [[4, 1], [1, 1], [4, 1]]
 
 def test_levenshtein_seg_head_1s1b():
-    assert levenshtein_seg_fast(s1s1, t1s1, sg1s1b, head=True) == \
+    assert levenshtein_seg_fast(s1s1, t1s1, sg1s1b, tight=False) == \
         [[4, 1], [1, 1], [4, 1]]
-    assert levenshtein_seg(s1s1, t1s1, sg1s1b, head=True) == \
+    assert levenshtein_seg(s1s1, t1s1, sg1s1b, tight=False) == \
         [[4, 1], [1, 1], [4, 1]]
 
 
@@ -254,9 +254,9 @@ def test_levenshtein_seg_1s1c():
         [[4, 1], [5, 2]]
 
 def test_levenshtein_seg_head_1s1c():
-    assert levenshtein_seg_fast(s1s1, t1s1, sg1s1c, head=True) == \
+    assert levenshtein_seg_fast(s1s1, t1s1, sg1s1c, tight=False) == \
         [[4, 1], [5, 2]]
-    assert levenshtein_seg(s1s1, t1s1, sg1s1c, head=True) == \
+    assert levenshtein_seg(s1s1, t1s1, sg1s1c, tight=False) == \
         [[4, 1], [5, 2]]
 
 
@@ -303,9 +303,9 @@ def test_levenshtein_seg_1s2a():
         [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_head_1s2a():
-    assert levenshtein_seg_fast(s1s2, t1s2, sg1s2a, head=True) == \
+    assert levenshtein_seg_fast(s1s2, t1s2, sg1s2a, tight=False) == \
         [[3, 1], [3, 1], [3, 1]]
-    assert levenshtein_seg(s1s2, t1s2, sg1s2a, head=True) == \
+    assert levenshtein_seg(s1s2, t1s2, sg1s2a, tight=False) == \
         [[3, 1], [3, 1], [3, 1]]
 
 
@@ -353,9 +353,9 @@ def test_levenshtein_seg_1d1a():
         [[3, 1], [3, 1], [3, 1]]
 
 def test_levenshtein_seg_head_1d1a():
-    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1a, head=True) == \
+    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1a, tight=False) == \
         [[3, 1], [3, 1], [3, 1]]
-    assert levenshtein_seg(s1d1, t1d1, sg1d1a, head=True) == \
+    assert levenshtein_seg(s1d1, t1d1, sg1d1a, tight=False) == \
         [[3, 1], [3, 1], [3, 1]]
 
 
@@ -398,9 +398,9 @@ def test_levenshtein_seg_1d1b():
         [[4, 1], [1, 1], [4, 1]]
 
 def test_levenshtein_seg_head_1d1b():
-    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1b, head=True) == \
+    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1b, tight=False) == \
         [[4, 1], [1, 1], [4, 1]]
-    assert levenshtein_seg(s1d1, t1d1, sg1d1b, head=True) == \
+    assert levenshtein_seg(s1d1, t1d1, sg1d1b, tight=False) == \
         [[4, 1], [1, 1], [4, 1]]
 
 
@@ -440,9 +440,9 @@ def test_levenshtein_seg_1d1c():
         [[4, 1], [5, 2]]
 
 def test_levenshtein_seg_head_1d1c():
-    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1c, head=True) == \
+    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1c, tight=False) == \
         [[4, 1], [5, 2]]
-    assert levenshtein_seg(s1d1, t1d1, sg1d1c, head=True) == \
+    assert levenshtein_seg(s1d1, t1d1, sg1d1c, tight=False) == \
         [[4, 1], [5, 2]]
 
 
@@ -485,9 +485,9 @@ def test_levenshtein_seg_1d1d():
         [[4, 1], [1, 1]]
 
 def test_levenshtein_seg_head_1d1d():
-    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1d, head=True) == \
+    assert levenshtein_seg_fast(s1d1, t1d1, sg1d1d, tight=False) == \
         [[4, 1], [1, 1]]
-    assert levenshtein_seg(s1d1, t1d1, sg1d1d, head=True) == \
+    assert levenshtein_seg(s1d1, t1d1, sg1d1d, tight=False) == \
         [[4, 1], [1, 1]]
 
 
@@ -532,9 +532,9 @@ def test_levenshtein_seg_1i1a():
         [[2, 0], [2, 1], [2, 0]]
 
 def test_levenshtein_seg_head_1i1a():
-    assert levenshtein_seg_fast(s1i1, t1i1, sg1i1a, head=True) == \
+    assert levenshtein_seg_fast(s1i1, t1i1, sg1i1a, tight=False) == \
         [[2, 1], [2, 1], [2, 0]]
-    assert levenshtein_seg(s1i1, t1i1, sg1i1a, head=True) == \
+    assert levenshtein_seg(s1i1, t1i1, sg1i1a, tight=False) == \
         [[2, 1], [2, 1], [2, 0]]
 
 
@@ -572,9 +572,9 @@ def test_levenshtein_seg_1i1b():
         [[3, 0], [1, 0], [2, 0]]
 
 def test_levenshtein_seg_head_1i1b():
-    assert levenshtein_seg_fast(s1i1, t1i1, sg1i1b, head=True) == \
+    assert levenshtein_seg_fast(s1i1, t1i1, sg1i1b, tight=False) == \
         [[3, 1], [1, 1], [2, 0]]
-    assert levenshtein_seg(s1i1, t1i1, sg1i1b, head=True) == \
+    assert levenshtein_seg(s1i1, t1i1, sg1i1b, tight=False) == \
         [[3, 1], [1, 1], [2, 0]]
 
 
@@ -611,9 +611,9 @@ def test_levenshtein_seg_1i1c():
         [[3, 0], [3, 0]]
 
 def test_levenshtein_seg_head_1i1c():
-    assert levenshtein_seg_fast(s1i1, t1i1, sg1i1c, head=True) == \
+    assert levenshtein_seg_fast(s1i1, t1i1, sg1i1c, tight=False) == \
         [[3, 1], [3, 1]]
-    assert levenshtein_seg(s1i1, t1i1, sg1i1c, head=True) == \
+    assert levenshtein_seg(s1i1, t1i1, sg1i1c, tight=False) == \
         [[3, 1], [3, 1]]
 
 
@@ -657,9 +657,9 @@ def test_levenshtein_seg_1sdi1a_all_normal():
         [[3, 1], [3, 2]]
 
 def test_levenshtein_seg_head_1sdi1a_all_normal():
-    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1a, head=True) == \
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1a, tight=False) == \
         [[3, 2], [3, 3]]
-    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1a, head=True) == \
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1a, tight=False) == \
         [[3, 2], [3, 3]]
 
 
@@ -699,9 +699,9 @@ def test_levenshtein_seg_1sdi1b_with_diff():
     # Note the difference    ^
 
 def test_levenshtein_seg_head_1sdi1b_all_normal():
-    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1b, head=True) == \
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1b, tight=False) == \
         [[1, 1], [3, 2], [2, 2]]
-    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1b, head=True) == \
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1b, tight=False) == \
         [[1, 1], [3, 2], [2, 2]]
 
 
@@ -741,9 +741,9 @@ def test_levenshtein_seg_1sdi1c_all_normal():
         [[2, 1], [3, 2], [1, 0]]
 
 def test_levenshtein_seg_head_1sdi1c_all_normal():
-    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c, head=True) == \
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, sg1sdi1c, tight=False) == \
         [[2, 2], [3, 2], [1, 1]]
-    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1c, head=True) == \
+    assert levenshtein_seg(s1sdi1, t1sdi1, sg1sdi1c, tight=False) == \
         [[2, 2], [3, 2], [1, 1]]
 
 
@@ -791,9 +791,9 @@ def test_levenshtein_seg_fast_1sdi2a_all_normal():
         [[3, 1], [2, 1], [2, 1]]
 
 def test_levenshtein_seg_fast_head_1sdi2a_all_normal():
-    assert levenshtein_seg_fast(s1sdi2, t1sdi2, sg1sdi2a, head=True) == \
+    assert levenshtein_seg_fast(s1sdi2, t1sdi2, sg1sdi2a, tight=False) == \
         [[3, 1], [2, 1], [2, 1]]
-    assert levenshtein_seg(s1sdi2, t1sdi2, sg1sdi2a, head=True) == \
+    assert levenshtein_seg(s1sdi2, t1sdi2, sg1sdi2a, tight=False) == \
         [[3, 1], [2, 1], [2, 1]]
 
 
@@ -832,9 +832,9 @@ def test_levenshtein_seg_fast_1sdi2b_all_normal():
         [[2, 1], [4, 1], [1, 0]]
 
 def test_levenshtein_seg_fast_head_1sdi2b_all_normal():
-    assert levenshtein_seg_fast(s1sdi2, t1sdi2, sg1sdi2b, head=True) == \
+    assert levenshtein_seg_fast(s1sdi2, t1sdi2, sg1sdi2b, tight=False) == \
         [[2, 1], [4, 1], [1, 1]]
-    assert levenshtein_seg(s1sdi2, t1sdi2, sg1sdi2b, head=True) == \
+    assert levenshtein_seg(s1sdi2, t1sdi2, sg1sdi2b, tight=False) == \
         [[2, 1], [4, 1], [1, 1]]
 
 
@@ -879,9 +879,9 @@ def test_levenshtein_seg_fast_1sdi3a_all_normal():
         [[3, 1], [4, 2]]
 
 def test_levenshtein_seg_fast_head_1sdi3a_all_normal():
-    assert levenshtein_seg_fast(s1sdi3, t1sdi3, sg1sdi3a, head=True) == \
+    assert levenshtein_seg_fast(s1sdi3, t1sdi3, sg1sdi3a, tight=False) == \
         [[3, 2], [4, 3]]
-    assert levenshtein_seg(s1sdi3, t1sdi3, sg1sdi3a, head=True) == \
+    assert levenshtein_seg(s1sdi3, t1sdi3, sg1sdi3a, tight=False) == \
         [[3, 2], [4, 3]]
 
 
@@ -919,9 +919,9 @@ def test_levenshtein_seg_fast_1sdi3b_all_normal():
         [[4, 2], [3, 2]]
 
 def test_levenshtein_seg_fast_head_1sdi3b_all_normal():
-    assert levenshtein_seg_fast(s1sdi3, t1sdi3, sg1sdi3b, head=True) == \
+    assert levenshtein_seg_fast(s1sdi3, t1sdi3, sg1sdi3b, tight=False) == \
         [[4, 3], [3, 2]]
-    assert levenshtein_seg(s1sdi3, t1sdi3, sg1sdi3b, head=True) == \
+    assert levenshtein_seg(s1sdi3, t1sdi3, sg1sdi3b, tight=False) == \
         [[4, 3], [3, 2]]
 
 
@@ -967,9 +967,9 @@ def test_levenshtein_seg_fast_1sdi4a_all_normal():
         [[2, 1], [3, 1], [2, 0]]
 
 def test_levenshtein_seg_fast_head_1sdi4a_all_normal():
-    assert levenshtein_seg_fast(s1sdi4, t1sdi4, sg1sdi4a, head=True) == \
+    assert levenshtein_seg_fast(s1sdi4, t1sdi4, sg1sdi4a, tight=False) == \
         [[2, 1], [3, 2], [2, 1]]
-    assert levenshtein_seg(s1sdi4, t1sdi4, sg1sdi4a, head=True) == \
+    assert levenshtein_seg(s1sdi4, t1sdi4, sg1sdi4a, tight=False) == \
         [[2, 1], [3, 2], [2, 1]]
 
 
@@ -1010,9 +1010,9 @@ def test_levenshtein_seg_fast_1sdi4b_all_normal():
         [[3, 2], [1, 1], [3, 1]]
 
 def test_levenshtein_seg_fast_head_1sdi4b_all_normal():
-    assert levenshtein_seg_fast(s1sdi4, t1sdi4, sg1sdi4b, head=True) == \
+    assert levenshtein_seg_fast(s1sdi4, t1sdi4, sg1sdi4b, tight=False) == \
         [[3, 2], [1, 1], [3, 1]]
-    assert levenshtein_seg(s1sdi4, t1sdi4, sg1sdi4b, head=True) == \
+    assert levenshtein_seg(s1sdi4, t1sdi4, sg1sdi4b, tight=False) == \
         [[3, 2], [1, 1], [3, 1]]
 
 
@@ -1061,9 +1061,9 @@ def test_levenshtein_seg_fast_1sdi5a_with_diff():
     #        ^   This is the correct distance.
 
 def test_levenshtein_seg_fast_head_1sdi5a_all_normal():
-    assert levenshtein_seg_fast(s1sdi5, t1sdi5, sg1sdi5a, head=True) == \
+    assert levenshtein_seg_fast(s1sdi5, t1sdi5, sg1sdi5a, tight=False) == \
         [[3, 2], [4, 3]]
-    assert levenshtein_seg(s1sdi5, t1sdi5, sg1sdi5a, head=True) == \
+    assert levenshtein_seg(s1sdi5, t1sdi5, sg1sdi5a, tight=False) == \
         [[3, 2], [4, 3]]
 
 
@@ -1102,11 +1102,11 @@ def test_levenshtein_seg_fast_1sdi5b_all_normal():
         [[2, 0], [4, 2]]
 
 def test_levenshtein_seg_fast_head_1sdi5b_with_diff():
-    assert levenshtein_seg_fast(s1sdi5, t1sdi5, sg1sdi5b, head=True) == \
+    assert levenshtein_seg_fast(s1sdi5, t1sdi5, sg1sdi5b, tight=False) == \
         [[2, 1], [4, 3]]
     #        ^    Note the difference
     #     Caused by the leading error.
-    assert levenshtein_seg(s1sdi5, t1sdi5, sg1sdi5b, head=True) == \
+    assert levenshtein_seg(s1sdi5, t1sdi5, sg1sdi5b, tight=False) == \
         [[2, 1], [4, 3]]
     #        ^    Note the difference
     #     Caused by the shifting.
@@ -1154,9 +1154,9 @@ def test_levenshtein_seg_2s1a():
         [[4, 2], [4, 2]]
 
 def test_levenshtein_seg_head_2s1a():
-    assert levenshtein_seg_fast(s2s1, t2s1, sg2s1a, head=True) == \
+    assert levenshtein_seg_fast(s2s1, t2s1, sg2s1a, tight=False) == \
         [[4, 2], [4, 2]]
-    assert levenshtein_seg(s2s1, t2s1, sg2s1a, head=True) == \
+    assert levenshtein_seg(s2s1, t2s1, sg2s1a, tight=False) == \
         [[4, 2], [4, 2]]
 
 
@@ -1195,9 +1195,9 @@ def test_levenshtein_seg_2s1b():
         [[2, 2], [6, 2]]
 
 def test_levenshtein_seg_head_2s1b():
-    assert levenshtein_seg_fast(s2s1, t2s1, sg2s1b, head=True) == \
+    assert levenshtein_seg_fast(s2s1, t2s1, sg2s1b, tight=False) == \
         [[2, 2], [6, 2]]
-    assert levenshtein_seg(s2s1, t2s1, sg2s1b, head=True) == \
+    assert levenshtein_seg(s2s1, t2s1, sg2s1b, tight=False) == \
         [[2, 2], [6, 2]]
 
 
@@ -1245,9 +1245,9 @@ def test_levenshtein_seg_2d1a():
         [[3, 2], [4, 2], [2, 1]]
 
 def test_levenshtein_seg_head_2d1a():
-    assert levenshtein_seg_fast(s2d1, t2d1, sg2d1a, head=True) == \
+    assert levenshtein_seg_fast(s2d1, t2d1, sg2d1a, tight=False) == \
         [[3, 2], [4, 2], [2, 1]]
-    assert levenshtein_seg(s2d1, t2d1, sg2d1a, head=True) == \
+    assert levenshtein_seg(s2d1, t2d1, sg2d1a, tight=False) == \
         [[3, 2], [4, 2], [2, 1]]
 
 
@@ -1289,9 +1289,9 @@ def test_levenshtein_seg_2d1b():
         [[2, 2], [3, 1], [4, 2]]
 
 def test_levenshtein_seg_head_2d1b():
-    assert levenshtein_seg_fast(s2d1, t2d1, sg2d1b, head=True) == \
+    assert levenshtein_seg_fast(s2d1, t2d1, sg2d1b, tight=False) == \
         [[2, 2], [3, 1], [4, 2]]
-    assert levenshtein_seg(s2d1, t2d1, sg2d1b, head=True) == \
+    assert levenshtein_seg(s2d1, t2d1, sg2d1b, tight=False) == \
         [[2, 2], [3, 1], [4, 2]]
 
 
@@ -1336,9 +1336,9 @@ def test_levenshtein_seg_fast_2d2a():
         [[3, 2], [4, 2]]
 
 def test_levenshtein_seg_fast_head_2d2a():
-    assert levenshtein_seg_fast(s2d2, t2d2, sg2d2a, head=True) == \
+    assert levenshtein_seg_fast(s2d2, t2d2, sg2d2a, tight=False) == \
         [[3, 2], [4, 2]]
-    assert levenshtein_seg(s2d2, t2d2, sg2d2a, head=True) == \
+    assert levenshtein_seg(s2d2, t2d2, sg2d2a, tight=False) == \
         [[3, 2], [4, 2]]
 
 
@@ -1384,9 +1384,9 @@ def test_levenshtein_seg_fast_2i1a():
         [[3, 0], [2, 0]]
 
 def test_levenshtein_seg_fast_head_2i1a():
-    assert levenshtein_seg_fast(s2i1, t2i1, sg2i1a, head=True) == \
+    assert levenshtein_seg_fast(s2i1, t2i1, sg2i1a, tight=False) == \
         [[3, 2], [2, 2]]
-    assert levenshtein_seg(s2i1, t2i1, sg2i1a, head=True) == \
+    assert levenshtein_seg(s2i1, t2i1, sg2i1a, tight=False) == \
         [[3, 2], [2, 2]]
 
 
@@ -1425,9 +1425,9 @@ def test_levenshtein_seg_fast_2i1b():
         [[2, 0], [3, 2]]
 
 def test_levenshtein_seg_fast_head_2i1b():
-    assert levenshtein_seg_fast(s2i1, t2i1, sg2i1b, head=True) == \
+    assert levenshtein_seg_fast(s2i1, t2i1, sg2i1b, tight=False) == \
         [[2, 2], [3, 2]]
-    assert levenshtein_seg(s2i1, t2i1, sg2i1b, head=True) == \
+    assert levenshtein_seg(s2i1, t2i1, sg2i1b, tight=False) == \
         [[2, 2], [3, 2]]
 
 
@@ -1474,9 +1474,9 @@ def test_levenshtein_seg_3s1di1a():
         [[4, 1], [5, 3]]
 
 def test_levenshtein_seg_head_3s1di1a():
-    assert levenshtein_seg_fast(s3s1di1, t3s1di1, sg3s1di1a, head=True) == \
+    assert levenshtein_seg_fast(s3s1di1, t3s1di1, sg3s1di1a, tight=False) == \
         [[4, 2], [5, 3]]
-    assert levenshtein_seg(s3s1di1, t3s1di1, sg3s1di1a, head=True) == \
+    assert levenshtein_seg(s3s1di1, t3s1di1, sg3s1di1a, tight=False) == \
         [[4, 2], [5, 3]]
 
 
@@ -1493,8 +1493,8 @@ def test_levenshtein_seg_special_test1():
     segs = [[0, 1]]
     assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
     assert levenshtein_seg(s, t, segs) == [[1, 1]]
-    assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s, t, segs, head=True) == [[1, 2]]
+    assert levenshtein_seg_fast(s, t, segs, tight=False) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, tight=False) == [[1, 2]]
 
 
 def test_levenshtein_seg_special_test2():
@@ -1506,8 +1506,8 @@ def test_levenshtein_seg_special_test2():
     segs = [[0, 1]]
     assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
     assert levenshtein_seg(s, t, segs) == [[1, 1]]
-    assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s, t, segs, head=True) == [[1, 1]]
+    assert levenshtein_seg_fast(s, t, segs, tight=False) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, tight=False) == [[1, 1]]
 
 
 def test_levenshtein_seg_head_st3():
@@ -1519,5 +1519,5 @@ def test_levenshtein_seg_head_st3():
     segs = [[1, 2]]
     assert levenshtein_seg_fast(s, t, segs) == [[1, 1]]
     assert levenshtein_seg(s, t, segs) == [[1, 1]]
-    assert levenshtein_seg_fast(s, t, segs, head=True) == [[1, 1]]
-    assert levenshtein_seg(s, t, segs, head=True) == [[1, 2]]
+    assert levenshtein_seg_fast(s, t, segs, tight=False) == [[1, 1]]
+    assert levenshtein_seg(s, t, segs, tight=False) == [[1, 2]]

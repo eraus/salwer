@@ -269,7 +269,7 @@ def levenshtein_seg_fast(
     s: List[str],
     t: List[str],
     segs: List[List],
-    head: bool = False,
+    tight: bool = True,
 ) -> List[List]:
     """Segment size and LD calculation---the fast version.
 
@@ -293,10 +293,10 @@ def levenshtein_seg_fast(
     -   s: Source (reference) sequence as list of strings.
     -   t: Target (hypothesis) sequence as list of strings.
     -   segs: List of semantic segments, each segment is [start, end].
-    -   head: Boolean indicator for including prefix drift (hallucination)
-        before each segment:
-        -   False: do not include (default)
-        -   True: include
+    -   tight: Boolean indicator for including prefix drift (PD, or
+        hallucination) before each segment or not:
+        -   True: Use tight segmemts---do not include PD (default).
+        -   False: Do not use tight segments---do include PD.
 
     Returns:
     -   segd: segment distance---a list of [seg_size, edit_dist] for
@@ -305,7 +305,7 @@ def levenshtein_seg_fast(
         -   edit_dist between s[start:end] and the correcponding t sequence.
     """
 
-    base_seg_dist = _v_plus if head else _v_star
+    base_seg_dist = _v_star if tight else _v_plus
 
     m, n = len(s), len(t)   # sizes of s and t
     d0 = list(range(n+1))   # prev LD list
@@ -341,7 +341,7 @@ def levenshtein_seg(
     s: List[str],
     t: List[str],
     segs: List[List],
-    head: bool = False,
+    tight: bool = True,
 ) -> List[List]:
     """Calculate size and Levenshtein dist of segments---the normal version.
 
@@ -385,8 +385,8 @@ def levenshtein_seg(
             # Find the seg size and dist at the segment upper boundary.
             if segs[k][1] == ss + i + 1:
                 segd[k][0] = segs[k][1] - segs[k][0]    # seg size
-                segd[k][1] = min(d1) - base_dist        # seg dist
-                if head: segd[k][1] += n_pd             # seg dist
+                segd[k][1] = min(d1) - base_dist        # seg LD
+                if not tight: segd[k][1] += n_pd        # seg LD
                 check_shift = True   # get ready for prefix drift checking
                 k += 1
                 if k >= n_segs: return segd
@@ -629,13 +629,13 @@ def _ind_v_plus_upper(d1):
     return _max_ind_of_min(d1)
 
 
-# Calculate v_plus used for obtaining seg dist with head.
-def _v_plus(d0, d1):  # used for obtaining seg dist with head
+# Calculate v_plus used for obtaining seg LD in non-tight way.
+def _v_plus(d0, d1):  # used for obtaining seg LD not tightly
     return min(d0)
 
 
 # Define function base_seg_dist for calculate the seg distance.
-def _v_star(d0, d1):  # used for obtaining seg dist w/o head
+def _v_star(d0, d1):  # used for obtaining seg LD tightly
     return d0[_ind_v_star(d1)]
 
 

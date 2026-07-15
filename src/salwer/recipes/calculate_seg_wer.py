@@ -21,7 +21,7 @@ def calculate_seg_wer_(
     fn_cls: str,
     seg: str,
     approach: str,
-    head: bool,
+    tight: bool,
 ):
     """Calculate segment WER using hypothesis and reference transcripts.
 
@@ -42,7 +42,7 @@ def calculate_seg_wer_(
             edit_dist, num_words = seg_dist_of_file(
                 ref_file, hyp_file,
                 level, fn_cls, seg,
-                approach, head
+                approach, tight
             )
             total_edit_dist += edit_dist
             total_num_words += num_words
@@ -64,7 +64,7 @@ def seg_dist_of_file(
     fn_cls: str,
     seg: str,
     approach: str,
-    head: bool,
+    tight: bool,
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -78,7 +78,7 @@ def seg_dist_of_file(
             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
         )
 
-    return seg_dist_of_ann(ref_ann, hyp_ann, fn_cls, seg, approach, head)
+    return seg_dist_of_ann(ref_ann, hyp_ann, fn_cls, seg, approach, tight)
 
 
 def seg_dist_of_ann(
@@ -87,15 +87,11 @@ def seg_dist_of_ann(
     fn_cls: str,
     seg: str,
     approach: str,
-    head: bool,
+    tight: bool,
 ):
-    approach_map = {
-        "normal": levenshtein_seg,
-        "fast": levenshtein_seg_fast,
-    }
-    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
+    seg_ld_map = {"normal": levenshtein_seg, "fast": levenshtein_seg_fast}
+    seg_ld_func = seg_ld_map.get(approach.lower(), levenshtein_seg)
 
-    use_head = head
     total_edit_dist = 0
     total_num_words = 0
     for i in range(len(ref_ann.cues)):
@@ -111,11 +107,11 @@ def seg_dist_of_ann(
 
         cue_num_words, cue_edit_dist = 0, 0
         if cue_seg_ranges:
-            results = seg_func(
+            results = seg_ld_func(
                 ref_cue.txt.split(),
                 hyp_cue.txt.split(),
                 cue_seg_ranges,
-                use_head
+                tight
             )
             for seg_size, edit_dist in results:
                 cue_edit_dist += edit_dist

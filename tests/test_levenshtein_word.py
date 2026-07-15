@@ -10,7 +10,7 @@ from salwer.levenshtein import (
 
 
 # When we calculate the word-level Levenshtein distance using the seg-based
-# approach, we need to use the head version, which includes the prefix drift.
+# approach, we need to use the non-tight version to include the prefix drift.
 
 
 #--------------------------------------------------------------------
@@ -100,7 +100,7 @@ def test_levenshtein_seg_fast_1s1w():
 def test_levenshtein_seg_fast_head_1s1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8], [8, 9]]
-    assert levenshtein_seg_fast(s1s1, t1s1, segs, head=True) == \
+    assert levenshtein_seg_fast(s1s1, t1s1, segs, tight=False) == \
         [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1],
          [1, 0], [1, 0], [1, 0], [1, 1]]
 
@@ -143,14 +143,14 @@ def test_levenshtein_word_1s2():
 def test_levenshtein_seg_fast_1s2w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8], [8, 9]]
-    assert levenshtein_seg_fast(s1s2, t1s2, segs, head=True) == \
+    assert levenshtein_seg_fast(s1s2, t1s2, segs, tight=False) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0],
          [1, 1], [1, 0], [1, 0], [1, 1]]
 
 def test_levenshtein_seg_fast_head_1s2w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8], [8, 9]]
-    assert levenshtein_seg_fast(s1s2, t1s2, segs, head=True) == \
+    assert levenshtein_seg_fast(s1s2, t1s2, segs, tight=False) == \
         [[1, 0], [1, 0], [1, 1], [1, 0], [1, 0],
          [1, 1], [1, 0], [1, 0], [1, 1]]
 
@@ -201,7 +201,7 @@ def test_levenshtein_seg_fast_1d1w():
 def test_levenshtein_seg_fast_head_1d1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8], [8, 9]]
-    assert levenshtein_seg_fast(s1d1, t1d1, segs, head=True) == \
+    assert levenshtein_seg_fast(s1d1, t1d1, segs, tight=False) == \
         [[1, 1], [1, 0], [1, 0], [1, 0], [1, 1],
          [1, 0], [1, 0], [1, 0], [1, 1]]
 # Note that Difference (1d1)         ^ #######################################
@@ -245,7 +245,7 @@ def test_levenshtein_seg_fast_1i1w():
 
 def test_levenshtein_seg_fast_head_1i1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]
-    assert levenshtein_seg_fast(s1i1, t1i1, segs, head=True) == \
+    assert levenshtein_seg_fast(s1i1, t1i1, segs, tight=False) == \
         [[1, 1], [1, 0], [1, 0], [1, 1], [1, 0], [1, 0]]
 
 
@@ -286,7 +286,7 @@ def test_levenshtein_seg_fast_1sdi1w():
 
 def test_levenshtein_seg_fast_head_1sdi1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]
-    assert levenshtein_seg_fast(s1sdi1, t1sdi1, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi1, t1sdi1, segs, tight=False) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1], [1, 1], [1, 0]]
 
 
@@ -330,7 +330,7 @@ def test_levenshtein_seg_fast_1sdi2w():
 
 def test_levenshtein_seg_fast_head_1sdi2w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]
-    assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi2, t1sdi2, segs, tight=False) == \
         [[1, 1], [1, 0], [1, 1], [1, 1], [1, 0], [1, 1], [1, 0]]
 
 
@@ -374,7 +374,7 @@ def test_levenshtein_seg_fast_1sdi3w():
 
 def test_levenshtein_seg_fast_head_1sdi3w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]
-    assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs, head=True) == \
+    assert levenshtein_seg_fast(s1sdi3, t1sdi3, segs, tight=False) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1], [1, 1], [1, 0]]
 # Note       ^       ^
 #     Values are spreaded.
@@ -420,7 +420,7 @@ def test_levenshtein_seg_fast_2s1w():
 def test_levenshtein_seg_fast_head_2s1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8]]
-    assert levenshtein_seg_fast(s2s1, t2s1, segs, head=True) == \
+    assert levenshtein_seg_fast(s2s1, t2s1, segs, tight=False) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [1, 0], [1, 1], [1, 1]]
 
 
@@ -468,7 +468,7 @@ def test_levenshtein_seg_fast_2d1w():
 def test_levenshtein_seg_fast_head_2d1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8], [8, 9]]
-    assert levenshtein_seg_fast(s2d1, t2d1, segs, head=True) == \
+    assert levenshtein_seg_fast(s2d1, t2d1, segs, tight=False) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 1],
          [1, 1], [1, 0], [1, 0], [1, 1]]
 # Note that Difference (2d1)         ^ #######################################
@@ -512,7 +512,7 @@ def test_levenshtein_seg_fast_2d2w():
 
 def test_levenshtein_seg_fast_head_2d2w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7]]
-    assert levenshtein_seg_fast(s2d2, t2d2, segs, head=True) == \
+    assert levenshtein_seg_fast(s2d2, t2d2, segs, tight=False) == \
         [[1, 1], [1, 1], [1, 0], [1, 0], [1, 0], [1, 1], [1, 1]]
 # Note that Difference (2d2)                         ^       ^
 
@@ -556,7 +556,7 @@ def test_levenshtein_seg_fast_2i1w():
 
 def test_levenshtein_seg_fast_head_2i1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
-    assert levenshtein_seg_fast(s2i1, t2i1, segs, head=True) == \
+    assert levenshtein_seg_fast(s2i1, t2i1, segs, tight=False) == \
         [[1, 1], [1, 1], [1, 0], [1, 1], [1, 1]]
 # Note               ^                       ^
 #     Tight WER fails due to shifted min d1
@@ -611,8 +611,8 @@ def test_levenshtein_seg_fast_3s1w():
 def test_levenshtein_seg_fast_head_3s1w():
     segs = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
             [5, 6], [6, 7], [7, 8], [8, 9]]
-    # print(f"{levenshtein_seg_fast(s3s1, t3s1, segs, head=True) = }")
-    assert levenshtein_seg_fast(s3s1, t3s1, segs, head=True) == \
+    # print(f"{levenshtein_seg_fast(s3s1, t3s1, segs, tight=False) = }")
+    assert levenshtein_seg_fast(s3s1, t3s1, segs, tight=False) == \
         [[1, 1], [1, 0], [1, 1], [1, 0], [1, 0], [1, 1], [1, 1], [1, 1], [1, 0]]
 # Note               ^       ^
 

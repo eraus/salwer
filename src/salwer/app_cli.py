@@ -37,14 +37,14 @@ def calculate_avg_wer(
         3, "--level", "-l",
         help=(
             "Choose audio quality level (1, 2, or 3) and below; "
-            "for example, level 3 will include also levels 1 and 2. "
-            "The level value must match the level used during transcription."
+            "for example, Level 3 will include also Levels 1 and 2. "
+            "The value of `level` must match the level value used during ASR."
         )
     ),
     words: str = typer.Option(
         "all", "--words",
         help=(
-            "Choose to use a `section` of interests of the transcripts: "
+            "Choose a `section` of interests WER calculation: "
             "'all' for all words, "
             "'first' for the first word, "
             "and 'second+' for all words except the first."
@@ -53,9 +53,10 @@ def calculate_avg_wer(
     approach: str = typer.Option(
         "normal", "--approach", "-a",
         help=(
-            "Calculation approach for segment-based dist: normal or fast. "
-            "This is only applicable if `words` is `first` or `second+`, "
-            "with which seg-level WER functions will be used."
+            "Calculation approach for segment-based Levenshtein distance (LD) "
+            "calculation: normal or fast. "
+            "This is only applicable if the `words` option is `first` "
+            "or `second+`,  with which seg-level WER functions will be used."
         )
     ),
 ):
@@ -107,17 +108,21 @@ def calculate_seg_wer(
     ),
     seg: str = typer.Option(
         "A", "--segment", "-s",
-        help=("Select a semantic segment for WER calculation.")
+        help="Select a semantic segment for WER calculation."
     ),
     approach: str = typer.Option(
         "normal", "--approach", "-a",
         help=(
-            "Calculation approach for segment-based dist: normal or fast."
+            "Calculation approach for segment-based Levenshtein dist (edit): "
+            "normal or fast."
         )
     ),
-    head: bool = typer.Option(
-        True, "--head/--no-head",
-        help="Include `head` errors; to exclude, use --no-head in CLI."
+    tight: bool = typer.Option(
+        False, "--no-tight/--tight",
+        help=(
+            "Include prefix drift (PD) before each segment or not; "
+            "default to include; to exclude, use --tight in CLI."
+        )
     ),
 ):
     """Calculate (class-based) segment-level WER.
@@ -131,8 +136,10 @@ def calculate_seg_wer(
     -   seg: str="A". The semantic segment for WER calculation.
     -   approach: str. The approach used for calculating WER. Valid values:
         (1) `normal` (default) and (2) `fast`.
-    -   head: bool=True. Indicator for using `head` or not when calculating
-            the Levenshtein distance.
+    -   tight: Boolean indicator for including prefix drift (PD, or
+        hallucination) before each segment or not:
+        -   True: Use tight segmemts---do not include PD (default).
+        -   False: Do not use tight segments---do include PD.
 
     Example:
     -  salwer csw ref b12_aug2_l12 --level 2 --approach fast
@@ -140,7 +147,7 @@ def calculate_seg_wer(
 
     return calculate_seg_wer_(ref_dir, hyp_dir,
                               level, fn_cls, seg,
-                              approach, head)
+                              approach, tight)
 
 
 @app.command("calculate-word-wer")
@@ -286,7 +293,7 @@ def obtain_word_count(
 def print_levenshtein_table(
     s: str = typer.Argument(
         help=(
-            "The source string of alphabets (J to R) such as "
+            "The source string of alphabets (usually J to R) such as "
             "'J k   M   O'."
         )
     ),

@@ -82,11 +82,8 @@ def dist_of_ann(
     words: str,
     approach: str,
 ):
-    approach_map = {
-        "normal": levenshtein_seg,
-        "fast": levenshtein_seg_fast,
-    }
-    seg_func = approach_map.get(approach.lower(), levenshtein_seg)
+    seg_ld_map = {"normal": levenshtein_seg, "fast": levenshtein_seg_fast}
+    seg_ld_func = seg_ld_map.get(approach.lower(), levenshtein_seg)
 
     total_edit_dist = 0
     total_num_words = 0
@@ -103,11 +100,11 @@ def dist_of_ann(
                 cue_seg_ranges = [(0, 1)]
             else:
                 cue_seg_ranges = [(1, seg_size)]
-            results = seg_func(
+            results = seg_ld_func(
                 ref_cue.txt.split(),
                 hyp_cue.txt.split(),
                 cue_seg_ranges,
-                head=True
+                tight=False
             )
             seg_size, dist = results[0]
 
