@@ -7,6 +7,7 @@ from salwer.levenshtein import (
     _clip_wlst_err,
     _max_ind_of_min,
     _num_prefix_drift,
+    _num_suffix_drift,
 )
 
 
@@ -201,6 +202,22 @@ def test_num_prefix_drift():
     r8 = "B C D".split()
     h8 = "  C  ".split()
     assert _num_prefix_drift(r8, h8) == 0
+
+
+def test_num_suffix_drift():
+    r0 = "B C D".split()
+    h0 = "A C D".split()
+    assert _num_suffix_drift(r0, h0) == 0
+    assert r0 == "B C D".split()   # No change to the sequence
+    r1 = "B C D".split()
+    h1 = "B C D E".split()
+    assert _num_suffix_drift(r1, h1) == 1
+    r3 = "B      ".split()
+    h3 = "B Y Z A ".split()
+    assert _num_suffix_drift(r3, h3) == 3
+    r5 = "C D E".split()
+    h5 = "C D  ".split()
+    assert _num_suffix_drift(r5, h5) == 0
 
 
 #--------------------------------------------------------------------

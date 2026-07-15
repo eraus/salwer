@@ -14,6 +14,46 @@ from salwer.levenshtein import (
 # which is called head or hallucination.
 
 
+#--------------------------------------------------------------------
+# Basic check
+#--------------------------------------------------------------------
+
+
+def test_levenshtein_word_bc1():
+    sbc = "J".split()
+    tbc = "J".split()
+    assert levenshtein_word(sbc, tbc) == [["J", 0]]
+
+def test_levenshtein_word_bc2():
+    sbc = "J".split()
+    tbc = "K".split()
+    assert levenshtein_word(sbc, tbc) == [["J", 2]]
+
+def test_levenshtein_word_bc3():
+    sbc = "  K".split()
+    tbc = "J K".split()
+    assert levenshtein_word(sbc, tbc) == [["K", 2]]
+
+def test_levenshtein_word_bc4():
+    sbc = "J  ".split()
+    tbc = "J K".split()
+    assert levenshtein_word(sbc, tbc) == [["J", 2]]
+
+def test_levenshtein_word_bc5():
+    sbc = "J   L".split()
+    tbc = "J K L".split()
+    assert levenshtein_word(sbc, tbc) == [["J", 1], ["L", 1]]
+
+def test_levenshtein_word_bc6():
+    sbc = "J K L".split()
+    tbc = "J   L".split()
+    assert levenshtein_word(sbc, tbc) == [["J", 0], ["K", 2], ["L", 0]]
+
+def test_levenshtein_word_bc7():
+    sbc = "J K L".split()
+    tbc = "J  M".split()
+    assert levenshtein_word(sbc, tbc) == [["J", 0], ["K", 2], ["L", 2]]
+
 ############################################
 # x1s1
 # s1s1 = "A B C D E F G H I".split()
@@ -659,13 +699,12 @@ t3i1s3t1 = "J K L M N O P Q R J K".split()
 
 def test_levenshtein_word_3i1s3t_default_err_limit():
     assert levenshtein_word(s3i1s3t1, t3i1s3t1) == \
-        [["M", 5], ["N", 0], ["O", 0], ["P", 3], ["M", 5]]
-    # Note the difference                    ^  caused by 3 shifts of t at M.
+        [["M", 5], ["N", 0], ["O", 0], ["P", 0], ["M", 5]]
 
 def test_levenshtein_word_3i1s3t1_err_limit_to_3():
     assert levenshtein_word(s3i1s3t1, t3i1s3t1, err_limit=3) == \
-        [["M", 3], ["N", 0], ["O", 0], ["P", 3], ["M", 3]]
+        [["M", 3], ["N", 0], ["O", 0], ["P", 0], ["M", 3]]
 
 def test_levenshtein_word_3i1s3t1_err_limit_to_9():
     assert levenshtein_word(s3i1s3t1, t3i1s3t1, err_limit=9) == \
-        [["M", 6], ["N", 0], ["O", 0], ["P", 3], ["M", 5]]
+        [["M", 6], ["N", 0], ["O", 0], ["P", 0], ["M", 8]]

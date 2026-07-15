@@ -223,33 +223,31 @@ Will address the issue with extended end index. This can be done
     segt = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
+    check_shift = True      # flag for checking shift
     ss = 0   # sequence s' total shift due to update of s
     ts = 0   # sequence t's total shift; counterpart of ss
-    check_shift = True      # flag for checking shift
 
     while True:
         for i in range(m):
             # Check the prefix drift at the lower boundary of each segment.
-            # If exist, update s and t and related variables.
             if  check_shift and k < n_segs and segs[k][0] == ss + i:
-                # t_ind: t's index used for prefix drift checking.
-                t_ind = _ind_v_plus_lower(d0)
                 # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
-                n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
-
-                # Restart the "for i loop" as needed if there is prefix drift
+                n_pd, r, h = _prefix_drift_rh(s, t, i, d0)
                 if n_pd:
+                    # t_ind: t's index used for prefix drift checking.
+                    t_ind = _ind_v_plus_lower(d0)
+                    ts = ts + t_ind + n_pd  # needed for alignment
+                    # update s and t and related vars for a new "for i loop"
                     s, t, m, n, d0, d1, ss, i = \
                         _update_st_vars(r, h, n_pd, ss, i)
-                    ts = ts + t_ind + n_pd  # needed for alignment
                     check_shift = False     # no check again for this boundary
                     break
 
             d1 = _update_d1(s, t, d0, d1, i, n)
 
             # Amend upper boundary overshoot; see comments of fast version.
-            if k > 0 and segs[k-1][1] == ss + i:  # just above the upper boundary
+            if k > 0 and segs[k-1][1] == ss + i:  # just above upper boundary
                 ind_v_minus_i = _ind_v_minus_lower(d1) - 1 + ts
                 if segt[k-1][1] > ind_v_minus_i:
                     segt[k-1][1] = ind_v_minus_i
@@ -368,23 +366,18 @@ def levenshtein_seg(
 
     base_dist = 0           # base dist: v_plus
 
-    ss = 0                  # base index for s
     check_shift = True      # flag for checking shift
+    ss = 0                  # base index for s
 
     while True:
         for i in range(m):
             # Check the prefix drift at the lower boundary of each segment.
-            # If exist, update s and t and related variables.
-            if  check_shift and k < n_segs and segs[k][0] == ss + i:
-            # if check_shift and segs[k][0] == ss + i:
-                # t_ind: t's index used for prefix drift checking.
-                t_ind = _ind_v_plus_lower(d0)
+            if check_shift and segs[k][0] == ss + i:
                 # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
-                n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
-
-                # Restart the "for i loop" as needed if there is prefix drift
+                n_pd, r, h = _prefix_drift_rh(s, t, i, d0)
                 if n_pd:
+                    # update s and t and related vars for a new "for i loop"
                     s, t, m, n, d0, d1, ss, i = \
                         _update_st_vars(r, h, n_pd, ss, i)
                     check_shift = False     # no check again for this boundary
@@ -489,6 +482,11 @@ def levenshtein_word(
         where levenshtein_dist is an integer, assuming values 0, 1, 2, ...
     """
 
+    # Find the number of suffix drifts and remove the tail from t
+    num_sd = _num_suffix_drift(s, t)
+    if num_sd:
+        t = t[:-num_sd]
+
     m, n = len(s), len(t)   # sizes of s and t
     d0 = list(range(n+1))   # prev LD list
     d1 = [0] * (n+1)        # curr LD list
@@ -507,39 +505,30 @@ def levenshtein_word(
             wlst[ss+i][0] = sc[ss+i]    # word
             min_d1 = min(d1)
             dist = min_d1 - min_d0
+            # use update since the value may have been assigned in (1)
             wlst[ss+i][1] += dist       # 0 or 1
-
-            t_ind = _ind_v_plus_lower(d0)
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
 
-            # Otherwise, check for potential prefix drift
-            n_pd, r, h = _prefix_drift_rh(s, t, i, t_ind)
-            # Restart the "for i loop" as needed if there is prefix drift
+            # Otherwise, check if the edit is caused by prefix drift
+            n_pd, r, h = _prefix_drift_rh(s, t, i, d1)  # d1 is actually d0
+            # Restart the "for i loop" in case of prefix drift
             if n_pd:
                 wlst[ss+i][1] = n_pd         # add num of hallucinations
                 if ss+i == 0:
-                    wlst[ss+i][1] += n_pd    # add again for s[0]
+                    wlst[ss+i][1] += n_pd    # (1) add again for s[0]
                 else:
                     wlst[ss+i-1][1] += n_pd  # share blame with neighbor
-
-                s, t, m, n, d0, d1, ss, i = \
-                    _update_st_vars(r, h, n_pd, ss, i)
+                s, t, m, n, d0, d1, ss, i =  _update_st_vars(r, h, n_pd, ss, i)
                 min_d0 = 0
-
                 break
             else:  # substitution or deletion
                 wlst[ss+i][1] += 1  # seg dist = 2 now
 
         if ss + i >= mc - 1:
-            # Blame the last word in s for all tail issues.
-            num_tail = len(d0) - _ind_v_plus_lower(d0) - 1
-            if num_tail:
-                wlst[mc-1][1] += 2 * num_tail
-
+            wlst[mc-1][1] += 2 * num_sd
             wlst = _clip_wlst_err(wlst, err_limit)
-
             break  # all elements of s scanned
 
     return wlst
@@ -568,8 +557,17 @@ def _num_prefix_drift(s: List[str], t: List[str]) -> int:
     return shift
 
 
+# Find the num of suffix drifts (insertion or hallucination words) of s & t.
+def _num_suffix_drift(s: List[str], t: List[str]) -> int:
+    reversed_s = s[::-1]
+    reversed_t = t[::-1]
+    num_sd = _num_prefix_drift(reversed_s, reversed_t)
+    return num_sd
+
+
 # Find the num of prefix drifts and new s & t sequences.
-def _prefix_drift_rh(s, t, s_ind, t_ind):
+def _prefix_drift_rh(s, t, s_ind, d0):
+    t_ind = _ind_v_plus_lower(d0)
     r = s[s_ind:]           # r = ref, partial source
     h = t[t_ind:]           # h = hyp, partial target
     n_pd = _num_prefix_drift(r, h)
