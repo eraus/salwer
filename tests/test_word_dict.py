@@ -13,26 +13,26 @@ from salwer.recipes.calculate_wrd_wer import _get_seg_wrd_list
 def test_word_count_of_cue():
     """Test word_count_of_cue for a given text string."""
     text = "the quick brown fox jumps over the lazy dog the quick brown fox"
-    wrd_dict = {'the': 3, 'quick': 2, 'brown': 2, 'fox': 2, 'jumps': 1,
-                'over': 1, 'lazy': 1, 'dog': 1}
+    wrd_dict = {'the': 3, 'quick': 2, 'brown': 2, 'fox': 2,
+                'jumps': 1, 'over': 1, 'lazy': 1, 'dog': 1}
     assert word_count_of_cue(text) == wrd_dict
 
 
 # Tests for merge_word_count_dicts
 def test_merge_word_count_dicts():
     """Test merge_word_count_dicts for two given text strings."""
-    wrd_dict1 = {'the': 3, 'quick': 2, 'brown': 2, 'fox': 2, 'jumps': 1,
-                'over': 1, 'lazy': 1, 'dog': 1}
-    wrd_dict2 = {'the': 3, 'quick': 2, 'brown': 2, 'fox': 2, 'jumps': 1,
-                'over': 1, 'lazy': 1, 'dog': 1, 'slow': 5}
-    wrd_dict = {'the': 6, 'slow': 5, 'quick': 4, 'brown': 4, 'fox': 4, 'jumps': 2,
-                'over': 2, 'lazy': 2, 'dog': 2}
+    wrd_dict1 = {'the': 3, 'quick': 2, 'brown': 2, 'fox': 2,
+                 'jumps': 1, 'over': 1, 'lazy': 1, 'dog': 1}
+    wrd_dict2 = {'the': 3, 'quick': 2, 'brown': 2, 'fox': 2,
+                 'jumps': 1, 'over': 1, 'lazy': 1, 'dog': 1, 'slow': 5}
+    wrd_dict = {'the': 6, 'slow': 5, 'quick': 4, 'brown': 4, 'fox': 4,
+                'jumps': 2, 'over': 2, 'lazy': 2, 'dog': 2}
     assert merge_word_count_dicts(wrd_dict1, wrd_dict2) == wrd_dict
 
 
 # Tests for word_dict_of_cue
 def test_word_dict_of_cue():
-    """Test word_dict_of_cue for a given list of words and levenshtein dists."""
+    """Test word_dict_of_cue for a given list of list for word & LD."""
     wrd_list = [
         ["A", 2], ["B", 1], ["D", 1], ["A", 1],
         ["E", 2], ["F", 1], ["H", 1], ["I", 0],

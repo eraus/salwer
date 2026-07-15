@@ -25,6 +25,4 @@ def test_class_n_seg_a_cue():
     for ex in examples:
         result = _class_n_seg_a_cue(ex["hst"], ex["com"], ex["txt"])
         print(f"\nTranscript: {ex['txt']}")
-        print(f"LLM Result:  {result}")
-        # print(f"Expected: {ex['expected']}")
-        print("---")
+        print(f"LLM Result:  {result}\n")

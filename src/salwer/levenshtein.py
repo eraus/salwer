@@ -1,15 +1,8 @@
 from typing import List
 
-# To be removed later
-def seg_size_n_edit_distance(
-    segs: List[List],
-    ref: List[str],
-    hyp: List[str],
-) -> List[List]:
-    raise ValueError("seg_size_n_edit_distance is not defined.")
 
 #--------------------------------------------------------------------
-# Different implementation of the Levenshtein algorithm
+# Different implementations of the global Levenshtein algorithm
 #--------------------------------------------------------------------
 
 def levenshtein_2d(
@@ -22,7 +15,7 @@ def levenshtein_2d(
     Args:
     -   s: List[str]. Source (reference) sequence as list of strings.
     -   t: List[str]. Target (hypothesis) sequence as list of strings.
-    -   print_ld: bool = False. Print the Levenshtein dist (LD) table if True.
+    -   print_ld: bool = False. Print Levenshtein dist (LD) table if True.
 
     Return:
     -   The Levenshtein distance between s and t.
@@ -65,7 +58,7 @@ def levenshtein_2d(
 def levenshtein(s: List[str], t: List[str]) -> int:
     """Two-list implementation of the Levenshtein distance alg.
 
-    Two 1D lists, d0 and d1, are used instead of a 2D list.
+    Two 1D lists, d0 and d1, are used instead of one 2D list.
 
     Args:
     -   s: List[str]. Source (reference) sequence as list of strings.
@@ -433,14 +426,14 @@ def levenshtein_word_fast(
 
     # wlst = word list [[word1, LD1], ..., [wordm, LDm]]
     wlst = [[0] * 2 for _ in range(m)]
-    min_d0 = 0
+    min_d0 = 0      # v_plus, base_dist of the seg version
 
     for i in range(m):
         d1 = _update_d1(s, t, d0, d1, i, n)
 
-        min_d1 = min(d1)
-        wlst[i][0] = s[i]              # word
-        wlst[i][1] = min_d1 - min_d0   # LD of word
+        wlst[i][0] = s[i]             # word in s
+        min_d1 = min(d1)              # _v_plus_upper(d1)
+        wlst[i][1] = min_d1 - min_d0  # LD of word
 
         d0, d1, min_d0 = d1, d0, min_d1
 
@@ -492,46 +485,44 @@ def levenshtein_word(
     d1 = [0] * (n+1)        # curr LD list
 
     wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
-    min_d0 = 0
+    min_d0 = 0      # v_plus, base_dist of the seg version
 
-    ss = 0                  # base index for s
-    mc, sc = m, s.copy()
+    ss = 0      # base index for s
+    mc = m      # copy of m used in loop control
 
     while True:
         for i in range(m):
             d1 = _update_d1(s, t, d0, d1, i, n)
 
-            # Assign word and initial dist to word list
-            wlst[ss+i][0] = sc[ss+i]    # word
-            min_d1 = min(d1)
-            dist = min_d1 - min_d0
+            # Assign word and update its LD to word list, wlst.
+            wlst[ss+i][0] = s[i]      # word of s
+            min_d1 = min(d1)          # _v_plus_upper(d1)
+            dist = min_d1 - min_d0    # LD of word
             # use update since the value may have been assigned in (1)
-            wlst[ss+i][1] += dist       # 0 or 1
+            wlst[ss+i][1] += dist     # 0 or 1
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
 
-            # Otherwise, check if the edit is caused by prefix drift
+            # If dist is 1, check if it is caused by prefix drift.
             n_pd, r, h = _prefix_drift_rh(s, t, i, d1)  # d1 is actually d0
-            # Restart the "for i loop" in case of prefix drift
             if n_pd:
                 wlst[ss+i][1] = n_pd         # add num of hallucinations
                 if ss+i == 0:
                     wlst[ss+i][1] += n_pd    # (1) add again for s[0]
                 else:
                     wlst[ss+i-1][1] += n_pd  # share blame with neighbor
+                # update s and t and related vars for a new "for i loop"
                 s, t, m, n, d0, d1, ss, i =  _update_st_vars(r, h, n_pd, ss, i)
                 min_d0 = 0
                 break
             else:  # substitution or deletion
                 wlst[ss+i][1] += 1  # seg dist = 2 now
 
-        if ss + i >= mc - 1:
+        if ss + i >= mc - 1:  # all elements of s scanned
             wlst[mc-1][1] += 2 * num_sd
             wlst = _clip_wlst_err(wlst, err_limit)
-            break  # all elements of s scanned
-
-    return wlst
+            return wlst
 
 
 #--------------------------------------------------------------------
@@ -561,8 +552,7 @@ def _num_prefix_drift(s: List[str], t: List[str]) -> int:
 def _num_suffix_drift(s: List[str], t: List[str]) -> int:
     reversed_s = s[::-1]
     reversed_t = t[::-1]
-    num_sd = _num_prefix_drift(reversed_s, reversed_t)
-    return num_sd
+    return _num_prefix_drift(reversed_s, reversed_t)
 
 
 # Find the num of prefix drifts and new s & t sequences.
@@ -612,18 +602,18 @@ def _max_ind_of_min(d: List[int]) -> int:
     return max(ind)
 
 
-# Find v_minus at the lower boundary.
-def _v_minus_lower(d1):
-    return min(d1)
+# # Find v_minus at the lower boundary.
+# def _v_minus_lower(d1):
+#     return min(d1)
 
 # Find index of v_minus at the lower boundary.
 def _ind_v_minus_lower(d1):
     return _max_ind_of_min(d1)
 
 
-# Find v_plus at the lower boundary.
-def _v_plus_lower(d0):
-    return min(d0)
+# # Find v_plus at the lower boundary.
+# def _v_plus_lower(d0):
+#     return min(d0)
 
 # Find index of v_plus at the lower boundary.
 def _ind_v_plus_lower(d0):
