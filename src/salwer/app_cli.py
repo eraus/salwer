@@ -10,7 +10,7 @@ from .recipes.obtain_word_count import obtain_word_count_
 from .recipes.inspect_llm_class_n_seg_results import inspect_class_seg_
 from .recipes.class_n_seg_cues_with_llm import class_n_seg_cues_
 from .recipes.print_levenshtein_table import print_levenshtein_table_
-
+from .recipes.validate_wrd_ld import validate_wrd_ld_fun_
 
 __version__ = "0.1.0"
 app = typer.Typer()
@@ -182,6 +182,13 @@ def calculate_wrd_wer(
             "Other options are alphabet of the semantic segments."
         )
     ),
+    err_limit: int = typer.Option(
+        3, "--err-limit",
+        help=(
+            "Choose limit of error (edit) for each word. Note that this is "
+            "doubled result, meaning 3 => max 150% WER for each word."
+        )
+    ),
 ):
     """Calculate word-level WER and word dictionary for further processing.
 
@@ -196,12 +203,14 @@ def calculate_wrd_wer(
             with a number greater than the value of level will be dropped.
     -   fn_cls: str="all". The functional class for WER calculation.
     -   seg: str="all". The semantic segment for WER calculation.
+    -   err_limit: int = 5. The limit of error (edit) for each word. Note that
+        this is doubled result, meaning 5 => max 250% WER for each word.
 
     Example:
     -  salwer cww ref b12_aug2_l12 --level 2
     """
 
-    return calculate_wrd_wer_(ref_dir, hyp_dir, level, fn_cls, seg)
+    return calculate_wrd_wer_(ref_dir, hyp_dir, level, fn_cls, seg, err_limit)
 
 
 @app.command("class-n-seg-cues")
@@ -250,7 +259,7 @@ def inspect_class_seg(
     return inspect_class_seg_(folder, diff)
 
 
-@app.command("obdain-word-count")
+@app.command("obtain-word-count")
 @app.command("owc")
 def obtain_word_count(
     txt_dir: str = typer.Argument(
@@ -269,10 +278,10 @@ def obtain_word_count(
         help="Select the print order: 'value' (default) or 'key'"
     ),
 ):
-    """Calculate class/segment WER between hypothesis & reference transcripts.
+    """Obtain word count for training or test datasets.
 
-    This command compares hypothesis transcripts (from JSON files) with ref
-    transcripts and classes/segments (from LLM files) to calculate WER metrics.
+    This command is used to obtain the word count which is needed for
+    word-level WER analysis or language usage analysis.
 
     Arguments:
     -   txt_dir: str. Dir containing transcript files (currently, cns files).
@@ -313,3 +322,29 @@ def print_levenshtein_table(
     """
 
     return print_levenshtein_table_(s, t)
+
+@app.command("validate-word-LD-func")
+@app.command("vwl")
+def validate_wrd_ld_fun(
+
+    num_examples: int = typer.Option(
+        1000, "--nexamples",
+        help=(
+            "Choose limit of error (edit) for each word. Note that this is "
+            "doubled result, meaning 3 => max 150% WER for each word."
+        )
+    ),
+):
+    """Validate the word-level LD calculation function via simulation.
+
+    We did not provide theoretical proof that the word-level LD caucluation
+    algorithm works. Here, we use simulation to validate it.
+
+    Arguments:
+    -   num_examples: int = 1000. The number of simulation examples.
+
+    Example:
+    -  salwer vwl --nexamples 2000
+    """
+
+    return validate_wrd_ld_fun_(num_examples)

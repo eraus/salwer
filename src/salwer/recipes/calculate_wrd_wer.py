@@ -7,7 +7,6 @@ import shutil
 from salwer.labels import Transcripts
 from salwer.levenshtein import (
     levenshtein_word,
-    levenshtein_seg,
 )
 from salwer.utils import (
     _clean_transcript,
@@ -27,6 +26,7 @@ def calculate_wrd_wer_(
     level: int,
     fn_cls: str,
     seg: str,
+    err_limit: int,
 ):
     """Calculate word-level WER between ref and hyp transcripts.
 
@@ -49,7 +49,7 @@ def calculate_wrd_wer_(
             ref_file = str(ref_dir / f"{file.stem}.cns")
             file_wrd_dict = word_dict_of_file(
                 ref_file, hyp_file,
-                level, fn_cls, seg,
+                level, fn_cls, seg, err_limit
             )
             dir_wrd_dict = merge_word_dicts(dir_wrd_dict, file_wrd_dict)
 
@@ -88,6 +88,7 @@ def word_dict_of_file(
     level: int,
     fn_cls: str,
     seg: str,
+    err_limit: int,
 ):
     ref_text = read_file_to_text(ref_file)
     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
@@ -100,7 +101,7 @@ def word_dict_of_file(
             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
         )
 
-    return word_dict_of_ann(ref_ann, hyp_ann, fn_cls, seg)
+    return word_dict_of_ann(ref_ann, hyp_ann, fn_cls, seg, err_limit)
 
 
 def word_dict_of_ann(
@@ -108,6 +109,7 @@ def word_dict_of_ann(
     hyp_ann: Transcripts,
     fn_cls: str,
     seg: str,
+    err_limit: int,
 ):
     file_wrd_dict = {}
     for i in range(len(ref_ann.cues)):
@@ -120,7 +122,7 @@ def word_dict_of_ann(
         ref_cue.txt = _clean_transcript(ref_cue.txt)
         hyp_cue.txt = _clean_transcript(hyp_cue.txt)
         cue_wrd_list = levenshtein_word(
-            ref_cue.txt.split(), hyp_cue.txt.split())
+            ref_cue.txt.split(), hyp_cue.txt.split(), err_limit)
 
         if seg != "all":
             cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cns, seg)
