@@ -521,7 +521,7 @@ def test_levenshtein_seg_fast_head_2d2w():
 # x2i1
 # s2i1 = "    C D E     H I".split()
 # t2i1 = "A B C D E F G H I".split()
-#         ^ ^ |    |^ ^|   |
+#         ^ ^|     |^ ^|   |
 ##############################################################################
 #                                           i = 0   1   2   3   4   5   6   7
 # s\t j   A   B   C   D   E   F   G   H   I
@@ -618,7 +618,7 @@ def test_levenshtein_seg_fast_head_3s1w():
 
 
 ############################################
-# x3i3t1
+# x3i3t0
 #    s = "      M N M    ".split()
 #    t = "J K L M N O P Q".split()
 #         ^ ^ ^     ^ ^ ^

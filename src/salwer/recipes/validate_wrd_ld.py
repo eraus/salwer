@@ -15,13 +15,17 @@ MAX_NUM_ERR = 4     # maximum number of errs
 lower_c = "a b c d e f g h i j k l m n o p q r s t u v w x y z "
 ALPHABET = lower_c.split() + lower_c.upper().split()    # alphabet of sim
 ALPH_SIZE = len(ALPHABET)                               # size of alphabet
-ERRS = ["sub", "del", "ins"]        # Errors/edits
+ERRS = ["sub", "del", "ins"]            # Errors/edits
+NEXT = ["sub", "del", "ins", "noe"]     # noe = no error
 # All prob lists below are in the order of Prob of sub, del, and ins:
 P0 = [0.3, 0.2, 0.5]        # Prob for creating the first error
-PE = 0.7                    # Prob for creating a next error
-P_TS = [0.6, 0.2, 0.2]      # Transition prob from sub to other errors
-P_TD = [0.3, 0.5, 0.2]      # Transition prob from del to other errors
-P_TI = [0.2, 0.1, 0.7]      # Transition prob from ins to other errors
+# PE = 0.7                    # Prob for creating a next error
+# P_TS = [0.6, 0.2, 0.2]      # Transition prob from sub to other errors
+# P_TD = [0.3, 0.5, 0.2]      # Transition prob from del to other errors
+# P_TI = [0.2, 0.1, 0.7]      # Transition prob from ins to other errors
+P_S = [0.4, 0.1, 0.2, 0.3]      # Transition prob from sub to other errors
+P_D = [0.2, 0.5, 0.0, 0.3]      # Transition prob from del to other errors
+P_I = [0.2, 0.0, 0.5, 0.3]      # Transition prob from ins to other errors
 
 rng = np.random.default_rng(42)
 
@@ -49,18 +53,6 @@ def _delete(
     return s, t, e, ind_err
 
 
-# Need to avoid the following case for insertion:
-# s: [' ', ' ', 'A', 'B', 'C', 'D']
-# t: ['A', 'r', 'I', 'B', 'C', 'D']
-# e: ['I', 'I', 'S', ' ', ' ', ' ']
-# This case has a LD of 3 seeing this way. When seeing as
-# s: ['A', ' ', ' ', 'B', 'C', 'D']
-# t: ['A', 'r', 'I', 'B', 'C', 'D']
-# e: [' ', 'I', 'I', ' ', ' ', ' ']
-# it has a LD of 2.
-# The issue comes from the insertion being the same as the next word.
-# We should avoid the insertion being the same as the words to its
-# both sides.
 def _insert(
     s:list[str], t:list[str], e:list[str],
     ind_err:int,    # index for the error
@@ -73,13 +65,6 @@ def _insert(
         s = [" "] + s
         t = [err_val] + t
         e = ["I"] + e
-    elif ind_err < len_s:
-        err_val = t[ind_err]
-        while err_val == s[ind_err-1] or err_val == s[ind_err]:
-            err_val = random_word()
-        s = s[0:ind_err] + [" "] + s[ind_err:]
-        t = t[0:ind_err] + [err_val] + t[ind_err:]
-        e = e[0:ind_err] + ["I"] + e[ind_err:]
     elif ind_err == len_s:
         err_val = s[ind_err-1]
         while err_val == s[ind_err-1]:
@@ -87,6 +72,13 @@ def _insert(
         s = s + [" "]
         t = t + [err_val]
         e = e + ["I"]
+    elif ind_err < len_s:
+        err_val = t[ind_err]
+        while err_val == s[ind_err-1] or err_val == s[ind_err]:
+            err_val = random_word()
+        s = s[0:ind_err] + [" "] + s[ind_err:]
+        t = t[0:ind_err] + [err_val] + t[ind_err:]
+        e = e[0:ind_err] + ["I"] + e[ind_err:]
     return s, t, e, ind_err
 #--------------------------------------------------------------
 
@@ -118,16 +110,14 @@ def first_error_type() -> str:
 
 
 def next_error_type(current_err:str) -> str:
-    next_value = rng.choice(["err", "no_err"], p=[PE, 1-PE])
-    if next_value == "no_err":
-        return "no_err"
+    if current_err == "sub":
+        return rng.choice(NEXT, p=P_S)
+    elif current_err == "del":
+        return rng.choice(NEXT, p=P_D)
+    elif current_err == "ins":
+        return rng.choice(NEXT, p=P_I)
     else:
-        if current_err == "sub":
-            return rng.choice(ERRS, p=P_TS)
-        elif current_err == "del":
-            return rng.choice(ERRS, p=P_TD)
-        elif current_err == "ins":
-            return rng.choice(ERRS, p=P_TI)
+        raise ValueError(f"Unknown error type in next_error_type()")
 
 
 def random_cue(size_of_cue:int) -> List[str]:
@@ -187,7 +177,7 @@ def add_next_error(
     err_type = error_type(e, ind_err)
     next_err_type = next_error_type(err_type)
     if (
-        next_err_type == "no_err"
+        next_err_type == "noe"
         or num_err >= MAX_NUM_ERR
         or ind_err >= len(s) - 1 and (
             next_err_type == "sub" or next_err_type == "del")
@@ -210,6 +200,75 @@ def add_next_error(
 
 
 #--------------------------------------------------------------
+# LD calculation functions
+#--------------------------------------------------------------
+def attribute_errors(
+    s:list[str],    # source sequence
+    e:list[str],    # error indicator sequence
+) -> list[list]:
+    m = len(e)
+    wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
+
+    # Attribute del and sub errors:
+    for ind, word in enumerate(e):
+        wlst[ind][0] = s[ind]       # assign each element of s
+        if word == "D" or word == "S":
+            wlst[ind][1] = 2
+
+    # Attribute insertion errors:
+    ins_ind_list = find_insert_index(e)
+    for ins_inds in ins_ind_list:
+        num_insert = ins_inds[1] - ins_inds[0]
+        if ins_inds[0] == 0:        # head insertion
+            wlst[ins_inds[1]][1] += 2 * num_insert
+        elif ins_inds[1] == m:      # tail insertion
+            wlst[ins_inds[0] - 1][1] += 2 * num_insert
+        else:                       # normal insertion
+            wlst[ins_inds[0] - 1][1] += num_insert
+            wlst[ins_inds[1]][1] += num_insert
+
+    # Remove empty elements:
+    reduced_wlst = []
+    for pair in wlst:
+        c, _ = pair[0], pair[1]
+        if c != " ":
+            reduced_wlst.append(pair)
+
+    return reduced_wlst
+
+
+# Find the indexes of inserts from the e sequence: Two examples:
+# Example 1: head inserts and consecutive inserts:
+#    e = ["I", "I", " ", " ", " ", "I", "I", " ", " "]
+#  index:  0    1    2    3    4    2    6    7    8
+#    exp_ind_lst = [[0, 2], [5, 7]]
+#
+# Example 2: middle insert and tail insert:
+#    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+#  index:  0    1    2    3    4    2    6    7    8
+#    exp_ind_lst = [[6, 7], [8, 9]]
+# Note that the end index for the later case is off the range.
+def find_insert_index(
+    e:list[str],    # error indicator sequence
+) -> list[list[int]]:
+    m = len(e)
+    ins_ind_list = []
+    to_find_bgn_ins:bool = True     # flag to find begin index
+    for ind, word in enumerate(e):
+        if to_find_bgn_ins and word == "I":
+            ins_bgn_ind = ind
+            to_find_bgn_ins = False   # need to find end index
+        if not to_find_bgn_ins:
+            if word != "I":     # find end index before end of list
+                ins_end_ind = ind
+                to_find_bgn_ins = True
+                ins_ind_list.append([ins_bgn_ind, ins_end_ind])
+            if ind == m-1:      # find end index at end of list
+                ins_end_ind = ind+1
+                ins_ind_list.append([ins_bgn_ind, ins_end_ind])
+    return ins_ind_list
+
+
 
 def validate_wrd_ld_fun_(num_examples: int):
     """Calculate word-level WER between ref and hyp transcripts.

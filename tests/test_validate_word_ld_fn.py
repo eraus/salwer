@@ -10,6 +10,9 @@ from salwer.recipes.validate_wrd_ld import (
     add_error,
     add_first_error,
     add_next_error,
+
+    attribute_errors,
+    find_insert_index,
 )
 
 
@@ -47,7 +50,7 @@ def test_10_random_words():
     print(f"\nTen random words: {", ".join(ten_words)}")
 
 
-
+#-----------------------------------------------------
 def test_10_add_first_errors():
     s = "A B C".split()
     for _ in range(10):
@@ -68,5 +71,49 @@ def test_10_add_errors():
     for _ in range(10):
         ss, t, e, num_err = add_error(s)
         print(f"\ns: {ss}\nt: {t}\ne: {e}\nnum_err: {num_err}")
+
+
+#-----------------------------------------------------
+# The following tests are paired
+def test_find_ins_index1():
+#   s =  "          L    M    N              Q    R".split()
+#   t =  "J    K    L    M    N    O    P    Q    R".split()
+    e = ["I", "I", " ", " ", " ", "I", "I", " ", " "]
+    exp_ind_lst = [[0, 2], [5, 7]]
+    assert find_insert_index(e) == exp_ind_lst
+
+
+def test_attribute_errors1():
+    s = [" ", " ", "L", "M", "N", " ", " ", "Q", "R"]
+#   t =  "J    K    L    M    N    O    P    Q    R".split()
+    e = ["I", "I", " ", " ", " ", "I", "I", " ", " "]
+    exp_wlst = [["L", 4], ["M", 0], ["N", 2], ["Q", 2], ["R", 0]]
+    assert attribute_errors(s, e) == exp_wlst
+
+
+#-----------------------------------------------------
+def test_find_ins_index2():
+    s = ["J", "K", "L", "M", "N", "O", " ", "Q", " "]
+#   t = ["J", "R", "L", " ", "N", "L", "P", "Q", "R"]
+    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+    exp_ind_lst = [[6, 7], [8, 9]]
+    assert find_insert_index(e) == exp_ind_lst
+
+
+def test_attribute_errors2():
+    s = ["J", "K", "L", "M", "N", "O", " ", "Q", " "]
+#   t = ["J", "R", "L", " ", "N", "L", "P", "Q", "R"]
+    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+    exp_wlst = [["J", 0], ["K", 2], ["L", 0], ["M", 2], ["N", 0],
+                ["O", 3], ["Q", 3]]
+    assert attribute_errors(s, e) == exp_wlst
+
+
+
+#    s = "      M N M    ".split()
+#    t = "J K L M N O P Q".split()
+#         ^ ^ ^     ^ ^ ^
+
+
 
 #     print(" ".join(["a", "b", " ", "c"]))
