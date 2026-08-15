@@ -7,6 +7,11 @@ from typing import List, Tuple
 
 import numpy as np
 
+from salwer.levenshtein import (
+    levenshtein,
+    levenshtein_word
+)
+
 
 # Parameters used in the simulation
 MIN_WORD = 5        # mimimum words in a cue
@@ -19,13 +24,9 @@ ERRS = ["sub", "del", "ins"]            # Errors/edits
 NEXT = ["sub", "del", "ins", "noe"]     # noe = no error
 # All prob lists below are in the order of Prob of sub, del, and ins:
 P0 = [0.3, 0.2, 0.5]        # Prob for creating the first error
-# PE = 0.7                    # Prob for creating a next error
-# P_TS = [0.6, 0.2, 0.2]      # Transition prob from sub to other errors
-# P_TD = [0.3, 0.5, 0.2]      # Transition prob from del to other errors
-# P_TI = [0.2, 0.1, 0.7]      # Transition prob from ins to other errors
-P_S = [0.4, 0.1, 0.2, 0.3]      # Transition prob from sub to other errors
-P_D = [0.2, 0.5, 0.0, 0.3]      # Transition prob from del to other errors
-P_I = [0.2, 0.0, 0.5, 0.3]      # Transition prob from ins to other errors
+P_S = [0.4, 0.1, 0.2, 0.3]  # Transition prob from sub to other errors
+P_D = [0.2, 0.5, 0.0, 0.3]  # Transition prob from del to other errors
+P_I = [0.2, 0.0, 0.5, 0.3]  # Transition prob from ins to other errors
 
 rng = np.random.default_rng(42)
 
@@ -122,8 +123,8 @@ def next_error_type(current_err:str) -> str:
 
 def random_cue(size_of_cue:int) -> List[str]:
     inds = rng.integers(0, ALPH_SIZE, size=size_of_cue)
-    return np.array(ALPHABET)[inds]
-
+    s = list(np.array(ALPHABET)[inds])
+    return [str(ele) for ele in s]
 
 def random_size_of_cue() -> int:
     size = rng.integers(MIN_WORD, MAX_WORD+1)       # single draw
@@ -263,11 +264,24 @@ def find_insert_index(
                 ins_end_ind = ind
                 to_find_bgn_ins = True
                 ins_ind_list.append([ins_bgn_ind, ins_end_ind])
-            if ind == m-1:      # find end index at end of list
+            elif ind == m-1:      # find end index at end of list
                 ins_end_ind = ind+1
                 ins_ind_list.append([ins_bgn_ind, ins_end_ind])
     return ins_ind_list
 
+
+def verify_s_t_e(   # verify the s, t, and e sequences
+    s:list[str],    # source sequence
+    t:list[str],    # target sequence
+    e:list[str],    # error indicator sequence
+) -> bool:
+    ss = [ele for ele in s if ele != " "]
+    tt = [ele for ele in t if ele != " "]
+    ee = [ele for ele in e if ele != " "]
+    ld_err = levenshtein(ss, tt)
+    ee_err = len(ee)
+    # print(f"{ld_err = }; {ee_err = }")
+    return ld_err == ee_err
 
 
 def validate_wrd_ld_fun_(num_examples: int):
@@ -277,106 +291,37 @@ def validate_wrd_ld_fun_(num_examples: int):
     -   num_examples: int = 1000. The number of simulation examples.
     """
 
+    num_examples = 100
+    good_cases = []
+    bad_cases = []
+    for i in range(num_examples):
+    # for i in range(100):
+        s = random_cue(random_size_of_cue())
+        s, t, e, _ = add_error(s)
+        ss = [ele for ele in s if ele != " "]
+        tt = [ele for ele in t if ele != " "]
+        if not verify_s_t_e(s, t, e):
+            continue
+        direct_cal = attribute_errors(s, e)
+        wrd_ld_cal = levenshtein_word(ss, tt, err_limit=4*MAX_NUM_ERR)
 
+        if direct_cal == wrd_ld_cal:
+            good_cases.append(direct_cal)
+        else:
+            bad_cases.append([direct_cal, wrd_ld_cal, s, t, e, ss, tt])
 
+    print(f"Number of good cases: {len(good_cases)}")
+    print(f"Number of bad cases: {len(bad_cases)}")
 
-    # dir_wrd_dict = {}
+    for case in bad_cases:
+        print(f"direct_cal = {case[0]}")
+        print(f"wrd_ld_cal = {case[1]}")
+        print(f"s  = {case[2]}")
+        print(f"t  = {case[3]}")
+        print(f"e  = {case[4]}")
+        print(f"ss = {case[5]}")
+        print(f"tt = {case[6]}\n")
 
-    # hyp_dir = Path(hyp_dir)
-    # ref_dir = Path(ref_dir)
-
-    # for file in hyp_dir.glob("*.txt"):
-    #     if file.is_file():
-    #         hyp_file = str(file)
-    #         ref_file = str(ref_dir / f"{file.stem}.cns")
-    #         file_wrd_dict = word_dict_of_file(
-    #             ref_file, hyp_file,
-    #             level, fn_cls, seg, err_limit
-    #         )
-    #         dir_wrd_dict = merge_word_dicts(dir_wrd_dict, file_wrd_dict)
-
-    # os.makedirs('log', exist_ok=True)
-    # csv_filename = \
-    #     f"log/word-dict-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.csv"
-    # with open(csv_filename, 'w', newline='', encoding='utf-8') as csvfile:
-    #     csvfile.write(f"# ref_dir: {ref_dir}\n")
-    #     csvfile.write(f"# hyp_dir: {hyp_dir}\n")
-    #     csvfile.write(f"# level: {level}\n")
-    #     csvfile.write(f"# fn_cls: {fn_cls}\n")
-    #     csvfile.write(f"# seg: {seg}\n")
-    #     writer = csv.writer(csvfile)
-    #     writer.writerow(['Word', 'Occurrence x 2', 'Error x 2', 'WER'])
-    #     for word in sorted(dir_wrd_dict.keys(),
-    #                        key=lambda w: (-dir_wrd_dict[w][0], w)):
-    #         occurance, error = dir_wrd_dict[word]
-    #         wer = f"{(error/(2*occurance)):.4f}"
-    #         writer.writerow([word, 2*occurance, error, wer])
-    # shutil.copy(csv_filename, 'log/word-dict.csv')
-
-    # total_word, total_dist = 0, 0
-    # for word in sorted(dir_wrd_dict.keys(),
-    #                    key=lambda w: (-dir_wrd_dict[w][0], w)):
-    #     total_word += dir_wrd_dict[word][0]
-    #     total_dist += dir_wrd_dict[word][1]
-
-    # print(f"\nAverage WER: {(total_dist/(2*total_word)):.4f} "
-    #       f"based on {total_word} words. ")
-
-
-
-# def word_dict_of_file(
-#     ref_file: str,
-#     hyp_file: str,
-#     level: int,
-#     fn_cls: str,
-#     seg: str,
-#     err_limit: int,
-# ):
-#     ref_text = read_file_to_text(ref_file)
-#     ref_ann = Transcripts.from_ref_cns_text(ref_text, level)
-#     hyp_text = read_file_to_text(hyp_file)
-#     hyp_ann = Transcripts.from_asr_pred_text(hyp_text)
-
-#     print(f"{ref_file = }; {hyp_file = }------------------------------------")
-#     if len(ref_ann.cues) != len(hyp_ann.cues):
-#         raise ValueError(
-#             f"Num of cues mismatch: {len(ref_ann.cues)} vs {len(hyp_ann.cues)}!"
-#         )
-
-#     return word_dict_of_ann(ref_ann, hyp_ann, fn_cls, seg, err_limit)
-
-
-# def word_dict_of_ann(
-#     ref_ann: Transcripts,
-#     hyp_ann: Transcripts,
-#     fn_cls: str,
-#     seg: str,
-#     err_limit: int,
-# ):
-#     file_wrd_dict = {}
-#     for i in range(len(ref_ann.cues)):
-#         ref_cue = ref_ann.cues[i]
-#         hyp_cue = hyp_ann.cues[i]
-#         cue_class = _cue_class(ref_cue.cns)
-#         if fn_cls != "all" and cue_class != fn_cls:
-#             continue
-
-#         ref_cue.txt = _clean_transcript(ref_cue.txt)
-#         hyp_cue.txt = _clean_transcript(hyp_cue.txt)
-#         cue_wrd_list = levenshtein_word(
-#             ref_cue.txt.split(), hyp_cue.txt.split(), err_limit)
-
-#         if seg != "all":
-#             cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cns, seg)
-#             cue_wrd_list = _get_seg_wrd_list(cue_wrd_list, cue_seg_ranges)
-
-#         cue_wrd_dict = word_dict_of_cue(cue_wrd_list)
-#         file_wrd_dict = merge_word_dicts(file_wrd_dict, cue_wrd_dict)
-#     return file_wrd_dict
-
-
-# def _get_seg_wrd_list(cue_wrd_list, cue_seg_ranges):
-#     result = []
-#     for start, end in cue_seg_ranges:
-#         result.extend(cue_wrd_list[start:end])
-#     return result
+    print(f"Skipped cases: {num_examples - len(good_cases) - len(bad_cases)}")
+    print(f"Number of good cases: {len(good_cases)}")
+    print(f"Number of bad cases: {len(bad_cases)}")

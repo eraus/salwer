@@ -13,6 +13,8 @@ from salwer.recipes.validate_wrd_ld import (
 
     attribute_errors,
     find_insert_index,
+
+    verify_s_t_e,
 )
 
 
@@ -108,6 +110,49 @@ def test_attribute_errors2():
                 ["O", 3], ["Q", 3]]
     assert attribute_errors(s, e) == exp_wlst
 
+
+def test_find_ins_index3():
+    e  = [' ', ' ', ' ', ' ', ' ', ' ', 'I', 'S', 'I', 'S']
+    exp_ind_lst = [[6, 7], [8, 9]]
+    assert find_insert_index(e) == exp_ind_lst
+
+
+def test_attribute_errors3():
+    direct_cal = [['h', 0], ['f', 0], ['K', 0], ['G', 0], ['y', 0], ['m', 1], ['e', 8], ['D', 3]]
+    direct_cal_n = [['h', 0], ['f', 0], ['K', 0], ['G', 0], ['y', 0], ['m', 1], ['e', 4], ['D', 3]]
+    wrd_ld_cal = [['h', 0], ['f', 0], ['K', 0], ['G', 0], ['y', 0], ['m', 0], ['e', 2], ['D', 6]]
+    s  = ['h', 'f', 'K', 'G', 'y', 'm', ' ', 'e', ' ', 'D']
+    t  = ['h', 'f', 'K', 'G', 'y', 'm', 'S', 'o', 'S', 'U']
+    e  = [' ', ' ', ' ', ' ', ' ', ' ', 'I', 'S', 'I', 'S']
+    assert attribute_errors(s, e) == direct_cal_n
+
+
+#-----------------------------------------------------
+def test_verify_s_t_e_1():
+    s = ["J", "K", "L", "M", "N", "O", " ", "Q", " "]
+    t = ["J", "R", "L", " ", "N", "L", "P", "Q", "R"]
+    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+    exp_bool = True
+    assert verify_s_t_e(s, t, e) == exp_bool
+
+
+#-----------------------------------------------------
+def test_verify_s_t_e_2():
+    s = [' ', 'A', 'B', 'C', 'D']
+    t = ['A', 'I', 'B', 'C', 'D']
+    e = ['I', 'S', ' ', ' ', ' ']
+    exp_bool = False
+    assert verify_s_t_e(s, t, e) == exp_bool
+
+
+def test_errer_generate_issues():
+    for i in range(1000):
+        s = random_cue(random_size_of_cue())
+        s, t, e, num_err = add_error(s)
+        if not verify_s_t_e(s, t, e):
+            print(f"Error generation has issue at {i = }")
+            print(f"s: {s}\nt: {t}\ne: {e}\nnum_err: {num_err}")
+            break
 
 
 #    s = "      M N M    ".split()

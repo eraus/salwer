@@ -658,3 +658,13 @@ def test_levenshtein_word_3i1s3t1_err_limit_to_3():
 def test_levenshtein_word_3i1s3t1_err_limit_to_9():
     assert levenshtein_word(s3i1s3t1, t3i1s3t1, err_limit=9) == \
         [["M", 6], ["N", 0], ["O", 0], ["P", 0], ["M", 8]]
+
+
+#-------------------------------------------------------------------
+def test_levenshtein_word_additional_1():
+# s  = ['v', 'j', ' ', ' ', ' ', 'H', 'u', 'r']
+# t  = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
+    s = ['v', 'j', 'H', 'u', 'r']
+    t = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
+    exp_wlist = [['v', 0], ['j', 5], ['H', 3], ['u', 0], ['r', 0]]
+    assert levenshtein_word(s, t, err_limit=9) == exp_wlist
