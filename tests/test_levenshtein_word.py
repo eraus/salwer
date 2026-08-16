@@ -49,7 +49,7 @@ def test_levenshtein_word_bc6():
 
 def test_levenshtein_word_bc7():
     sbc = "J K L".split()
-    tbc = "J  M".split()
+    tbc = "J M".split()
     assert levenshtein_word(sbc, tbc) == [["J", 0], ["K", 2], ["L", 2]]
 
 ############################################
@@ -667,4 +667,13 @@ def test_levenshtein_word_additional_1():
     s = ['v', 'j', 'H', 'u', 'r']
     t = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
     exp_wlist = [['v', 0], ['j', 5], ['H', 3], ['u', 0], ['r', 0]]
+    assert levenshtein_word(s, t, err_limit=9) == exp_wlist
+
+
+def test_levenshtein_word_additional_2():
+# s  = ['v', 'j', ' ', ' ', ' ', 'H', 'u', 'r']
+# t  = ['v', 'q', 'I', 'p', 'b', 'i', 'u', 'r']
+    s = ['v', 'j', 'H', 'u', 'r']
+    t = ['v', 'q', 'I', 'p', 'b', 'i', 'u', 'r']
+    exp_wlist = [['v', 0], ['j', 5], ['H', 5], ['u', 0], ['r', 0]]
     assert levenshtein_word(s, t, err_limit=9) == exp_wlist

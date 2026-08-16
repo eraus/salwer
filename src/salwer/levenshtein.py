@@ -561,6 +561,9 @@ def _prefix_drift_rh(s, t, s_ind, d0):
     r = s[s_ind:]           # r = ref, partial source
     h = t[t_ind:]           # h = hyp, partial target
     n_pd = _num_prefix_drift(r, h)
+    # if n_pd and r[0] == h[n_pd]:
+    #     return n_pd, r, h
+    # return 0, r, h
     return n_pd, r, h
 
 

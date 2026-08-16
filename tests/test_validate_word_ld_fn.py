@@ -1,5 +1,7 @@
 """Test functions used for validating word-level LD function."""
 
+import pytest
+
 from salwer.recipes.validate_wrd_ld import (
     first_error_type,
     next_error_type,
@@ -11,8 +13,12 @@ from salwer.recipes.validate_wrd_ld import (
     add_first_error,
     add_next_error,
 
-    attribute_errors,
-    find_insert_index,
+    # attribute_errors,
+    # find_insert_index,
+
+    attribute_wl_gld,
+    find_sub_index,
+    find_sub_ins_index_num_of_sub,
 
     verify_s_t_e,
 )
@@ -75,57 +81,165 @@ def test_10_add_errors():
         print(f"\ns: {ss}\nt: {t}\ne: {e}\nnum_err: {num_err}")
 
 
+
 #-----------------------------------------------------
+def test_find_sub_index1():
+    e = ["S", "S", " ", " ", " ", "S", "S", " ", " "]
+#  index: 0    1    2    3    4    5    6    7    8
+    exp_ind_lst = [[0, 2], [5, 7]]
+    assert find_sub_index(e) == exp_ind_lst
+
+
+def test_find_sub_index2():
+    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+#  index: 0    1    2    3    4    5    6    7    8
+    exp_ind_lst = [[1, 2]]
+    assert find_sub_index(e) == exp_ind_lst
+
+
+#-----------------------------------------------------
+def test_find_sub_ins_index_num_of_sub1():
+    e = ["I", "I", "S", " ", " ", "I", "S", "I", "S"]
+#  index: 0    1    2    3    4    5    6    7    8
+    exp_ind_num_lst = [[0, 3, 1], [5, 9, 2]]
+    assert find_sub_ins_index_num_of_sub(e) == exp_ind_num_lst
+
+
+def test_find_sub_ins_index_num_of_sub2():
+    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+#  index: 0    1    2    3    4    5    6    7    8
+    exp_ind_num_lst = [[5, 7, 1], [8, 9, 0]]
+    assert find_sub_ins_index_num_of_sub(e) == exp_ind_num_lst
+
+
+def test_find_sub_ins_index_num_of_sub3():
+    e = ["I", "S", " ", "D", " ", "S", "I", "I", "S"]
+#  index: 0    1    2    3    4    5    6    7    8
+    exp_ind_num_lst = [[0, 2, 1], [5, 9, 2]]
+    assert find_sub_ins_index_num_of_sub(e) == exp_ind_num_lst
+
+
+#-----------------------------------------------------------------
+def test_attribute_wl_gld_1_dels():
+    s = ["J", "K", "L", "M", "N", "O"]
+#   t = ["J", " ", "L", " ", "N", " "]
+    e = [" ", "D", " ", "D", " ", "D"]
+    exp_wlst = [["J", 0.0], ["K", 1.0], ["L", 0.0],
+                ["M", 1.0], ["N", 0.0], ["O", 1.0]]
+    out_wlst = attribute_wl_gld(s, e)
+    out_wlst_w = [e[0] for e in out_wlst]
+    out_wlst_n = [e[1] for e in out_wlst]
+    exp_wlst_w = [e[0] for e in exp_wlst]
+    exp_wlst_n = [e[1] for e in exp_wlst]
+    assert out_wlst_w == exp_wlst_w
+    assert out_wlst_n == pytest.approx(exp_wlst_n)
+
+
+
+
+def test_attribute_wl_ld_1_subs_index():
+    e = [" ", "S", " ", "S", " ", "S"]
+    exp_ind_lst = [[1, 2], [3, 4], [5, 6]]
+    assert find_sub_index(e) == exp_ind_lst
+
+
+def assert_eq(out_wlst, exp_wlst):
+    out_wlst_w = [e[0] for e in out_wlst]
+    out_wlst_n = [e[1] for e in out_wlst]
+    exp_wlst_w = [e[0] for e in exp_wlst]
+    exp_wlst_n = [e[1] for e in exp_wlst]
+    assert out_wlst_w == exp_wlst_w
+    assert out_wlst_n == pytest.approx(exp_wlst_n)
+
+def test_attribute_wl_gld_1_subs():
+    s = ["J", "K", "L", "M", "N", "O"]
+#   t = ["J", " ", "L", " ", "N", " "]
+    e = [" ", "S", " ", "S", " ", "S"]
+    # exp_wlst = [["J", 0], ["K", 2], ["L", 0], ["M", 2], ["N", 0], ["O", 2]]
+    exp_wlst = [["J", 0.0], ["K", 1.0], ["L", 0.0],
+                ["M", 1.0], ["N", 0.0], ["O", 1.0]]
+    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+
+
+def test_attribute_wl_gld_2_subs():
+    s = ["J", "K", "L", "M", "N", "O"]
+#   t = ["J", " ", "L", " ", "N", " "]
+    e = [" ", "S", "S", "S", " ", "S"]
+    exp_wlst = [["J", 0.0], ["K", 1.0], ["L", 1.0],
+                ["M", 1.0], ["N", 0.0], ["O", 1.0]]
+    # exp_wlst = [["J", 0], ["K", 2], ["L", 2], ["M", 2], ["N", 0], ["O", 2]]
+    # assert attribute_wl_ld(s, e) == exp_wlst
+    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+
+def test_find_sub_index_num_of_sub4():
+    e = [" ", "S", "I", "S", " ", "S"]
+#  index: 0    1    2    3    4    5
+    exp_ind_num_lst = [[5, 6]]
+    assert find_sub_index(e) == exp_ind_num_lst
+
+
+def test_find_sub_ins_index_num_of_sub4():
+    e = [" ", "S", "I", "S", " ", "S"]
+#  index: 0    1    2    3    4    5
+    exp_ind_num_lst = [[1, 4, 2]]
+    assert find_sub_ins_index_num_of_sub(e) == exp_ind_num_lst
+
+
+def test_attribute_wl_gld_1_ins_subs():
+    s = ["J", "K", " ", "M", "N", "O"]
+#   t = ["J", "N", "L", "Q", "N", "Q"]
+    e = [" ", "S", "I", "S", " ", "S"]
+    exp_wlst = [["J", 0.5], ["K", 1.0], ["M", 1.0], ["N", 0.5], ["O", 1.0]]
+    # assert attribute_wl_ld(s, e) == exp_wlst
+    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+
+
+def test_find_sub_index_num_of_sub5():
+    e = [" ", "S", "I", "S", " ", "S", "I"]
+#  index: 0    1    2    3    4    5
+    exp_ind_num_lst = []
+    assert find_sub_index(e) == exp_ind_num_lst
+
+
+def test_find_sub_ins_index_num_of_sub5():
+    e = [" ", "S", "I", "S", " ", "S", "I"]
+#  index: 0    1    2    3    4    5
+    exp_ind_num_lst = [[1, 4, 2], [5, 7, 1]]
+    assert find_sub_ins_index_num_of_sub(e) == exp_ind_num_lst
+
+def test_attribute_wl_gld_2_ins_subs():
+    s = ["J", "K", " ", "M", "N", "O", " "]
+#   t = ["J", "N", "L", "Q", "N", "Q"]
+    e = [" ", "S", "I", "S", " ", "S", "I"]
+    exp_wlst = [["J", 0.5], ["K", 1.0], ["M", 1.0], ["N", 1.0], ["O", 1.5]]
+    # assert attribute_wl_ld(s, e) == exp_wlst
+    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+
+
+#-----------------------------------------------------
+
+def test_find_sub_index1_num_of_sub5():
+#  index: 0    1    2    3    4    5
+    e = ["I", "I", "S", " ", " ", "I", "I", "S", " "]
+    exp_ind_num_lst = []
+    assert find_sub_index(e) == exp_ind_num_lst
+
+
 # The following tests are paired
 def test_find_ins_index1():
 #   s =  "          L    M    N              Q    R".split()
-#   t =  "J    K    L    M    N    O    P    Q    R".split()
-    e = ["I", "I", " ", " ", " ", "I", "I", " ", " "]
-    exp_ind_lst = [[0, 2], [5, 7]]
-    assert find_insert_index(e) == exp_ind_lst
-
+#   t =  "J    K    L    M    N    O    P    P    R".split()
+    e = ["I", "I", "S", " ", " ", "I", "I", "S", " "]
+#  index: 0    1    2    3    4    5
+    exp_ind_num_lst = [[0, 3, 1], [5, 8, 1]]
+    assert find_sub_ins_index_num_of_sub(e) == exp_ind_num_lst
 
 def test_attribute_errors1():
     s = [" ", " ", "L", "M", "N", " ", " ", "Q", "R"]
-#   t =  "J    K    L    M    N    O    P    Q    R".split()
-    e = ["I", "I", " ", " ", " ", "I", "I", " ", " "]
-    exp_wlst = [["L", 4], ["M", 0], ["N", 2], ["Q", 2], ["R", 0]]
-    assert attribute_errors(s, e) == exp_wlst
-
-
-#-----------------------------------------------------
-def test_find_ins_index2():
-    s = ["J", "K", "L", "M", "N", "O", " ", "Q", " "]
-#   t = ["J", "R", "L", " ", "N", "L", "P", "Q", "R"]
-    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
-    exp_ind_lst = [[6, 7], [8, 9]]
-    assert find_insert_index(e) == exp_ind_lst
-
-
-def test_attribute_errors2():
-    s = ["J", "K", "L", "M", "N", "O", " ", "Q", " "]
-#   t = ["J", "R", "L", " ", "N", "L", "P", "Q", "R"]
-    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
-    exp_wlst = [["J", 0], ["K", 2], ["L", 0], ["M", 2], ["N", 0],
-                ["O", 3], ["Q", 3]]
-    assert attribute_errors(s, e) == exp_wlst
-
-
-def test_find_ins_index3():
-    e  = [' ', ' ', ' ', ' ', ' ', ' ', 'I', 'S', 'I', 'S']
-    exp_ind_lst = [[6, 7], [8, 9]]
-    assert find_insert_index(e) == exp_ind_lst
-
-
-def test_attribute_errors3():
-    direct_cal = [['h', 0], ['f', 0], ['K', 0], ['G', 0], ['y', 0], ['m', 1], ['e', 8], ['D', 3]]
-    direct_cal_n = [['h', 0], ['f', 0], ['K', 0], ['G', 0], ['y', 0], ['m', 1], ['e', 4], ['D', 3]]
-    wrd_ld_cal = [['h', 0], ['f', 0], ['K', 0], ['G', 0], ['y', 0], ['m', 0], ['e', 2], ['D', 6]]
-    s  = ['h', 'f', 'K', 'G', 'y', 'm', ' ', 'e', ' ', 'D']
-    t  = ['h', 'f', 'K', 'G', 'y', 'm', 'S', 'o', 'S', 'U']
-    e  = [' ', ' ', ' ', ' ', ' ', ' ', 'I', 'S', 'I', 'S']
-    assert attribute_errors(s, e) == direct_cal_n
-
+#   t =  "J    K    J    M    N    O    P    P    R".split()
+    e = ["I", "I", "S", " ", " ", "I", "I", "S", " "]
+    exp_wlst = [["L", 2.5], ["M", 0.5], ["N", 0.5], ["Q", 2.0], ["R", 0.5]]
+    assert_eq(attribute_wl_gld(s, e), exp_wlst)
 
 #-----------------------------------------------------
 def test_verify_s_t_e_1():
@@ -145,14 +259,14 @@ def test_verify_s_t_e_2():
     assert verify_s_t_e(s, t, e) == exp_bool
 
 
-def test_errer_generate_issues():
-    for i in range(1000):
-        s = random_cue(random_size_of_cue())
-        s, t, e, num_err = add_error(s)
-        if not verify_s_t_e(s, t, e):
-            print(f"Error generation has issue at {i = }")
-            print(f"s: {s}\nt: {t}\ne: {e}\nnum_err: {num_err}")
-            break
+# def test_errer_generate_issues():
+#     for i in range(1000):
+#         s = random_cue(random_size_of_cue())
+#         s, t, e, num_err = add_error(s)
+#         if not verify_s_t_e(s, t, e):
+#             print(f"Error generation has issue at {i = }")
+#             print(f"s: {s}\nt: {t}\ne: {e}\nnum_err: {num_err}")
+#             break
 
 
 #    s = "      M N M    ".split()

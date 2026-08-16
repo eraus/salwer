@@ -95,10 +95,8 @@ def error_type(
         "D": "del",
         "I": "ins",
     }
-
     if not 0 <= index < len(e):
         raise IndexError(f"Index {index} is out of range")
-
     try:
         return mapping[e[index]]
     except KeyError:
@@ -200,33 +198,62 @@ def add_next_error(
 #--------------------------------------------------------------
 
 
-#--------------------------------------------------------------
-# LD calculation functions
-#--------------------------------------------------------------
-def attribute_errors(
+
+def attribute_wl_gld(
     s:list[str],    # source sequence
     e:list[str],    # error indicator sequence
 ) -> list[list]:
     m = len(e)
     wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
 
-    # Attribute del and sub errors:
+    # Attribute del errors:
     for ind, word in enumerate(e):
         wlst[ind][0] = s[ind]       # assign each element of s
-        if word == "D" or word == "S":
-            wlst[ind][1] = 2
+        if word == "D":
+            wlst[ind][1] = 1.0
 
-    # Attribute insertion errors:
-    ins_ind_list = find_insert_index(e)
-    for ins_inds in ins_ind_list:
-        num_insert = ins_inds[1] - ins_inds[0]
-        if ins_inds[0] == 0:        # head insertion
-            wlst[ins_inds[1]][1] += 2 * num_insert
-        elif ins_inds[1] == m:      # tail insertion
-            wlst[ins_inds[0] - 1][1] += 2 * num_insert
-        else:                       # normal insertion
-            wlst[ins_inds[0] - 1][1] += num_insert
-            wlst[ins_inds[1]][1] += num_insert
+    # Attribute sub only errors:
+    sub_inds = find_sub_index(e)
+    for inds in sub_inds:
+        for ind in range(inds[0], inds[1]):
+            wlst[ind][1] = 1.0
+
+    # Attribute sub-ins errors:
+    sub_ins_ind_num_sub_list = find_sub_ins_index_num_of_sub(e)
+    for sub_ins_ind_num_sub in sub_ins_ind_num_sub_list:
+        # length of the entire sub_ins sequence; used for indexes
+        len_seq = 1.0 * (sub_ins_ind_num_sub[1] - sub_ins_ind_num_sub[0])
+        sub_share = len_seq - 1  # share of blame by the subs.
+        if sub_ins_ind_num_sub[2] == 0:  # no subs. in ins. sequence
+            if sub_ins_ind_num_sub[0] == 0:        # head insertion
+                wlst[sub_ins_ind_num_sub[1]][1] += len_seq
+            elif sub_ins_ind_num_sub[1] == m:      # tail insertion
+                wlst[sub_ins_ind_num_sub[0] - 1][1] += len_seq
+            else:                       # normal insertion
+                wlst[sub_ins_ind_num_sub[0] - 1][1] += len_seq/2
+                wlst[sub_ins_ind_num_sub[1]][1] += len_seq/2
+        else:   # there are subs. in sub-ins sequence
+            if sub_ins_ind_num_sub[0] == 0:        # head insertion
+                wlst[sub_ins_ind_num_sub[1]][1] += 0.5  # for anchor
+                each_share = (sub_share + 0.5) / sub_ins_ind_num_sub[2]
+                for ind in range(sub_ins_ind_num_sub[1]):
+                    if e[ind] == "S":
+                        wlst[ind][1] += each_share
+
+            elif sub_ins_ind_num_sub[1] == m:      # tail insertion
+                wlst[sub_ins_ind_num_sub[0] - 1][1] += 0.5
+                each_share = (sub_share + 0.5) / sub_ins_ind_num_sub[2]
+                for ind in range(sub_ins_ind_num_sub[0],sub_ins_ind_num_sub[1]):
+                    if e[ind] == "S":
+                        wlst[ind][1] += each_share
+
+            else:                       # normal insertion
+                wlst[sub_ins_ind_num_sub[0] - 1][1] += 0.5
+                wlst[sub_ins_ind_num_sub[1]][1] += 0.5
+                each_share = sub_share / sub_ins_ind_num_sub[2]
+                for ind in range(sub_ins_ind_num_sub[0],sub_ins_ind_num_sub[1]):
+                    if e[ind] == "S":
+                        wlst[ind][1] += each_share
 
     # Remove empty elements:
     reduced_wlst = []
@@ -238,36 +265,101 @@ def attribute_errors(
     return reduced_wlst
 
 
-# Find the indexes of inserts from the e sequence: Two examples:
-# Example 1: head inserts and consecutive inserts:
-#    e = ["I", "I", " ", " ", " ", "I", "I", " ", " "]
-#  index:  0    1    2    3    4    2    6    7    8
+# Find the indexes of subs. from the e sequence: Two examples:
+# Example 1: subs. w/o ins.:
+#    e = ["S", "S", " ", " ", " ", "S", "S", " ", " "]
+#  index:  0    1    2    3    4    5    6    7    8
 #    exp_ind_lst = [[0, 2], [5, 7]]
 #
-# Example 2: middle insert and tail insert:
+# Example 2: sub. connected to ins.:
 #    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
-#  index:  0    1    2    3    4    2    6    7    8
-#    exp_ind_lst = [[6, 7], [8, 9]]
-# Note that the end index for the later case is off the range.
-def find_insert_index(
+#  index:  0    1    2    3    4    5    6    7    8
+#    exp_ind_lst = [[1, 2]]
+def find_sub_index(
     e:list[str],    # error indicator sequence
 ) -> list[list[int]]:
     m = len(e)
-    ins_ind_list = []
-    to_find_bgn_ins:bool = True     # flag to find begin index
+    sub_ind_list = []
+    to_find_bgn_sub: bool = True    # flag to find begin index
+    is_ins_sub_seq: bool = False    # flag to indicate if is ins_sub seq
     for ind, word in enumerate(e):
-        if to_find_bgn_ins and word == "I":
-            ins_bgn_ind = ind
-            to_find_bgn_ins = False   # need to find end index
-        if not to_find_bgn_ins:
-            if word != "I":     # find end index before end of list
-                ins_end_ind = ind
-                to_find_bgn_ins = True
-                ins_ind_list.append([ins_bgn_ind, ins_end_ind])
+        if to_find_bgn_sub:
+            if word == "S" and (ind == 0 or (ind > 0 and e[ind-1] != "I")):
+                sub_bgn_ind = ind
+                to_find_bgn_sub = False   # need to find end index
+                if ind == m-1:      # find end index at end of list
+                    sub_end_ind = ind+1
+                    sub_ind_list.append([sub_bgn_ind, sub_end_ind])
+        else:
+            if word == " " or word == "D": # find end index before end of list
+                sub_end_ind = ind
+                if not is_ins_sub_seq:
+                    sub_ind_list.append([sub_bgn_ind, sub_end_ind])
+                to_find_bgn_sub = True
+                is_ins_sub_seq = False
+            elif word == "I":     # cancel the current sequence if subs.
+                is_ins_sub_seq = True
             elif ind == m-1:      # find end index at end of list
-                ins_end_ind = ind+1
-                ins_ind_list.append([ins_bgn_ind, ins_end_ind])
-    return ins_ind_list
+                sub_end_ind = ind+1
+                sub_ind_list.append([sub_bgn_ind, sub_end_ind])
+    return sub_ind_list
+
+
+# Find the indexes of sub.-including ins. plus number of subs: Two examples:
+# Example 1: head inserts and consecutive inserts:
+#    e = ["I", "I", "S", " ", " ", "I", "S", "I", "S"]
+#  index:  0    1    2    3    4    5    6    7    8
+#    exp_ind_lst = [[0, 3, 1], [5, 9, 2]]
+#
+# Example 2: middle insert and tail insert:
+#    e = [" ", "S", " ", "D", " ", "S", "I", " ", "I"]
+#  index:  0    1    2    3    4    5    6    7    8
+#    exp_ind_lst = [[5, 7, 1], [8, 9, 0]]
+def find_sub_ins_index_num_of_sub(
+    e:list[str],    # error indicator sequence
+) -> list[list[int]]:
+    m = len(e)
+    sub_ins_ind_list = []
+    to_find_bgn_sub_ins:bool = True     # flag to find begin index
+    num_subs = 0
+    num_ins = 0
+    for ind, word in enumerate(e):
+        if to_find_bgn_sub_ins:
+            if word == "S":
+                num_subs += 1
+                sub_ins_bgn_ind = ind
+                to_find_bgn_sub_ins = False   # need to find end index
+            elif word == "I":
+                num_ins += 1
+                sub_ins_bgn_ind = ind
+                to_find_bgn_sub_ins = False   # need to find end index
+                if ind == m-1:      # find end index at end of list
+                    sub_ins_end_ind = ind+1
+                    if num_ins:
+                        sub_ins_ind_list.append(
+                            [sub_ins_bgn_ind, sub_ins_end_ind, num_subs]
+                        )
+        else:
+            if word == " " or word == "D": # find end index before end of list
+                sub_ins_end_ind = ind
+                to_find_bgn_sub_ins = True
+                if num_ins:
+                    sub_ins_ind_list.append(
+                        [sub_ins_bgn_ind, sub_ins_end_ind, num_subs]
+                    )
+                num_subs = 0
+            else:
+                if word == "S":     # find another 'S'
+                    num_subs += 1
+                elif word == "I":   # find another 'I'.
+                    num_ins += 1
+                if ind == m-1:      # find end index at end of list
+                    sub_ins_end_ind = ind+1
+                    if num_ins:
+                        sub_ins_ind_list.append(
+                            [sub_ins_bgn_ind, sub_ins_end_ind, num_subs]
+                        )
+    return sub_ins_ind_list
 
 
 def verify_s_t_e(   # verify the s, t, and e sequences
