@@ -6,10 +6,12 @@ import shutil
 from typing import List, Tuple
 
 import numpy as np
+import pytest
 
 from salwer.levenshtein import (
     levenshtein,
-    levenshtein_word
+    levenshtein_word,
+    levenshtein_gld
 )
 
 
@@ -204,7 +206,7 @@ def attribute_wl_gld(
     e:list[str],    # error indicator sequence
 ) -> list[list]:
     m = len(e)
-    wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
+    wlst = [[0.0] * 2 for _ in range(m)]  # wlst = word list
 
     # Attribute del errors:
     for ind, word in enumerate(e):
@@ -236,25 +238,17 @@ def attribute_wl_gld(
             if sub_ins_ind_num_sub[0] == 0:        # head insertion
                 wlst[sub_ins_ind_num_sub[1]][1] += 0.5  # for anchor
                 each_share = (sub_share + 0.5) / sub_ins_ind_num_sub[2]
-                for ind in range(sub_ins_ind_num_sub[1]):
-                    if e[ind] == "S":
-                        wlst[ind][1] += each_share
-
             elif sub_ins_ind_num_sub[1] == m:      # tail insertion
                 wlst[sub_ins_ind_num_sub[0] - 1][1] += 0.5
                 each_share = (sub_share + 0.5) / sub_ins_ind_num_sub[2]
-                for ind in range(sub_ins_ind_num_sub[0],sub_ins_ind_num_sub[1]):
-                    if e[ind] == "S":
-                        wlst[ind][1] += each_share
-
             else:                       # normal insertion
                 wlst[sub_ins_ind_num_sub[0] - 1][1] += 0.5
                 wlst[sub_ins_ind_num_sub[1]][1] += 0.5
                 each_share = sub_share / sub_ins_ind_num_sub[2]
-                for ind in range(sub_ins_ind_num_sub[0],sub_ins_ind_num_sub[1]):
-                    if e[ind] == "S":
-                        wlst[ind][1] += each_share
-
+            # Update LD for elements corresponding to subs.
+            for ind in range(sub_ins_ind_num_sub[0], sub_ins_ind_num_sub[1]):
+                if e[ind] == "S":
+                    wlst[ind][1] += each_share
     # Remove empty elements:
     reduced_wlst = []
     for pair in wlst:
@@ -374,46 +368,3 @@ def verify_s_t_e(   # verify the s, t, and e sequences
     ee_err = len(ee)
     # print(f"{ld_err = }; {ee_err = }")
     return ld_err == ee_err
-
-
-def validate_wrd_ld_fun_(num_examples: int):
-    """Calculate word-level WER between ref and hyp transcripts.
-
-    Arguments:
-    -   num_examples: int = 1000. The number of simulation examples.
-    """
-
-    num_examples = 100
-    good_cases = []
-    bad_cases = []
-    for i in range(num_examples):
-    # for i in range(100):
-        s = random_cue(random_size_of_cue())
-        s, t, e, _ = add_error(s)
-        ss = [ele for ele in s if ele != " "]
-        tt = [ele for ele in t if ele != " "]
-        if not verify_s_t_e(s, t, e):
-            continue
-        direct_cal = attribute_errors(s, e)
-        wrd_ld_cal = levenshtein_word(ss, tt, err_limit=4*MAX_NUM_ERR)
-
-        if direct_cal == wrd_ld_cal:
-            good_cases.append(direct_cal)
-        else:
-            bad_cases.append([direct_cal, wrd_ld_cal, s, t, e, ss, tt])
-
-    print(f"Number of good cases: {len(good_cases)}")
-    print(f"Number of bad cases: {len(bad_cases)}")
-
-    for case in bad_cases:
-        print(f"direct_cal = {case[0]}")
-        print(f"wrd_ld_cal = {case[1]}")
-        print(f"s  = {case[2]}")
-        print(f"t  = {case[3]}")
-        print(f"e  = {case[4]}")
-        print(f"ss = {case[5]}")
-        print(f"tt = {case[6]}\n")
-
-    print(f"Skipped cases: {num_examples - len(good_cases) - len(bad_cases)}")
-    print(f"Number of good cases: {len(good_cases)}")
-    print(f"Number of bad cases: {len(bad_cases)}")

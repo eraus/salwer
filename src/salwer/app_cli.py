@@ -10,7 +10,7 @@ from .recipes.obtain_word_count import obtain_word_count_
 from .recipes.inspect_llm_class_n_seg_results import inspect_class_seg_
 from .recipes.class_n_seg_cues_with_llm import class_n_seg_cues_
 from .recipes.print_levenshtein_table import print_levenshtein_table_
-from .recipes.validate_wrd_ld import validate_wrd_ld_fun_
+
 
 __version__ = "0.1.0"
 app = typer.Typer()
@@ -322,29 +322,3 @@ def print_levenshtein_table(
     """
 
     return print_levenshtein_table_(s, t)
-
-@app.command("validate-word-LD-func")
-@app.command("vwl")
-def validate_wrd_ld_fun(
-
-    num_examples: int = typer.Option(
-        1000, "--nexamples",
-        help=(
-            "Choose limit of error (edit) for each word. Note that this is "
-            "doubled result, meaning 3 => max 150% WER for each word."
-        )
-    ),
-):
-    """Validate the word-level LD calculation function via simulation.
-
-    We did not provide theoretical proof that the word-level LD caucluation
-    algorithm works. Here, we use simulation to validate it.
-
-    Arguments:
-    -   num_examples: int = 1000. The number of simulation examples.
-
-    Example:
-    -  salwer vwl --nexamples 2000
-    """
-
-    return validate_wrd_ld_fun_(num_examples)

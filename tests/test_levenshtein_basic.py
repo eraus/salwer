@@ -8,6 +8,9 @@ from salwer.levenshtein import (
     _max_ind_of_min,
     _num_prefix_drift,
     _num_suffix_drift,
+    _prefix_drift_rh,
+    _prefix_drift_sub_rh,
+    _update_d1,
 )
 
 
@@ -202,6 +205,9 @@ def test_num_prefix_drift():
     r8 = "B C D".split()
     h8 = "  C  ".split()
     assert _num_prefix_drift(r8, h8) == 0
+    r9 = ['t']
+    h9 = ['V']
+    assert _num_prefix_drift(r9, h9) == 0
 
 
 def test_num_suffix_drift():
@@ -233,3 +239,33 @@ def test_levenshtein_prefix_hallucination_removal():
     assert levenshtein(s, t[3:]) == 2
     assert levenshtein(s, t[4:]) == 1
     assert levenshtein(s, t[5:]) == 2
+
+
+
+
+def test_prefix_drift_rh_and_sub_rh_1():
+    s = "    R   N O P Q R".split()
+    t = "J K L M N   P Q R".split()
+    r = "R   N O P Q R".split()
+    h = "M N   P Q R".split()
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
+    min_d0 = 0      # v_plus, base_dist of the seg version
+    # for i in range(m):
+    i = 0
+    d1 = _update_d1(s, t, d0, d1, i, n)
+    min_d1 = min(d1)                # _v_plus_upper(d1)
+    dist = min_d1 - min_d0          # LD of word
+    assert dist == 1
+    d0, d1, min_d0 = d1, d0, min_d1
+    # Check if dist is caused by prefix drift.
+    n_pd1, r1, h1 = _prefix_drift_rh(s, t, i, d1)  # d1 is actually d0
+    n_pd2, n_sub, r2, h2 = _prefix_drift_sub_rh(s, t, i, d1)
+    assert n_pd1 == 3
+    assert n_pd2 == 3
+    assert n_sub == 1
+    assert r1 == s
+    assert r2 == s
+    assert h1 == t
+    assert h2 == t

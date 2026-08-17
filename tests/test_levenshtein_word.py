@@ -6,7 +6,9 @@ from salwer.levenshtein import (
     levenshtein_seg_fast,
     levenshtein_word_fast,
     levenshtein_word,
+    levenshtein_gld,
 )
+from .helpers import assert_wlst_eq
 
 
 # When we calculate the word-level Levenshtein distance using the seg-based
@@ -21,36 +23,43 @@ def test_levenshtein_word_bc1():
     sbc = "J".split()
     tbc = "J".split()
     assert levenshtein_word(sbc, tbc) == [["J", 0]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["J", 0.0]])
 
 def test_levenshtein_word_bc2():
     sbc = "J".split()
     tbc = "K".split()
     assert levenshtein_word(sbc, tbc) == [["J", 2]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["J", 1.0]])
 
 def test_levenshtein_word_bc3():
     sbc = "  K".split()
     tbc = "J K".split()
     assert levenshtein_word(sbc, tbc) == [["K", 2]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["K", 1.0]])
 
 def test_levenshtein_word_bc4():
     sbc = "J  ".split()
     tbc = "J K".split()
     assert levenshtein_word(sbc, tbc) == [["J", 2]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["J", 1.0]])
 
 def test_levenshtein_word_bc5():
     sbc = "J   L".split()
     tbc = "J K L".split()
     assert levenshtein_word(sbc, tbc) == [["J", 1], ["L", 1]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["J", 0.5], ["L", 0.5]])
 
 def test_levenshtein_word_bc6():
     sbc = "J K L".split()
     tbc = "J   L".split()
     assert levenshtein_word(sbc, tbc) == [["J", 0], ["K", 2], ["L", 0]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["J", 0], ["K", 1.0], ["L", 0]])
 
 def test_levenshtein_word_bc7():
     sbc = "J K L".split()
     tbc = "J M".split()
     assert levenshtein_word(sbc, tbc) == [["J", 0], ["K", 2], ["L", 2]]
+    assert_wlst_eq(levenshtein_gld(sbc, tbc), [["J", 0], ["K", 1], ["L", 1]])
 
 ############################################
 # x1s1
@@ -666,8 +675,9 @@ def test_levenshtein_word_additional_1():
 # t  = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
     s = ['v', 'j', 'H', 'u', 'r']
     t = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
-    exp_wlist = [['v', 0], ['j', 5], ['H', 3], ['u', 0], ['r', 0]]
-    assert levenshtein_word(s, t, err_limit=9) == exp_wlist
+    exp_wlist = [['v', 0.5], ['j', 3], ['H', 0.5], ['u', 0], ['r', 0]]
+#     assert levenshtein_word(s, t, err_limit=9) == exp_wlist
+    assert_wlst_eq(levenshtein_gld(s, t), exp_wlist)
 
 
 def test_levenshtein_word_additional_2():
@@ -676,4 +686,7 @@ def test_levenshtein_word_additional_2():
     s = ['v', 'j', 'H', 'u', 'r']
     t = ['v', 'q', 'I', 'p', 'b', 'i', 'u', 'r']
     exp_wlist = [['v', 0], ['j', 5], ['H', 5], ['u', 0], ['r', 0]]
-    assert levenshtein_word(s, t, err_limit=9) == exp_wlist
+    exp_wlist = [['v', 0.5], ['j', 2], ['H', 2], ['u', 0.5], ['r', 0]]
+#     assert levenshtein_word(s, t, err_limit=9) == exp_wlist
+    assert_wlst_eq(levenshtein_gld(s, t), exp_wlist)
+

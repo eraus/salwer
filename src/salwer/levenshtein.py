@@ -525,6 +525,95 @@ def levenshtein_word(
             return wlst
 
 
+def levenshtein_gld(    # Generalized LD calculation
+    s: list[str],
+    t: list[str],
+    err_limit: int = 5,
+) -> list[list[str, float]]:
+    """Levenshtein dist of each word with errors examined---the normal version.
+
+    Args:
+    -   s: Source (reference) sequence as list of strings.
+    -   t: Target (hypothesis) sequence as list of strings.
+    -   err_limit: Upper limit of the error for each word (in the double case).
+
+    Returns:
+    -   wlst: Word list---a list of [word, levenshtein_dist] for each word,
+        where levenshtein_dist is an integer, assuming values 0, 1, 2, ...
+    """
+
+    # Find the number of suffix drifts and remove the tail from t
+    num_sd = _num_suffix_drift(s, t)
+    if num_sd:
+        t = t[:-num_sd]
+
+    m, n = len(s), len(t)   # sizes of s and t
+    d0 = list(range(n+1))   # prev LD list
+    d1 = [0] * (n+1)        # curr LD list
+
+    wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
+    min_d0 = 0      # v_plus, base_dist of the seg version
+
+    ss = 0      # base index for s
+    mc = m      # copy of m used in loop control
+
+    while True:
+        for i in range(m):
+            d1 = _update_d1(s, t, d0, d1, i, n)
+
+            # Assign word and update its LD to word list, wlst.
+            wlst[ss+i][0] = s[i]            # word of s
+            min_d1 = min(d1)                # _v_plus_upper(d1)
+            dist = min_d1 - min_d0          # LD of word
+            # use update since the value may have been assigned in (1)
+            wlst[ss+i][1] += dist / 2.0     # 0 or 0.5
+            d0, d1, min_d0 = d1, d0, min_d1
+
+            if dist == 0: continue
+
+            # If dist is 1, check if it is caused by prefix drift.
+            n_pd, n_sub, r, h = _prefix_drift_sub_rh(s, t, i, d1)  # d1 => d0
+            if n_pd:    # tail case will be handled just before exit
+                if n_sub == 0:  # the case with ins. only
+                    hf_pd = 0.5 * n_pd  # half blame
+                    if ss+i == 0:       # head ins.
+                        wlst[0][1] = 2.0 * hf_pd    # assign full blame
+                    else:
+                        wlst[ss+i-1][1] += hf_pd    # add to left anchor
+                        wlst[ss+i][1] = hf_pd       # assign to right anchor
+                else:           # the case with mixed ins. and subs.
+                    len_seq = n_pd + n_sub
+                    if ss+i == 0:       # head ins.
+                        wlst[n_sub][1] = 0.5        # right anchor
+                        avg_share = (len_seq - 0.5) / n_sub  # average share
+                    else:
+                        wlst[ss+i-1][1] += 0.5      # add to left anchor
+                        # if ss+i+n_sub >= len(wlst):
+                        #     print(f"{n_sub = }; {n_pd = }; {ss = }; {i = }")
+                        #     print(f"{s = }")
+                        #     print(f"{t = }")
+                        #     print(f"{d1 = }")
+                        wlst[ss+i+n_sub][0] = s[i+n_sub]
+                        wlst[ss+i+n_sub][1] = 0.5   # assign to right anchor
+                        avg_share = (len_seq - 1.0) / n_sub  # average share
+                    # Update LD for elements corresponding to subs.
+                    for ii in range(n_sub):
+                        wlst[ss+i+ii][0] = s[i+ii]
+                        wlst[ss+i+ii][1] = avg_share
+                # update s and t and related vars for a new "for i loop"
+                s, t, m, n, d0, d1, ss, i = \
+                    _update_sub_st_vars(r, h, n_pd, n_sub, ss, i)
+                min_d0 = 0
+                break
+            else:  # substitution or deletion
+                wlst[ss+i][1] += 0.5    # word-level LD = 1.0 now
+
+        if ss + i >= mc - 1:  # all elements of s scanned
+            wlst[mc-1][1] += 1.0 * num_sd
+            wlst = _clip_wlst_err(wlst, err_limit)
+            return wlst
+
+
 #--------------------------------------------------------------------
 # Common Utility/Helper functions
 #--------------------------------------------------------------------
@@ -561,10 +650,21 @@ def _prefix_drift_rh(s, t, s_ind, d0):
     r = s[s_ind:]           # r = ref, partial source
     h = t[t_ind:]           # h = hyp, partial target
     n_pd = _num_prefix_drift(r, h)
-    # if n_pd and r[0] == h[n_pd]:
-    #     return n_pd, r, h
-    # return 0, r, h
     return n_pd, r, h
+
+
+# Find the num of prefix drifts, num of subs., and new s & t sequences.
+def _prefix_drift_sub_rh(s, t, s_ind, d0):
+    t_ind = _ind_v_plus_lower(d0)
+    r = s[s_ind:]           # r = ref, partial source
+    h = t[t_ind:]           # h = hyp, partial target
+    n_pd = _num_prefix_drift(r, h)  # number of prefix drifts
+    i = 0                   # number of subs. in sequence of subs. & ins.
+    m, n = len(r), len(h)
+    if n_pd:
+        while i < m and n_pd + i < n and r[i] != h[n_pd + i]:
+            i += 1
+    return n_pd, i, r, h
 
 
 # Update list d1 for Levenshtein distance.
@@ -590,6 +690,19 @@ def _update_st_vars(r, h, n_pd, ss, i):
     d0 = list(range(n+1))   # prev dist
     d1 = [0] * (n+1)        # curr dist
     ss += i                 # base index for s
+    i = 0                   # index for s
+    return s, t, m, n, d0, d1, ss, i
+
+
+# Update s and t sequences and related variables used when reset everthing.
+# Needed when we have leading hallucinations of t against s.
+def _update_sub_st_vars(r, h, n_pd, n_sub, ss, i):
+    s = r[n_sub:]           # source
+    t = h[n_pd + n_sub:]    # target
+    m, n = len(s), len(t)   # sizes
+    d0 = list(range(n+1))   # prev dist
+    d1 = [0] * (n+1)        # curr dist
+    ss = ss + n_sub + i     # base index for s
     i = 0                   # index for s
     return s, t, m, n, d0, d1, ss, i
 

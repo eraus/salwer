@@ -2,7 +2,7 @@
 
 import pytest
 
-from salwer.recipes.validate_wrd_ld import (
+from .levenshtein_word_validation import (
     first_error_type,
     next_error_type,
     random_cue,
@@ -22,6 +22,7 @@ from salwer.recipes.validate_wrd_ld import (
 
     verify_s_t_e,
 )
+from .helpers import assert_wlst_eq
 
 
 #--------------------------------------------------------------------
@@ -96,6 +97,11 @@ def test_find_sub_index2():
     exp_ind_lst = [[1, 2]]
     assert find_sub_index(e) == exp_ind_lst
 
+def test_find_sub_index2():
+    e = [' ', ' ', 'I', 'I', 'S', 'S', ' ', ' ']
+#  index: 0    1    2    3    4    5    6    7    8
+    exp_ind_lst = []
+    assert find_sub_index(e) == exp_ind_lst
 
 #-----------------------------------------------------
 def test_find_sub_ins_index_num_of_sub1():
@@ -143,14 +149,6 @@ def test_attribute_wl_ld_1_subs_index():
     assert find_sub_index(e) == exp_ind_lst
 
 
-def assert_eq(out_wlst, exp_wlst):
-    out_wlst_w = [e[0] for e in out_wlst]
-    out_wlst_n = [e[1] for e in out_wlst]
-    exp_wlst_w = [e[0] for e in exp_wlst]
-    exp_wlst_n = [e[1] for e in exp_wlst]
-    assert out_wlst_w == exp_wlst_w
-    assert out_wlst_n == pytest.approx(exp_wlst_n)
-
 def test_attribute_wl_gld_1_subs():
     s = ["J", "K", "L", "M", "N", "O"]
 #   t = ["J", " ", "L", " ", "N", " "]
@@ -158,7 +156,7 @@ def test_attribute_wl_gld_1_subs():
     # exp_wlst = [["J", 0], ["K", 2], ["L", 0], ["M", 2], ["N", 0], ["O", 2]]
     exp_wlst = [["J", 0.0], ["K", 1.0], ["L", 0.0],
                 ["M", 1.0], ["N", 0.0], ["O", 1.0]]
-    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+    assert_wlst_eq(attribute_wl_gld(s, e), exp_wlst)
 
 
 def test_attribute_wl_gld_2_subs():
@@ -169,7 +167,7 @@ def test_attribute_wl_gld_2_subs():
                 ["M", 1.0], ["N", 0.0], ["O", 1.0]]
     # exp_wlst = [["J", 0], ["K", 2], ["L", 2], ["M", 2], ["N", 0], ["O", 2]]
     # assert attribute_wl_ld(s, e) == exp_wlst
-    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+    assert_wlst_eq(attribute_wl_gld(s, e), exp_wlst)
 
 def test_find_sub_index_num_of_sub4():
     e = [" ", "S", "I", "S", " ", "S"]
@@ -191,7 +189,7 @@ def test_attribute_wl_gld_1_ins_subs():
     e = [" ", "S", "I", "S", " ", "S"]
     exp_wlst = [["J", 0.5], ["K", 1.0], ["M", 1.0], ["N", 0.5], ["O", 1.0]]
     # assert attribute_wl_ld(s, e) == exp_wlst
-    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+    assert_wlst_eq(attribute_wl_gld(s, e), exp_wlst)
 
 
 def test_find_sub_index_num_of_sub5():
@@ -213,7 +211,15 @@ def test_attribute_wl_gld_2_ins_subs():
     e = [" ", "S", "I", "S", " ", "S", "I"]
     exp_wlst = [["J", 0.5], ["K", 1.0], ["M", 1.0], ["N", 1.0], ["O", 1.5]]
     # assert attribute_wl_ld(s, e) == exp_wlst
-    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+    assert_wlst_eq(attribute_wl_gld(s, e), exp_wlst)
+
+# direct_cal = [['z', 0.0], ['B', 0.0], ['N', 0.0], ['J', 0.0], ['S', 0.0], ['t', 0.5], ['A', 1.5], ['w', 2.5], ['V', 0.5], ['p', 0.0]]
+# wrd_ld_cal = [['z', 0.0], ['B', 0.0], ['N', 0.0], ['J', 0.0], ['S', 0.0], ['t', 0.5], ['A', 1.5], ['w', 1.5], ['V', 0.5], ['p', 0.0]]
+# s  = ['z', 'B', 'N', 'J', 'S', 't', ' ', ' ', 'A', 'w', 'V', 'p']
+# t  = ['z', 'B', 'N', 'J', 'S', 't', 'r', 'S', 'B', 'Z', 'V', 'p']
+# e  = [' ', ' ', ' ', ' ', ' ', ' ', 'I', 'I', 'S', 'S', ' ', ' ']
+# ss = ['z', 'B', 'N', 'J', 'S', 't', 'A', 'w', 'V', 'p']
+# tt = ['z', 'B', 'N', 'J', 'S', 't', 'r', 'S', 'B', 'Z', 'V', 'p']
 
 
 #-----------------------------------------------------
@@ -239,7 +245,7 @@ def test_attribute_errors1():
 #   t =  "J    K    J    M    N    O    P    P    R".split()
     e = ["I", "I", "S", " ", " ", "I", "I", "S", " "]
     exp_wlst = [["L", 2.5], ["M", 0.5], ["N", 0.5], ["Q", 2.0], ["R", 0.5]]
-    assert_eq(attribute_wl_gld(s, e), exp_wlst)
+    assert_wlst_eq(attribute_wl_gld(s, e), exp_wlst)
 
 #-----------------------------------------------------
 def test_verify_s_t_e_1():
@@ -257,22 +263,3 @@ def test_verify_s_t_e_2():
     e = ['I', 'S', ' ', ' ', ' ']
     exp_bool = False
     assert verify_s_t_e(s, t, e) == exp_bool
-
-
-# def test_errer_generate_issues():
-#     for i in range(1000):
-#         s = random_cue(random_size_of_cue())
-#         s, t, e, num_err = add_error(s)
-#         if not verify_s_t_e(s, t, e):
-#             print(f"Error generation has issue at {i = }")
-#             print(f"s: {s}\nt: {t}\ne: {e}\nnum_err: {num_err}")
-#             break
-
-
-#    s = "      M N M    ".split()
-#    t = "J K L M N O P Q".split()
-#         ^ ^ ^     ^ ^ ^
-
-
-
-#     print(" ".join(["a", "b", " ", "c"]))
