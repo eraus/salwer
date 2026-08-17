@@ -274,28 +274,25 @@ def find_sub_index(
 ) -> list[list[int]]:
     m = len(e)
     sub_ind_list = []
-    to_find_bgn_sub: bool = True    # flag to find begin index
-    is_ins_sub_seq: bool = False    # flag to indicate if is ins_sub seq
-    for ind, word in enumerate(e):
-        if to_find_bgn_sub:
-            if word == "S" and (ind == 0 or (ind > 0 and e[ind-1] != "I")):
-                sub_bgn_ind = ind
-                to_find_bgn_sub = False   # need to find end index
-                if ind == m-1:      # find end index at end of list
-                    sub_end_ind = ind+1
-                    sub_ind_list.append([sub_bgn_ind, sub_end_ind])
-        else:
-            if word == " " or word == "D": # find end index before end of list
-                sub_end_ind = ind
-                if not is_ins_sub_seq:
-                    sub_ind_list.append([sub_bgn_ind, sub_end_ind])
-                to_find_bgn_sub = True
-                is_ins_sub_seq = False
-            elif word == "I":     # cancel the current sequence if subs.
-                is_ins_sub_seq = True
-            elif ind == m-1:      # find end index at end of list
-                sub_end_ind = ind+1
-                sub_ind_list.append([sub_bgn_ind, sub_end_ind])
+    ind = 0
+    while ind < m:
+        # Skip all spaces and "D"'s.
+        while ind < m and (e[ind] == " " or e[ind] == "D"):
+            ind += 1
+        if ind >= m:
+            break
+
+        # Find start and end of sequence of "I" or "S".
+        group_start = ind
+        has_ins = False
+        while ind < m and e[ind] != " " and e[ind] != "D":
+            if e[ind] == "I":
+                has_ins = True      # sequence with "I"
+            ind += 1
+        group_end = ind
+
+        if not has_ins:
+            sub_ind_list.append([group_start, group_end])
     return sub_ind_list
 
 
