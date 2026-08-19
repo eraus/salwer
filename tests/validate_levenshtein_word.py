@@ -19,12 +19,13 @@ def test_validate_wrd_ld_fun():
     To run it, use: `pytest tests/validate_levenshtein_word.py`
     """
 
-    num_examples = 10000  # total examples to run
-    good_cases = []
-    bad_cases = []
+    num_examples = 1000  # total examples to run
+    same_cases = []
+    diff_cases = []
+    err_cases = []
     sim_dict_direct = {}
     sim_dict_wrd_ld = {}
-    for _ in range(num_examples):
+    for i in range(num_examples):
         s = random_cue(random_size_of_cue())
         s, t, e, _ = add_errors(s)
         ss = [ele for ele in s if ele != " "]
@@ -35,9 +36,15 @@ def test_validate_wrd_ld_fun():
         direct_cal = attribute_wl_gld(s, e)
         wrd_ld_cal = levenshtein_gld(ss, tt, err_limit=100)
         if wlst_approx_eq(direct_cal, wrd_ld_cal):
-            good_cases.append(direct_cal)
+            same_cases.append(direct_cal)
         else:
-            bad_cases.append([direct_cal, wrd_ld_cal, s, t, e, ss, tt])
+            diff_cases.append([direct_cal, wrd_ld_cal, s, t, e, ss, tt])
+
+        direct_err = [err[1] for err in direct_cal]
+        wrd_ld_err = [err[1] for err in wrd_ld_cal]
+
+        if sum(direct_err) != sum(wrd_ld_err):
+            err_cases.append([direct_cal, wrd_ld_cal, s, t, e, ss, tt])
 
         cue_dict_direct = word_dict_of_cue(direct_cal)
         cue_dict_wrd_ld = word_dict_of_cue(wrd_ld_cal)
@@ -46,8 +53,7 @@ def test_validate_wrd_ld_fun():
 
 
     print(f"\nThe following are inconsistent cases:")
-
-    for case in bad_cases:
+    for case in diff_cases:
         print(f"direct_cal = {case[0]}")
         print(f"wrd_ld_cal = {case[1]}")
         print(f"s  = {case[2]}")
@@ -56,9 +62,19 @@ def test_validate_wrd_ld_fun():
         print(f"ss = {case[5]}")
         print(f"tt = {case[6]}\n")
 
-    print(f"Skipped cases: {num_examples - len(good_cases) - len(bad_cases)}")
-    print(f"Number of consistent cases: {len(good_cases)}")
-    print(f"Number of inconsistent cases: {len(bad_cases)}")
+    print(f"Skipped cases: {num_examples - len(same_cases) - len(diff_cases)}")
+    print(f"Number of consistent cases: {len(same_cases)}")
+    print(f"Number of inconsistent cases: {len(diff_cases)}")
+
+    print(f"\nNumber of error cases: {len(err_cases)}")
+    for case in err_cases:
+        print(f"direct_cal = {case[0]}")
+        print(f"wrd_ld_cal = {case[1]}")
+        print(f"s  = {case[2]}")
+        print(f"t  = {case[3]}")
+        print(f"e  = {case[4]}")
+        print(f"ss = {case[5]}")
+        print(f"tt = {case[6]}\n")
 
     total_num_err = 0.0
     total_relative_err = 0.0

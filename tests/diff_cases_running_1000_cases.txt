@@ -1,4 +1,12 @@
-Number of bad cases: 18
+Total number of cases: 1000
+Skipped cases: 33
+Number of consistent cases: 949
+Number of inconsistent cases: 18
+
+Number of error cases: 0
+
+Inconsistent cases are shown below:
+
 direct_cal = [['r', 0.0], ['b', 0.0], ['f', 0.0], ['e', 0.0], ['O', 1.0], ['L', 1.0], ['K', 1.0], ['y', 1.0], ['L', 0.0], ['i', 0.0], ['U', 0.0], ['A', 0.0], ['W', 0.0], ['h', 0.0], ['z', 0.0], ['K', 0.0], ['z', 0.0], ['x', 0.0]]
 wrd_ld_cal = [['r', 0.0], ['b', 0.0], ['f', 0.0], ['e', 0.0], ['O', 1.0], ['L', 0.0], ['K', 1.0], ['y', 1.0], ['L', 1.0], ['i', 0.0], ['U', 0.0], ['A', 0.0], ['W', 0.0], ['h', 0.0], ['z', 0.0], ['K', 0.0], ['z', 0.0], ['x', 0.0]]
                                                                                 ^                                   ^

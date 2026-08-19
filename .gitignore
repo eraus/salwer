@@ -18,8 +18,9 @@
 
 # Unignore tests
 !/tests/
-!/tests/*.py
 !/tests/*.md
+!/tests/*.py
+!/tests/*.txt
 
 # Unignore examples
 !/examples/
