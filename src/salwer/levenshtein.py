@@ -1,4 +1,4 @@
-"""Different implementations of the global Levenshtein algorithm."""
+"""Different algs for global, segment-, & word-level Levenshtein edit dist."""
 
 
 def levenshtein_2d(
@@ -6,26 +6,26 @@ def levenshtein_2d(
         t: list[str],
         print_ld: bool = False,
     ) -> int:
-    """Full-memory implementation of the Levenshtein distance alg.
+    """Full-memory implementation of the DP alg for Levenshtein edit distances.
 
     Args:
     -   s: list[str]. Source (reference) sequence as list of strings.
     -   t: list[str]. Target (hypothesis) sequence as list of strings.
-    -   print_ld: bool = False. Print Levenshtein dist (LD) table if True.
+    -   print_ld: bool = False. Print the LD table if True.
 
     Return:
-    -   The Levenshtein distance between s and t.
+    -   The Levenshtein edit distance (LD) between s and t.
     """
 
-    # Initialize the 2D Levenshtein distance (LD) table
+    # Initialize the 2D Levenshtein edit distance (LD) table.
     m, n = len(s), len(t)   # sizes of s and t
     d = [[0] * (n+1) for _ in range(m+1)]  # 2D LD table
-    for i in range(1, m+1):
-        d[i][0] = i
     for j in range(1, n+1):
-        d[0][j] = j
+        d[0][j] = j         # first row
+    for i in range(1, m+1):
+        d[i][0] = i         # first column
 
-    # Populate the 2D LD table
+    # Populate the 2D LD table via the DP alg.
     for i in range(m):          # row index
         for j in range(n):      # col index
             c = 0 if s[i] == t[j] else 1
@@ -35,8 +35,7 @@ def levenshtein_2d(
                 d[i+1][j] + 1,  # ins to s
             )
 
-    # Populate the 2D LD table as needed
-    if print_ld:
+    if print_ld:    # print the 2D LD table as needed
         print("s\\t      " + '   '.join(t))
         print("     j >")
         i_line = "  i  0 | 1   " + '   '.join(str(num) for num in d[0][2:])
@@ -47,12 +46,11 @@ def levenshtein_2d(
             print(f"{ch}    {row[0]} | "
                   f"{'   '.join(str(num) for num in row[1:])}")
 
-    # Only return the final LD result
-    return d[m][n]
+    return d[m][n]  # only return final LD result
 
 
 def levenshtein(s: list[str], t: list[str]) -> int:
-    """Two-list implementation of the Levenshtein distance alg.
+    """Two-list implementation of the DP alg for Levenshtein edit distance.
 
     Two 1D lists, d0 and d1, are used instead of one 2D list.
 
@@ -61,7 +59,7 @@ def levenshtein(s: list[str], t: list[str]) -> int:
     -   t: list[str]. Target (hypothesis) sequence as list of strings.
 
     Return:
-    -   The Levenshtein distance between s and t.
+    -   The Levenshtein edit distance (LD) between s and t.
     """
 
     # Initialize the 2 1D LD lists.
@@ -87,16 +85,16 @@ def levenshtein(s: list[str], t: list[str]) -> int:
 
 
 def levenshtein_1d(s: list[str], t: list[str]) -> int:
-    """Single-list implementation of the Levenshtein distance alg.
+    """Single-list implementation of the DP alg for Levenshtein edit distance.
 
-    A single 1D list, d, is used instead of 2 1D lists.
+    A single 1D list, d, is used instead of two 1D lists.
 
     Args:
     -   s: list[str]. Source (reference) sequence as list of strings.
     -   t: list[str]. Target (hypothesis) sequence as list of strings.
 
     Return:
-    -   The Levenshtein distance between s and t.
+    -   The Levenshtein edit distance (LD) between s and t.
     """
 
     m, n = len(s), len(t)   # sizes of s and t
@@ -137,7 +135,7 @@ def levenshtein_align_fast(
     d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
-    # segt = segments of t corresponding to segments of s: segs
+    # segt = list of segments of t corresponding to segments of s, segs
     segt = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
@@ -153,11 +151,11 @@ def levenshtein_align_fast(
                 segt[k-1][1] = ind_v_minus_i
             if k >= n_segs: break
 
-        # Find segment lower boundary for t based on _ind_v_minus_lower(d1)
+        # Find segment lower boundary for t based on _ind_v_minus_lower(d1).
         if segs[k][0] == i:
             segt[k][0] = _ind_v_minus_lower(d1) - 1
 
-        # Find segment upper boundary for t based on ind_v_plus.
+        # Find segment upper boundary for t based on ind_v_plus_upper(d1).
         if segs[k][1] == i + 1:
             segt[k][1] = _ind_v_plus_upper(d1)
             k += 1          # update the segment index
@@ -202,7 +200,7 @@ def levenshtein_align(
     d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
-    # segments of t corresponding to segments of s: segs
+    # segt = list of segments of t corresponding to segments of s, segs
     segt = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
@@ -240,7 +238,7 @@ def levenshtein_align(
             if segs[k][0] == ss + i:
                 segt[k][0] = _ind_v_star(d1) + ts
 
-            # Find segment upper boundary for t based on ind_v_plus.
+            # Find segment upper boundary for t based on ind_v_plus_upper(d1).
             if segs[k][1] == ss + i + 1:
                 segt[k][1] = _ind_v_plus_upper(d1) + ts
                 k += 1               # update the segment index
@@ -252,7 +250,7 @@ def levenshtein_align(
 
 
 #--------------------------------------------------------------------
-# Levenshtein segment-level distance functions
+# Segment-level Levenshtein edit distance calculation functions
 #--------------------------------------------------------------------
 
 def levenshtein_seg_fast(
@@ -263,36 +261,7 @@ def levenshtein_seg_fast(
 ) -> list[list]:
     """Segment size and LD calculation---the fast version.
 
-    Notations:
-    -   d0: The Levenshtein distance of the previous iteration.
-    -   d1: The Levenshtein distance of the current iteration.
-
-    In the comments of the code and test case illustrations, we use notations
-    for the following (here 2 is just an example; it can be any number):
-    -   2-: They are the min value of d1 with the max index. They are for the
-            lower boundary of a segment only. They are referred to as
-            v_minus, and the corresponding index is called ind_v_minus.
-    -   2+: They are also the min values of d1 with the max index. Yet, they
-            are for the upper bounbdary of a segment only. They are referrred
-            to as v_plus, and the corresponding index is called ind_v_plus.
-    -   *2: They are the value of d0 with index (ind_v_minus - 1). The value
-            is referred to as v_star, and the index is ind_v_star. Used in
-            segment-level LD calculation.
-
-    Args:
-    -   s: Source (reference) sequence as list of strings.
-    -   t: Target (hypothesis) sequence as list of strings.
-    -   segs: list of semantic segments, each segment is [start, end].
-    -   tight: Boolean indicator for including prefix drift (PD, or
-        hallucination) before each segment or not:
-        -   True: Use tight segmemts---do not include PD (default).
-        -   False: Do not use tight segments---do include PD.
-
-    Returns:
-    -   segd: segment distance---a list of [seg_size, edit_dist] for
-            each segment, where
-        -   seg_size (= end - start),
-        -   edit_dist between s[start:end] and the correcponding t sequence.
+    See the doc string of the levenshtein_seg function.
     """
 
     base_seg_dist = _v_star if tight else _v_plus
@@ -335,7 +304,36 @@ def levenshtein_seg(
 ) -> list[list]:
     """Calculate size and Levenshtein dist of segments---the normal version.
 
-    See the doc string of the levenshtein_seg_fast function.
+    Notations:
+    -   d0: The Levenshtein distance of the previous iteration.
+    -   d1: The Levenshtein distance of the current iteration.
+
+    In the comments of the code and test case illustrations, we use notations
+    for the following (here 2 is just an example; it can be any number):
+    -   2-: They are the min value of d1 with the max index. They are for the
+            lower boundary of a segment only. They are referred to as
+            v_minus, and the corresponding index is called ind_v_minus.
+    -   2+: They are also the min values of d1 with the max index. Yet, they
+            are for the upper bounbdary of a segment only. They are referrred
+            to as v_plus, and the corresponding index is called ind_v_plus.
+    -   *2: They are the value of d0 with index (ind_v_minus - 1). The value
+            is referred to as v_star, and the index is ind_v_star. Used in
+            segment-level LD calculation.
+
+    Args:
+    -   s: Source (reference) sequence as list of strings.
+    -   t: Target (hypothesis) sequence as list of strings.
+    -   segs: list of semantic segments, each segment is [start, end].
+    -   tight: Boolean indicator for including prefix drift (PD, or
+        hallucination) before each segment or not:
+        -   True: Use tight segmemts---do not include PD (default).
+        -   False: Do not use tight segments---do include PD.
+
+    Returns:
+    -   segd: segment-based result---a list of [seg_size, seg_LD] for
+            all provided segments in segs. For each list:
+        -   seg_size (= end - start),
+        -   edit_LD between s[start:end] and the correcponding t sequence.
     """
 
     m, n = len(s), len(t)   # sizes of s and t
@@ -343,7 +341,7 @@ def levenshtein_seg(
     d1 = [0] * (n+1)        # curr LD list
 
     n_segs = len(segs)      # num of segments
-    # segd = segment size and dist corresponding to segs
+    # segd = list of segment size and LD corresponding to segs
     segd = [[0] * 2 for _ in range(n_segs)]
     k = 0                   # index of segs/segt
 
@@ -385,7 +383,7 @@ def levenshtein_seg(
 
 
 #--------------------------------------------------------------------
-# Levenshtein word-level distance functions
+# Word-level Levenshtein edit distance calculation functions
 #--------------------------------------------------------------------
 
 def levenshtein_word_fast(
@@ -430,20 +428,23 @@ def levenshtein_word_fast(
     return wlst
 
 
-def levenshtein_gld(    # Generalized LD calculation
+def levenshtein_gld(
     s: list[str],
     t: list[str],
     err_limit: float = 3.0,
 ) -> list[list[str, float]]:
-    """Generalized Levenshtein dist (GLD) of each word with errors limitted.
+    """Generalized Levenshtein dist (GLD) of each word with errors clipped.
+
+    Rules for calculate the GLD for each word:
+    See the "Word-level LD calculation algorithm" section of the paper.
 
     Args:
     -   s: Source (reference) sequence as list of strings.
     -   t: Target (hypothesis) sequence as list of strings.
-    -   err_limit: Upper limit of the error for each word (in the double case).
+    -   err_limit: Upper limit of the error for each word.
 
     Returns:
-    -   wlst: Word list---list of [word, GLD] 4 each word in s; GLD is float.
+    -   wlst: Word list---list of [word, GLD] for each word in s; GLD is float.
     """
 
     s, t, fwlst, pwlst, ld_4_ank = _check_st_tails(s, t)
@@ -455,7 +456,7 @@ def levenshtein_gld(    # Generalized LD calculation
     d1 = [0] * (n+1)        # curr LD list
 
     wlst = [[0] * 2 for _ in range(m)]  # wlst = word list
-    min_d0 = 0      # v_plus, base_dist of the seg version
+    min_d0 = 0  # v_plus, base_dist of the seg version
 
     ss = 0      # base index for s
     mc = m      # copy of m used in loop control
@@ -465,11 +466,11 @@ def levenshtein_gld(    # Generalized LD calculation
             d1 = _update_d1(s, t, d0, d1, i, n)
 
             # Assign word and update its LD to word list, wlst.
-            wlst[ss+i][0] = s[i]            # word of s
-            min_d1 = min(d1)                # _v_plus_upper(d1)
-            dist = min_d1 - min_d0          # LD of word
-            # use update since the value may have been assigned in (1)
-            wlst[ss+i][1] += dist / 2.0     # 0 or 0.5
+            wlst[ss+i][0] = s[i]    # word of s
+            min_d1 = min(d1)        # _v_plus_upper(d1)
+            dist = min_d1 - min_d0  # LD of word
+            # use update since the value may have been assigned in (1) in
+            wlst[ss+i][1] += dist / 2.0  # 0 or 0.5     previous for i loop
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
@@ -480,20 +481,20 @@ def levenshtein_gld(    # Generalized LD calculation
                 if n_sub == 0:  # the case with ins. only
                     hf_pd = 0.5 * n_pd  # blamed for half errors
                     if ss+i == 0:       # head ins. (at start of the seq)
-                        wlst[0][1] = 2.0 * hf_pd    # assign full blame
+                        wlst[0][1] = 2.0 * hf_pd    # (1) assign full blame
                     else:
                         wlst[ss+i-1][1] += hf_pd    # add to left anchor
-                        wlst[ss+i][1] = hf_pd       # assign to right anchor
+                        wlst[ss+i][1] = hf_pd       # (1) assign to right anchor
                 else:           # the case with mixed ins. and subs.
                     len_seq = n_pd + n_sub
                     if ss+i == 0:       # head ins.
                         wlst[n_sub][0] = s[n_sub]   # right anchor
-                        wlst[n_sub][1] = 0.5        # right anchor
+                        wlst[n_sub][1] = 0.5        # (1) right anchor
                         avg_share = (len_seq - 0.5) / n_sub  # average share
                     else:
                         wlst[ss+i-1][1] += 0.5      # add to left anchor
                         wlst[ss+i+n_sub][0] = s[i+n_sub]
-                        wlst[ss+i+n_sub][1] = 0.5   # assign to right anchor
+                        wlst[ss+i+n_sub][1] = 0.5   # (1) assign to right anchor
                         avg_share = (len_seq - 1.0) / n_sub  # average share
                     # Update LD for elements corresponding to subs.
                     for ii in range(n_sub):
@@ -509,7 +510,7 @@ def levenshtein_gld(    # Generalized LD calculation
 
         if ss + i >= mc - 1:        # all elements of s scanned
             wlst[mc-1][1] += ld_4_ank
-            wlst = wlst + pwlst     # tail case handled here
+            wlst = wlst + pwlst     # tail resulets appended here
 
             wlst = _clip_wlst_err(wlst, err_limit)
             return wlst
@@ -573,8 +574,8 @@ def levenshtein_word2(
             wlst[ss+i][0] = s[i]      # word of s
             min_d1 = min(d1)          # _v_plus_upper(d1)
             dist = min_d1 - min_d0    # LD of word
-            # use update since the value may have been assigned in (1)
-            wlst[ss+i][1] += dist     # 0 or 1
+            # use update since the value may have been assigned in (1) in
+            wlst[ss+i][1] += dist     # 0 or 1          previous for i loop
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
@@ -582,9 +583,9 @@ def levenshtein_word2(
             # If dist is 1, check if it is caused by prefix drift.
             n_pd, r, h = _prefix_drift_rh(s, t, i, d1)  # d1 is actually d0
             if n_pd:
-                wlst[ss+i][1] = n_pd         # add num of hallucinations
+                wlst[ss+i][1] = n_pd         # (1) assign num of prefix drifts
                 if ss+i == 0:
-                    wlst[ss+i][1] += n_pd    # (1) add again for s[0]
+                    wlst[ss+i][1] += n_pd    # add again for s[0]
                 else:
                     wlst[ss+i-1][1] += n_pd  # share blame with neighbor
                 # update s and t and related vars for a new "for i loop"

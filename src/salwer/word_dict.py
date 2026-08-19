@@ -21,9 +21,6 @@ def word_dict_of_cue(wrd_list):
     # Note that GLD can be float.
     wrd_dict = {}
     for word, value in wrd_list:
-        if word == 0:
-            print(f"{word = }")
-            continue
         if word not in wrd_dict:
             wrd_dict[word] = [0, 0]
         wrd_dict[word][0] += 1

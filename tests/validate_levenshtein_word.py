@@ -1,46 +1,51 @@
-"""Test functions used for validating word-level LD function."""
+"""Test function used for validating word-level LD function."""
 
-import pytest
-
+from salwer.from_aligned import attribute_wl_gld
 from salwer.levenshtein import levenshtein_gld
-from .levenshtein_word_validation import (
+from salwer.word_dict import (
+    word_dict_of_cue,
+    merge_word_dicts,
+)
+from .random_s_t_creation import (
     random_size_of_cue, random_cue,
     add_errors, verify_s_t_e,
-    attribute_wl_gld,
 )
 from .helpers import wlst_approx_eq
 
 
-def test_validate_wrd_ld_fun_():
-    """Calculate word-level WER between ref and hyp transcripts.
+def test_validate_wrd_ld_fun():
+    """Validate the word-level GLD function levenshtein_gld.
 
-    Arguments:
-    -   num_examples: int = 1000. The number of simulation examples.
+    To run it, use: `pytest tests/validate_levenshtein_word.py`
     """
 
-    num_examples = 1000
+    num_examples = 10000  # total examples to run
     good_cases = []
     bad_cases = []
-    for i in range(num_examples):
+    sim_dict_direct = {}
+    sim_dict_wrd_ld = {}
+    for _ in range(num_examples):
         s = random_cue(random_size_of_cue())
         s, t, e, _ = add_errors(s)
         ss = [ele for ele in s if ele != " "]
         tt = [ele for ele in t if ele != " "]
         if not verify_s_t_e(s, t, e):
             continue
-        print(f"{i = }")
-        print(f"{ss = }")
-        print(f"{tt = }")
+
         direct_cal = attribute_wl_gld(s, e)
         wrd_ld_cal = levenshtein_gld(ss, tt, err_limit=100)
-
         if wlst_approx_eq(direct_cal, wrd_ld_cal):
             good_cases.append(direct_cal)
         else:
             bad_cases.append([direct_cal, wrd_ld_cal, s, t, e, ss, tt])
 
-    print(f"Number of good cases: {len(good_cases)}")
-    print(f"Number of bad cases: {len(bad_cases)}")
+        cue_dict_direct = word_dict_of_cue(direct_cal)
+        cue_dict_wrd_ld = word_dict_of_cue(wrd_ld_cal)
+        sim_dict_direct = merge_word_dicts(sim_dict_direct, cue_dict_direct)
+        sim_dict_wrd_ld = merge_word_dicts(sim_dict_wrd_ld, cue_dict_wrd_ld)
+
+
+    print(f"\nThe following are inconsistent cases:")
 
     for case in bad_cases:
         print(f"direct_cal = {case[0]}")
@@ -52,5 +57,23 @@ def test_validate_wrd_ld_fun_():
         print(f"tt = {case[6]}\n")
 
     print(f"Skipped cases: {num_examples - len(good_cases) - len(bad_cases)}")
-    print(f"Number of good cases: {len(good_cases)}")
-    print(f"Number of bad cases: {len(bad_cases)}")
+    print(f"Number of consistent cases: {len(good_cases)}")
+    print(f"Number of inconsistent cases: {len(bad_cases)}")
+
+    total_num_err = 0.0
+    total_relative_err = 0.0
+    for word in dict(sorted(sim_dict_direct.items())):
+        occurance_direct, error_direct = sim_dict_direct[word]
+        total_num_err += error_direct
+        _, error_wrd_ld = sim_dict_wrd_ld[word]
+        delta_err = error_direct - error_wrd_ld
+        total_num_err += error_wrd_ld
+        total_relative_err += delta_err
+        relative_err = 2*delta_err / (error_direct + error_wrd_ld)
+        print(f"{word = }; {occurance_direct = }; "
+              f"error_direct: {(error_direct):.2f}; "
+              f"delta_err: {abs(delta_err):.2f}; "
+              f"relative_err: {abs(relative_err):.4f}")
+
+    print(f"Total number of err: {(total_num_err/2):.2f}; "
+          f"Sum of error difference: {abs(total_relative_err):.2f}")

@@ -124,12 +124,6 @@ def word_dict_of_ann(
         cue_wrd_list = levenshtein_gld(
             ref_cue.txt.split(), hyp_cue.txt.split(), err_limit)
 
-        for word, value in cue_wrd_list:
-            if word == 0:
-                print(f"{cue_wrd_list = }")
-                print(f"{ref_cue.txt = }")
-                print(f"{hyp_cue.txt = }")
-
         if seg != "all":
             cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cns, seg)
             cue_wrd_list = _get_seg_wrd_list(cue_wrd_list, cue_seg_ranges)
