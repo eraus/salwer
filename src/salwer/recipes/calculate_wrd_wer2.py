@@ -6,7 +6,7 @@ import shutil
 
 from salwer.labels import Transcripts
 from salwer.levenshtein import (
-    levenshtein_gld,
+    levenshtein_word2,
 )
 from salwer.utils import (
     _clean_transcript,
@@ -20,13 +20,13 @@ from salwer.word_dict import (
 )
 
 
-def calculate_wrd_wer_(
+def calculate_wrd_wer2_(
     ref_dir: str,
     hyp_dir: str,
     level: int,
     fn_cls: str,
     seg: str,
-    err_limit: float,
+    err_limit: int,
 ):
     """Calculate word-level WER between ref and hyp transcripts.
 
@@ -63,13 +63,12 @@ def calculate_wrd_wer_(
         csvfile.write(f"# fn_cls: {fn_cls}\n")
         csvfile.write(f"# seg: {seg}\n")
         writer = csv.writer(csvfile)
-        writer.writerow(['Word', 'Occurrence', 'Error', 'WER'])
+        writer.writerow(['Word', 'Occurrence x 2', 'Error x 2', 'WER'])
         for word in sorted(dir_wrd_dict.keys(),
                            key=lambda w: (-dir_wrd_dict[w][0], w)):
             occurance, error = dir_wrd_dict[word]
-            wer = f"{(error / occurance):.4f}"
-            error = f"{error:.4f}"
-            writer.writerow([word, occurance, error, wer])
+            wer = f"{(error/(2*occurance)):.4f}"
+            writer.writerow([word, 2*occurance, error, wer])
     shutil.copy(csv_filename, 'log/word-dict.csv')
 
     total_word, total_dist = 0, 0
@@ -78,7 +77,7 @@ def calculate_wrd_wer_(
         total_word += dir_wrd_dict[word][0]
         total_dist += dir_wrd_dict[word][1]
 
-    print(f"\nAverage WER: {(total_dist / total_word):.4f} "
+    print(f"\nAverage WER: {(total_dist/(2*total_word)):.4f} "
           f"based on {total_word} words. ")
 
 
@@ -121,14 +120,8 @@ def word_dict_of_ann(
 
         ref_cue.txt = _clean_transcript(ref_cue.txt)
         hyp_cue.txt = _clean_transcript(hyp_cue.txt)
-        cue_wrd_list = levenshtein_gld(
+        cue_wrd_list = levenshtein_word2(
             ref_cue.txt.split(), hyp_cue.txt.split(), err_limit)
-
-        for word, value in cue_wrd_list:
-            if word == 0:
-                print(f"{cue_wrd_list = }")
-                print(f"{ref_cue.txt = }")
-                print(f"{hyp_cue.txt = }")
 
         if seg != "all":
             cue_seg_ranges = _cue_seg_ranges(ref_cue.txt, ref_cue.cns, seg)

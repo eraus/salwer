@@ -9,12 +9,9 @@ from .levenshtein_word_validation import (
     random_size_of_cue,
     random_word,
 
-    add_error,
+    add_errors,
     add_first_error,
     add_next_error,
-
-    # attribute_errors,
-    # find_insert_index,
 
     attribute_wl_gld,
     find_sub_index,
@@ -78,7 +75,7 @@ def test_15_add_next_errors():
 def test_10_add_errors():
     s = "A B C D E".split()
     for _ in range(10):
-        ss, t, e, num_err = add_error(s)
+        ss, t, e, num_err = add_errors(s)
         print(f"\ns: {ss}\nt: {t}\ne: {e}\nnum_err: {num_err}")
 
 

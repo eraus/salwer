@@ -6,6 +6,7 @@ from typing import List
 from .recipes.calculate_avg_wer import calculate_avg_wer_
 from .recipes.calculate_seg_wer import calculate_seg_wer_
 from .recipes.calculate_wrd_wer import calculate_wrd_wer_
+from .recipes.calculate_wrd_wer2 import calculate_wrd_wer2_
 from .recipes.obtain_word_count import obtain_word_count_
 from .recipes.inspect_llm_class_n_seg_results import inspect_class_seg_
 from .recipes.class_n_seg_cues_with_llm import class_n_seg_cues_
@@ -182,8 +183,8 @@ def calculate_wrd_wer(
             "Other options are alphabet of the semantic segments."
         )
     ),
-    err_limit: int = typer.Option(
-        3, "--err-limit",
+    err_limit: float = typer.Option(
+        3.0, "--err-limit",
         help=(
             "Choose limit of error (edit) for each word. Note that this is "
             "doubled result, meaning 3 => max 150% WER for each word."
@@ -203,14 +204,77 @@ def calculate_wrd_wer(
             with a number greater than the value of level will be dropped.
     -   fn_cls: str="all". The functional class for WER calculation.
     -   seg: str="all". The semantic segment for WER calculation.
-    -   err_limit: int = 5. The limit of error (edit) for each word. Note that
-        this is doubled result, meaning 5 => max 250% WER for each word.
+    -   err_limit: float = 3.0. The limit of error (edit) for each word.
+        Note that 3.0 => max 300% WER for each word.
 
     Example:
     -  salwer cww ref b12_aug2_l12 --level 2
     """
 
     return calculate_wrd_wer_(ref_dir, hyp_dir, level, fn_cls, seg, err_limit)
+
+
+@app.command("calculate-word-wer2")
+@app.command("cww2")
+def calculate_wrd_wer(
+    ref_dir: str = typer.Argument(
+        ..., help="Specify the directory containing reference files."
+    ),
+    hyp_dir: str = typer.Argument(
+        ..., help="Specify the directory containing hypothesis files."
+    ),
+    level: int = typer.Option(
+        3, "--level", "-l",
+        help=(
+            "Choose audio quality level (1, 2, or 3) and below; "
+            "for example, level 3 will include also levels 1 and 2. "
+            "The level value must match the level used during transcription."
+        )
+    ),
+    fn_cls: str = typer.Option(
+        "all", "--class", "-c",
+        help=(
+            "Select the functional class for WER calculation. "
+            "Default to 'all'. Use the class number if a class should be "
+            "specified."
+        )
+    ),
+    seg: str = typer.Option(
+        "all", "--segment", "-s",
+        help=(
+            "Select semantic segment to filter by. Default to 'all'. "
+            "Other options are alphabet of the semantic segments."
+        )
+    ),
+    err_limit: int = typer.Option(
+        3, "--err-limit",
+        help=(
+            "Choose limit of error (edit) for each word. Note that this is "
+            "doubled result, meaning 3 => max 150% WER for each word."
+        )
+    ),
+):
+    """Calculate word-level WER and word dictionary with Approach 2.
+
+    This command calculate word-level WER between ref and hyp trancripts.
+    It also save the word dictionary in a log file in log/word-dict.csv.
+    Note that we use only the normal version of the levenshtein_word function.
+
+    Arguments:
+    -   ref_dir: str. Directory containing ref files (currently, cns files).
+    -   hyp_dir: str. Directory containing hyp files (currently, txt files).
+    -   level: int=3. Audio quality level (1, 2, or 3). Cues with stm starting
+            with a number greater than the value of level will be dropped.
+    -   fn_cls: str="all". The functional class for WER calculation.
+    -   seg: str="all". The semantic segment for WER calculation.
+    -   err_limit: int = 5. The limit of error (edit) for each word. Note that
+        this is doubled result, meaning 5 => max 250% WER for each word.
+
+    Example:
+    -  salwer cww2 ref b12_aug2_l12 --level 2
+    """
+
+    return calculate_wrd_wer2_(ref_dir, hyp_dir, level, fn_cls, seg, err_limit)
 
 
 @app.command("class-n-seg-cues")

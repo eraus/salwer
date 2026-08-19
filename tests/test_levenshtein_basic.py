@@ -1,9 +1,12 @@
 """Test functions for BASIC Levenshtein distance calculations."""
 
+import pytest
+
 from salwer.levenshtein import (
     levenshtein_2d,
     levenshtein,
     levenshtein_1d,
+    _check_st_tails,
     _clip_wlst_err,
     _max_ind_of_min,
     _num_prefix_drift,
@@ -12,7 +15,7 @@ from salwer.levenshtein import (
     _prefix_drift_sub_rh,
     _update_d1,
 )
-
+from .helpers import assert_wlst_eq
 
 #--------------------------------------------------------------------
 # Test Levenshtein distance with empty lists
@@ -157,6 +160,114 @@ def test_levenshtein_with_single_sub_del_ins():
 #--------------------------------------------------------------------
 # Test the helper functions used for levenshtein_word.
 #--------------------------------------------------------------------
+
+# def test_num_suffix_drift_sub():
+#     r0 = "B C D".split()
+#     h0 = "A C D".split()
+#     assert _num_suffix_drift_sub(r0, h0) == (0, 0)
+#     assert r0 == "B C D".split()   # No change to the sequence
+#     r1 = "B C D".split()
+#     h1 = "B C D E".split()
+#     assert _num_suffix_drift_sub(r1, h1) == (1, 0)
+#     r2 = "B C D F".split()
+#     h2 = "B C D E".split()
+#     assert _num_suffix_drift_sub(r2, h2) == (0, 0)
+#     r3 = "B      ".split()
+#     h3 = "B Y Z A ".split()
+#     assert _num_suffix_drift_sub(r3, h3) == (3, 0)
+#     r5 = "C D E".split()
+#     h5 = "C D  ".split()
+#     assert _num_suffix_drift_sub(r5, h5) == (0, 0)
+#     r7 = "B C    ".split()
+#     h7 = "B Y Z A ".split()
+#     assert _num_suffix_drift_sub(r7, h7) == (2, 1)
+#     r9 = "D C    ".split()
+#     h9 = "B Y Z A ".split()
+#     assert _num_suffix_drift_sub(r9, h9) == (2, 2)
+
+    # s = "J K L M N O   Q".split()
+    # t = "J R L M   O P Q".split()
+
+def test_check_st_tails_case1():
+    s = "M N O K".split()
+    t = "J L K".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s
+    assert o_t == t
+    assert o_ld == pytest.approx(0.0)
+    assert o_fwlst == []
+    assert o_pwlst == []
+
+
+def test_check_st_tails_case2():
+    s = "M N O".split()
+    t = "J R L".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s
+    assert o_t == t
+    assert o_ld == pytest.approx(0.0)
+    assert o_pwlst == []
+    assert_wlst_eq(o_fwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
+
+
+def test_check_st_tails_case3b():
+    s = "K".split()
+    t = "K J R L".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s[:1]
+    assert o_t == t[:1]
+    assert o_ld == pytest.approx(3.0)
+    assert o_fwlst == []
+    assert o_pwlst == []
+
+
+def test_check_st_tails_case3c():
+    s = "K M N O".split()
+    t = "K J R L Q".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s[:1]
+    assert o_t == t[:1]
+    assert o_ld == pytest.approx(0.5)
+    assert o_fwlst == []
+    a_ld = 3.5 / 3
+    assert_wlst_eq(o_pwlst, [["M", a_ld], ["N", a_ld], ["O", a_ld]])
+
+
+def test_check_st_tails_case4b():
+    s = "K J R L".split()
+    t = "K".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s[:1]
+    assert o_t == t[:1]
+    assert o_ld == pytest.approx(0.0)
+    assert o_fwlst == []
+    assert_wlst_eq(o_pwlst, [["J", 1.0], ["R", 1.0], ["L", 1.0]])
+
+
+def test_check_st_tails_case4c():
+    s = "K M N O".split()
+    t = "K J R".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s[:1]
+    assert o_t == t[:1]
+    assert o_ld == pytest.approx(0.0)
+    assert o_fwlst == []
+    assert_wlst_eq(o_pwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
+
+
+def test_check_st_tails_case5b():
+    s = "K M N O".split()
+    t = "K J R L".split()
+    o_s, o_t, o_fwlst, o_pwlst, o_ld = _check_st_tails(s, t)
+    assert o_s == s[:1]
+    assert o_t == t[:1]
+    assert o_ld == pytest.approx(0.0)
+    assert o_fwlst == []
+    assert_wlst_eq(o_pwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
+
+
+
+
 
 def test_clip_wlst_err():
     wlst = [['A', 2], ['B', 4], ['A', 8], ['B', 6]]

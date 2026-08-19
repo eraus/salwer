@@ -5,9 +5,10 @@ import pytest
 from salwer.levenshtein import (
     levenshtein_seg_fast,
     levenshtein_word_fast,
-    levenshtein_word,
+    # levenshtein_word,
     levenshtein_gld,
 )
+from salwer.levenshtein import levenshtein_word2 as levenshtein_word
 from .helpers import assert_wlst_eq
 
 
@@ -670,23 +671,26 @@ def test_levenshtein_word_3i1s3t1_err_limit_to_9():
 
 
 #-------------------------------------------------------------------
-def test_levenshtein_word_additional_1():
+def test_levenshtein_word_additional_gld1():
 # s  = ['v', 'j', ' ', ' ', ' ', 'H', 'u', 'r']
 # t  = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
     s = ['v', 'j', 'H', 'u', 'r']
     t = ['v', 'q', 'I', 'p', 'b', 'H', 'u', 'r']
     exp_wlist = [['v', 0.5], ['j', 3], ['H', 0.5], ['u', 0], ['r', 0]]
-#     assert levenshtein_word(s, t, err_limit=9) == exp_wlist
     assert_wlst_eq(levenshtein_gld(s, t), exp_wlist)
 
 
-def test_levenshtein_word_additional_2():
+def test_levenshtein_word_additional_gld2():
 # s  = ['v', 'j', ' ', ' ', ' ', 'H', 'u', 'r']
 # t  = ['v', 'q', 'I', 'p', 'b', 'i', 'u', 'r']
     s = ['v', 'j', 'H', 'u', 'r']
     t = ['v', 'q', 'I', 'p', 'b', 'i', 'u', 'r']
-    exp_wlist = [['v', 0], ['j', 5], ['H', 5], ['u', 0], ['r', 0]]
     exp_wlist = [['v', 0.5], ['j', 2], ['H', 2], ['u', 0.5], ['r', 0]]
-#     assert levenshtein_word(s, t, err_limit=9) == exp_wlist
     assert_wlst_eq(levenshtein_gld(s, t), exp_wlist)
 
+
+def test_levenshtein_word_additional_gld3():
+    s = 'nineteen one'.split()
+    t = 'nineteo to one'.split()
+    exp_wlist = [['nineteen', 1.5], ['one', 0.5]]
+    assert_wlst_eq(levenshtein_gld(s, t), exp_wlist)

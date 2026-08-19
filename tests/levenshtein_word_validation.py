@@ -1,18 +1,7 @@
-import csv
-from datetime import datetime
-import os
-from pathlib import Path
-import shutil
-from typing import List, Tuple
-
 import numpy as np
-import pytest
+# import pytest
 
-from salwer.levenshtein import (
-    levenshtein,
-    levenshtein_word,
-    levenshtein_gld
-)
+from salwer.levenshtein import levenshtein
 
 
 # Parameters used in the simulation
@@ -121,7 +110,7 @@ def next_error_type(current_err:str) -> str:
         raise ValueError(f"Unknown error type in next_error_type()")
 
 
-def random_cue(size_of_cue:int) -> List[str]:
+def random_cue(size_of_cue:int) -> list[str]:
     inds = rng.integers(0, ALPH_SIZE, size=size_of_cue)
     s = list(np.array(ALPHABET)[inds])
     return [str(ele) for ele in s]
@@ -139,7 +128,7 @@ def random_word() -> str:
 
 #--------------------------------------------------------------
 # Top level error creation functions
-def add_error(
+def add_errors(
     s:list[str],        # source sequence
 ) -> tuple[list[str], list[str], list[str], int]:
     s, t, e, ind_err = add_first_error(s)

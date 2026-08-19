@@ -4,11 +4,9 @@ import pytest
 
 from salwer.levenshtein import levenshtein_gld
 from .levenshtein_word_validation import (
-    random_cue,
-    random_size_of_cue,
-    add_error,
+    random_size_of_cue, random_cue,
+    add_errors, verify_s_t_e,
     attribute_wl_gld,
-    verify_s_t_e,
 )
 from .helpers import wlst_approx_eq
 
@@ -20,12 +18,12 @@ def test_validate_wrd_ld_fun_():
     -   num_examples: int = 1000. The number of simulation examples.
     """
 
-    num_examples = 80
+    num_examples = 1000
     good_cases = []
     bad_cases = []
     for i in range(num_examples):
         s = random_cue(random_size_of_cue())
-        s, t, e, _ = add_error(s)
+        s, t, e, _ = add_errors(s)
         ss = [ele for ele in s if ele != " "]
         tt = [ele for ele in t if ele != " "]
         if not verify_s_t_e(s, t, e):
@@ -56,49 +54,3 @@ def test_validate_wrd_ld_fun_():
     print(f"Skipped cases: {num_examples - len(good_cases) - len(bad_cases)}")
     print(f"Number of good cases: {len(good_cases)}")
     print(f"Number of bad cases: {len(bad_cases)}")
-
-
-# def test_errer_generate_issues():
-#     for i in range(1000):
-#         s = random_cue(random_size_of_cue())
-#         s, t, e, num_err = add_error(s)
-#         if not verify_s_t_e(s, t, e):
-#             print(f"Error generation has issue at {i = }")
-#             print(f"s: {s}\nt: {t}\ne: {e}\nnum_err: {num_err}")
-#             break
-
-
-#    s = "      M N M    ".split()
-#    t = "J K L M N O P Q".split()
-#         ^ ^ ^     ^ ^ ^
-
-
-# def test_basic():
-# #     for i in range(1000):
-#     print(" ".join(["a", "b", " ", "c"]))
-
-# @app.command("validate-word-LD-func")
-# @app.command("vwl")
-# def validate_wrd_ld_fun(
-
-#     num_examples: int = typer.Option(
-#         1000, "--nexamples",
-#         help=(
-#             "Choose limit of error (edit) for each word. Note that this is "
-#             "doubled result, meaning 3 => max 150% WER for each word."
-#         )
-#     ),
-# ):
-#     """Validate the word-level LD calculation function via simulation.
-
-#     We did not provide theoretical proof that the word-level LD caucluation
-#     algorithm works. Here, we use simulation to validate it.
-
-#     Arguments:
-#     -   num_examples: int = 1000. The number of simulation examples.
-
-#     Example:
-#     -  salwer vwl --nexamples 2000
-#     """
-
-#     return validate_wrd_ld_fun_(num_examples)
