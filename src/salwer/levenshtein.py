@@ -353,8 +353,9 @@ def levenshtein_seg(
     while True:
         for i in range(m):
             # Check the prefix drift at the lower boundary of each segment.
+            # n_pd: num of prefix drift (leading ins of t compared to s).
+            n_pd = 0
             if check_shift and segs[k][0] == ss + i:
-                # n_pd: num of prefix drift (leading ins of t compared to s).
                 # r, h: sub sequences in s and t for prefix drift checking.
                 n_pd, r, h = _prefix_drift_rh(s, t, i, d0)
                 if n_pd:

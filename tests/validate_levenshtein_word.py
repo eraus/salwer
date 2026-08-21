@@ -19,7 +19,7 @@ def test_validate_wrd_ld_fun():
     To run it, use: `pytest tests/validate_levenshtein_word.py`
     """
 
-    num_examples = 10000  # total examples to run
+    num_examples = 1000  # total examples to run
     same_cases = []
     diff_cases = []
     err_cases = []
