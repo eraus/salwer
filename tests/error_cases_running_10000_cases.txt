@@ -83,3 +83,62 @@ t  = ['k', 'I', ' ', ' ', ' ', 'k', 'C', 'A', 's', 'g', 'Y', 'G', 'W', 'M', 'g',
 e  = [' ', ' ', 'D', 'D', 'D', ' ', 'I', 'I', 'I', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 which shows that our algorithm is implemented correctly; it just picked the wrong pass. In this case, the 2 pass algorithm for alignment will work well.
+
+This issue can be addressed by the approach we used for Case 5 in check_st_tail. Yet, this can complicate the algorithm with minimum gain.
+
+---
+
+
+word = 'A'; occurance = 2343; total_err: 460.12; delta_err: 0.25; relative_err: 0.0005
+word = 'B'; occurance = 2315; total_err: 418.46; delta_err: 1.75; relative_err: 0.0042
+word = 'C'; occurance = 2316; total_err: 430.75; delta_err: 3.00; relative_err: 0.0070
+word = 'D'; occurance = 2262; total_err: 424.00; delta_err: 0.00; relative_err: 0.0000
+word = 'E'; occurance = 2253; total_err: 436.33; delta_err: 0.00; relative_err: 0.0000
+word = 'F'; occurance = 2291; total_err: 405.50; delta_err: 0.00; relative_err: 0.0000
+word = 'G'; occurance = 2304; total_err: 446.50; delta_err: 0.50; relative_err: 0.0011
+word = 'H'; occurance = 2369; total_err: 458.17; delta_err: 1.50; relative_err: 0.0033
+word = 'I'; occurance = 2245; total_err: 380.50; delta_err: 1.00; relative_err: 0.0026
+word = 'J'; occurance = 2306; total_err: 406.50; delta_err: 1.00; relative_err: 0.0025
+word = 'K'; occurance = 2314; total_err: 445.25; delta_err: 2.33; relative_err: 0.0052
+word = 'L'; occurance = 2279; total_err: 392.58; delta_err: 3.00; relative_err: 0.0076
+word = 'M'; occurance = 2291; total_err: 442.33; delta_err: 0.50; relative_err: 0.0011
+word = 'N'; occurance = 2239; total_err: 431.58; delta_err: 1.50; relative_err: 0.0035
+word = 'O'; occurance = 2301; total_err: 419.17; delta_err: 0.50; relative_err: 0.0012
+word = 'P'; occurance = 2386; total_err: 424.25; delta_err: 1.50; relative_err: 0.0035
+word = 'Q'; occurance = 2240; total_err: 412.42; delta_err: 0.17; relative_err: 0.0004
+word = 'R'; occurance = 2312; total_err: 449.00; delta_err: 1.00; relative_err: 0.0022
+word = 'S'; occurance = 2303; total_err: 421.92; delta_err: 2.50; relative_err: 0.0059
+word = 'T'; occurance = 2291; total_err: 432.75; delta_err: 0.50; relative_err: 0.0012
+word = 'U'; occurance = 2318; total_err: 461.17; delta_err: 1.00; relative_err: 0.0022
+word = 'V'; occurance = 2279; total_err: 438.17; delta_err: 2.00; relative_err: 0.0046
+word = 'W'; occurance = 2325; total_err: 439.08; delta_err: 2.50; relative_err: 0.0057
+word = 'X'; occurance = 2268; total_err: 428.42; delta_err: 1.50; relative_err: 0.0035
+word = 'Y'; occurance = 2329; total_err: 426.92; delta_err: 0.50; relative_err: 0.0012
+word = 'Z'; occurance = 2353; total_err: 437.67; delta_err: 0.00; relative_err: 0.0000
+word = 'a'; occurance = 2278; total_err: 420.25; delta_err: 2.00; relative_err: 0.0048
+word = 'b'; occurance = 2364; total_err: 444.00; delta_err: 0.50; relative_err: 0.0011
+word = 'c'; occurance = 2273; total_err: 432.17; delta_err: 1.50; relative_err: 0.0035
+word = 'd'; occurance = 2213; total_err: 408.67; delta_err: 0.00; relative_err: 0.0000
+word = 'e'; occurance = 2267; total_err: 429.92; delta_err: 1.00; relative_err: 0.0023
+word = 'f'; occurance = 2441; total_err: 464.00; delta_err: 1.00; relative_err: 0.0022
+word = 'g'; occurance = 2278; total_err: 464.50; delta_err: 2.00; relative_err: 0.0043
+word = 'h'; occurance = 2253; total_err: 439.92; delta_err: 2.00; relative_err: 0.0045
+word = 'i'; occurance = 2249; total_err: 398.17; delta_err: 1.00; relative_err: 0.0025
+word = 'j'; occurance = 2255; total_err: 431.17; delta_err: 1.50; relative_err: 0.0035
+word = 'k'; occurance = 2336; total_err: 414.67; delta_err: 0.17; relative_err: 0.0004
+word = 'l'; occurance = 2296; total_err: 418.00; delta_err: 0.17; relative_err: 0.0004
+word = 'm'; occurance = 2326; total_err: 433.50; delta_err: 1.50; relative_err: 0.0035
+word = 'n'; occurance = 2405; total_err: 430.17; delta_err: 1.17; relative_err: 0.0027
+word = 'o'; occurance = 2301; total_err: 417.83; delta_err: 0.50; relative_err: 0.0012
+word = 'p'; occurance = 2298; total_err: 439.83; delta_err: 1.50; relative_err: 0.0034
+word = 'q'; occurance = 2297; total_err: 438.17; delta_err: 1.50; relative_err: 0.0034
+word = 'r'; occurance = 2294; total_err: 412.42; delta_err: 0.00; relative_err: 0.0000
+word = 's'; occurance = 2422; total_err: 430.33; delta_err: 1.00; relative_err: 0.0023
+word = 't'; occurance = 2218; total_err: 400.42; delta_err: 0.17; relative_err: 0.0004
+word = 'u'; occurance = 2269; total_err: 375.75; delta_err: 0.50; relative_err: 0.0013
+word = 'v'; occurance = 2295; total_err: 479.08; delta_err: 0.00; relative_err: 0.0000
+word = 'w'; occurance = 2313; total_err: 421.50; delta_err: 2.50; relative_err: 0.0059
+word = 'x'; occurance = 2193; total_err: 418.58; delta_err: 0.50; relative_err: 0.0012
+word = 'y'; occurance = 2375; total_err: 439.58; delta_err: 0.50; relative_err: 0.0011
+word = 'z'; occurance = 2295; total_err: 470.42; delta_err: 1.00; relative_err: 0.0021
+Total number of err: 22342.50; Sum of error difference: 7.00

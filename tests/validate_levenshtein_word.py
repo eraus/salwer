@@ -19,7 +19,7 @@ def test_validate_wrd_ld_fun():
     To run it, use: `pytest tests/validate_levenshtein_word.py`
     """
 
-    num_examples = 1000  # total examples to run
+    num_examples = 10000  # total examples to run
     same_cases = []
     diff_cases = []
     err_cases = []
@@ -79,15 +79,16 @@ def test_validate_wrd_ld_fun():
     total_num_err = 0.0
     total_relative_err = 0.0
     for word in dict(sorted(sim_dict_direct.items())):
-        occurance_direct, error_direct = sim_dict_direct[word]
+        occurance, error_direct = sim_dict_direct[word]
         total_num_err += error_direct
         _, error_wrd_ld = sim_dict_wrd_ld[word]
         delta_err = error_direct - error_wrd_ld
+        total_err = (error_direct + error_wrd_ld) / 2
         total_num_err += error_wrd_ld
         total_relative_err += delta_err
         relative_err = 2*delta_err / (error_direct + error_wrd_ld)
-        print(f"{word = }; {occurance_direct = }; "
-              f"error_direct: {(error_direct):.2f}; "
+        print(f"{word = }; {occurance = }; "
+              f"total_err: {(total_err):.2f}; "
               f"delta_err: {abs(delta_err):.2f}; "
               f"relative_err: {abs(relative_err):.4f}")
 

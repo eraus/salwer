@@ -187,7 +187,7 @@ def calculate_wrd_wer(
         3.0, "--err-limit",
         help=(
             "Choose limit of error (edit) for each word. Note that this is "
-            "doubled result, meaning 3 => max 150% WER for each word."
+            "doubled result, meaning 3 => max 300% WER for each word."
         )
     ),
 ):

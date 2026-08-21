@@ -612,16 +612,16 @@ def _check_st_tails(
     fwlst, pwlst = [], []   # full and partial word lists
     ld_4_ank = 0.0          # LD for last anchor
 
-    # Case 1. Last elements are aligned. No need to do anything.
-    if s[-1] == t[-1]:
-        return s, t, fwlst, pwlst, ld_4_ank
-
-    # Case 2. The two sequences are not related. Form fwlst with 1.0.
+    # Case 1. The two sequences are not related. Form fwlst with 1.0.
     # In caller, if fwlst is not empty, content is used as-is, then return.
     m, n = len(s), len(t)
     dist0 = levenshtein(s, t)
     if dist0 >= max(m, n):
         fwlst = [[w, 1.0] for w in s]
+        return s, t, fwlst, pwlst, ld_4_ank
+
+    # Case 2. Last elements are aligned. No need to do anything.
+    if s[-1] == t[-1]:
         return s, t, fwlst, pwlst, ld_4_ank
 
     # Now, we will have the tails checked for further cases.
