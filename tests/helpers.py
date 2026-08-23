@@ -3,21 +3,30 @@
 import pytest
 
 
-def assert_wlst_eq(out_wlst, exp_wlst):
-    out_wlst_w = [e[0] for e in out_wlst]
-    out_wlst_n = [e[1] for e in out_wlst]
-    exp_wlst_w = [e[0] for e in exp_wlst]
-    exp_wlst_n = [e[1] for e in exp_wlst]
-    assert out_wlst_w == exp_wlst_w
-    assert out_wlst_n == pytest.approx(exp_wlst_n)
+def assert_word_list_eq(fnc_word_list, exp_word_list):
+    fnc_word_list_w = [e[0] for e in fnc_word_list]
+    fnc_word_list_n = [e[1] for e in fnc_word_list]
+    exp_word_list_w = [e[0] for e in exp_word_list]
+    exp_word_list_n = [e[1] for e in exp_word_list]
+    assert fnc_word_list_w == exp_word_list_w
+    assert fnc_word_list_n == pytest.approx(exp_word_list_n)
 
 
-def wlst_approx_eq(out_wlst, exp_wlst):
-    out_wlst_w = [e[0] for e in out_wlst]
-    out_wlst_n = [e[1] for e in out_wlst]
-    exp_wlst_w = [e[0] for e in exp_wlst]
-    exp_wlst_n = [e[1] for e in exp_wlst]
+def word_dict_approx_eq(fnc_word_dict, exp_word_dict):
+    if fnc_word_dict.keys() != exp_word_dict.keys():
+        return False
+    for key in fnc_word_dict:
+        if fnc_word_dict[key] != pytest.approx(exp_word_dict[key]):
+            return False
+    return True
+
+
+def word_list_approx_eq(fnc_word_list, exp_word_list):
+    fnc_word_list_w = [e[0] for e in fnc_word_list]
+    fnc_word_list_n = [e[1] for e in fnc_word_list]
+    exp_word_list_w = [e[0] for e in exp_word_list]
+    exp_word_list_n = [e[1] for e in exp_word_list]
     return (
-        out_wlst_w == exp_wlst_w
-        and out_wlst_n == pytest.approx(exp_wlst_n)
+        fnc_word_list_w == exp_word_list_w
+        and fnc_word_list_n == pytest.approx(exp_word_list_n)
     )

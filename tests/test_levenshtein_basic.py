@@ -15,7 +15,7 @@ from salwer.levenshtein import (
     _prefix_drift_sub_rh,
     _update_d1,
 )
-from .helpers import assert_wlst_eq
+from .helpers import assert_word_list_eq
 
 #--------------------------------------------------------------------
 # Test Levenshtein distance with empty lists
@@ -207,7 +207,7 @@ def test_check_st_tails_case2():
     assert o_t == t
     assert o_ld == pytest.approx(0.0)
     assert o_pwlst == []
-    assert_wlst_eq(o_fwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
+    assert_word_list_eq(o_fwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
 
 
 def test_check_st_tails_case3b():
@@ -230,7 +230,7 @@ def test_check_st_tails_case3c():
     assert o_ld == pytest.approx(0.5)
     assert o_fwlst == []
     a_ld = 3.5 / 3
-    assert_wlst_eq(o_pwlst, [["M", a_ld], ["N", a_ld], ["O", a_ld]])
+    assert_word_list_eq(o_pwlst, [["M", a_ld], ["N", a_ld], ["O", a_ld]])
 
 
 def test_check_st_tails_case4b():
@@ -241,7 +241,7 @@ def test_check_st_tails_case4b():
     assert o_t == t[:1]
     assert o_ld == pytest.approx(0.0)
     assert o_fwlst == []
-    assert_wlst_eq(o_pwlst, [["J", 1.0], ["R", 1.0], ["L", 1.0]])
+    assert_word_list_eq(o_pwlst, [["J", 1.0], ["R", 1.0], ["L", 1.0]])
 
 
 def test_check_st_tails_case4c():
@@ -252,7 +252,7 @@ def test_check_st_tails_case4c():
     assert o_t == t[:1]
     assert o_ld == pytest.approx(0.0)
     assert o_fwlst == []
-    assert_wlst_eq(o_pwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
+    assert_word_list_eq(o_pwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
 
 
 def test_check_st_tails_case5b():
@@ -263,7 +263,7 @@ def test_check_st_tails_case5b():
     assert o_t == t[:1]
     assert o_ld == pytest.approx(0.0)
     assert o_fwlst == []
-    assert_wlst_eq(o_pwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
+    assert_word_list_eq(o_pwlst, [["M", 1.0], ["N", 1.0], ["O", 1.0]])
 
 
 
