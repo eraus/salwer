@@ -14,12 +14,19 @@ from .random_s_t_creation import (
     add_next_error,
     #
     verify_s_t_e,
+    #
+    VOCAB
 )
 
 
 #--------------------------------------------------------------------
-# Test Levenshtein distance with empty lists
+# Test for verifications only
 #--------------------------------------------------------------------
+
+def test_print_first60_vocab():
+    first60 = VOCAB[: 60]
+    print(f"\nFirst 60 words: {" ".join(first60)}")
+
 
 def test_10_first_errors():
     ten_errs = [first_error_type() for _ in range(10)]
@@ -35,10 +42,16 @@ def test_10_next_errors():
     print(f"Ten errors after ins: {" ".join(ten_errs_after_ins)}")
 
 
-def test_10_random_cues():
+def test_10_random_cues_small_voc():
     print()
     for size in range(5, 15):
-        print(random_cue(size))
+        print(random_cue(size, use_large_voc=False))
+
+
+def test_10_random_cues_large_voc():
+    print()
+    for size in range(5, 15):
+        print(random_cue(size, use_large_voc=True))
 
 
 def test_10_random_sizes():

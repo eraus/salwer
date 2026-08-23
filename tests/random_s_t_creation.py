@@ -1,3 +1,5 @@
+import itertools
+
 import numpy as np
 # import pytest
 
@@ -11,6 +13,12 @@ MAX_NUM_ERR = 4     # maximum number of errs
 lower_c = "a b c d e f g h i j k l m n o p q r s t u v w x y z "
 ALPHABET = lower_c.split() + lower_c.upper().split()    # alphabet of sim
 ALPH_SIZE = len(ALPHABET)                               # size of alphabet
+VOCAB = [                       # Vocabulary used for sim
+    ''.join(p)
+    for k in range(1, 3)
+    for p in itertools.product(ALPHABET, repeat=k)
+]
+VOCAB_SIZE = len(VOCAB)                                 # size of
 ERRS = ["sub", "del", "ins"]            # Errors/edits
 NEXT = ["sub", "del", "ins", "noe"]     # noe = no error
 # All prob lists below are in the order of Prob of sub, del, and ins:
@@ -110,10 +118,14 @@ def next_error_type(current_err:str) -> str:
         raise ValueError(f"Unknown error type in next_error_type()")
 
 
-def random_cue(size_of_cue:int) -> list[str]:
-    inds = rng.integers(0, ALPH_SIZE, size=size_of_cue)
-    s = list(np.array(ALPHABET)[inds])
+def random_cue(size_of_cue:int, use_large_voc:bool=False) -> list[str]:
+    if use_large_voc:
+        inds = rng.integers(0, VOCAB_SIZE, size=size_of_cue)
+    else:
+        inds = rng.integers(0, ALPH_SIZE, size=size_of_cue)
+    s = list(np.array(VOCAB)[inds])
     return [str(ele) for ele in s]
+
 
 def random_size_of_cue() -> int:
     size = rng.integers(MIN_WORD, MAX_WORD+1)       # single draw
@@ -122,7 +134,7 @@ def random_size_of_cue() -> int:
 
 def random_word() -> str:
     ind = rng.integers(0, ALPH_SIZE)
-    return ALPHABET[ind]
+    return VOCAB[ind]
 #--------------------------------------------------------------
 
 

@@ -20,13 +20,22 @@ def test_validate_wrd_ld_fun(request):
 
     Ground truth (gdt) = Result from attribute_wl_gld
     Hyphothsis (hyp) = Result from levenshtein_gld
-    To run it, use:
-    pytest tests/validate_levenshtein_word.py --num-trials 10000
 
-    Default value of the --num-trials option is 1000.
+    To run with small vocabulary without printing the word dict, use:
+    pytest tests/validate_levenshtein_word.py --num-trials 10000
+        Default value of the --num-trials option is 1000.
+
+    We can choose to print Recorded pecial cases or Word dict
+    -   Default is to print Recorded pecial cases
+    -   To print the Word dict, add --print-word-dict to CLI
+
+    To run with large vocabulary, add --use-large-vacubulary to CLI
     """
 
     num_trials = request.config.getoption("--num-trials")
+    print_word_dict = request.config.getoption("--print-word-dict")
+    use_lg_voc = request.config.getoption("--use-large-vocabulary")
+
     # Numerical numbers correspond to Case number, used in the for i loop.
     num1_skipped = 0
     num2_same_cases, same_cases = 0, []
@@ -39,7 +48,7 @@ def test_validate_wrd_ld_fun(request):
     total_gld, more_gld = 0.0, 0.0
 
     for i in range(num_trials):
-        s0 = random_cue(random_size_of_cue())       # base s sequence
+        s0 = random_cue(random_size_of_cue(), use_lg_voc)  # base s sequence
         s, t, e, _ = add_errors(s0)     # aligned s and t seqs with err seq
         s_ns = [ele for ele in s if ele != " "]     # s seq; ns = no space
         t_ns = [ele for ele in t if ele != " "]     # t seq w/o space element
@@ -88,13 +97,17 @@ def test_validate_wrd_ld_fun(request):
                     more_err_cases.append(
                         [gdt_wlst, hyp_wlst, s, t, e, s_ns, t_ns])
 
-    # Print final results:
-    print("\nTrials that have different word lists but same word dicts:")
-    _print_trial_cases(same_dict_cases)
-    print("\n\nTrials that have different word dicts:")
-    _print_trial_cases(diff_dict_cases)
-    print("\n\nTrials that have additional GLD:")
-    _print_trial_cases(more_err_cases)
+    # Print the word dict summary:
+    if print_word_dict:
+        print("\nWord dict contents---------------------------------------")
+        _print_word_dict(gdt_dict_sim, hyp_dict_sim)
+    else:
+        print("\nTrials that have different word lists but same word dicts:")
+        _print_trial_cases(same_dict_cases)
+        print("\n\nTrials that have different word dicts:")
+        _print_trial_cases(diff_dict_cases)
+        print("\n\nTrials that have additional GLD:")
+        _print_trial_cases(more_err_cases)
 
     print("Summary of results---------------------------------------------")
     print(f"Total number of trials: {num_trials}")
@@ -106,17 +119,23 @@ def test_validate_wrd_ld_fun(request):
     print(f"Total ground truth GLD: {(total_gld):.2f}; "
           f"Total addition errors: {more_gld:.2f}")
 
-    print("\nSummary of statistics----------------------------------")
-    # wer = np.array
-    for word in dict(sorted(gdt_dict_sim.items())):
+    wer_gdt = np.zeros(len(gdt_dict_sim), dtype=np.float32)
+    wer_hyp = np.zeros(len(gdt_dict_sim), dtype=np.float32)
+    wer_delta = np.zeros(len(gdt_dict_sim), dtype=np.float32)
+    for idx, word in enumerate(dict(sorted(gdt_dict_sim.items()))):
         word_occ, word_gdt_gld = gdt_dict_sim[word]
         _, word_hyp_gld = hyp_dict_sim[word]
-        delta_err = word_hyp_gld - word_gdt_gld
-        relative_err = delta_err / word_gdt_gld if word_gdt_gld != 0 else 0.0
-        print(f"{word = };  {word_occ = };  "
-              f"word GLD = {(word_gdt_gld):7.2f};  "
-              f"delta GLD = {(delta_err):5.2f};  "
-              f"relative GLD = {(relative_err):7.4f}")
+        wer_gdt[idx] = word_gdt_gld / word_occ if word_occ > 0 else 0.0
+        wer_hyp[idx] = word_hyp_gld / word_occ if word_occ > 0 else 0.0
+        wer_delta[idx] = ((wer_hyp[idx] - wer_gdt[idx]) / wer_gdt[idx]
+            if wer_gdt[idx] > 0 else 0.0)
+
+    print("\nSummary of WER delta----------------------------------------")
+    print(f"min WER delta: {wer_delta.min():.4f}")
+    print(f"max WER delta: {wer_delta.max():.4f}")
+    print(f"mean WER delta: {wer_delta.mean():.4f}")
+    print(f"variance of WER delta: {wer_delta.var():.4e}")
+
 
 
 def _print_trial_cases(case_list):
@@ -128,3 +147,17 @@ def _print_trial_cases(case_list):
         print(f"e  = {case[4]}")
         print(f"ss = {case[5]}")
         print(f"tt = {case[6]}\n")
+
+
+def _print_word_dict(gdt_dict_sim, hyp_dict_sim):
+    for word in dict(sorted(gdt_dict_sim.items())):
+        word_occ, word_gdt_gld = gdt_dict_sim[word]
+        _, word_hyp_gld = hyp_dict_sim[word]
+        delta_err = word_hyp_gld - word_gdt_gld
+        relative_err = delta_err / word_gdt_gld if word_gdt_gld != 0 else 0.0
+        print(f"{word = };  {word_occ = };  "
+              f"word GLD = {(word_gdt_gld):7.2f};  "
+              f"delta GLD = {(delta_err):5.2f};  "
+              f"relative GLD = {(relative_err):7.4f}")
+
+    print("")
