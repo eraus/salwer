@@ -70,7 +70,7 @@ tt = ['k', 'I', 'k', 'C', 'A', 's', 'g', 'Y', 'G', 'W', 'M', 'g', 'k', 'I']
 Commonalities of these error cases:
 
 -   More errors detected
--   Errors are causeb by a series of subs. during which, there are same words that are offset in s and t, leading to effective deletion and hallucination, and our alg is affected the misalignment. For example, for Case 6, the well aligned case is:
+-   Errors are caused by a series of subs. during which, there are same words that are offset in s and t, leading to effective deletion and hallucination, and our alg is affected the misalignment. For example, for Case 6, the well aligned case is:
 
 s  = ['k', 'I', 'm', 'I', 'V', 'k', 'g', 'Y', 'G', 'W', 'M', 'g', 'k', 'I']
 t  = ['k', 'I', 'k', 'C', 'A', 's', 'g', 'Y', 'G', 'W', 'M', 'g', 'k', 'I']
@@ -82,7 +82,7 @@ s  = ['k', 'I', 'm', 'I', 'V', 'k', ' ', ' ', ' ', 'g', 'Y', 'G', 'W', 'M', 'g',
 t  = ['k', 'I', ' ', ' ', ' ', 'k', 'C', 'A', 's', 'g', 'Y', 'G', 'W', 'M', 'g', 'k', 'I']
 e  = [' ', ' ', 'D', 'D', 'D', ' ', 'I', 'I', 'I', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-which shows that our algorithm is implemented correctly; it just picked the wrong pass. In this case, the 2 pass algorithm for alignment will work well.
+which shows that our algorithm is implemented correctly; it just picked the wrong pass. In this case, a 2-pass algorithm for alignment can work better.
 
 This issue can be addressed by the approach we used for Case 5 in check_st_tail. Yet, this can complicate the algorithm with minimum gain.
 

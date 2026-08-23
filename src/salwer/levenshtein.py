@@ -17,8 +17,8 @@ def levenshtein_2d(
     -   The Levenshtein edit distance (LD) between s and t.
     """
 
-    # Initialize the 2D Levenshtein edit distance (LD) table.
     m, n = len(s), len(t)   # sizes of s and t
+    # Initialize the 2D Levenshtein edit distance (LD) table.
     d = [[0] * (n+1) for _ in range(m+1)]  # 2D LD table
     for j in range(1, n+1):
         d[0][j] = j         # first row
@@ -62,8 +62,8 @@ def levenshtein(s: list[str], t: list[str]) -> int:
     -   The Levenshtein edit distance (LD) between s and t.
     """
 
-    # Initialize the 2 1D LD lists.
     m, n = len(s), len(t)     # sizes of s and t
+    # Initialize the two 1D LD lists.
     d0 = list(range(n+1))     # prev LD list
     d1 = [0] * (n+1)          # curr LD list
 

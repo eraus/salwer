@@ -13,13 +13,16 @@ from .random_s_t_creation import (
 from .helpers import wlst_approx_eq
 
 
-def test_validate_wrd_ld_fun():
+def test_validate_wrd_ld_fun(request):
     """Validate the word-level GLD function levenshtein_gld.
 
-    To run it, use: `pytest tests/validate_levenshtein_word.py`
+    To run it, use:
+    pytest tests/validate_levenshtein_word.py --num-examples 10000
+
+    Default value of the --num-examples optionn is 1000.
     """
 
-    num_examples = 1000  # total examples to run
+    num_examples = request.config.getoption("--num-examples")
     same_cases = []
     diff_cases = []
     err_cases = []
@@ -86,7 +89,7 @@ def test_validate_wrd_ld_fun():
         total_err = (error_direct + error_wrd_ld) / 2
         total_num_err += error_wrd_ld
         total_relative_err += delta_err
-        relative_err = 2*delta_err / (error_direct + error_wrd_ld)
+        relative_err = 2*delta_err / (error_direct + error_wrd_ld) if (error_direct + error_wrd_ld) != 0 else 0.0
         print(f"{word = }; {occurance = }; "
               f"total_err: {(total_err):.2f}; "
               f"delta_err: {abs(delta_err):.2f}; "
