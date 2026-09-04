@@ -1,0 +1,73 @@
+pytest tests\validate_levenshtein_word.py -s --num-trials 10000 --print-word-dict
+
+tests\validate_levenshtein_word.py
+Word dict contents---------------------------------------
+word = 'A';  word_occ = 2343;  word GLD =  460.25;  delta GLD = -0.25;  relative GLD = -0.0005
+word = 'B';  word_occ = 2315;  word GLD =  417.58;  delta GLD =  1.75;  relative GLD =  0.0042
+word = 'C';  word_occ = 2316;  word GLD =  432.25;  delta GLD = -3.00;  relative GLD = -0.0069
+word = 'D';  word_occ = 2262;  word GLD =  424.00;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 'E';  word_occ = 2253;  word GLD =  436.33;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 'F';  word_occ = 2291;  word GLD =  405.50;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 'G';  word_occ = 2304;  word GLD =  446.25;  delta GLD =  0.50;  relative GLD =  0.0011
+word = 'H';  word_occ = 2369;  word GLD =  457.42;  delta GLD =  1.50;  relative GLD =  0.0033
+word = 'I';  word_occ = 2245;  word GLD =  381.00;  delta GLD = -1.00;  relative GLD = -0.0026
+word = 'J';  word_occ = 2306;  word GLD =  406.00;  delta GLD =  1.00;  relative GLD =  0.0025
+word = 'K';  word_occ = 2314;  word GLD =  444.08;  delta GLD =  2.33;  relative GLD =  0.0053
+word = 'L';  word_occ = 2279;  word GLD =  391.08;  delta GLD =  3.00;  relative GLD =  0.0077
+word = 'M';  word_occ = 2291;  word GLD =  442.58;  delta GLD = -0.50;  relative GLD = -0.0011
+word = 'N';  word_occ = 2239;  word GLD =  432.33;  delta GLD = -1.50;  relative GLD = -0.0035
+word = 'O';  word_occ = 2301;  word GLD =  419.42;  delta GLD = -0.50;  relative GLD = -0.0012
+word = 'P';  word_occ = 2386;  word GLD =  425.00;  delta GLD = -1.50;  relative GLD = -0.0035
+word = 'Q';  word_occ = 2240;  word GLD =  412.50;  delta GLD = -0.17;  relative GLD = -0.0004
+word = 'R';  word_occ = 2312;  word GLD =  449.50;  delta GLD = -1.00;  relative GLD = -0.0022
+word = 'S';  word_occ = 2303;  word GLD =  423.17;  delta GLD = -2.50;  relative GLD = -0.0059
+word = 'T';  word_occ = 2291;  word GLD =  433.00;  delta GLD = -0.50;  relative GLD = -0.0012
+word = 'U';  word_occ = 2318;  word GLD =  460.67;  delta GLD =  1.00;  relative GLD =  0.0022
+word = 'V';  word_occ = 2279;  word GLD =  437.17;  delta GLD =  2.00;  relative GLD =  0.0046
+word = 'W';  word_occ = 2325;  word GLD =  437.83;  delta GLD =  2.50;  relative GLD =  0.0057
+word = 'X';  word_occ = 2268;  word GLD =  427.67;  delta GLD =  1.50;  relative GLD =  0.0035
+word = 'Y';  word_occ = 2329;  word GLD =  427.17;  delta GLD = -0.50;  relative GLD = -0.0012
+word = 'Z';  word_occ = 2353;  word GLD =  437.67;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 'a';  word_occ = 2278;  word GLD =  419.25;  delta GLD =  2.00;  relative GLD =  0.0048
+word = 'b';  word_occ = 2364;  word GLD =  443.75;  delta GLD =  0.50;  relative GLD =  0.0011
+word = 'c';  word_occ = 2273;  word GLD =  432.92;  delta GLD = -1.50;  relative GLD = -0.0035
+word = 'd';  word_occ = 2213;  word GLD =  408.67;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 'e';  word_occ = 2267;  word GLD =  429.42;  delta GLD =  1.00;  relative GLD =  0.0023
+word = 'f';  word_occ = 2441;  word GLD =  464.50;  delta GLD = -1.00;  relative GLD = -0.0022
+word = 'g';  word_occ = 2278;  word GLD =  463.50;  delta GLD =  2.00;  relative GLD =  0.0043
+word = 'h';  word_occ = 2253;  word GLD =  438.92;  delta GLD =  2.00;  relative GLD =  0.0046
+word = 'i';  word_occ = 2249;  word GLD =  398.67;  delta GLD = -1.00;  relative GLD = -0.0025
+word = 'j';  word_occ = 2255;  word GLD =  430.42;  delta GLD =  1.50;  relative GLD =  0.0035
+word = 'k';  word_occ = 2336;  word GLD =  414.75;  delta GLD = -0.17;  relative GLD = -0.0004
+word = 'l';  word_occ = 2296;  word GLD =  418.08;  delta GLD = -0.17;  relative GLD = -0.0004
+word = 'm';  word_occ = 2326;  word GLD =  434.25;  delta GLD = -1.50;  relative GLD = -0.0035
+word = 'n';  word_occ = 2405;  word GLD =  430.75;  delta GLD = -1.17;  relative GLD = -0.0027
+word = 'o';  word_occ = 2301;  word GLD =  418.08;  delta GLD = -0.50;  relative GLD = -0.0012
+word = 'p';  word_occ = 2298;  word GLD =  440.58;  delta GLD = -1.50;  relative GLD = -0.0034
+word = 'q';  word_occ = 2297;  word GLD =  438.92;  delta GLD = -1.50;  relative GLD = -0.0034
+word = 'r';  word_occ = 2294;  word GLD =  412.42;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 's';  word_occ = 2422;  word GLD =  429.83;  delta GLD =  1.00;  relative GLD =  0.0023
+word = 't';  word_occ = 2218;  word GLD =  400.50;  delta GLD = -0.17;  relative GLD = -0.0004
+word = 'u';  word_occ = 2269;  word GLD =  376.00;  delta GLD = -0.50;  relative GLD = -0.0013
+word = 'v';  word_occ = 2295;  word GLD =  479.08;  delta GLD =  0.00;  relative GLD =  0.0000
+word = 'w';  word_occ = 2313;  word GLD =  420.25;  delta GLD =  2.50;  relative GLD =  0.0059
+word = 'x';  word_occ = 2193;  word GLD =  418.33;  delta GLD =  0.50;  relative GLD =  0.0012
+word = 'y';  word_occ = 2375;  word GLD =  439.83;  delta GLD = -0.50;  relative GLD = -0.0011
+word = 'z';  word_occ = 2295;  word GLD =  469.92;  delta GLD =  1.00;  relative GLD =  0.0021
+
+Summary of results---------------------------------------------
+Total number of trials: 10000
+Total number of skipped cases: 384
+Total number of consistent cases: 9458
+Total num of diff list / same dict cases: 51
+Total num of diff dict cases: 107
+Total num of additional err cases: 6
+Total ground truth GLD: 22339.00; Total addition errors: 7.00
+
+Summary of WER delta----------------------------------------
+min WER delta: -0.0069
+max WER delta: 0.0077
+mean WER delta: 0.0003
+variance of WER delta: 9.8321e-06
+.
+========================================================================= 1 passed in 14.28s =========================================================================
