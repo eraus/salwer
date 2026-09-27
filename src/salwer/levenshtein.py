@@ -471,7 +471,7 @@ def levenshtein_gld(
             min_d1 = min(d1)        # _v_plus_upper(d1)
             dist = min_d1 - min_d0  # LD of word
             # use update since the value may have been assigned in (1) in
-            wlst[ss+i][1] += dist / 2.0  # 0 or 0.5     previous for i loop
+            wlst[ss+i][1] += dist * 0.5  # 0 or 0.5     previous for i loop
             d0, d1, min_d0 = d1, d0, min_d1
 
             if dist == 0: continue
