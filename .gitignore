@@ -4,6 +4,8 @@
 # Unignore top-level essentials
 !/.gitignore
 !/.python-version
+!/CONTRIBUTING.md
+!/LICENSE
 !/pyproject.toml
 !/pytest.ini
 !/README.md
