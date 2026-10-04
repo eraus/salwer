@@ -27,8 +27,6 @@ uv tool install salwer
 
 ### Installation from GitHub
 
-(To be supported later)
-
 For the latest development version:
 
 First, clone the repository:
@@ -51,8 +49,8 @@ First, unzip the project into a local project folder, say `c:\projects`.
 
 Second, open a command line terminal/prompt, change to the `salwer` directory:
 
-```
-c:\projects\salwer
+```sh
+cd c:\projects\salwer
 ```
 
 Third, install using uv:
@@ -231,7 +229,7 @@ To be added later.
 
 SaLAI's WER Calculation Toolkit — Bringing semantic awareness to ASR evaluation.
 
--   [@SALWER-Liu2026]: J. Liu, "Semantic Segment Alignment and Granular ASR Performance Evaluation with Segment- and Word-Level WER," Submitted to MDPI Computers, 2026.
+-   [@SALWER-Liu2026]: J. Liu, "Semantic Segment Alignment and Granular ASR Performance Evaluation with Segment- and Word-Level WER," to appear in MDPI Computers, 2026.
 -   [@AirTrafficControl-Godfrey1994a]: J. J. Godfrey, “Air Traffic Control Complete,” Linguistic Data Consortium, 1994. Accessed: Jul. 16, 2022. [Online]. Available: https://catalog.ldc.upenn.edu/LDC94S14A
--   [@ATC-ASR-VAA-LiuPandey2026]: J. Liu and S. Pandey, “ATC ASR for Voice-Assisted Avionics: Stratified and Time-Shift Augmented Finetuning and Segment-Level Evaluation,” to present at the AIAA/IEEE DASC 2026, Sep. 2026.
--   [@WL-WER4ATC-PandeyLiu2026]: S. Pandey and J. Liu, “Word-level ATC ASR error analysis and recommendations to tool developers and language users for voice-assisted avionics applications,” in Preparation.
+-   [@ATC-ASR-VAA-LiuPandey2026]: J. Liu and S. Pandey, “ATC ASR for Voice-Assisted Avionics: Stratified and Time-Shift Augmented Finetuning and Segment-Level Evaluation,” Proceedings of AIAA/IEEE DASC 2026, Sep. 2026.
+-   [@WL-WER4ATC-PandeyLiuKunjeti2026]: S. Pandey, J. Liu, and P. Kunjeti, “Word-Level Error Analysis of ASR Finetuning: Training Sample Count and Semantic-Role Effects in an ATC Voice-Assisted Avionics Case Study,” in Preparation.

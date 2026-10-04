@@ -524,6 +524,8 @@ def levenshtein_word2(
 ) -> list[list]:
     """Levenshtein dist of each word with errors examined---the normal version.
 
+    This is replaced by the gld version. To be removed later.
+
     This function calculates the word-level levenshtein distance in a 'refined'
     way as compared to levenshtein_word_fast. The meaning of `refinement`
     is multi-fold:
@@ -695,7 +697,7 @@ def _check_st_tails(
     return s, t, fwlst, pwlst, ld_4_ank
 
 
-# Find the max index of the min value of a list.
+# Clip the excessive error values in the word list.
 def _clip_wlst_err(wlst, err_limit):
     for word_err in wlst:
         word_err[1] = min(word_err[1], err_limit)
