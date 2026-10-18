@@ -119,7 +119,7 @@ def calculate_seg_wer(
         )
     ),
     tight: bool = typer.Option(
-        False, "--no-tight/--tight",
+        False, "--tight/--no-tight",
         help=(
             "Include prefix drift (PD) before each segment or not; "
             "default to include; to exclude, use --tight in CLI."
