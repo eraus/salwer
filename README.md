@@ -111,6 +111,8 @@ To help users get started quickly, we provide a set of exemplary transcript file
 
 Once installed, the tool can run anywhere on your computer. It is often convenient to run it in the directory where your transcript data resides.
 
+Note: On 10/20/26, the examples files are removed upon the request of ATC0 publisher. New example files will be provided once we have created them.
+
 ### Average WER Calculation
 
 The `salwer calculate-average-wer` (or `salwer caw`) command computes **three types of average WER**:
